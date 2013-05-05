@@ -17,6 +17,14 @@
 #include <linux/delay.h>
 #include <linux/io.h>
 #include <linux/of_device.h>
+<<<<<<< HEAD
+=======
+#include <linux/of_gpio.h>
+#include <linux/gpio.h>
+#include <linux/err.h>
+#include <linux/regulator/consumer.h>
+#include <linux/lcd_notify.h>
+>>>>>>> 3a85fd1... msm: mdss: Adding lcd notifier
 
 #include "mdss.h"
 #include "mdss_panel.h"
@@ -167,7 +175,63 @@ unsigned char *mdss_dsi_get_base_adr(void)
 
 unsigned char *mdss_dsi_get_clk_base(void)
 {
+<<<<<<< HEAD
 	return mdss_dsi_base;
+=======
+	int rc = 0;
+	struct mdss_dsi_ctrl_pdata *ctrl_pdata = NULL;
+
+	if (pdata == NULL) {
+		pr_err("%s: Invalid input data\n", __func__);
+		return -EINVAL;
+	}
+	ctrl_pdata = container_of(pdata, struct mdss_dsi_ctrl_pdata,
+				panel_data);
+	pr_debug("%s+:event=%d\n", __func__, event);
+
+	switch (event) {
+	case MDSS_EVENT_UNBLANK:
+		lcd_notifier_call_chain(LCD_EVENT_ON_START, NULL);
+		rc = mdss_dsi_on(pdata);
+		if (ctrl_pdata->on_cmds->ctrl_state == DSI_LP_MODE) {
+			rc = mdss_dsi_unblank(pdata);
+		}
+		break;
+	case MDSS_EVENT_PANEL_ON:
+		if (ctrl_pdata->on_cmds->ctrl_state == DSI_HS_MODE)
+			rc = mdss_dsi_unblank(pdata);
+		lcd_notifier_call_chain(LCD_EVENT_ON_END, NULL);
+		break;
+	case MDSS_EVENT_BLANK:
+		lcd_notifier_call_chain(LCD_EVENT_OFF_START, NULL);
+		if (ctrl_pdata->off_cmds->ctrl_state == DSI_HS_MODE) {
+			rc = mdss_dsi_blank(pdata);
+		}
+		break;
+	case MDSS_EVENT_PANEL_OFF:
+		if (ctrl_pdata->off_cmds->ctrl_state == DSI_LP_MODE) {
+			rc = mdss_dsi_blank(pdata);
+		}
+		rc = mdss_dsi_off(pdata);
+		lcd_notifier_call_chain(LCD_EVENT_OFF_END, NULL);
+		break;
+	case MDSS_EVENT_CONT_SPLASH_FINISH:
+		if (ctrl_pdata->on_cmds->ctrl_state == DSI_LP_MODE) {
+			rc = mdss_dsi_cont_splash_on(pdata);
+		} else {
+			pr_debug("%s:event=%d, Dsi On not called: ctrl_state: %d\n",
+				 __func__, event,
+				 ctrl_pdata->on_cmds->ctrl_state);
+			rc = -EINVAL;
+		}
+		break;
+	default:
+		pr_debug("%s: unhandled event=%d\n", __func__, event);
+		break;
+	}
+	pr_debug("%s-:event=%d, rc=%d\n", __func__, event, rc);
+	return rc;
+>>>>>>> 3a85fd1... msm: mdss: Adding lcd notifier
 }
 
 static int mdss_dsi_resource_initialized;

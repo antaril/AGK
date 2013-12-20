@@ -28,6 +28,7 @@
 #include <linux/workqueue.h>
 #include <linux/debugfs.h>
 #include <linux/slab.h>
+#include <linux/blx.h>
 #include <linux/mfd/pm8xxx/batt-alarm.h>
 #include <linux/ratelimit.h>
 
@@ -1808,6 +1809,55 @@ static int get_prop_charge_type(struct pm8921_chg_chip *chip)
 	return POWER_SUPPLY_CHARGE_TYPE_NONE;
 }
 
+<<<<<<< HEAD
+=======
+static int get_prop_batt_status(struct pm8921_chg_chip *chip)
+{
+	int batt_state = POWER_SUPPLY_STATUS_DISCHARGING;
+	int fsm_state = pm_chg_get_fsm_state(chip);
+	int i;
+
+	if (chip->ext_psy) {
+		if (chip->ext_charge_done)
+			return POWER_SUPPLY_STATUS_FULL;
+		if (chip->ext_charging)
+			return POWER_SUPPLY_STATUS_CHARGING;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(map); i++)
+		if (map[i].fsm_state == fsm_state)
+			batt_state = map[i].batt_state;
+
+	if (fsm_state == FSM_STATE_ON_CHG_HIGHI_1) {
+		if (!pm_chg_get_rt_status(chip, BATT_INSERTED_IRQ)
+			|| !pm_chg_get_rt_status(chip, BAT_TEMP_OK_IRQ)
+			|| pm_chg_get_rt_status(chip, CHGHOT_IRQ)
+			|| (!chip->eoc_check_soc &&
+				pm_chg_get_rt_status(chip, VBATDET_LOW_IRQ))
+			|| (chip->ext_batt_temp_monitor &&
+				(chip->ext_batt_health == POWER_SUPPLY_HEALTH_OVERHEAT)))
+
+			batt_state = POWER_SUPPLY_STATUS_NOT_CHARGING;
+	}
+
+	if (chip->eoc_check_soc) {
+	#ifdef CONFIG_BLX
+	   if (get_prop_batt_capacity(chip) >= get_charginglimit())
+	#else
+	   if (get_prop_batt_capacity(chip) == 100) 
+	#endif
+			if (batt_state == POWER_SUPPLY_STATUS_CHARGING)
+				batt_state = POWER_SUPPLY_STATUS_FULL;
+		} else {
+			if (batt_state == POWER_SUPPLY_STATUS_FULL)
+				batt_state = POWER_SUPPLY_STATUS_CHARGING;
+		}
+
+	pr_debug("batt_state = %d fsm_state = %d \n",batt_state, fsm_state);
+	return batt_state;
+}
+
+>>>>>>> af74f67... Battery Live eXtender
 #define MAX_TOLERABLE_BATT_TEMP_DDC	680
 static int get_prop_batt_temp(struct pm8921_chg_chip *chip, int *temp)
 {
@@ -3522,7 +3572,19 @@ static int pm_chg_override_hot(struct pm8921_chg_chip *chip, int flag)
 	u8 val;
 	int rc = 0;
 
+<<<<<<< HEAD
 	val = 0x80 | COMP_OVERRIDE_HOT_BANK << 2 | COMP_OVERRIDE_BIT;
+=======
+	if (chip->eoc_check_soc) {
+		percent_soc = get_prop_batt_capacity(chip);
+		#ifdef CONFIG_BLX
+		   if (percent_soc >= get_charginglimit())
+		#else
+		   if (percent_soc == 100)
+		#endif
+			count = CONSECUTIVE_COUNT;
+	}
+>>>>>>> af74f67... Battery Live eXtender
 
 	if (flag)
 		val |= 0x01;
@@ -3531,6 +3593,7 @@ static int pm_chg_override_hot(struct pm8921_chg_chip *chip, int flag)
 	if (rc < 0)
 		pr_err("Could not write 0x%x to override rc = %d\n", val, rc);
 
+<<<<<<< HEAD
 	pr_debug("btc hot = %d val = 0x%x\n", flag, val);
 	return rc;
 }
@@ -3578,6 +3641,30 @@ cold_init:
 		rc = pm_chg_override_cold(chip, 0);
 		if (rc < 0)
 			pr_err("Could not override cold rc = %d\n", rc);
+=======
+		if (is_ext_charging(chip))
+			chip->ext_charge_done = true;
+#ifdef CONFIG_BLX
+//if (chip->is_bat_warm || chip->is_bat_cool)
+//  chip->bms_notify.is_battery_full = 0;
+//else
+//  chip->bms_notify.is_battery_full = 1;
+#else
+	if (chip->is_bat_warm || chip->is_bat_cool)
+	   chip->bms_notify.is_battery_full = 0;
+	else
+	   chip->bms_notify.is_battery_full = 1;
+#endif
+		/* declare end of charging by invoking chgdone interrupt */
+		chgdone_irq_handler(chip->pmic_chg_irq[CHGDONE_IRQ], chip);
+		wake_unlock(&chip->eoc_wake_lock);
+	} else {
+		adjust_vdd_max_for_fastchg(chip);
+		pr_debug("EOC count = %d\n", count);
+		schedule_delayed_work(&chip->eoc_work,
+			      round_jiffies_relative(msecs_to_jiffies
+						     (EOC_CHECK_PERIOD_MS)));
+>>>>>>> af74f67... Battery Live eXtender
 	}
 }
 

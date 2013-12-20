@@ -86,4 +86,7 @@ obj-$(CONFIG_AMP_RT5501)	+= rt5501.o
 =======
 obj-$(CONFIG_GAMMA_CONTROL) += gamma_control.o
 obj-$(CONFIG_BLX)    += blx.o
+<<<<<<< HEAD
+>>>>>>> af74f67... Battery Live eXtender
+=======
 >>>>>>> af74f67... Battery Live eXtender

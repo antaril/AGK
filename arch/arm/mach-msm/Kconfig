@@ -2612,9 +2612,12 @@ config INTELLI_HOTPLUG
 	  An intelligent cpu hotplug driver for
 	  Low Latency Frequency Transition capable processors.
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 47c23f6... msm: Implement Intelli HotPlug Driver
 config MSM_CPR
 	tristate "Use MSM CPR in S/W mode"
 	help

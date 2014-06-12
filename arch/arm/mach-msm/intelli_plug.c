@@ -177,6 +177,7 @@ static unsigned int calculate_thread_stats(void)
 	unsigned int nr_run;
 	unsigned int threshold_size;
 
+<<<<<<< HEAD
 	if (!eco_mode_active) {
 		threshold_size =  ARRAY_SIZE(nr_run_thresholds_full);
 		nr_run_hysteresis = 8;
@@ -201,6 +202,11 @@ static unsigned int calculate_thread_stats(void)
 		pr_debug("intelliplug: eco mode active!");
 >>>>>>> 47c23f6... msm: Implement Intelli HotPlug Driver
 	}
+=======
+	threshold_size = max_cpus_online;
+	nr_run_hysteresis = max_cpus_online * 2;
+	nr_fshift = max_cpus_online - 1;
+>>>>>>> 9d50be7... intelli_plug: Rectify hysteresis calculation
 
 	for (nr_run = 1; nr_run < threshold_size; nr_run++) {
 		unsigned int nr_threshold;

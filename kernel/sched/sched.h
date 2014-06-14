@@ -930,8 +930,7 @@ extern void cpuacct_charge(struct task_struct *tsk, u64 cputime);
 static inline void cpuacct_charge(struct task_struct *tsk, u64 cputime) {}
 #endif
 
-<<<<<<< HEAD
-=======
+
 #ifdef CONFIG_PARAVIRT
 static inline u64 steal_ticks(u64 steal)
 {
@@ -971,7 +970,7 @@ static inline unsigned int do_avg_nr_running(struct rq *rq)
 }
 #endif
 
->>>>>>> 47c23f6... msm: Implement Intelli HotPlug Driver
+
 static inline void inc_nr_running(struct rq *rq)
 {
 	sched_update_nr_prod(cpu_of(rq), rq->nr_running, true);

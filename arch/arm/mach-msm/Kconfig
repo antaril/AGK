@@ -2594,11 +2594,7 @@ config MSM_HOTPLUG
 	  The MSM hotplug driver controls on-/offlining of additional cores based
 	  on current cpu load.
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 37b67ba... msm: Cleaner implementation of Alucard Hotplug driver
 config ALUCARD_HOTPLUG
 	bool "Alucard hotplug driver"
 	depends on HOTPLUG_CPU
@@ -2607,7 +2603,7 @@ config ALUCARD_HOTPLUG
 	  The Alucard hotplug driver controls on-/offlining of additional cores based
 	  on current cpu load.
 
-<<<<<<< HEAD
+
 config INTELLI_HOTPLUG
 	bool "Intelli hotplug driver"
 	depends on HOTPLUG_CPU
@@ -2617,8 +2613,7 @@ config INTELLI_HOTPLUG
 	  Low Latency Frequency Transition capable processors.
 
 
-=======
->>>>>>> 37b67ba... msm: Cleaner implementation of Alucard Hotplug driver
+
 config MSM_CPR
 	tristate "Use MSM CPR in S/W mode"
 	help

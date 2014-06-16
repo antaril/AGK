@@ -1,0 +1,2 @@
+scripts/kconfig/qconf Kconfig
+net/ipv6/Kconfig:262:warning: multi-line strings not supported

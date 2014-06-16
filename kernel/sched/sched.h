@@ -970,10 +970,7 @@ static inline unsigned int do_avg_nr_running(struct rq *rq)
 }
 #endif
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 47c23f6... msm: Implement Intelli HotPlug Driver
 static inline void inc_nr_running(struct rq *rq)
 {
 	sched_update_nr_prod(cpu_of(rq), rq->nr_running, true);

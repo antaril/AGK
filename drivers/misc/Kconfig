@@ -689,7 +689,7 @@ config BU52031NVX_POUCHDETECT
 	help
 	  depends on BU52031NVX
 
-<<<<<<< HEAD
+
 
 config CABLE_DETECT_8XXX
 	boolean "Cable detect driver"
@@ -741,18 +741,14 @@ config AMP_RT5501_DELAY
 	help
 	  RichTek RT5501 AMP Delay Workaround for pop noise of headset enable.
 
-=======
->>>>>>> af74f67... Battery Live eXtender
+
 config BLX
 	bool "Support for Battery Life eXtender"
 	default y
 	help
 	  Say Y here to enable Battery Live eXtender
 
-<<<<<<< HEAD
 
-=======
->>>>>>> af74f67... Battery Live eXtender
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"

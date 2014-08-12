@@ -1598,7 +1598,21 @@ config GPU_OVERCLOCK
 	help
 	  Krait 600 GPU overclocking 
 
+<<<<<<< HEAD
 
+=======
+config CPU_OVERCLOCK
+	bool "Enable CPU Overclocking option"
+	default n
+	help
+	  Krait overclocking up to 2.1 GHz
+
+config LOW_CPUCLOCKS
+	bool "Enable ultra low CPU clocks"
+	default n
+	help
+	  Ultra low cpu frequencies enabled for CPU and L2 Cache
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 
 config MSM_CPUFREQ_LIMITER
 	tristate "MSM CPU frequency limiter"
@@ -1611,7 +1625,10 @@ config MSM_CPUFREQ_LIMITER
 
 	  If in doubt, say N.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 config CPU_VOLTAGE_TABLE
 	bool "Enable CPU Voltage Table via sysfs for adjustements"
 	default n

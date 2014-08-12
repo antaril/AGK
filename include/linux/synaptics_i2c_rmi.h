@@ -185,6 +185,11 @@ enum {
 	FUNCTION
 };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 extern uint8_t touchscreen_is_on(void);
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
@@ -197,6 +202,10 @@ extern uint8_t get_sleep_wake_vibration_time(void);
 
 extern uint8_t touchscreen_is_on(void);  
 
+<<<<<<< HEAD
+=======
+>>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 extern uint8_t getPowerKeyState(void);
 #endif /* CONFIG_TOUCHSCREEN_SYNAPTICS_3K */
 #endif /* _LINUX_SYNAPTICS_I2C_RMI_H */

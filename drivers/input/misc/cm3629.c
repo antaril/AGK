@@ -1500,10 +1500,27 @@ static int lightsensor_enable(struct cm3629_info *lpi)
 		"[LS][cm3629 error]%s: set auto light sensor fail\n",
 		__func__);
 	else {
+<<<<<<< HEAD
 		if (lpi->mfg_mode != MFG_MODE)
 			msleep(160);
 		else
 			msleep(85);
+=======
+		if (sensor_chipId[0] != 0x29)
+			delay = 80;
+		else
+<<<<<<< HEAD
+			delay = 50;
+
+		if (lpi->mfg_mode != MFG_MODE)
+			delay *= 2;
+
+		hr_msleep(delay);
+
+=======
+			msleep(85);
+>>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 		input_report_abs(lpi->ls_input_dev, ABS_MISC, -1);
 		input_sync(lpi->ls_input_dev);
 		report_lsensor_input_event(lpi, 1);
@@ -2525,6 +2542,11 @@ err_free_ps_input_device:
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 int power_key_check_in_pocket(int check_dark)
 {
 	struct cm3629_info *lpi = lp_info;
@@ -2612,6 +2634,10 @@ int psensor_enable_by_touch_driver(int on)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
+>>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
 static int cm3629_read_chip_id(struct cm3629_info *lpi)
 {
 	uint8_t chip_id[3] = {0};

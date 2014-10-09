@@ -48,7 +48,7 @@ static struct scalable scalable[] __initdata = {
 		.sec_clk_sel = 2,
 		.l2cpmr_iaddr = 0x4501,
 #ifdef CONFIG_CPU_OVERCLOCK
-		.vreg[VREG_CORE] = { "krait0", 1400000 },
+		.vreg[VREG_CORE] = { "krait0", 1350000 },
 #else
 		.vreg[VREG_CORE] = { "krait0", 1300000 },
 #endif
@@ -63,7 +63,7 @@ static struct scalable scalable[] __initdata = {
 		.sec_clk_sel = 2,
 		.l2cpmr_iaddr = 0x5501,
 #ifdef CONFIG_CPU_OVERCLOCK
-		.vreg[VREG_CORE] = { "krait1", 1400000 },
+		.vreg[VREG_CORE] = { "krait1", 1350000 },
 #else
 		.vreg[VREG_CORE] = { "krait1", 1300000 },
 #endif
@@ -78,7 +78,7 @@ static struct scalable scalable[] __initdata = {
 		.sec_clk_sel = 2,
 		.l2cpmr_iaddr = 0x6501,
 #ifdef CONFIG_CPU_OVERCLOCK
-		.vreg[VREG_CORE] = { "krait2", 1400000 },
+		.vreg[VREG_CORE] = { "krait2", 1350000 },
 #else
 		.vreg[VREG_CORE] = { "krait2", 1300000 },
 #endif
@@ -93,7 +93,7 @@ static struct scalable scalable[] __initdata = {
 		.sec_clk_sel = 2,
 		.l2cpmr_iaddr = 0x7501,
 #ifdef CONFIG_CPU_OVERCLOCK
-		.vreg[VREG_CORE] = { "krait3", 1400000 },
+		.vreg[VREG_CORE] = { "krait3", 1350000 },
 #else
 		.vreg[VREG_CORE] = { "krait3", 1300000 },
 #endif
@@ -389,6 +389,7 @@ static struct acpu_level tbl_PVS6_1512MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS0_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   900000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   900000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   900000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   900000 },
@@ -425,6 +426,7 @@ static struct acpu_level tbl_PVS0_1700MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS1_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   900000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   900000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   900000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   900000 },
@@ -461,6 +463,7 @@ static struct acpu_level tbl_PVS1_1700MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS2_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   875000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   875000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   875000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   875000 },
@@ -497,6 +500,7 @@ static struct acpu_level tbl_PVS2_1700MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS3_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   850000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   850000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   850000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   850000 },
@@ -533,6 +537,7 @@ static struct acpu_level tbl_PVS3_1700MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS4_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   825000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   825000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   825000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   825000 },
@@ -569,6 +574,7 @@ static struct acpu_level tbl_PVS4_1700MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS5_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   825000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   825000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   825000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   825000 },
@@ -605,6 +611,7 @@ static struct acpu_level tbl_PVS5_1700MHz[] __initdata = {
 
 static struct acpu_level tbl_PVS6_1700MHz[] __initdata = {
 #ifdef CONFIG_LOW_CPUCLOCKS
+	{ 1, {    81000, HFPLL, 1, 0x03 }, L2(0),   825000 },
 	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   825000 },
 	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   825000 },
 	{ 1, {   270000, HFPLL, 2, 0x14 }, L2(0),   825000 },

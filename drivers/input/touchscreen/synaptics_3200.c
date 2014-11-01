@@ -40,19 +40,25 @@
 #include <linux/wait.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 #include <linux/ctype.h>
 #include <linux/mfd/pm8xxx/vibrator.h>
 #include <linux/pl_sensor.h>
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #define SYN_I2C_RETRY_TIMES 10
 #define SYN_UPDATE_RETRY_TIMES 5
 #define SHIFT_BITS 10
@@ -461,7 +467,17 @@ static void syn_block_touch_work_func(struct work_struct *dummy)
 
 int pwp_switch = 1; // 1 -> pocket wake protection on, 2 -> pocket wake protection with only near check , no dark check ;  0 - off
 
+<<<<<<< HEAD
 int l2m_2_phase = 0; // 0 -> logo used as power off on long tap, and short tap syncs input on/off at same time,  1 -> logo used as full menu button, sync on/off events separately
+=======
+static void syn_page_select(struct i2c_client *client, uint8_t page)
+{
+	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
+	if (page ^ ts->page_select) {
+		i2c_smbus_write_byte_data(client, 0xFF, page);
+		ts->page_select = page;
+	}
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 
 int dt2w_switch = 0;
 int dt2w_temp = 0;
@@ -472,8 +488,19 @@ int s2w_temp = 0;
 int h2w_switch = 0; // 0 -> No wake 1 -> Home2Wake, 2 -> Home2Wake/Logo2Sleep if l2m_switch = 0,  3 -> Logo2wake/Logo2sleep if l2m_switch = 0
 int h2w_temp = 0;
 
+<<<<<<< HEAD
 int l2m_switch = 1; // 0 -> No menu map, 1 Menu map
 int l2m_temp = 1;
+=======
+	mutex_lock(&syn_mutex);
+	syn_page_select(client, addr >> 8);
+	for (retry = 0; retry < SYN_I2C_RETRY_TIMES; retry++) {
+		if (i2c_transfer(client->adapter, msg, 2) == 2)
+			break;
+		hr_msleep(10);
+	}
+	mutex_unlock(&syn_mutex);
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 
 int logo_delay_switch = 1; // if 1 -> Logo2Sleep/Logo2Wake will wait for long tap, if 0, it won't wait for no jiffies.
 
@@ -513,8 +540,19 @@ int sweep2wake_buttonset(const char * button_name) {
 	char temp_button_name[2] = "";
 	char temp_button_name_from_array[2] = "";
 
+<<<<<<< HEAD
 	strncpy(temp_button_name,button_name,1);
 	temp_button_name[1] = '\0';
+=======
+	mutex_lock(&syn_mutex);
+	syn_page_select(ts->client, addr >> 8);
+	for (retry = 0; retry < SYN_I2C_RETRY_TIMES; retry++) {
+		if (i2c_transfer(ts->client->adapter, msg, 2) == 2)
+			break;
+		hr_msleep(10);
+	}
+	mutex_unlock(&syn_mutex);
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 
 	for (i = 0; i < sizeof(buttons)/sizeof(button); i++)
 	{
@@ -2634,11 +2672,17 @@ static ssize_t synaptics_l2m_2_phase_dump(struct device *dev,
 	return count;
 }
 
+<<<<<<< HEAD
 static DEVICE_ATTR(l2m_2_phase, (S_IWUSR|S_IRUGO),
 	synaptics_l2m_2_phase_show, synaptics_l2m_2_phase_dump);
 
 static ssize_t synaptics_sleep_wake_vibration_time_show(struct device *dev,
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+static DEVICE_ATTR(sr_en, S_IWUSR, 0, set_en_sr);
+
+static ssize_t keypad_enable_show(struct device *dev,
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 		struct device_attribute *attr, char *buf)
 {
 	struct synaptics_ts_data *ts = gl_ts;
@@ -2988,10 +3032,13 @@ static int synaptics_touch_sysfs_init(void)
 			return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		ret = sysfs_create_file(android_touch_kobj, &dev_attr_doubletap2wake.attr);
 	if (ret) {
@@ -3036,9 +3083,12 @@ static int synaptics_touch_sysfs_init(void)
 
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef SYN_WIRELESS_DEBUG
 	ret= gpio_request(ts->gpio_irq, "synaptics_attn");
 	if (ret) {
@@ -3086,10 +3136,13 @@ static void synaptics_touch_sysfs_remove(void)
 	sysfs_remove_file(android_touch_kobj, &dev_attr_reset.attr);
 	sysfs_remove_file(android_touch_kobj, &dev_attr_sr_en.attr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	sysfs_remove_file(android_touch_kobj, &dev_attr_doubletap2wake.attr);
 	sysfs_remove_file(android_touch_kobj, &dev_attr_sweep2wake.attr);
@@ -3101,9 +3154,12 @@ static void synaptics_touch_sysfs_remove(void)
 	sysfs_remove_file(android_touch_kobj, &dev_attr_pocket_detect.attr);
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef SYN_WIRELESS_DEBUG
 	sysfs_remove_file(android_touch_kobj, &dev_attr_enabled.attr);
 #endif
@@ -3219,10 +3275,13 @@ static int synaptics_init_panel(struct synaptics_ts_data *ts)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 static int last_touch_position_x = 0;
 static int last_touch_position_y = 0;
@@ -3339,19 +3398,25 @@ static void synaptics_ts_s2w_check_wake(void)
 
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 {
 	int ret;
 	uint8_t buf[ts->finger_support * 8 ], noise_index[10], noise_state = 0;
 	static int x_pos[10] = {0}, y_pos[10] = {0};
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	int report_ret = 0;
 	int ts_is_on = 0;
@@ -3360,9 +3425,12 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 	// should help with ScreenStandby root app
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 
 	memset(buf, 0x0, sizeof(buf));
 	memset(noise_index, 0x0, sizeof(noise_index));
@@ -3517,10 +3585,13 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 			if (ts->debug_log_level & BIT(1))
 				printk(KERN_INFO "[TP] Finger leave\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 			/* if finger released, reset count & barriers */
 			if ((((ts->finger_count > 0)?1:0) == 0)) { 
@@ -3607,9 +3678,12 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 			}
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 		}
 
 		if (ts->pre_finger_data[0][0] < 2 || finger_pressed) {
@@ -3700,6 +3774,7 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 
 					if ((finger_pressed & BIT(i)) == BIT(i)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 						if (ts->block_touch_event == 0) {
@@ -3712,6 +3787,8 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 										finger_data[i][0] << 16 | finger_data[i][1]);
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 
 						if (ts->block_touch_event == 0) { // block event
 						if (ts->htc_event == SYN_AND_REPORT_TYPE_A) {
@@ -3802,6 +3879,7 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 										sweep2wake_longtap_count_trigger();
 									}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 								}
@@ -3825,6 +3903,8 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 										(finger_pressed == 0) << 31 |
 										finger_data[i][0] << 16 | finger_data[i][1]);
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 								}
 							}
 #endif
@@ -3848,10 +3928,13 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 									finger_data[i][0] << 16 | finger_data[i][1]);
 							}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 							input_mt_slot(ts->input_dev, i);
 							input_mt_report_slot_state(ts->input_dev, MT_TOOL_FINGER,
 							1);
@@ -4002,9 +4085,12 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 							}
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 						}
 						} // block_event
 						x_pos[i] = finger_data[i][0];
@@ -4181,19 +4267,25 @@ static void synaptics_ts_button_func(struct synaptics_ts_data *ts)
 	uint8_t data = 0;
 	uint16_t x_position = 0, y_position = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	int ts_is_on = touchscreen_is_on() ? 1:0;
 	if (!is_wake_option_set()) ts_is_on = 1; // this line is to avoid setting -10/-10 for coordinates, when wake option is not set, so we shouldn't modify coordinates
 	// should help with ScreenStandby root app
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 
 	ret = i2c_syn_read(ts->client,
 		get_address_base(ts, 0x1A, DATA_BASE), &data, 1);
@@ -4345,10 +4437,13 @@ static void synaptics_ts_button_func(struct synaptics_ts_data *ts)
 		printk("[TP] virtual key released\n");
 		vk_press = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 		if (s2w_switch > 0)
 		{
@@ -4383,9 +4478,12 @@ static void synaptics_ts_button_func(struct synaptics_ts_data *ts)
 		if (ts_is_on) {
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 		if (ts->htc_event == SYN_AND_REPORT_TYPE_A) {
 			if (ts->support_htc_event) {
 				input_report_abs(ts->input_dev, ABS_MT_AMPLITUDE, 0);
@@ -4833,12 +4931,15 @@ static int syn_probe_init(void *arg)
 							msecs_to_jiffies(wait_time));
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 #endif
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	ts->block_touch_event = 0;
 	ts->i2c_err_handler_en = pdata->i2c_err_handler_en;
 	if (ts->i2c_err_handler_en) {
@@ -5264,6 +5365,7 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	uint8_t data = 0, update = 0;
 	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (is_wake_option_set()) {
 		enable_irq_wake(client->irq);
@@ -5287,6 +5389,8 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 
 	if (ts->use_irq) {
 =======
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 	if (is_wake_option_set()) {
 		enable_irq_wake(client->irq);
@@ -5304,8 +5408,11 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
                 if (!is_wake_option_set()) {
 #endif
+<<<<<<< HEAD
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 		disable_irq(client->irq);
 		ts->irq_enabled = 0;
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
@@ -5315,10 +5422,13 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 		hrtimer_cancel(&ts->timer);
 		ret = cancel_work_sync(&ts->work);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
         if (!is_wake_option_set()) {
                 if (ret && ts->use_irq) /* if work was pending disable-count is now 2 */
@@ -5326,9 +5436,12 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
         }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	}
 
 		ts->pre_finger_data[0][0] = 0;
@@ -5483,6 +5596,7 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
         if (!is_wake_option_set()) {
 #endif
@@ -5494,6 +5608,11 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 #endif
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+        if (!is_wake_option_set()) {
+#endif
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	if (ts->power)
 		ts->power(0);
 	else {
@@ -5512,6 +5631,7 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 			ts->lpm_power(1);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
     }
 #endif
@@ -5527,6 +5647,8 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	}
 
 =======
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
     }
 #endif
@@ -5534,8 +5656,11 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 		syn_handle_block_touch(ts, 0);
 	}
 	scr_suspended = true;
+<<<<<<< HEAD
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	return 0;
 }
 
@@ -5544,12 +5669,15 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	int ret;
 	struct synaptics_ts_data *ts = i2c_get_clientdata(client);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 	printk(KERN_INFO "[TP] %s: enter\n", __func__);
 
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
         if (is_wake_option_set()) {
                 //screen on, disable_irq_wake
@@ -5562,9 +5690,12 @@ static int synaptics_ts_resume(struct i2c_client *client)
         if (!is_wake_option_set()) {
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	if (ts->power) {
 		ts->power(1);
 		hr_msleep(100);
@@ -5601,6 +5732,7 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
         if (!is_wake_option_set()) {
 #endif
@@ -5612,6 +5744,11 @@ static int synaptics_ts_resume(struct i2c_client *client)
 #endif
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+#ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+        if (!is_wake_option_set()) {
+#endif
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	if (ts->use_irq) {
 		enable_irq(client->irq);
 		ts->irq_enabled = 1;
@@ -5622,10 +5759,13 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	if (h2w_switch_changed)
 	{
 		h2w_switch = h2w_temp;
@@ -5647,9 +5787,12 @@ static int synaptics_ts_resume(struct i2c_client *client)
 #endif
         scr_suspended = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
 >>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
+=======
+>>>>>>> 7995353... fix compiling errors after cherry-pick
 	return 0;
 }
 

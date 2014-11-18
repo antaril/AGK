@@ -1500,30 +1500,10 @@ static int lightsensor_enable(struct cm3629_info *lpi)
 		"[LS][cm3629 error]%s: set auto light sensor fail\n",
 		__func__);
 	else {
-<<<<<<< HEAD
-<<<<<<< HEAD
 		if (lpi->mfg_mode != MFG_MODE)
 			msleep(160);
 		else
 			msleep(85);
-=======
-		if (sensor_chipId[0] != 0x29)
-			delay = 80;
-		else
-<<<<<<< HEAD
-			delay = 50;
-
-=======
->>>>>>> 7995353... fix compiling errors after cherry-pick
-		if (lpi->mfg_mode != MFG_MODE)
-			msleep(160);
-		else
-			msleep(85);
-<<<<<<< HEAD
->>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
->>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
-=======
->>>>>>> 7995353... fix compiling errors after cherry-pick
 		input_report_abs(lpi->ls_input_dev, ABS_MISC, -1);
 		input_sync(lpi->ls_input_dev);
 		report_lsensor_input_event(lpi, 1);
@@ -2545,14 +2525,6 @@ err_free_ps_input_device:
 	return ret;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
-=======
->>>>>>> 7995353... fix compiling errors after cherry-pick
 int power_key_check_in_pocket(int check_dark)
 {
 	struct cm3629_info *lpi = lp_info;
@@ -2562,11 +2534,14 @@ int power_key_check_in_pocket(int check_dark)
 	int ls_level = 0;
 	int i;
 	uint8_t ps1_adc = 0;
-//#if 0
+#if 0
 	uint8_t ps2_adc = 0;
 	int ret = 0;
 
-//#endif
+
+
+#endif
+
 	if (!is_probe_success) {
 		D("[cm3629] %s return by cm3629 probe fail\n", __func__);
 		return 0;
@@ -2594,38 +2569,27 @@ int power_key_check_in_pocket(int check_dark)
 	psensor_enable(lpi);
 // don't use new method of Sense5.5 for pocket near detection. 
 // too high threshold here for nearness
+
 //#if 0
+
+#if 0
+
 	ret = get_ps_adc_value(&ps1_adc, &ps2_adc);
 	printk("POCKET ADC : %d ", ps1_adc);
 	if (ps1_adc >= 6) // fix up for checking other materials than human body, needs a very low threshold 6+ to 240
 		ps_near = 1;
 	else
 		ps_near = 0;
+
 //#endif
+
+#endif
+
 	D("[cm3629] %s ps1_adc = %d, pocket_thd = %d, ps_near = %d\n", __func__, ps1_adc, pocket_thd, ps_near);
 	psensor_disable(lpi);
 	pocket_mode_flag = 0;
 	return ((check_dark && ls_dark && ps_near) || (!check_dark && (ps_near)));//||ls_dark)));
 }
-
-int pocket_detection_check(void)
-{
-	struct cm3629_info *lpi = lp_info;
-
-	if (!is_probe_success) {
-		printk("[cm3629] %s return by cm3629 probe fail\n", __func__);
-		return 0;
-	}
-	pocket_mode_flag = 1;
-
-	psensor_enable(lpi);
-	D("[cm3629] %s ps_near = %d\n", __func__, ps_near);
-	psensor_disable(lpi);
-
-	pocket_mode_flag = 0;
-	return (ps_near);
-}
-
 
 int psensor_enable_by_touch_driver(int on)
 {
@@ -2648,13 +2612,6 @@ int psensor_enable_by_touch_driver(int on)
 	return 0;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 336af94... a lot of changes... hotplugs, fastcharge, touchstuff...
->>>>>>> 3f2df41... a lot of changes... hotplugs, fastcharge, touchstuff...
-=======
->>>>>>> 7995353... fix compiling errors after cherry-pick
 static int cm3629_read_chip_id(struct cm3629_info *lpi)
 {
 	uint8_t chip_id[3] = {0};

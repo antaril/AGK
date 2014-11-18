@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,9 +47,16 @@
   
    Macros and Function prototypes FT and 802.11R purposes 
 
+<<<<<<< HEAD
    Copyright 2010 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
    Qualcomm Technologies Confidential and Proprietary.
 
+=======
+   Copyright 2010 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   
+   Qualcomm Confidential and Proprietary.
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ========================================================================*/
 
 #ifndef __LIMFTDEFS_H__
@@ -54,21 +64,33 @@
 
 
 #include <palTypes.h>
+<<<<<<< HEAD
 #include "halMsgApi.h"
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*-------------------------------------------------------------------------- 
   Preprocessor definitions and constants
   ------------------------------------------------------------------------*/
 #define SIR_MDIE_SIZE               3 // MD ID(2 bytes), Capability(1 byte)
 #define MAX_TIDS                    8
+<<<<<<< HEAD
 #define MAX_FTIE_SIZE             384 // Max size limited to 384, on acct. of IW custom events
+=======
+#define MAX_FTIE_SIZE             256 // Max size limited to 256, on acct. of IW custom events
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 /*-------------------------------------------------------------------------- 
   Type declarations
   ------------------------------------------------------------------------*/
+<<<<<<< HEAD
 /*--------------------------------------------------------------------------
   FT Pre Auth Req SME<->PE
+=======
+/*-------------------------------------------------------------------------- 
+  FT Pre Auth Req SME<->PE 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ------------------------------------------------------------------------*/
 typedef struct sSirFTPreAuthReq
 {
@@ -85,6 +107,7 @@ typedef struct sSirFTPreAuthReq
 } tSirFTPreAuthReq, *tpSirFTPreAuthReq;
 
 /*-------------------------------------------------------------------------
+<<<<<<< HEAD
   FT Pre Auth Rsp PE<->SME
   ------------------------------------------------------------------------*/
 typedef struct sSirFTPreAuthRsp
@@ -122,10 +145,40 @@ typedef struct sSirFTPreAuthKeyInfo
 
 /*-------------------------------------------------------------------------
   Global FT Information
+=======
+  FT Pre Auth Rsp PE<->SME 
+  ------------------------------------------------------------------------*/
+typedef struct sSirFTPreAuthRsp
+{
+   tANI_U16    messageType;      // eWNI_SME_FT_PRE_AUTH_RSP
+   tANI_U16    length;
+   tANI_U8     smeSessionId;
+   tSirMacAddr preAuthbssId;     // BSSID to preauth to
+   tANI_U8     status;
+   tANI_U16    ft_ies_length;
+   tANI_U8     ft_ies[MAX_FTIE_SIZE];
+   tANI_U16    ric_ies_length;
+   tANI_U8     ric_ies[MAX_FTIE_SIZE];
+} tSirFTPreAuthRsp, *tpSirFTPreAuthRsp;
+
+/*-------------------------------------------------------------------------- 
+  FT Pre Auth Req SME<->PE 
+  ------------------------------------------------------------------------*/
+typedef struct sSirFTUpdateKeyInfo
+{
+   tANI_U16          messageType;
+   tANI_U16          length;
+   tSirKeyMaterial   keyMaterial;
+} tSirFTUpdateKeyInfo, *tpSirFTUpdateKeyInfo;
+
+/*-------------------------------------------------------------------------
+  Global FT Information 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ------------------------------------------------------------------------*/
 typedef struct sFTPEContext
 {
     tpSirFTPreAuthReq pFTPreAuthReq;                      // Saved FT Pre Auth Req
+<<<<<<< HEAD
     void              *psavedsessionEntry;
     tSirRetStatus     ftPreAuthStatus;
     tANI_U16          saved_auth_rsp_length;
@@ -133,6 +186,15 @@ typedef struct sFTPEContext
     tSirFTPreAuthKeyInfo    *pPreAuthKeyInfo;
     // Items created for the new FT, session
     void              *pftSessionEntry;                   // Saved session created for pre-auth
+=======
+    void              *psavedsessionEntry;                
+    tANI_U8           ftPreAuthStatus;
+    tANI_U16          saved_auth_rsp_length;
+    tANI_U8           saved_auth_rsp[MAX_FTIE_SIZE];
+
+    // Items created for the new FT, session
+    void              *pftSessionEntry;                   // Saved session created for pre-auth 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     void              *pAddBssReq;                        // Save add bss req.
     void              *pAddStaReq;                        // Save add sta req.
 

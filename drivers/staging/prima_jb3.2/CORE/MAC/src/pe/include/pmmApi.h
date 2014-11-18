@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -70,11 +73,25 @@ extern void pmmResetStats(void *pvMac);
 /// Process the next PM message
 extern void pmmProcessMessage(tpAniSirGlobal, tpSirMsgQ);
 
+<<<<<<< HEAD
+=======
+/// Process the PM message queue
+extern void pmmProcessMessageQueue(tpAniSirGlobal pMac);
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 extern void pmmProcessPSPoll(tpAniSirGlobal, tANI_U8 *);
 extern void pmmUpdatePSPollState(tpAniSirGlobal);
 extern void pmmProcessRxActivity(tpAniSirGlobal, tANI_U16, tANI_U8);
 
+<<<<<<< HEAD
 extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *, tANI_U8);
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *, tANI_U8);
+#else
+extern void pmmGenerateTIM(tpAniSirGlobal, tANI_U8 **, tANI_U16 *);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 void pmmUpdateTIM(tpAniSirGlobal pMac, tpBeaconGenParams pBeaconGenParams);
@@ -92,7 +109,11 @@ void pmmHandleTimBasedDisassociation(tpAniSirGlobal pMac, tpPESession psessionEn
 //go into sleep state
 void pmmInitBmpsPwrSave(tpAniSirGlobal pMac);
 tSirRetStatus  pmmSendInitPowerSaveMsg(tpAniSirGlobal pMac,tpPESession);
+<<<<<<< HEAD
 void pmmInitBmpsResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
+=======
+void pmmInitBmpsResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 tSirRetStatus  pmmSendChangePowerSaveMsg(tpAniSirGlobal pMac);
 tSirRetStatus pmmSendSleepIndicationToHal(tpAniSirGlobal pMac);
 
@@ -105,7 +126,11 @@ void pmmMissedBeaconHandler(tpAniSirGlobal pMac);
 void pmmEnterUapsdRequestHandler (tpAniSirGlobal pMac);
 void pmmEnterUapsdResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
 void pmmExitUapsdRequestHandler (tpAniSirGlobal pMac);
+<<<<<<< HEAD
 void pmmExitUapsdResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
+=======
+void pmmExitUapsdResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 tSirRetStatus pmmUapsdSendChangePwrSaveMsg (tpAniSirGlobal pMac, tANI_U8 mode);
 
 // handling of all idle mode power save messages
@@ -120,9 +145,15 @@ void pmmSendWowlDelBcastPtrn(tpAniSirGlobal pMac, tpSirMsgQ pMsg);
 void pmmEnterWowlRequestHandler(tpAniSirGlobal pMac, tpSirMsgQ pMsg);
 tSirRetStatus pmmSendWowlEnterRequest(tpAniSirGlobal pMac, tpSirHalWowlEnterParams pHalWowlParams);
 void pmmEnterWowlanResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
+<<<<<<< HEAD
 tSirRetStatus  pmmSendExitWowlReq(tpAniSirGlobal pMac, tpSirHalWowlExitParams pHalWowlParams);
 void pmmExitWowlanRequestHandler(tpAniSirGlobal pMac);
 void pmmExitWowlanResponseHandler(tpAniSirGlobal pMac, tpSirMsgQ limMsg);
+=======
+tSirRetStatus  pmmSendExitWowlReq(tpAniSirGlobal pMac);
+void pmmExitWowlanRequestHandler(tpAniSirGlobal pMac);
+void pmmExitWowlanResponseHandler(tpAniSirGlobal pMac, eHalStatus rspStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // update idle mode statistics
 void pmmImpsUpdatePwrSaveStats(tpAniSirGlobal pMac);

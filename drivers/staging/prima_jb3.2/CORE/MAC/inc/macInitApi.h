@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -60,7 +63,13 @@ tSirRetStatus macStop(tHalHandle hHal, tHalStopType stopType);
 tSirRetStatus macOpen(tHalHandle * pHalHandle, tHddHandle hHdd, tMacOpenParameters * pMacOpenParms);
 tSirRetStatus macClose(tHalHandle hHal);
 
+<<<<<<< HEAD
 tSirRetStatus macPreStart(tHalHandle hHal);
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC 
+tSirRetStatus macPreStart(tHalHandle hHal);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif //__MAC_INIT_API_H
 

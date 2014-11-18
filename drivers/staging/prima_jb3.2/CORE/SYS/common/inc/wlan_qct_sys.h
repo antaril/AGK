@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -103,7 +106,10 @@ typedef enum
    SYS_MSG_ID_RX_TIMER,
 
    SYS_MSG_ID_MC_STOP,
+<<<<<<< HEAD
    SYS_MSG_ID_FTM_RSP,
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 } SYS_MSG_ID;
 
@@ -355,6 +361,10 @@ VOS_STATUS sysMcProcessMsg( v_CONTEXT_t pVosContext, vos_msg_t* pMsg );
   --------------------------------------------------------------------------*/
 VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*----------------------------------------------------------------------------
 
   \brief sysTxProcessMsg() - process SYS messages on the Rx thread
@@ -386,6 +396,10 @@ VOS_STATUS sysTxProcessMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
 
   --------------------------------------------------------------------------*/
 VOS_STATUS sysRxProcessMsg( v_CONTEXT_t pVContext, vos_msg_t* pMsg );
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*----------------------------------------------------------------------------
 

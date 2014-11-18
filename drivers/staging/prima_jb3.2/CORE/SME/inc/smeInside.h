@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -84,7 +87,11 @@
   Type declarations
   ------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 #define SME_TOTAL_COMMAND  30
+=======
+#define SME_TOTAL_COMMAND  20
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 typedef struct sGenericPmcCmd
@@ -107,6 +114,10 @@ typedef struct sGenericQosCmd
     v_U8_t tspec_mask;
 } tGenericQosCmd;
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef struct sRemainChlCmd
 {
     tANI_U8 chn;
@@ -120,6 +131,7 @@ typedef struct sNoACmd
 {
     tP2pPsConfig NoA;
 } tNoACmd;
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
 typedef struct TdlsSendMgmtInfo
 {
@@ -190,6 +202,9 @@ typedef struct s_tdls_cmd
   }u;
 } tTdlsCmd;
 #endif  /* FEATURE_WLAN_TDLS */
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct tagSmeCmd
 {
@@ -208,6 +223,7 @@ typedef struct tagSmeCmd
 #ifdef FEATURE_OEM_DATA_SUPPORT
         tOemDataCmd oemDataCmd;
 #endif
+<<<<<<< HEAD
         tRemainChlCmd remainChlCmd;
         tNoACmd NoACmd;
         tAddStaForSessionCmd addStaSessionCmd;
@@ -215,6 +231,14 @@ typedef struct tagSmeCmd
 #ifdef FEATURE_WLAN_TDLS
         tTdlsCmd  tdlsCmd;
 #endif
+=======
+#ifdef WLAN_FEATURE_P2P
+        tRemainChlCmd remainChlCmd;
+        tNoACmd NoACmd;
+#endif
+        tAddStaForSessionCmd addStaSessionCmd;
+        tDelStaForSessionCmd delStaSessionCmd;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }u;
 }tSmeCmd;
 
@@ -275,12 +299,19 @@ eHalStatus csrProcessDelStaSessionRsp( tpAniSirGlobal pMac, tANI_U8 *pMsg);
     \brief  Set the host offload feature.
     \param  hHal - The handle returned by macOpen.
     \param  pRequest - Pointer to the offload request.
+<<<<<<< HEAD
     \param  sessionId .  Session index of the session
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     \return eHalStatus
             eHAL_STATUS_FAILURE  Cannot set the offload.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 sessionId);
+=======
+eHalStatus pmcSetNSOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest, tANI_U8 *bssId);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif //WLAN_NS_OFFLOAD
 
 #ifdef FEATURE_WLAN_SCAN_PNO
@@ -288,6 +319,7 @@ eHalStatus pmcSetPreferredNetworkList(tHalHandle hHal, tpSirPNOScanReq pRequest,
 eHalStatus pmcUpdateScanParams(tHalHandle hHal, tCsrConfig *pRequest, tCsrChannel *pChannelList, tANI_U8 b11dResolved);
 eHalStatus pmcSetRssiFilter(tHalHandle hHal,   v_U8_t        rssiThreshold);
 #endif // FEATURE_WLAN_SCAN_PNO
+<<<<<<< HEAD
 eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams, tANI_BOOLEAN forced);
 
 tANI_BOOLEAN csrRoamGetConcurrencyConnectStatusForBmps(tpAniSirGlobal pMac);
@@ -320,4 +352,9 @@ void csr_SetRevision(tpAniSirGlobal pMac, tANI_U8 revision);
 #endif
 
 
+=======
+eHalStatus pmcSetPowerParams(tHalHandle hHal,   tSirSetPowerParamsReq*  pwParams);
+
+tANI_BOOLEAN csrRoamGetConcurrencyConnectStatusForBmps(tpAniSirGlobal pMac);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif //#if !defined( __SMEINSIDE_H )

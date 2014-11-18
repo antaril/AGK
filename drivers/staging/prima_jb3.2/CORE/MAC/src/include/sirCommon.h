@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -20,6 +24,10 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file sirCommon.h contains the common definitions used by all
  * Firmware modules.
@@ -36,7 +44,15 @@
 
 #include "sirApi.h"
 #include "sirParams.h"
+<<<<<<< HEAD
 #include "VossWrapper.h"
+=======
+#include "sirWrapper.h"
+
+#ifndef NULL
+#define NULL TX_NULL
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ********************************************* *
  *                                               *

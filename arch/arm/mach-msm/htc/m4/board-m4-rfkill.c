@@ -20,7 +20,10 @@
 #include <linux/rfkill.h>
 #include <linux/gpio.h>
 #include <asm/mach-types.h>
+<<<<<<< HEAD
 #include <mach/htc_sleep_clk.h>
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #include "board-m4.h"
 
@@ -140,9 +143,15 @@ static void m4_config_bt_on(void)
 {
 	printk(KERN_INFO "[BT]== R ON ==\n");
 
+<<<<<<< HEAD
 	htc_wifi_bt_sleep_clk_ctl(CLK_ON, ID_BT);
 	mdelay(2);
 
+=======
+	mdelay(2);
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 	config_bt_table(m4_bt_on_table,
 				ARRAY_SIZE(m4_bt_on_table));
 	mdelay(2);
@@ -171,7 +180,10 @@ static void m4_config_bt_off(void)
 
 	gpio_set_value(MSM_BT_DEV_WAKE, 1);
 
+<<<<<<< HEAD
 	htc_wifi_bt_sleep_clk_ctl(CLK_OFF, ID_BT);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 	mdelay(2);
 
 	printk(KERN_INFO "[BT]== R OFF ==\n");

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -117,7 +120,11 @@ static void wpalOutput(wpt_tracelevel level, char *strBuffer)
    switch(level)
    {
    default:
+<<<<<<< HEAD
       printk(KERN_CRIT "%s: Unknown trace level passed in!\n", __func__); 
+=======
+      printk(KERN_CRIT "%s: Unknown trace level passed in!\n", __FUNCTION__); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       // fall thru and use FATAL
 
    case eWLAN_PAL_TRACE_LEVEL_FATAL:
@@ -276,7 +283,12 @@ void wpalTrace( wpt_moduleid module, wpt_tracelevel level, char *strFormat, ... 
       va_start(val, strFormat);
 
       // print the prefix string into the string buffer...
+<<<<<<< HEAD
       n = snprintf(strBuffer, WPAL_TRACE_BUFFER_SIZE, "wlan: [%d:%2s:%3s] ",
+=======
+      n = snprintf(strBuffer, WPAL_TRACE_BUFFER_SIZE, "[%d:%d:%2s:%3s] ",
+                   smp_processor_id(),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    in_interrupt() ? 0 : current->pid,
                    (char *) TRACE_LEVEL_STR[ level ],
                    (char *) gTraceInfo[ module ].moduleNameStr);
@@ -284,11 +296,16 @@ void wpalTrace( wpt_moduleid module, wpt_tracelevel level, char *strFormat, ... 
 
       // print the formatted log message after the prefix string.
       // note we reserve space for the terminating NUL
+<<<<<<< HEAD
       if ((n >= 0) && (n < WPAL_TRACE_BUFFER_SIZE))
       {
          vsnprintf(strBuffer + n, WPAL_TRACE_BUFFER_SIZE - n - 1, strFormat, val);
          wpalOutput(level, strBuffer);
       }
+=======
+      vsnprintf(strBuffer + n, WPAL_TRACE_BUFFER_SIZE - n - 1, strFormat, val);
+      wpalOutput(level, strBuffer);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       va_end(val);
    }
 }

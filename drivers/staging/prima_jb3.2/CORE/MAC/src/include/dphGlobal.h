@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -262,6 +265,10 @@ typedef struct sDphQueueAttr
 } tDphQueueAttr, *tpDphQueueAttr;
 
 
+<<<<<<< HEAD
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sCfgTrafficClass {
 
@@ -324,6 +331,10 @@ typedef struct sCfgTrafficClass {
 
 } tCfgTrafficClass;
 
+<<<<<<< HEAD
+=======
+#endif /* EATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 /// STA state node
@@ -387,9 +398,21 @@ typedef struct sDphHashNode
 
     tANI_U8  fAniCount:1;
 
+<<<<<<< HEAD
 
     tANI_U8   rsvd:1;
 
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+
+    tANI_U8   hcfEnabled : 1;
+
+#else
+
+    tANI_U8   rsvd:1;
+
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
     /// Fragmentation size
@@ -617,12 +640,17 @@ typedef struct sDphHashNode
 
 #ifdef WLAN_FEATURE_11AC
     tANI_U8  vhtSupportedChannelWidthSet;
+<<<<<<< HEAD
     tANI_U8  vhtBeamFormerCapable;
 #endif
 
     tANI_U8 htLdpcCapable;
     tANI_U8 vhtLdpcCapable;
 
+=======
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     /* When a station with already an existing dph entry tries to 
 
      * associate again, the old dph entry will be zeroed out except 

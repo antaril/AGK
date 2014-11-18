@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -74,15 +77,22 @@ static tBeaconFilterIe beaconFilterTable[] = {
    {SIR_MAC_EDCA_PARAM_SET_EID,  0, {0, 0, EDCA_FILTER_MASK,      0}},
    {SIR_MAC_QOS_CAPABILITY_EID,  0, {0, 0, QOS_FILTER_MASK,       0}},
    {SIR_MAC_CHNL_SWITCH_ANN_EID, 1, {0, 0, 0,                     0}},
+<<<<<<< HEAD
+=======
+   {SIR_MAC_QUIET_EID,           1, {0, 0, 0,                     0}},
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    {SIR_MAC_HT_INFO_EID,         0, {0, 0, HT_BYTE0_FILTER_MASK,  0}},  
    {SIR_MAC_HT_INFO_EID,         0, {2, 0, HT_BYTE2_FILTER_MASK,  0}}, 
    {SIR_MAC_HT_INFO_EID,         0, {5, 0, HT_BYTE5_FILTER_MASK,  0}}
 #if defined WLAN_FEATURE_VOWIFI
    ,{SIR_MAC_PWR_CONSTRAINT_EID,  0, {0, 0, 0, 0}}
 #endif
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
    ,{SIR_MAC_VHT_OPMODE_EID,     0,  {0, 0, 0, 0}}
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 };
 
 /**
@@ -117,7 +127,11 @@ tSirRetStatus limSendCFParams(tpAniSirGlobal pMac, tANI_U8 bssIdx, tANI_U8 cfpCo
           sizeof( tUpdateCFParams )))
       {
         limLog( pMac, LOGP,
+<<<<<<< HEAD
             FL( "Unable to PAL allocate memory during Update CF Params" ));
+=======
+            FL( "Unable to PAL allocate memory during Update CF Params\n" ));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retCode = eSIR_MEM_ALLOC_FAILED;
         goto returnFailure;
       }
@@ -137,7 +151,11 @@ tSirRetStatus limSendCFParams(tpAniSirGlobal pMac, tANI_U8 bssIdx, tANI_U8 cfpCo
     {
         palFreeMemory(pMac->hHdd, pCFParams);
         limLog( pMac, LOGP,
+<<<<<<< HEAD
                     FL("Posting  WDA_UPDATE_CF_IND to WDA failed, reason=%X"),
+=======
+                    FL("Posting  WDA_UPDATE_CF_IND to WDA failed, reason=%X\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     retCode );
     }
 returnFailure:
@@ -177,7 +195,11 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
           (void **) &pBcnParams, sizeof(*pBcnParams)))
     {
         limLog( pMac, LOGP,
+<<<<<<< HEAD
             FL( "Unable to PAL allocate memory during Update Beacon Params" ));
+=======
+            FL( "Unable to PAL allocate memory during Update Beacon Params\n" ));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_MEM_ALLOC_FAILED;
     }
     palCopyMemory( pMac->hHdd, (tANI_U8 *) pBcnParams,  pUpdatedBcnParams, sizeof(*pBcnParams));
@@ -188,6 +210,7 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
     PELOG3(limLog( pMac, LOG3,
                 FL( "Sending WDA_UPDATE_BEACON_IND, paramChangeBitmap in hex = %x" ),
                     pUpdatedBcnParams->paramChangeBitmap);)
+<<<<<<< HEAD
     if(NULL == psessionEntry)
     {
         MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
@@ -196,14 +219,26 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
     {
         MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
     }
+=======
+    MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
     {
         palFreeMemory(pMac->hHdd, pBcnParams);
         limLog( pMac, LOGP,
+<<<<<<< HEAD
                     FL("Posting  WDA_UPDATE_BEACON_IND to WDA failed, reason=%X"),
                     retCode );
     }
     limSendBeaconInd(pMac, psessionEntry);
+=======
+                    FL("Posting  WDA_UPDATE_BEACON_IND to WDA failed, reason=%X\n"),
+                    retCode );
+    }
+#ifdef WLAN_SOFTAP_FEATURE
+    limSendBeaconInd(pMac, psessionEntry);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return retCode;
 }
 
@@ -247,7 +282,11 @@ tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac,
     if((pSessionEntry = peFindSessionBySessionId(pMac , peSessionId)) == NULL)
     {
        limLog( pMac, LOGP,
+<<<<<<< HEAD
              FL( "Unable to get Session for session Id %d" ), peSessionId);
+=======
+             FL( "Unable to get Session for session Id %d\n" ), peSessionId);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        return eSIR_FAILURE;
     }
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
@@ -255,7 +294,11 @@ tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac,
           sizeof( tSwitchChannelParams )))
       {
           limLog( pMac, LOGP,
+<<<<<<< HEAD
             FL( "Unable to PAL allocate memory during Switch Channel Params" ));
+=======
+            FL( "Unable to PAL allocate memory during Switch Channel Params\n" ));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retCode = eSIR_MEM_ALLOC_FAILED;
         goto returnFailure;
       }
@@ -291,7 +334,11 @@ tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac,
     {
         palFreeMemory(pMac->hHdd, pChnlParams);
         limLog( pMac, LOGP,
+<<<<<<< HEAD
                     FL("Posting  WDA_CHNL_SWITCH_REQ to WDA failed, reason=%X"),
+=======
+                    FL("Posting  WDA_CHNL_SWITCH_REQ to WDA failed, reason=%X\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     retCode );
     }
 returnFailure:
@@ -329,7 +376,11 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
           sizeof(tEdcaParams)))
     {
         limLog( pMac, LOGP,
+<<<<<<< HEAD
             FL( "Unable to PAL allocate memory during Update EDCA Params" ));
+=======
+            FL( "Unable to PAL allocate memory during Update EDCA Params\n" ));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retCode = eSIR_MEM_ALLOC_FAILED;
         return retCode;
     }
@@ -348,7 +399,11 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
         PELOG1(limLog( pMac, LOG1,FL("Sending WDA_UPDATE_EDCA_PROFILE_IND with EDCA Parameters:" ));)
         for(i=0; i<MAX_NUM_AC; i++)
         {
+<<<<<<< HEAD
             PELOG1(limLog(pMac, LOG1, FL("AC[%d]:  AIFSN %d, ACM %d, CWmin %d, CWmax %d, TxOp %d "),
+=======
+            PELOG1(limLog(pMac, LOG1, FL("AC[%d]:  AIFSN %d, ACM %d, CWmin %d, CWmax %d, TxOp %d \n"),  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    i, pUpdatedEdcaParams[i].aci.aifsn, pUpdatedEdcaParams[i].aci.acm, 
                    pUpdatedEdcaParams[i].cw.min, pUpdatedEdcaParams[i].cw.max, pUpdatedEdcaParams[i].txoplimit);)
         }
@@ -358,7 +413,11 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
     {
         palFreeMemory(pMac->hHdd, pEdcaParams);
         limLog( pMac, LOGP,
+<<<<<<< HEAD
                     FL("Posting  WDA_UPDATE_EDCA_PROFILE_IND to WDA failed, reason=%X"),
+=======
+                    FL("Posting  WDA_UPDATE_EDCA_PROFILE_IND to WDA failed, reason=%X\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     retCode );
     }
     return retCode;
@@ -406,12 +465,21 @@ tSirRetStatus limSendEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *pUp
      *   such that: BE_ACM=1, BK_ACM=1, VI_ACM=1, VO_ACM=0
      *   then all AC will be downgraded to AC_BE.
      */
+<<<<<<< HEAD
     limLog(pMac, LOG1, FL("adAdmitMask[UPLINK] = 0x%x "),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] );
     limLog(pMac, LOG1, FL("adAdmitMask[DOWNLINK] = 0x%x "),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_DNLINK] );
     for (ac = EDCA_AC_BK; ac <= EDCA_AC_VO; ac++)
     {
         acAdmitted = ( (pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] & (1 << ac)) >> ac );
         limLog(pMac, LOG1, FL("For AC[%d]: acm=%d,  acAdmit=%d "), ac, plocalEdcaParams[ac].aci.acm, acAdmitted);
+=======
+    limLog(pMac, LOG1, FL("adAdmitMask[UPLINK] = 0x%x \n"),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] );
+    limLog(pMac, LOG1, FL("adAdmitMask[DOWNLINK] = 0x%x \n"),  pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_DNLINK] );
+    for (ac = EDCA_AC_BK; ac <= EDCA_AC_VO; ac++)
+    {
+        acAdmitted = ( (pMac->lim.gAcAdmitMask[SIR_MAC_DIRECTION_UPLINK] & (1 << ac)) >> ac );
+        limLog(pMac, LOG1, FL("For AC[%d]: acm=%d,  acAdmit=%d \n"), ac, plocalEdcaParams[ac].aci.acm, acAdmitted);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         if ( (plocalEdcaParams[ac].aci.acm == 1) && (acAdmitted == 0) )
         {
             limLog(pMac, LOG1, FL("We need to downgrade AC %d!! "), ac);
@@ -475,7 +543,11 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
     MTRACE(macTraceMsgTx(pMac, 0, msg.type));
     retCode = wdaPostCtrlMsg(pMac, &msg);
     if (retCode != eSIR_SUCCESS)
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x "), retCode);
+=======
+        limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x \n"), retCode);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return retCode;
 }
 #endif //0
@@ -492,7 +564,11 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
           sizeof(tLinkStateParams)))
     {
         limLog( pMac, LOGP,
+<<<<<<< HEAD
         FL( "Unable to PAL allocate memory while sending Set Link State" ));
+=======
+        FL( "Unable to PAL allocate memory while sending Set Link State\n" ));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retCode = eSIR_SME_RESOURCES_UNAVAILABLE;
         return retCode;
     }
@@ -516,7 +592,11 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,tSirMacAd
     if (retCode != eSIR_SUCCESS)
     {
         palFreeMemory(pMac, (void*)pLinkStateParams);
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x "), retCode);
+=======
+        limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x \n"), retCode);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }
     return retCode;
 }
@@ -533,7 +613,11 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
           sizeof(tLinkStateParams)))
     {
         limLog( pMac, LOGP,
+<<<<<<< HEAD
         FL( "Unable to PAL allocate memory while sending Set Link State" ));
+=======
+        FL( "Unable to PAL allocate memory while sending Set Link State\n" ));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retCode = eSIR_SME_RESOURCES_UNAVAILABLE;
         return retCode;
     }
@@ -549,6 +633,7 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
     msgQ.reserved = 0;
     msgQ.bodyptr = pLinkStateParams;
     msgQ.bodyval = 0;
+<<<<<<< HEAD
     if(NULL == psessionEntry)
     {
         MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
@@ -557,12 +642,20 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
     {
         MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
     }
+=======
+    
+    MTRACE(macTraceMsgTx(pMac, psessionEntry->peSessionId, msgQ.type));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     retCode = (tANI_U32)wdaPostCtrlMsg(pMac, &msgQ);
     if (retCode != eSIR_SUCCESS)
     {
         palFreeMemory(pMac, (void*)pLinkStateParams);
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x "), retCode);
+=======
+        limLog(pMac, LOGP, FL("Posting link state %d failed, reason = %x \n"), retCode);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }
     return retCode;
 }
@@ -575,6 +668,7 @@ state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEn
 \param   tpSirSetTxPowerReq  request message
 \return  None
   -----------------------------------------------------------*/
+<<<<<<< HEAD
 tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac,  tANI_U32 *pMsgBuf)
 {
     tSirSetTxPowerReq   *txPowerReq;
@@ -619,6 +713,29 @@ tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac,  tANI_U32 *pMsgBuf)
         return retCode;
     }
 
+=======
+tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac,  tpSirSetTxPowerReq pTxPowerReq)
+{
+    tSirRetStatus  retCode = eSIR_SUCCESS;
+    tSirMsgQ       msgQ;
+    if (NULL == pTxPowerReq)
+        return retCode;
+    msgQ.type = WDA_SET_TX_POWER_REQ;
+    msgQ.reserved = 0;
+    msgQ.bodyptr = pTxPowerReq;
+    msgQ.bodyval = 0;
+    PELOGW(limLog(pMac, LOGW, FL( "Sending WDA_SET_TX_POWER_REQ to WDA"));)
+    MTRACE(macTraceMsgTx(pMac, NO_SESSION, msgQ.type));
+    if( eSIR_SUCCESS != (retCode = wdaPostCtrlMsg( pMac, &msgQ )))
+    {
+        limLog( pMac, LOGP, FL("Posting WDA_SET_TX_POWER_REQ to WDA failed, reason=%X"), retCode );
+        if (NULL != pTxPowerReq)
+        {
+            palFreeMemory( pMac->hHdd, (tANI_U8 *) pTxPowerReq);
+        }
+        return retCode;
+    }
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return retCode;
 }
 /** ---------------------------------------------------------
@@ -657,7 +774,11 @@ tSirRetStatus limSendGetTxPowerReq(tpAniSirGlobal pMac,  tpSirGetTxPowerReq pTxP
 \param   tpAniSirGlobal  pMac
 \return  None
   -----------------------------------------------------------*/
+<<<<<<< HEAD
 tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEntry)
+=======
+tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 {
     tpBeaconFilterMsg  pBeaconFilterMsg = NULL;
     tSirRetStatus      retCode = eSIR_SUCCESS;
@@ -666,6 +787,7 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
     tANI_U32           i;
     tANI_U32           msgSize;
     tpBeaconFilterIe   pIe;
+<<<<<<< HEAD
 
     if( psessionEntry == NULL )
     {
@@ -673,11 +795,19 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
         retCode = eSIR_FAILURE;
         return retCode;
     }
+=======
+    tpPESession psessionEntry = &pMac->lim.gpSession[0];  //TBD-RAJESH get the sessionEntry from the caller
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     msgSize = sizeof(tBeaconFilterMsg) + sizeof(beaconFilterTable);
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd,
           (void **) &pBeaconFilterMsg, msgSize) )
     {
+<<<<<<< HEAD
         limLog( pMac, LOGP, FL("Fail to allocate memory for beaconFiilterMsg "));
+=======
+        limLog( pMac, LOGP, FL("Fail to allocate memory for beaconFiilterMsg \n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retCode = eSIR_MEM_ALLOC_FAILED;
         return retCode;
     }
@@ -690,9 +820,12 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
     pBeaconFilterMsg->beaconInterval = (tANI_U16) psessionEntry->beaconParams.beaconInterval;
     // Fill in number of IEs in beaconFilterTable
     pBeaconFilterMsg->ieNum = (tANI_U16) (sizeof(beaconFilterTable) / sizeof(tBeaconFilterIe));
+<<<<<<< HEAD
     //Fill the BSSIDX
     pBeaconFilterMsg->bssIdx = psessionEntry->bssIdx;
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     //Fill message with info contained in the beaconFilterTable
     ptr = (tANI_U8 *)pBeaconFilterMsg + sizeof(tBeaconFilterMsg);
     for(i=0; i < (pBeaconFilterMsg->ieNum); i++)
@@ -716,12 +849,17 @@ tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac,tpPESession psessionEn
     {
         palFreeMemory(pMac->hHdd, pBeaconFilterMsg);
         limLog( pMac, LOGP,
+<<<<<<< HEAD
             FL("Posting  WDA_BEACON_FILTER_IND to WDA failed, reason=%X"),
+=======
+            FL("Posting  WDA_BEACON_FILTER_IND to WDA failed, reason=%X\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             retCode );
         return retCode;
     }
     return retCode;
 }
+<<<<<<< HEAD
 
 #ifdef WLAN_FEATURE_11AC
 tSirRetStatus limSendModeUpdate(tpAniSirGlobal pMac, 
@@ -869,3 +1007,5 @@ tSirRetStatus limSendTdlsLinkTeardown(tpAniSirGlobal pMac, tANI_U16 staId)
 
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

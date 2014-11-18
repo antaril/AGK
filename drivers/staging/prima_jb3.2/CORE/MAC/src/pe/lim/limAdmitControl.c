@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +43,10 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file contains TSPEC and STA admit control related functions
  * NOTE: applies only to AP builds
@@ -149,7 +156,11 @@ limCalculateSvcInt(
         msduSz = pTspec->maxMsduSz;
     else
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("MsduSize not specified"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("MsduSize not specified\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
@@ -161,7 +172,11 @@ limCalculateSvcInt(
     else if (pTspec->minDataRate  != 0) dataRate = pTspec->minDataRate;
     else
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("DataRate not specified"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("DataRate not specified\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
@@ -190,7 +205,11 @@ limValidateTspecHcca(
     /* make sure a TSID is being requested */
     if (pTspec->tsinfo.traffic.tsid < SIR_MAC_HCCA_TSID_MIN)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("tsid %d must be >%d)"),
+=======
+        limLog(pMac, LOGW, FL("tsid %d must be >%d)\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->tsinfo.traffic.tsid, SIR_MAC_HCCA_TSID_MIN);
         retval =  eSIR_FAILURE;
     }
@@ -203,20 +222,32 @@ limValidateTspecHcca(
     if (pTspec->tsinfo.traffic.userPrio !=
         (pTspec->tsinfo.traffic.tsid - SIR_MAC_HCCA_TSID_MIN))
     {
+<<<<<<< HEAD
         limLog(pMac, LOGE, FL("TSid=0x%x, userPrio=%d: is not allowed"),
+=======
+        limLog(pMac, LOGE, FL("TSid=0x%x, userPrio=%d: is not allowed\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->tsinfo.traffic.tsid, pTspec->tsinfo.traffic.userPrio);
         retval = eSIR_FAILURE;
     }
     // an inactivity interval is mandatory
     if (pTspec->inactInterval == 0)
     {
+<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("inactInterval unspecified!"));)
+=======
+        PELOGW(limLog(pMac, LOGW, FL("inactInterval unspecified!\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retval =  eSIR_FAILURE;
     }
     // surplus BW must be specified if a delay Bound is specified
     if ((pTspec->delayBound != 0) && (pTspec->surplusBw == 0))
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("delayBound %d, but surplusBw unspecified!"),
+=======
+        limLog(pMac, LOGW, FL("delayBound %d, but surplusBw unspecified!\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->delayBound);
         retval =  eSIR_FAILURE;
     }
@@ -230,7 +261,11 @@ limValidateTspecHcca(
         || (pTspec->minPhyRate > maxPhyRate)
         || (pTspec->minPhyRate < minPhyRate))
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("minPhyRate (%d) invalid"),
+=======
+        limLog(pMac, LOGW, FL("minPhyRate (%d) invalid\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->minPhyRate);
         retval =  eSIR_FAILURE;
     }
@@ -241,7 +276,11 @@ limValidateTspecHcca(
         (pTspec->meanDataRate == 0) ||
         (pTspec->peakDataRate == 0))
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("DataRate must be specified (min %d, mean %d, peak %d)"),
+=======
+        limLog(pMac, LOGW, FL("DataRate must be specified (min %d, mean %d, peak %d)\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->minDataRate, pTspec->meanDataRate, pTspec->peakDataRate);
         retval =  eSIR_FAILURE;
     }
@@ -249,7 +288,11 @@ limValidateTspecHcca(
     // mean data rate can't be more than the min phy rate
     if (pTspec->meanDataRate > pTspec->minPhyRate)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("Data rate (%d) is more than Phyrate %d"),
+=======
+        limLog(pMac, LOGW, FL("Data rate (%d) is more than Phyrate %d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->meanDataRate, pTspec->minPhyRate);
         return eSIR_FAILURE;
     }
@@ -264,13 +307,21 @@ limValidateTspecHcca(
         // max < min is ridiculous
         if (pTspec->maxSvcInterval < pTspec->minSvcInterval)
         {
+<<<<<<< HEAD
             limLog(pMac, LOGW, FL("maxSvcInt %d  > minSvcInterval %d!!"),
+=======
+            limLog(pMac, LOGW, FL("maxSvcInt %d  > minSvcInterval %d!!\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    pTspec->maxSvcInterval, pTspec->minSvcInterval);
             retval =  eSIR_FAILURE;
         }
         if (pTspec->maxSvcInterval < ADMIT_CONTROL_MIN_INTERVAL)
         {
+<<<<<<< HEAD
             limLog(pMac, LOGW, FL("maxSvcInt %d must be >%d"),
+=======
+            limLog(pMac, LOGW, FL("maxSvcInt %d must be >%d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    pTspec->maxSvcInterval, ADMIT_CONTROL_MIN_INTERVAL);
             retval =  eSIR_FAILURE;
         }
@@ -284,12 +335,20 @@ limValidateTspecHcca(
          */
          if (pTspec->nomMsduSz == 0)
          {
+<<<<<<< HEAD
              PELOGW(limLog(pMac, LOGW, FL("No svcInt and no MsduSize specified"));)
+=======
+             PELOGW(limLog(pMac, LOGW, FL("No svcInt and no MsduSize specified\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
              retval = eSIR_FAILURE;
          }
     }
 
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d"), retval);
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d\n"), retval);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return retval;
 }
 
@@ -326,12 +385,20 @@ limValidateTspecEdca(
         (pTspec->minPhyRate   == 0) ||
         (pTspec->minPhyRate   > maxPhyRate))
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("Invalid EDCA Tspec: NomMsdu %d, meanDataRate %d, surplusBw %d, minPhyRate %d"),
+=======
+        limLog(pMac, LOGW, FL("Invalid EDCA Tspec: NomMsdu %d, meanDataRate %d, surplusBw %d, minPhyRate %d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pTspec->nomMsduSz, pTspec->meanDataRate, pTspec->surplusBw, pTspec->minPhyRate);
         retval = eSIR_FAILURE;
     }
 
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d"), retval);
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("return status %d\n"), retval);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return retval;
 }
 
@@ -354,19 +421,31 @@ limValidateTspec(
     {
         case SIR_MAC_ACCESSPOLICY_EDCA:
             if ((retval = limValidateTspecEdca(pMac, pTspec, psessionEntry)) != eSIR_SUCCESS)
+<<<<<<< HEAD
                 PELOGW(limLog(pMac, LOGW, FL("EDCA tspec invalid"));)
+=======
+                PELOGW(limLog(pMac, LOGW, FL("EDCA tspec invalid\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
 
         case SIR_MAC_ACCESSPOLICY_HCCA:
 #if 0 //Not supported right now.    
             if ((retval = limValidateTspecHcca(pMac, pTspec)) != eSIR_SUCCESS)
+<<<<<<< HEAD
                 PELOGW(limLog(pMac, LOGW, FL("HCCA tspec invalid"));)
+=======
+                PELOGW(limLog(pMac, LOGW, FL("HCCA tspec invalid\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
 #endif
        case SIR_MAC_ACCESSPOLICY_BOTH:
          // TBD: should we support hybrid tspec as well?? for now, just fall through
         default:
+<<<<<<< HEAD
             limLog(pMac, LOGW, FL("AccessType %d not supported"),
+=======
+            limLog(pMac, LOGW, FL("AccessType %d not supported\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    pTspec->tsinfo.traffic.accessPolicy);
             retval = eSIR_FAILURE;
             break;
@@ -406,7 +485,11 @@ limComputeMeanBwUsed(
             if (pSta == NULL)
             {
                 // maybe we should delete the tspec??
+<<<<<<< HEAD
                 limLog(pMac, LOGE, FL("Tspec %d (assocId %d): dphNode not found"),
+=======
+                limLog(pMac, LOGE, FL("Tspec %d (assocId %d): dphNode not found\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                        ctspec, pTspecInfo->assocId);
                 continue;
             }
@@ -504,7 +587,11 @@ limAdmitPolicyOversubscription(
     if ((totalbw - usedbw) < pTspec->meanDataRate)
     {
         limLog(pMac, ADMIT_CONTROL_POLICY_LOGLEVEL,
+<<<<<<< HEAD
                FL("Total BW %d, Used %d, Tspec request %d not possible"),
+=======
+               FL("Total BW %d, Used %d, Tspec request %d not possible\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                totalbw, usedbw, pTspec->meanDataRate);
         return eSIR_FAILURE;
     }
@@ -537,7 +624,11 @@ tSirRetStatus limAdmitPolicy(
             retval = limAdmitPolicyOversubscription(pMac, pTspec,
                         &pMac->lim.admitPolicyInfo, &pMac->lim.tspecInfo[0], psessionEntry);
             if (retval != eSIR_SUCCESS)
+<<<<<<< HEAD
                 PELOGE(limLog(pMac, LOGE, FL("rejected by BWFactor policy"));)
+=======
+                PELOGE(limLog(pMac, LOGE, FL("rejected by BWFactor policy\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
 
         case WNI_CFG_ADMIT_POLICY_REJECT_ALL:
@@ -546,7 +637,11 @@ tSirRetStatus limAdmitPolicy(
 
         default:
             retval = eSIR_SUCCESS;
+<<<<<<< HEAD
             limLog(pMac, LOGE, FL("Admit Policy %d unknown, admitting all traffic"),
+=======
+            limLog(pMac, LOGE, FL("Admit Policy %d unknown, admitting all traffic\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    pAdmitPolicy->type);
             break;
     }
@@ -568,8 +663,13 @@ void limTspecDelete(tpAniSirGlobal pMac, tpLimTspecInfo pInfo)
     if (pInfo == NULL)
         return;
         //pierre
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tspec entry = %d"), pInfo->idx);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("delete tspec %08X"),pInfo);
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tspec entry = %d\n"), pInfo->idx);
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("delete tspec %08X\n"),pInfo);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     pInfo->inuse = 0;
 
     // clear the hcca/parameterized queue indicator
@@ -642,8 +742,13 @@ limTspecFindByAssocId(
 
     *ppInfo = NULL;
 
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d"), assocId);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d"),
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d\n"), assocId);
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 pTspecIE->tsinfo.traffic.direction, pTspecIE->tsinfo.traffic.tsid);
 
     for (ctspec = 0; ctspec < LIM_NUM_TSPEC_MAX; ctspec++, pTspecList++)
@@ -682,8 +787,13 @@ limFindTspec(
 
     *ppInfo = NULL;
 
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d"), assocId);
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d"),
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Trying to find tspec entry for assocId = %d\n"), assocId);
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("pTsInfo->traffic.direction = %d, pTsInfo->traffic.tsid = %d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 pTsInfo->traffic.direction, pTsInfo->traffic.tsid);
 
     for (ctspec = 0; ctspec < LIM_NUM_TSPEC_MAX; ctspec++, pTspecList++)
@@ -727,7 +837,11 @@ tSirRetStatus limTspecAdd(
     // validate the assocId
     if (assocId >= pMac->lim.maxStation)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Invalid assocId 0x%x"), assocId);)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("Invalid assocId 0x%x\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
@@ -774,7 +888,11 @@ tSirRetStatus limTspecAdd(
     {
         pTspecList->inuse = 1;
         *ppInfo = pTspecList;
+<<<<<<< HEAD
         limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for EDCA AccessPolicy"));
+=======
+        limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for EDCA AccessPolicy\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_SUCCESS;
     }
 
@@ -794,7 +912,11 @@ tSirRetStatus limTspecAdd(
 #endif
     pTspecList->inuse = 1;
     *ppInfo = pTspecList;
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for HCCA AccessPolicy"));
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("added entry for HCCA AccessPolicy\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return eSIR_SUCCESS;
 }
 
@@ -819,7 +941,11 @@ limValidateAccessPolicy(
 
     if ((pSta == NULL) || (! pSta->valid))
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("invalid station address passed"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("invalid station address passed\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
@@ -839,12 +965,20 @@ limValidateAccessPolicy(
             break;
 #endif  //only EDCA supported for now.
         default:
+<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("Invalid accessPolicy %d"), accessPolicy);)
+=======
+            PELOGE(limLog(pMac, LOGE, FL("Invalid accessPolicy %d\n"), accessPolicy);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
     }
 
     if (retval != eSIR_SUCCESS)
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("failed (accPol %d, staId %d, lle %d, wme %d, wsm %d)"),
+=======
+        limLog(pMac, LOGW, FL("failed (accPol %d, staId %d, lle %d, wme %d, wsm %d)\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                accessPolicy, pSta->staIndex, pSta->lleEnabled, pSta->wmeEnabled, pSta->wsmEnabled);
 
     return retval;
@@ -888,7 +1022,11 @@ tSirRetStatus limAdmitControlAddTS(
     // EDCA: need to fill in the medium time and the minimum phy rate
     // to be consistent with the desired traffic parameters.
 
+<<<<<<< HEAD
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tsid %d, directn %d, start %d, intvl %d, accPolicy %d, up %d"),
+=======
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("tsid %d, directn %d, start %d, intvl %d, accPolicy %d, up %d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            pAddts->tspec.tsinfo.traffic.tsid, pAddts->tspec.tsinfo.traffic.direction,
            pAddts->tspec.svcStartTime, pAddts->tspec.minSvcInterval,
            pAddts->tspec.tsinfo.traffic.accessPolicy, pAddts->tspec.tsinfo.traffic.userPrio);
@@ -900,28 +1038,44 @@ tSirRetStatus limAdmitControlAddTS(
 
     if (retval == eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("duplicate tspec (index %d)!"), pTspecInfo->idx);
+=======
+        limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("duplicate tspec (index %d)!\n"), pTspecInfo->idx);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
     // check that the tspec's are well formed and acceptable
     if (limValidateTspec(pMac, &pAddts->tspec, psessionEntry) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("tspec validation failed"));)
+=======
+        PELOGW(limLog(pMac, LOGW, FL("tspec validation failed\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
     // determine a service interval for the tspec
     if (limCalculateSvcInt(pMac, &pAddts->tspec, &svcInterval) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("SvcInt calculate failed"));)
+=======
+        PELOGW(limLog(pMac, LOGW, FL("SvcInt calculate failed\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
     // determine if the tspec can be admitted or not based on current policy
     if (limAdmitPolicy(pMac, &pAddts->tspec, psessionEntry) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         PELOGW(limLog(pMac, LOGW, FL("tspec rejected by admit control policy"));)
+=======
+        PELOGW(limLog(pMac, LOGW, FL("tspec rejected by admit control policy\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
@@ -946,7 +1100,11 @@ tSirRetStatus limAdmitControlAddTS(
     // check that we are in the proper mode to deal with the tspec type
     if (limValidateAccessPolicy(pMac, (tANI_U8) pAddts->tspec.tsinfo.traffic.accessPolicy, assocId, psessionEntry) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGW, FL("AccessPolicy %d is not valid in current mode"),
+=======
+        limLog(pMac, LOGW, FL("AccessPolicy %d is not valid in current mode\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pAddts->tspec.tsinfo.traffic.accessPolicy);
         return eSIR_FAILURE;
     }
@@ -955,7 +1113,11 @@ tSirRetStatus limAdmitControlAddTS(
     if (limTspecAdd(pMac, pAddr, assocId, &pAddts->tspec, svcInterval, &pTspecInfo)
         != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("no space in tspec list"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("no space in tspec list\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
 
@@ -993,7 +1155,11 @@ limAdmitControlDeleteTS(
     {
         if(pTspecInfo != NULL)    
         {
+<<<<<<< HEAD
           limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Tspec entry %d found"), pTspecInfo->idx);
+=======
+          limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Tspec entry %d found\n"), pTspecInfo->idx);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         
           *ptspecIdx = pTspecInfo->idx;
           limTspecDelete(pMac, pTspecInfo);
@@ -1024,11 +1190,19 @@ limAdmitControlDeleteSta(
         if (assocId == pTspecInfo->assocId)
         {
             limTspecDelete(pMac, pTspecInfo);
+<<<<<<< HEAD
             limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Deleting TSPEC %d for assocId %d"),
                    ctspec, assocId);
         }
     }
     limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("assocId %d done"), assocId);
+=======
+            limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("Deleting TSPEC %d for assocId %d\n"),
+                   ctspec, assocId);
+        }
+    }
+    limLog(pMac, ADMIT_CONTROL_LOGLEVEL, FL("assocId %d done\n"), assocId);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     return eSIR_SUCCESS;
 }
@@ -1057,18 +1231,30 @@ tSirRetStatus limUpdateAdmitPolicy(tpAniSirGlobal    pMac)
     tANI_U32 val;
     if (wlan_cfgGetInt(pMac, WNI_CFG_ADMIT_POLICY, &val) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_POLICY"));
+=======
+        limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_POLICY\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
     pMac->lim.admitPolicyInfo.type = (tANI_U8) val;
     if (wlan_cfgGetInt(pMac, WNI_CFG_ADMIT_BWFACTOR, &val) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_BWFACTOR"));
+=======
+        limLog(pMac, LOGP, FL("Unable to get CFG_ADMIT_BWFACTOR\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
     pMac->lim.admitPolicyInfo.bw_factor = (tANI_U8) val;
 
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("LIM: AdmitPolicy %d, bw_factor %d"),
+=======
+    PELOG1(limLog(pMac, LOG1, FL("LIM: AdmitPolicy %d, bw_factor %d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
           pMac->lim.admitPolicyInfo.type, pMac->lim.admitPolicyInfo.bw_factor);)
 
     return eSIR_SUCCESS;
@@ -1100,7 +1286,11 @@ limSendHalMsgAddTs(
 
     if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pAddTsParam, sizeof(tAddTsParams)))
     {
+<<<<<<< HEAD
        PELOGW(limLog(pMac, LOGW, FL("palAllocateMemory() failed"));)
+=======
+       PELOGW(limLog(pMac, LOGW, FL("palAllocateMemory() failed\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        return eSIR_MEM_ALLOC_FAILED;          
     }
 
@@ -1122,7 +1312,11 @@ limSendHalMsgAddTs(
 
     if(eSIR_SUCCESS != wdaPostCtrlMsg(pMac, &msg))
     {
+<<<<<<< HEAD
        PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed"));)
+=======
+       PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        SET_LIM_PROCESS_DEFD_MESGS(pMac, true);
        palFreeMemory(pMac->hHdd, (tANI_U8*)pAddTsParam);
        return eSIR_FAILURE;
@@ -1153,7 +1347,11 @@ limSendHalMsgDelTs(
 
   if( eHAL_STATUS_SUCCESS != palAllocateMemory( pMac->hHdd, (void **)&pDelTsParam, sizeof(tDelTsParams)))
   {
+<<<<<<< HEAD
      limLog(pMac, LOGP, FL("palAllocateMemory() failed"));
+=======
+     limLog(pMac, LOGP, FL("palAllocateMemory() failed\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return eSIR_MEM_ALLOC_FAILED;
   }
 
@@ -1166,12 +1364,20 @@ limSendHalMsgDelTs(
   pDelTsParam->staIdx = staIdx;
   pDelTsParam->tspecIdx = tspecIdx;
 
+<<<<<<< HEAD
   PELOGW(limLog(pMac, LOGW, FL("calling wdaPostCtrlMsg()"));)
+=======
+  PELOGW(limLog(pMac, LOGW, FL("calling wdaPostCtrlMsg()\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   MTRACE(macTraceMsgTx(pMac, sessionId, msg.type));
 
   if(eSIR_SUCCESS != wdaPostCtrlMsg(pMac, &msg))
   {
+<<<<<<< HEAD
      PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed"));)
+=======
+     PELOGW(limLog(pMac, LOGW, FL("wdaPostCtrlMsg() failed\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      palFreeMemory(pMac->hHdd, (tANI_U8*)pDelTsParam);
      return eSIR_FAILURE;
   }
@@ -1217,7 +1423,11 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
 
     if(psessionEntry == NULL)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE,FL("Session does Not exist with given sessionId :%d "), pAddTsRspMsg->sessionId);)
+=======
+        PELOGE(limLog(pMac, LOGE,FL("Session does Not exist with given sessionId :%d \n"), pAddTsRspMsg->sessionId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         limSendSmeAddtsRsp(pMac, rspReqd, eSIR_SME_ADDTS_RSP_FAILED, psessionEntry, pAddTsRspMsg->tspec, 
               pMac->lim.gLimAddtsReq.sessionId, pMac->lim.gLimAddtsReq.transactionId);
         goto end;
@@ -1225,7 +1435,11 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
 
     if(pAddTsRspMsg->status == eHAL_STATUS_SUCCESS)
     {
+<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Received successful ADDTS response from HAL "));)
+=======
+        PELOG1(limLog(pMac, LOG1, FL("Received successful ADDTS response from HAL \n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         // Use the smesessionId and smetransactionId from the PE session context
         limSendSmeAddtsRsp(pMac, rspReqd, eSIR_SME_SUCCESS, psessionEntry, pAddTsRspMsg->tspec,
                 psessionEntry->smeSessionId, psessionEntry->transactionId);
@@ -1233,7 +1447,11 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
     }
     else
     {
+<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Received failure ADDTS response from HAL "));)
+=======
+        PELOG1(limLog(pMac, LOG1, FL("Received failure ADDTS response from HAL \n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         // Send DELTS action frame to AP        
         // 090803: Get peer MAC addr from session        
@@ -1241,7 +1459,11 @@ void limProcessHalAddTsRsp(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
         cfgLen = sizeof(tSirMacAddr);
         if (wlan_cfgGetStr(pMac, WNI_CFG_BSSID, peerMacAddr, &cfgLen) != eSIR_SUCCESS)
         {
+<<<<<<< HEAD
             limLog(pMac, LOGP, FL("Fail to retrieve BSSID "));
+=======
+            limLog(pMac, LOGP, FL("Fail to retrieve BSSID \n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             goto end;
         }
 #endif //TO SUPPORT BT-AMP

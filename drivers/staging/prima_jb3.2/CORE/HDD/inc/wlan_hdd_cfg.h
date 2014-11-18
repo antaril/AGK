@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,7 +68,11 @@
 #include <csrApi.h>
 
 //Number of items that can be configured
+<<<<<<< HEAD
 #define MAX_CFG_INI_ITEMS   320
+=======
+#define MAX_CFG_INI_ITEMS   256
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // Defines for all of the things we read from the configuration (registry).
 
@@ -106,11 +113,14 @@
 #define CFG_11D_SUPPORT_ENABLED_MAX            WNI_CFG_11D_ENABLED_STAMAX 
 #define CFG_11D_SUPPORT_ENABLED_DEFAULT        WNI_CFG_11D_ENABLED_STADEF    // Default is ON 
 
+<<<<<<< HEAD
 #define CFG_11H_SUPPORT_ENABLED_NAME           "g11hSupportEnabled"
 #define CFG_11H_SUPPORT_ENABLED_MIN            ( 0 )
 #define CFG_11H_SUPPORT_ENABLED_MAX            ( 1 )
 #define CFG_11H_SUPPORT_ENABLED_DEFAULT        ( 1 ) // Default is ON 
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CFG_ENFORCE_11D_CHANNELS_NAME          "gEnforce11dChannel"
 #define CFG_ENFORCE_11D_CHANNELS_MIN           ( 0 )
 #define CFG_ENFORCE_11D_CHANNELS_MAX           ( 1 )
@@ -356,6 +366,7 @@ typedef enum
 #define CFG_RSSI_CATEGORY_GAP_NAME             "gRssiCatGap"
 #define CFG_RSSI_CATEGORY_GAP_MIN              ( 5 )  
 #define CFG_RSSI_CATEGORY_GAP_MAX              ( 100 )  
+<<<<<<< HEAD
 #define CFG_RSSI_CATEGORY_GAP_DEFAULT          ( 5 )
 
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
@@ -369,6 +380,9 @@ typedef enum
 #define CFG_ROAM_INTRA_BAND_MAX               ( 1 )
 #define CFG_ROAM_INTRA_BAND_DEFAULT           ( 0 )
 #endif
+=======
+#define CFG_RSSI_CATEGORY_GAP_DEFAULT          ( 30 )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define CFG_STAT_TIMER_INTERVAL_NAME           "gStatTimerInterval"
 #define CFG_STAT_TIMER_INTERVAL_MIN            ( 50 )     //ms
@@ -410,11 +424,15 @@ typedef enum
 #define CFG_INTF3_MAC_ADDR_MAX                   "ffffffffffff"
 #define CFG_INTF3_MAC_ADDR_DEFAULT               "000AF5898983"
 
+<<<<<<< HEAD
 #define CFG_CRDA_DEFAULT_COUNTRY_CODE            "gCrdaDefaultCountryCode"
 #define CFG_CRDA_DEFAULT_COUNTRY_CODE_MIN        "00"
 #define CFG_CRDA_DEFAULT_COUNTRY_CODE_MAX        "ZZ"
 #define CFG_CRDA_DEFAULT_COUNTRY_CODE_DEFAULT    "ZZ"
 
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CFG_AP_QOS_UAPSD_MODE_NAME             "gEnableApUapsd" // ACs to setup U-APSD for at assoc
 #define CFG_AP_QOS_UAPSD_MODE_MIN              ( 0 )
 #define CFG_AP_QOS_UAPSD_MODE_MAX              ( 1 ) 
@@ -508,10 +526,14 @@ typedef enum
 #define CFG_GO_KEEP_ALIVE_PERIOD_MAX           ( 255)
 #define CFG_GO_KEEP_ALIVE_PERIOD_DEFAULT       ( 20 )
 
+<<<<<<< HEAD
 #define CFG_AP_LINK_MONITOR_PERIOD_NAME          "gApLinkMonitorPeriod"
 #define CFG_AP_LINK_MONITOR_PERIOD_MIN           ( 0 )
 #define CFG_AP_LINK_MONITOR_PERIOD_MAX           ( 255)
 #define CFG_AP_LINK_MONITOR_PERIOD_DEFAULT       ( 3 )
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define CFG_BEACON_INTERVAL_NAME               "gBeaconInterval"
 #define CFG_BEACON_INTERVAL_MIN                WNI_CFG_BEACON_INTERVAL_STAMIN
@@ -566,6 +588,7 @@ typedef enum
 #define CFG_ACTIVE_MIN_CHANNEL_TIME_MAX        ( 10000 )
 #define CFG_ACTIVE_MIN_CHANNEL_TIME_DEFAULT    ( 20 )
 
+<<<<<<< HEAD
 #define CFG_ACTIVE_MAX_CHANNEL_TIME_BTC_NAME       "gActiveMaxChannelTimeBtc"
 #define CFG_ACTIVE_MAX_CHANNEL_TIME_BTC_MIN        ( 0 )
 #define CFG_ACTIVE_MAX_CHANNEL_TIME_BTC_MAX        ( 10000 )
@@ -635,6 +658,8 @@ typedef enum
 
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CFG_MAX_PS_POLL_NAME                   "gMaxPsPoll"
 #define CFG_MAX_PS_POLL_MIN                    WNI_CFG_MAX_PS_POLL_STAMIN
 #define CFG_MAX_PS_POLL_MAX                    WNI_CFG_MAX_PS_POLL_STAMAX
@@ -786,6 +811,14 @@ typedef enum
 #endif // FEATURE_WLAN_LFR
 
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
+<<<<<<< HEAD
+=======
+#define CFG_FT_RSSI_FILTER_PERIOD_NAME                     "FTRssiFilterPeriod"
+#define CFG_FT_RSSI_FILTER_PERIOD_MIN                      WNI_CFG_FT_RSSI_FILTER_PERIOD_STAMIN
+#define CFG_FT_RSSI_FILTER_PERIOD_MAX                      WNI_CFG_FT_RSSI_FILTER_PERIOD_STAMAX
+#define CFG_FT_RSSI_FILTER_PERIOD_DEFAULT                  WNI_CFG_FT_RSSI_FILTER_PERIOD_STADEF 
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 // This flag will control fasttransition in case of 11r and ccx.
 // Basically with this the whole neighbor roam, pre-auth, reassoc
 // can be turned ON/OFF. 
@@ -805,6 +838,7 @@ typedef enum
  * This check is not done if the value is Zero */
 #define CFG_ROAM_RSSI_DIFF_NAME                             "RoamRssiDiff"
 #define CFG_ROAM_RSSI_DIFF_MIN                              (0)
+<<<<<<< HEAD
 #define CFG_ROAM_RSSI_DIFF_MAX                              (30)
 #define CFG_ROAM_RSSI_DIFF_DEFAULT                          (0)
 
@@ -852,6 +886,12 @@ typedef enum
 #define CFG_ROAM_SCAN_OFFLOAD_ENABLED_DEFAULT               (1)
 #endif
 
+=======
+#define CFG_ROAM_RSSI_DIFF_MAX                              (125)
+#define CFG_ROAM_RSSI_DIFF_DEFAULT                          (0)
+#endif /* (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR) */
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CFG_QOS_WMM_PKT_CLASSIFY_BASIS_NAME                "PktClassificationBasis" // DSCP or 802.1Q
 #define CFG_QOS_WMM_PKT_CLASSIFY_BASIS_MIN                  (0)
 #define CFG_QOS_WMM_PKT_CLASSIFY_BASIS_MAX                  (1)
@@ -1104,6 +1144,7 @@ typedef enum
 #define CFG_BTC_DHCP_PROT_ON_SCO_MAX         ( 1 )
 #define CFG_BTC_DHCP_PROT_ON_SCO_DEFAULT     ( 0 )
 
+<<<<<<< HEAD
 #define CFG_BTC_ACTIVE_WLAN_LEN_NAME        "btcActiveWlanLen"
 #define CFG_BTC_ACTIVE_WLAN_LEN_MIN         ( 0 )
 #define CFG_BTC_ACTIVE_WLAN_LEN_MAX         ( 250000 )
@@ -1124,6 +1165,8 @@ typedef enum
 #define CFG_BTC_SAP_ACTIVE_BT_LEN_MAX         ( 250000 )
 #define CFG_BTC_SAP_ACTIVE_BT_LEN_DEFAULT     ( 90000 )
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #if defined WLAN_FEATURE_VOWIFI_11R
 #define CFG_FT_ENABLE_NAME                              "gFtEnabled"
 #define CFG_FT_ENABLE_MIN                               (0)
@@ -1200,10 +1243,13 @@ typedef enum
 #define CFG_NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MIN          (1000)
 #define CFG_NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MAX          (60000)
 #define CFG_NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_DEFAULT      (20000)
+<<<<<<< HEAD
 #define CFG_EMPTY_SCAN_REFRESH_PERIOD_NAME         "gEmptyScanRefreshPeriod"
 #define CFG_EMPTY_SCAN_REFRESH_PERIOD_MIN          (1000)
 #define CFG_EMPTY_SCAN_REFRESH_PERIOD_MAX          (60000)
 #define CFG_EMPTY_SCAN_REFRESH_PERIOD_DEFAULT      (0)
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* WLAN_FEATURE_NEIGHBOR_ROAMING */
 
 #define CFG_QOS_WMM_BURST_SIZE_DEFN_NAME                        "burstSizeDefinition" 
@@ -1261,12 +1307,15 @@ typedef enum
 #define CFG_ENABLE_HOST_ARPOFFLOAD_MAX          ( 1 )
 #define CFG_ENABLE_HOST_ARPOFFLOAD_DEFAULT      ( 0 )
 
+<<<<<<< HEAD
 #define CFG_ENABLE_HOST_NSOFFLOAD_NAME         "hostNSOffload"
 #define CFG_ENABLE_HOST_NSOFFLOAD_MIN          ( 0 )
 #define CFG_ENABLE_HOST_NSOFFLOAD_MAX          ( 1 )
 #define CFG_ENABLE_HOST_NSOFFLOAD_DEFAULT      ( 0 )
 
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CFG_ENABLE_BTAMP_NAME                   "gEnableBtAmp"
 #define CFG_ENABLE_BTAMP_MIN                    ( 0 )
 #define CFG_ENABLE_BTAMP_MAX                    ( 1 )
@@ -1297,13 +1346,25 @@ typedef enum
 #define CFG_ENABLE_BYPASS_11D_NAME                 "gEnableBypass11d"
 #define CFG_ENABLE_BYPASS_11D_MIN                  ( 0 )
 #define CFG_ENABLE_BYPASS_11D_MAX                  ( 1 )
+<<<<<<< HEAD
 #define CFG_ENABLE_BYPASS_11D_DEFAULT              ( 1 )
+=======
+#define CFG_ENABLE_BYPASS_11D_DEFAULT              ( 0 )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define CFG_ENABLE_DFS_CHNL_SCAN_NAME              "gEnableDFSChnlScan"
 #define CFG_ENABLE_DFS_CHNL_SCAN_MIN               ( 0 )
 #define CFG_ENABLE_DFS_CHNL_SCAN_MAX               ( 1 )
 #define CFG_ENABLE_DFS_CHNL_SCAN_DEFAULT           ( 1 )
 
+<<<<<<< HEAD
+=======
+#define CFG_ENABLE_IGNORE_CHAN165                   "gIgnore_Chan165"
+#define CFG_ENABLE_IGNORE_CHAN165_MIN               ( 0 )
+#define CFG_ENABLE_IGNORE_CHAN165_MAX               ( 1 )
+#define CFG_ENABLE_IGNORE_CHAN165_DEFAULT           ( 0 )
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef enum
 {
     eHDD_LINK_SPEED_REPORT_ACTUAL = 0,
@@ -1331,7 +1392,11 @@ typedef enum
 #define CFG_REPORT_MAX_LINK_SPEED                  "gReportMaxLinkSpeed"
 #define CFG_REPORT_MAX_LINK_SPEED_MIN              ( eHDD_LINK_SPEED_REPORT_ACTUAL )
 #define CFG_REPORT_MAX_LINK_SPEED_MAX              ( eHDD_LINK_SPEED_REPORT_MAX_SCALED )
+<<<<<<< HEAD
 #define CFG_REPORT_MAX_LINK_SPEED_DEFAULT          ( eHDD_LINK_SPEED_REPORT_MAX_SCALED )
+=======
+#define CFG_REPORT_MAX_LINK_SPEED_DEFAULT          ( eHDD_LINK_SPEED_REPORT_ACTUAL )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * RSSI Thresholds
@@ -1342,6 +1407,7 @@ typedef enum
 #define CFG_LINK_SPEED_RSSI_HIGH_MAX               (  0 )
 #define CFG_LINK_SPEED_RSSI_HIGH_DEFAULT           ( -55 )
 
+<<<<<<< HEAD
 #define CFG_LINK_SPEED_RSSI_MID                    "gLinkSpeedRssiMed"
 #define CFG_LINK_SPEED_RSSI_MID_MIN                ( -127 )
 #define CFG_LINK_SPEED_RSSI_MID_MAX                (  0 )
@@ -1352,10 +1418,19 @@ typedef enum
 #define CFG_LINK_SPEED_RSSI_LOW_MAX                (  0 )
 #define CFG_LINK_SPEED_RSSI_LOW_DEFAULT            ( -80 )
 
+=======
+#define CFG_LINK_SPEED_RSSI_LOW                    "gLinkSpeedRssiLow"
+#define CFG_LINK_SPEED_RSSI_LOW_MIN                ( -127 )
+#define CFG_LINK_SPEED_RSSI_LOW_MAX                (  0 )
+#define CFG_LINK_SPEED_RSSI_LOW_DEFAULT            ( -65 )
+
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CFG_P2P_DEVICE_ADDRESS_ADMINISTRATED_NAME                "isP2pDeviceAddrAdministrated"
 #define CFG_P2P_DEVICE_ADDRESS_ADMINISTRATED_MIN                 ( 0 )
 #define CFG_P2P_DEVICE_ADDRESS_ADMINISTRATED_MAX                 ( 1 )
 #define CFG_P2P_DEVICE_ADDRESS_ADMINISTRATED_DEFAULT             ( 0 )
+<<<<<<< HEAD
 
 
 #define CFG_ENABLE_SSR                      "gEnableSSR"
@@ -1400,6 +1475,16 @@ typedef enum
 #define CFG_VOS_TRACE_ENABLE_MIN          (0)
 #define CFG_VOS_TRACE_ENABLE_MAX          (0xff)
 #define CFG_VOS_TRACE_ENABLE_DEFAULT      (0xffff)
+=======
+#endif
+
+#ifdef WLAN_FEATURE_PACKET_FILTERING
+#define CFG_MC_ADDR_LIST_FILTER_NAME               "isMcAddrListFilter"
+#define CFG_MC_ADDR_LIST_FILTER_MIN                ( 0 )
+#define CFG_MC_ADDR_LIST_FILTER_MAX                ( 1 )
+#define CFG_MC_ADDR_LIST_FILTER_DEFAULT            ( 0 )
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * WDI Trace Enable Control
@@ -1432,7 +1517,10 @@ typedef enum
 #define HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST              0x01
 #define HDD_MCASTBCASTFILTER_FILTER_ALL_BROADCAST              0x02
 #define HDD_MCASTBCASTFILTER_FILTER_ALL_MULTICAST_BROADCAST    0x03
+<<<<<<< HEAD
 #define HDD_MULTICAST_FILTER_LIST                              0x04
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  *
@@ -1452,6 +1540,7 @@ typedef enum
 #define CFG_SAP_AUTO_CHANNEL_SELECTION_MAX        ( 1 )
 #define CFG_SAP_AUTO_CHANNEL_SELECTION_DEFAULT    ( 0 )
 
+<<<<<<< HEAD
 /*BMPS Logic
  * Notes:
  * 1 - Then Host driver and above layers control the PS mechanism
@@ -1462,6 +1551,8 @@ typedef enum
 #define CFG_ANDRIOD_POWER_SAVE_MAX       ( 1 )
 #define CFG_ANDRIOD_POWER_SAVE_DEFAULT   ( 0 )
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * Enable Dynamic DTIM
@@ -1494,7 +1585,11 @@ typedef enum
 #define CFG_ENABLE_SKIP_DFS_IN_P2P_SEARCH_NAME       "gSkipDfsChannelInP2pSearch"
 #define CFG_ENABLE_SKIP_DFS_IN_P2P_SEARCH_MIN        ( 0 )
 #define CFG_ENABLE_SKIP_DFS_IN_P2P_SEARCH_MAX        ( 1 )
+<<<<<<< HEAD
 #define CFG_ENABLE_SKIP_DFS_IN_P2P_SEARCH_DEFAULT    ( 1 )
+=======
+#define CFG_ENABLE_SKIP_DFS_IN_P2P_SEARCH_DEFAULT    ( 0 )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * Ignore Dynamic Dtim in case of P2P
@@ -1522,14 +1617,22 @@ typedef enum
  * Enable / Disable MCC feature
  * Default: Enable
  */
+<<<<<<< HEAD
 #define CFG_ENABLE_MCC_ENABLED_NAME             "gEnableMCCMode"
 #define CFG_ENABLE_MCC_ENABLED_MIN              ( 0 )
 #define CFG_ENABLE_MCC_ENABLED_MAX              ( 1 )
 #define CFG_ENABLE_MCC_ENABLED_DEFAULT          ( 1 )
+=======
+#define CFG_ENABLE_MCC_ENABLED_NAME             "gEnableMCCMode"      
+#define CFG_ENABLE_MCC_ENABLED_MIN              ( 0 )
+#define CFG_ENABLE_MCC_ENABLED_MAX              ( 1 )
+#define CFG_ENABLE_MCC_ENABLED_DEFAULT          ( 0 ) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * Allow GO in MCC mode to accept different beacon interval than STA's.
  * Added for Wi-Fi Cert. 5.1.12
+<<<<<<< HEAD
  * Default: gAllowMCCGODiffBI = 2
  * If gAllowMCCGODiffBI = 1  // Set to 1 for WFA certification. GO Beacon
  *                              interval is not changed. MCC GO
@@ -1548,6 +1651,14 @@ typedef enum
 #define CFG_ALLOW_MCC_GO_DIFF_BI_MIN            ( 0 )
 #define CFG_ALLOW_MCC_GO_DIFF_BI_MAX            ( 4 )
 #define CFG_ALLOW_MCC_GO_DIFF_BI_DEFAULT        ( 4 )
+=======
+ * Default: Disable
+ */
+#define CFG_ALLOW_MCC_GO_DIFF_BI_NAME           "gAllowMCCGODiffBI"
+#define CFG_ALLOW_MCC_GO_DIFF_BI_MIN            ( 0 )
+#define CFG_ALLOW_MCC_GO_DIFF_BI_MAX            ( 1 )
+#define CFG_ALLOW_MCC_GO_DIFF_BI_DEFAULT        ( 0 ) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * Enable/Disable Thermal Mitigation feature
@@ -1576,6 +1687,7 @@ typedef enum
 #define CFG_MC_ADDR_LIST_ENABLE_MAX           ( 1 )
 #define CFG_MC_ADDR_LIST_ENABLE_DEFAULT       ( 0 )
 
+<<<<<<< HEAD
 /* Set number of buffers to be advertised during ADDBA negotiation*/
 #define CFG_NUM_BUFF_ADVERT_NAME              "gNumBuffAdvert"
 #define CFG_NUM_BUFF_ADVERT_MIN               ( 0 )
@@ -1837,6 +1949,11 @@ typedef enum
 /*---------------------------------------------------------------------------
   Type declarations
   -------------------------------------------------------------------------*/
+=======
+/*--------------------------------------------------------------------------- 
+  Type declarations
+  -------------------------------------------------------------------------*/ 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct
 {
@@ -1852,7 +1969,10 @@ typedef struct
    v_U8_t        OperatingChannel;
    v_BOOL_t      ShortSlotTimeEnabled;
    v_BOOL_t      Is11dSupportEnabled;
+<<<<<<< HEAD
    v_BOOL_t      Is11hSupportEnabled;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_BOOL_t      fEnforce11dChannels;
    v_BOOL_t      fSupplicantCountryCodeHasPriority;
    v_BOOL_t      fEnforceCountryCodeMatch;
@@ -1917,10 +2037,18 @@ typedef struct
    v_BOOL_t      fIsShortPreamble;
    v_BOOL_t      fIsAutoIbssBssid;
    v_MACADDR_t   IbssBssid;
+<<<<<<< HEAD
    v_U8_t        intfAddrMask;
    v_MACADDR_t   intfMacAddr[VOS_MAX_CONCURRENCY_PERSONA];
    v_U8_t        crdaDefaultCountryCode [3];
 
+=======
+   
+   v_U8_t        intfAddrMask;
+   v_MACADDR_t   intfMacAddr[VOS_MAX_CONCURRENCY_PERSONA];
+
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_BOOL_t      apUapsdEnabled;
    v_BOOL_t      apRandomBssidEnabled;
    v_BOOL_t      apProtEnabled;
@@ -1929,16 +2057,28 @@ typedef struct
    v_U8_t        MinFramesProcThres;
    v_U8_t        apCntryCode[4];
    v_BOOL_t      apDisableIntraBssFwd;
+<<<<<<< HEAD
    v_U8_t        nEnableListenMode;
+=======
+   v_U8_t        nEnableListenMode;    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_U32_t       nAPAutoShutOff;
    v_U8_t        apStartChannelNum;
    v_U8_t        apEndChannelNum;
    v_U8_t        apOperatingBand;
+<<<<<<< HEAD
  v_BOOL_t      apAutoChannelSelection;
    v_U8_t        enableLTECoex;
    v_U32_t       apKeepAlivePeriod;
    v_U32_t       goKeepAlivePeriod;
    v_U32_t       apLinkMonitorPeriod;
+=======
+   v_BOOL_t      apAutoChannelSelection;
+   v_U8_t        enableLTECoex;
+   v_U32_t       apKeepAlivePeriod;
+   v_U32_t       goKeepAlivePeriod;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_U32_t       nBeaconInterval;
    v_U8_t        nTxPowerCap;   //In dBm
    v_BOOL_t      fIsLowGainOverride;
@@ -1958,6 +2098,7 @@ typedef struct
 
 #ifdef WLAN_FEATURE_NEIGHBOR_ROAMING
    v_U16_t       nNeighborScanPeriod;
+<<<<<<< HEAD
    v_U8_t        nNeighborReassocRssiThreshold;
    v_U8_t        nNeighborLookupRssiThreshold;
    v_U8_t        neighborScanChanList[WNI_CFG_VALID_CHANNEL_LIST_LEN];
@@ -1966,6 +2107,15 @@ typedef struct
    v_U16_t       nMaxNeighborReqTries;
    v_U16_t       nNeighborResultsRefreshPeriod;
    v_U16_t       nEmptyScanRefreshPeriod;
+=======
+   v_U16_t       nNeighborReassocRssiThreshold;
+   v_U16_t       nNeighborLookupRssiThreshold;
+   char          neighborScanChanList[100];         
+   v_U16_t       nNeighborScanMinChanTime; 
+   v_U16_t       nNeighborScanMaxChanTime; 
+   v_U16_t       nMaxNeighborReqTries;
+   v_U16_t       nNeighborResultsRefreshPeriod; 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
    //Handoff Parameters
@@ -1982,6 +2132,7 @@ typedef struct
    v_U32_t        nActiveMinChnTime;     //in units of milliseconds
    v_U32_t        nActiveMaxChnTime;     //in units of milliseconds
 
+<<<<<<< HEAD
    v_U32_t        nActiveMinChnTimeBtc;     //in units of milliseconds
    v_U32_t        nActiveMaxChnTimeBtc;     //in units of milliseconds
 #ifdef WLAN_AP_STA_CONCURRENCY
@@ -1996,16 +2147,25 @@ typedef struct
                                              //P2P in each split scan operation
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_U8_t         nMaxPsPoll;
 
    v_U8_t         nRssiFilterPeriod;
    v_BOOL_t       fIgnoreDtim;
+<<<<<<< HEAD
    v_U8_t         fMaxLIModulatedDTIM;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    v_U8_t         nRxAnt;
    v_U8_t         fEnableFwHeartBeatMonitoring;
    v_U8_t         fEnableFwBeaconFiltering;
+<<<<<<< HEAD
    v_BOOL_t       fEnableFwRssiMonitoring;
+=======
+   v_U8_t         fEnableFwRssiMonitoring;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_U8_t         nDataInactivityTimeout;
    v_U8_t         nthBeaconFilter;
 
@@ -2030,6 +2190,7 @@ typedef struct
    v_BOOL_t                     isCcxIniFeatureEnabled;
 #endif
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
+<<<<<<< HEAD
    v_BOOL_t                     isFastTransitionEnabled;
    v_U8_t                       RoamRssiDiff;
    v_U8_t                       nImmediateRoamRssiDiff;
@@ -2041,6 +2202,13 @@ typedef struct
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
    v_BOOL_t                     isRoamOffloadScanEnabled;
 #endif
+=======
+   v_U8_t                       FTRssiFilterPeriod;
+   v_BOOL_t                     isFastTransitionEnabled;
+   v_U8_t                       RoamRssiDiff;
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    hdd_wmm_classification_t     PktClassificationBasis; // DSCP or 802.1Q
    v_BOOL_t                     bImplicitQosEnabled;
 
@@ -2052,7 +2220,11 @@ typedef struct
    v_U16_t                      InfraSbaAcVo;
 
    /* default TSPEC parameters for AC_VI */
+<<<<<<< HEAD
 sme_QosWmmDirType            InfraDirAcVi;
+=======
+   sme_QosWmmDirType            InfraDirAcVi;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_U16_t                      InfraNomMsduSizeAcVi;
    v_U32_t                      InfraMeanDataRateAcVi;
    v_U32_t                      InfraMinPhyRateAcVi;
@@ -2080,17 +2252,30 @@ sme_QosWmmDirType            InfraDirAcVi;
    v_U32_t                      DelayedTriggerFrmInt;
 
    /* Wowl pattern */
+<<<<<<< HEAD
    char                        wowlPattern[1024];
    v_BOOL_t                    b19p2MhzPmicClkEnabled;
 
    /* Control for Replay counetr. value 1 means
+=======
+   char                        wowlPattern[1024];         
+   v_BOOL_t                    b19p2MhzPmicClkEnabled;
+
+   /* Control for Replay counetr. value 1 means 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       single replay counter for all TID*/
    v_BOOL_t                    bSingleTidRc;
    v_U8_t                      mcastBcastFilterSetting;
    v_BOOL_t                    fhostArpOffload;
+<<<<<<< HEAD
    v_BOOL_t                    fhostNSOffload;
    v_BOOL_t                    burstSizeDefinition;
    v_U8_t                      tsInfoAckPolicy;
+=======
+   v_BOOL_t                    burstSizeDefinition;
+   v_U8_t                      tsInfoAckPolicy;
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /* RF Settling Time Clock */
    v_U32_t                     rfSettlingTimeUs;
    v_U8_t                      enableBtAmp;
@@ -2110,6 +2295,7 @@ sme_QosWmmDirType            InfraDirAcVi;
    v_BOOL_t                    fEnableBeaconEarlyTermination;
    v_BOOL_t                    teleBcnWakeupEn;
 
+<<<<<<< HEAD
 /* VOS Trace Control*/
    v_U16_t                     vosTraceEnableBAP;
    v_U16_t                     vosTraceEnableTL;
@@ -2124,11 +2310,18 @@ sme_QosWmmDirType            InfraDirAcVi;
    v_U16_t                     vosTraceEnableSAP;
    v_U16_t                     vosTraceEnableHDDSAP;
 
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /* WDI Trace Control */
    v_U32_t                     wdiTraceEnableDAL;
    v_U32_t                     wdiTraceEnableCTL;
    v_U32_t                     wdiTraceEnableDAT;
    v_U32_t                     wdiTraceEnablePAL;
+<<<<<<< HEAD
+=======
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_U16_t                     nTeleBcnTransListenInterval;
    v_U16_t                     nTeleBcnMaxListenInterval;
    v_U16_t                     nTeleBcnTransLiNumIdleBeacons;
@@ -2142,6 +2335,7 @@ sme_QosWmmDirType            InfraDirAcVi;
    v_U8_t                      ShortGI40MhzEnable;
    eHddLinkSpeedReportType     reportMaxLinkSpeed;
    v_S31_t                     linkSpeedRssiHigh;
+<<<<<<< HEAD
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
    v_BOOL_t                    nRoamPrefer5GHz;
    v_BOOL_t                    nRoamIntraBand;
@@ -2154,18 +2348,34 @@ sme_QosWmmDirType            InfraDirAcVi;
    v_U8_t                      allowMCCGODiffBI;
    v_BOOL_t                    isP2pDeviceAddrAdministrated;
    v_U8_t                      thermalMitigationEnable;
+=======
+   v_S31_t                     linkSpeedRssiLow;
+   v_U8_t                      enableMCC;
+   v_U8_t                      allowMCCGODiffBI;
+#ifdef WLAN_FEATURE_P2P
+   v_BOOL_t                    isP2pDeviceAddrAdministrated;
+#endif
+   v_U8_t                      thermalMitigationEnable;
+#ifdef WLAN_FEATURE_PACKET_FILTERING
+   v_BOOL_t                    isMcAddrListFilter;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_FEATURE_11AC
    v_U8_t                      vhtChannelWidth;
    v_U8_t                      vhtRxMCS;
    v_U8_t                      vhtTxMCS;
+<<<<<<< HEAD
    v_BOOL_t                    enableTxBF;
    v_U8_t                      txBFCsnValue;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
    v_U8_t                      enableModulatedDTIM;
    v_U32_t                     fEnableMCAddrList;
    v_BOOL_t                    enableFirstScan2GOnly;
    v_BOOL_t                    skipDfsChnlInP2pSearch;
    v_BOOL_t                    ignoreDynamicDtimInP2pMode;
+<<<<<<< HEAD
 v_U16_t                     configMccParam;
    v_U32_t                     numBuffAdvert;
    v_BOOL_t                    enableRxSTBC;
@@ -2226,6 +2436,9 @@ v_U16_t                     configMccParam;
    v_U8_t                      isAmsduSupportInAMPDU;
    v_U8_t                      allowDFSChannelRoam;
    v_BOOL_t                    gEnableStrictRegulatoryForFCC;
+=======
+   v_U8_t                      ignore_chan165;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } hdd_config_t;
 /*--------------------------------------------------------------------------- 
   Function declarations and documenation
@@ -2236,7 +2449,10 @@ v_BOOL_t hdd_update_config_dat ( hdd_context_t *pHddCtx );
 VOS_STATUS hdd_cfg_get_config(hdd_context_t *pHddCtx, char *pBuf, int buflen);
 eCsrPhyMode hdd_cfg_xlate_to_csr_phy_mode( eHddDot11Mode dot11Mode );
 VOS_STATUS hdd_execute_config_command(hdd_context_t *pHddCtx, char *command);
+<<<<<<< HEAD
 tANI_BOOLEAN hdd_is_okc_mode_enabled(hdd_context_t *pHddCtx);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define FIELD_OFFSET(__type, __field) ((unsigned int)(&((__type *)0)->__field))
 #define VAR_OFFSET( _Struct, _Var ) ( (unsigned int) FIELD_OFFSET(_Struct, _Var ) )

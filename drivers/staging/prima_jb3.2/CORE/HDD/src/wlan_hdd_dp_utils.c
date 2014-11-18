@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -217,7 +220,10 @@ VOS_STATUS hdd_string_to_hex( char *pSrcMac, int length, char *pDescMac )
    int i;
    int k;
    char temp[3] = {0};
+<<<<<<< HEAD
    int rv;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    //18 is MAC Address length plus the colons
    if ( !pSrcMac && (length > 18 || length < 18) )
@@ -228,9 +234,13 @@ VOS_STATUS hdd_string_to_hex( char *pSrcMac, int length, char *pDescMac )
    while ( i < length )
    {
        memcpy(temp, pSrcMac+i, 2);
+<<<<<<< HEAD
        rv = kstrtou8(temp, 16, &pDescMac[k++]);
        if (rv < 0)
            return VOS_STATUS_E_FAILURE;
+=======
+       pDescMac[k++] = (char)simple_strtoul (temp, NULL, 16);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        i += 3;
    }
 

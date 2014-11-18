@@ -29,6 +29,12 @@
 
 #include "../devices.h"
 #include "../board-m4.h"
+<<<<<<< HEAD
+=======
+#if defined (CONFIG_FB_MSM_MDP_ABL)
+#include <linux/fb.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef CONFIG_FB_MSM_TRIPLE_BUFFER
 #define MSM_FB_PRIM_BUF_SIZE \

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -143,7 +146,11 @@ typedef enum
        RX Frame Ready indication CB
 
   @  Parameters
+<<<<<<< HEAD
          pVoid         pAdapter : Driver global control block pointer
+=======
+         pVoid         pAdaptor : Driver global control block pointer
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
          palPacket     pRXFramePtr : Received Frame Pointer
          pVoid         userCtxt : DTS user contect pointer
 
@@ -160,7 +167,11 @@ typedef WDTS_RxFrameReadyCbType WLANDXE_RxFrameReadyCbType;
       TX complete indication CB
 
   @  Parameters
+<<<<<<< HEAD
          pVoid      pAdapter : Driver global control block pointer
+=======
+         pVoid      pAdaptor : Driver global control block pointer
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
          void       pTXFramePtr : Completed TX Frame Pointer
          pVoid      userCtxt : DTS user contect pointer
 
@@ -177,7 +188,11 @@ typedef WDTS_TxCompleteCbType WLANDXE_TxCompleteCbType;
        DXE Low resource indication CB
 
   @  Parameters
+<<<<<<< HEAD
       pVoid      pAdapter : Driver global control block pointer
+=======
+      pVoid      pAdaptor : Driver global control block pointer
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       BOOL      lowResourceCondition : DXE low resource or not
       pVoid      userCtxt : DTS user contect pointer
 
@@ -216,7 +231,11 @@ typedef WDTS_SetPSCbType  WLANDXE_SetPowerStateCbType;
       Allocate, DXE local control block, DXE descriptor pool, DXE descriptor control block pool
 
   @  Parameters
+<<<<<<< HEAD
       pVoid      pAdapter : Driver global control block pointer
+=======
+      pVoid      pAdaptor : Driver global control block pointer
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   @  Return
       pVoid DXE local module control block pointer
@@ -413,20 +432,34 @@ wpt_uint32 WLANDXE_GetFreeTxDataResNumber
 );
 
 /*==========================================================================
+<<<<<<< HEAD
   @  Function Name
     WLANDXE_ChannelDebug
 
   @  Description
+=======
+  @  Function Name 
+    WLANDXE_ChannelDebug
+
+  @  Description 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     Display DXE Channel debugging information
     User may request to display DXE channel snapshot
     Or if host driver detects any abnormal stcuk may display
 
   @  Parameters
+<<<<<<< HEAD
     displaySnapshot : Display DXE snapshot option
     debugFlags      : Enable stall detect features
                       defined by WPAL_DeviceDebugFlags
                       These features may effect
                       data performance.
+=======
+    displaySnapshot : Dispaly DXE snapshot option
+    enableStallDetect : Enable stall detect feature
+                        This feature will take effect to data performance
+                        Not integrate till fully verification
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   @  Return
     NONE
@@ -435,7 +468,11 @@ wpt_uint32 WLANDXE_GetFreeTxDataResNumber
 void WLANDXE_ChannelDebug
 (
    wpt_boolean    displaySnapshot,
+<<<<<<< HEAD
    wpt_uint8      debugFlags
+=======
+   wpt_boolean    enableStallDetect   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 );
 
 #ifdef WLANDXE_TEST_CHANNEL_ENABLE

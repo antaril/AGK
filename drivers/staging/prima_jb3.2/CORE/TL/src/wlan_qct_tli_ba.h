@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -379,6 +382,10 @@ VOS_STATUS WLANTL_ChainFrontPkts
    WLANTL_CbType          *pTLCb
 );
 
+<<<<<<< HEAD
+=======
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*==========================================================================
  
    FUNCTION    WLANTL_FillReplayCounter
@@ -409,5 +416,9 @@ void WLANTL_FillReplayCounter
    v_U64_t                replayCounter,
    v_U8_t                 ucSlotIndex
 );
+<<<<<<< HEAD
+=======
+#endif /*ANI_CHIPSET_VOLANS*/
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif /* #ifndef WLAN_QCT_TLI_H */

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +43,7 @@
  */
 
 /**=========================================================================
+<<<<<<< HEAD
 * Copyright (c) 2013 Qualcomm Atheros, Inc.
 * All Rights Reserved.
 * Qualcomm Atheros Confidential and Proprietary.
@@ -48,6 +52,14 @@
 *  \brief definition for trace related APIs
 
 *  \author Sunit Bhatia
+=======
+
+  \file  limTrace.h
+
+  \brief definition for trace related APIs
+
+  \author Sunit Bhatia
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
 
@@ -62,9 +74,16 @@
 
 #include "limGlobal.h"
 #include "macTrace.h"
+<<<<<<< HEAD
 #include "vos_trace.h"
 #ifdef LIM_TRACE_RECORD
 
+=======
+#ifdef LIM_TRACE_RECORD
+
+#define CASE_RETURN_STRING( str )           \
+    case ( ( str ) ): return( #str ); break \
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 #define LIM_TRACE_GET_SSN(data)    (((data) >> 16) & 0xff)
@@ -84,7 +103,11 @@
 
 
 
+<<<<<<< HEAD
 enum {
+=======
+typedef enum {
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     TRACE_CODE_MLM_STATE,
     TRACE_CODE_SME_STATE,
     TRACE_CODE_TX_MGMT,
@@ -93,8 +116,13 @@ enum {
     TRACE_CODE_TX_COMPLETE,
     TRACE_CODE_TX_SME_MSG,
     TRACE_CODE_RX_SME_MSG,
+<<<<<<< HEAD
     TRACE_CODE_TX_WDA_MSG,
     TRACE_CODE_RX_WDA_MSG,
+=======
+    TRACE_CODE_TX_HAL_MSG,
+    TRACE_CODE_RX_HAL_MSG,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     TRACE_CODE_TX_LIM_MSG,
     TRACE_CODE_RX_LIM_MSG,
     TRACE_CODE_TX_CFG_MSG,
@@ -103,7 +131,10 @@ enum {
 
     TRACE_CODE_TIMER_ACTIVATE,
     TRACE_CODE_TIMER_DEACTIVATE,
+<<<<<<< HEAD
     TRACE_CODE_INFO_LOG
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 };
 
 
@@ -117,13 +148,32 @@ void limTraceUpdateMgmtStat(tpAniSirGlobal pMac, tANI_U8 subtype);
 void limTraceDumpMgmtStat(tpAniSirGlobal pMac, tANI_U8 subtype);
 tANI_U8* limTraceGetMlmStateString( tANI_U32 mlmState );
 tANI_U8* limTraceGetSmeStateString( tANI_U32 smeState );
+<<<<<<< HEAD
 void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recIndex);
+=======
+void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void macTraceMsgTx(tpAniSirGlobal pMac, tANI_U8 session, tANI_U32 data);
 void macTraceMsgRx(tpAniSirGlobal pMac, tANI_U8 session, tANI_U32 data);
 
 void macTraceMsgRxNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 session, tANI_U32 data);
 void macTraceMsgTxNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 session, tANI_U32 data);
+<<<<<<< HEAD
 #endif //endof LIM_TRACE_RECORD MACRO
+=======
+
+
+
+
+
+#define MTRACE(p) p
+#define NO_SESSION 0xFF
+
+#else
+#define MTRACE(p) {  }
+
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif
 

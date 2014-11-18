@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -86,9 +89,12 @@
   --------------------------------------------------------------------------*/
 void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat, ... );
 
+<<<<<<< HEAD
 void vos_trace_hex_dump( VOS_MODULE_ID module, VOS_TRACE_LEVEL level,
                                 void *data, int buf_len );
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void vos_trace_display(void);
 
 void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on );
@@ -105,10 +111,15 @@ void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on 
 // without being bogged down by all the tracing in the code.
 #if defined( WLAN_DEBUG )
 #define VOS_TRACE vos_trace_msg
+<<<<<<< HEAD
 #define VOS_TRACE_HEX_DUMP vos_trace_hex_dump
 #else
 #define VOS_TRACE(arg...)
 #define VOS_TRACE_HEX_DUMP(arg...)
+=======
+#else
+#define VOS_TRACE(arg...) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 
@@ -118,6 +129,7 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...);
 #ifdef VOS_ENABLE_TRACING
 
 
+<<<<<<< HEAD
 #define VOS_ASSERT( _condition ) do {                                   \
         if ( ! ( _condition ) )                                         \
         {                                                               \
@@ -125,6 +137,14 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...);
             WARN_ON(1);                                                 \
         }                                                               \
     } while(0)
+=======
+#define VOS_ASSERT( _condition )                          \
+if ( ! ( _condition ) )                                   \
+{                                                         \
+   printk(KERN_CRIT "VOS ASSERT in %s Line %d\n", __FUNCTION__, __LINE__); \
+   WARN_ON(1); \
+}
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #else 
 
@@ -139,6 +159,7 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...);
 
 #ifdef PANIC_ON_BUG
 
+<<<<<<< HEAD
 #define VOS_BUG( _condition ) do {                                      \
         if ( ! ( _condition ) )                                         \
         {                                                               \
@@ -156,6 +177,23 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...);
             WARN_ON(1);                                                 \
         }                                                               \
     } while(0)
+=======
+#define VOS_BUG( _condition ) \
+if ( ! ( _condition ) )       \
+{                             \
+   printk(KERN_CRIT "VOS BUG in %s Line %d\n", __FUNCTION__, __LINE__); \
+   BUG_ON(1); \
+}
+
+#else
+
+#define VOS_BUG( _condition ) \
+if ( ! ( _condition ) )       \
+{                             \
+   printk(KERN_CRIT "VOS BUG in %s Line %d\n", __FUNCTION__, __LINE__); \
+   WARN_ON(1); \
+}
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif
 

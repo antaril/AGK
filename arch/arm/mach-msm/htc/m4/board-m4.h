@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef __ARCH_ARM_MACH_MSM_BOARD_M4_H__
 #define __ARCH_ARM_MACH_MSM_BOARD_M4_H__
 
@@ -7,6 +8,17 @@
 #include <mach/rpm-regulator.h>
 
 #define	GPIO(X)		(X)
+=======
+#include <mach/msm_memtypes.h>
+#include <linux/regulator/pm8xxx-regulator.h>
+#include <linux/regulator/msm-gpio-regulator.h>
+#include <mach/irqs.h>
+#include <mach/rpm-regulator.h>
+
+#define	GPIO(X)		(X)
+#ifndef __ARCH_ARM_MACH_MSM_BOARD_M4_H__
+#define __ARCH_ARM_MACH_MSM_BOARD_M4_H__
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define PVT_VERSION	0x80
 extern struct gpio_regulator_platform_data
@@ -14,6 +26,11 @@ extern struct gpio_regulator_platform_data
 
 extern struct rpm_regulator_platform_data
 	m4_rpm_regulator_pdata __devinitdata;
+<<<<<<< HEAD
+=======
+extern struct rpm_regulator_platform_data
+	m4_DVT1_2_rpm_regulator_pdata __devinitdata;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern int m4_pm8038_regulator_pdata_len __devinitdata;
 extern struct pm8xxx_regulator_platform_data
@@ -174,6 +191,7 @@ extern struct regulator_init_data m4_pm8038_saw_regulator_core1_pdata;
 #define MSM_W_ANT_DPDT_CTL2			GPIO(149)
 #define MSM_SW_ANT_0				GPIO(150)
 #define MSM_SW_ANT_1				GPIO(151)
+<<<<<<< HEAD
 
 extern int panel_type;
 extern struct msm_camera_board_info m4_camera_board_info;
@@ -186,6 +204,22 @@ int __init m4_init_mmc(void);
 int __init m4_gpiomux_init(void);
 void __init m4_allocate_fb_region(void);
 void __init m4_mdp_writeback(struct memtype_reserve* reserve_table);
+=======
+#endif
+
+extern int panel_type;
+extern struct msm_camera_board_info m4_camera_board_info;
+extern struct platform_device m4_msm_rawchip_device;
+extern struct platform_device msm8930_msm_rawchip_device;
+
+void __init m4_init_camera(void);
+void m4_init_fb(void);
+void __init m4_init_pmic(void);
+int __init m4_init_mmc(void);
+int __init m4_gpiomux_init(void);
+void m4_allocate_fb_region(void);
+void m4_mdp_writeback(struct memtype_reserve* reserve_table);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 int __init m4_init_keypad(void);
 int __init m4_wifi_init(void);
 void __init m4_pm8038_gpio_mpp_init(void);
@@ -196,4 +230,7 @@ extern struct msm_rtb_platform_data msm8930_rtb_pdata;
 #ifdef CONFIG_MSM_CACHE_DUMP
 extern struct msm_cache_dump_platform_data msm8930_cache_dump_pdata;
 #endif
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

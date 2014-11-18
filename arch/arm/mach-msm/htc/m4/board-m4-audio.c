@@ -1126,7 +1126,15 @@ static int msm8930_auxpcm_be_params_fixup(struct snd_soc_pcm_runtime *rtd,
 					SNDRV_PCM_HW_PARAM_CHANNELS);
 
 	
+<<<<<<< HEAD
 	rate->min = rate->max = 8000;
+=======
+#ifdef CONFIG_BT_WBS_BRCM
+	rate->min = rate->max = 16000;
+#else
+	rate->min = rate->max = 8000;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 	channels->min = channels->max = 1;
 
 	return 0;

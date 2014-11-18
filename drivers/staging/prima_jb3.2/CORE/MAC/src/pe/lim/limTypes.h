@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -38,6 +41,10 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file limTypes.h contains the definitions used by all
@@ -58,7 +65,16 @@
 #include "sirMacProtDef.h"
 #include "utilsApi.h"
 
+<<<<<<< HEAD
 #include "wlan_qct_wdi_ds.h"
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halCommonApi.h"
+#endif 
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include "wlan_qct_wdi_ds.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #include "limApi.h"
 #include "limDebug.h"
@@ -77,6 +93,7 @@
 // MLM message types
 #define LIM_MLM_MSG_START           1000
 #define LIM_MLM_SCAN_REQ            LIM_MLM_MSG_START
+<<<<<<< HEAD
 #define LIM_MLM_SCAN_CNF            (LIM_MLM_MSG_START + 1)
 #define LIM_MLM_START_REQ           (LIM_MLM_MSG_START + 2)
 #define LIM_MLM_START_CNF           (LIM_MLM_MSG_START + 3)
@@ -117,6 +134,48 @@
 #ifdef FEATURE_OEM_DATA_SUPPORT
 #define LIM_MLM_OEM_DATA_REQ            (LIM_MLM_MSG_START + 41)
 #define LIM_MLM_OEM_DATA_CNF            (LIM_MLM_MSG_START + 42)
+=======
+#define LIM_MLM_SCAN_CNF            LIM_MLM_MSG_START + 1
+#define LIM_MLM_START_REQ           LIM_MLM_MSG_START + 2
+#define LIM_MLM_START_CNF           LIM_MLM_MSG_START + 3
+#define LIM_MLM_JOIN_REQ            LIM_MLM_MSG_START + 4
+#define LIM_MLM_JOIN_CNF            LIM_MLM_MSG_START + 5
+#define LIM_MLM_AUTH_REQ            LIM_MLM_MSG_START + 6
+#define LIM_MLM_AUTH_CNF            LIM_MLM_MSG_START + 7
+#define LIM_MLM_AUTH_IND            LIM_MLM_MSG_START + 8
+#define LIM_MLM_ASSOC_REQ           LIM_MLM_MSG_START + 9
+#define LIM_MLM_ASSOC_CNF           LIM_MLM_MSG_START + 10
+#define LIM_MLM_ASSOC_IND           LIM_MLM_MSG_START + 11
+#define LIM_MLM_DISASSOC_REQ        LIM_MLM_MSG_START + 12
+#define LIM_MLM_DISASSOC_CNF        LIM_MLM_MSG_START + 13
+#define LIM_MLM_DISASSOC_IND        LIM_MLM_MSG_START + 14
+#define LIM_MLM_REASSOC_REQ         LIM_MLM_MSG_START + 15
+#define LIM_MLM_REASSOC_CNF         LIM_MLM_MSG_START + 16
+#define LIM_MLM_REASSOC_IND         LIM_MLM_MSG_START + 17
+#define LIM_MLM_DEAUTH_REQ          LIM_MLM_MSG_START + 18
+#define LIM_MLM_DEAUTH_CNF          LIM_MLM_MSG_START + 19
+#define LIM_MLM_DEAUTH_IND          LIM_MLM_MSG_START + 20
+#define LIM_MLM_TSPEC_REQ           LIM_MLM_MSG_START + 21
+#define LIM_MLM_TSPEC_CNF           LIM_MLM_MSG_START + 22
+#define LIM_MLM_TSPEC_IND           LIM_MLM_MSG_START + 23
+#define LIM_MLM_SETKEYS_REQ         LIM_MLM_MSG_START + 24
+#define LIM_MLM_SETKEYS_CNF         LIM_MLM_MSG_START + 25
+#define LIM_MLM_LINK_TEST_STOP_REQ  LIM_MLM_MSG_START + 30
+#define LIM_MLM_PURGE_STA_IND       LIM_MLM_MSG_START + 31
+#define LIM_MLM_ADDBA_REQ           LIM_MLM_MSG_START + 32
+#define LIM_MLM_ADDBA_CNF           LIM_MLM_MSG_START + 33
+#define LIM_MLM_ADDBA_IND           LIM_MLM_MSG_START + 34
+#define LIM_MLM_ADDBA_RSP           LIM_MLM_MSG_START + 35
+#define LIM_MLM_DELBA_REQ           LIM_MLM_MSG_START + 36
+#define LIM_MLM_DELBA_CNF           LIM_MLM_MSG_START + 37
+#define LIM_MLM_DELBA_IND           LIM_MLM_MSG_START + 38
+#define LIM_MLM_REMOVEKEY_REQ  LIM_MLM_MSG_START + 39
+#define LIM_MLM_REMOVEKEY_CNF  LIM_MLM_MSG_START + 40
+
+#ifdef FEATURE_OEM_DATA_SUPPORT
+#define LIM_MLM_OEM_DATA_REQ            LIM_MLM_MSG_START + 41
+#define LIM_MLM_OEM_DATA_CNF            LIM_MLM_MSG_START + 42
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 #define LIM_HASH_ADD            0
@@ -203,9 +262,17 @@ typedef struct sLimMlmStartReq
     tSirMacHTOperatingMode     htOperMode;
     tANI_U8                    dualCTSProtection;
     tANI_U8                    txChannelWidthSet;
+<<<<<<< HEAD
     tANI_U8              ssidHidden;
     tANI_U8              wps_state;
     tANI_U8              obssProtEnabled;
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tANI_U8              ssidHidden;
+    tANI_U8              wps_state;
+    tANI_U8              obssProtEnabled;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tLimMlmStartReq, *tpLimMlmStartReq;
 
 typedef struct sLimMlmStartCnf
@@ -258,7 +325,11 @@ typedef struct sLimMlmAssocInd
     tAniAuthType         authType;
     tAniSSID             ssId;
     tSirRSNie            rsnIE;
+<<<<<<< HEAD
     tSirAddie            addIE; // additional IE received from the peer, which possibly includes WSC IE and/or P2P IE.
+=======
+    tSirAddie            addIE; // additional IE recevied from the peer, which possibly includes WSC IE and/or P2P IE.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tSirMacCapabilityInfo capabilityInfo;
     tAniBool                spectrumMgtIndicator;
     tSirMacPowerCapInfo     powerCap;
@@ -266,8 +337,26 @@ typedef struct sLimMlmAssocInd
     tANI_U8                 sessionId;
 
 
+<<<<<<< HEAD
     tAniBool               WmmStaInfoPresent;
 
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tAniBool               WmmStaInfoPresent;
+#endif
+
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED) 
+    tANI_U16                  seqNum;
+    tAniBool             wniIndicator;
+    tAniBool             bpIndicator;
+    tSirBpIndicatorType  bpType;
+    tSirNwType           nwType;
+    tSirAssocType        assocType; // Indicates whether STA is LB'ed or not
+    tSirLoad             load; // Current load on the radio for LB
+    tANI_U32                  numBss; // List received from STA
+    tSirNeighborBssInfo  neighborList[1]; // List received from STA
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     // Required for indicating the frames to upper layer
     tANI_U32             beaconLength;
     tANI_U8*             beaconPtr;
@@ -299,14 +388,36 @@ typedef struct sLimMlmReassocInd
     tAniAuthType         authType;
     tAniSSID             ssId;
     tSirRSNie            rsnIE;
+<<<<<<< HEAD
     tSirAddie            addIE; // additional IE received from the peer, which can be WSC IE and/or P2P IE.
+=======
+    tSirAddie            addIE; // additional IE recevied from the peer, which can be WSC IE and/or P2P IE.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tSirMacCapabilityInfo capabilityInfo;
     tAniBool                spectrumMgtIndicator;
     tSirMacPowerCapInfo     powerCap;
     tSirSupChnl             supportedChannels;
 
+<<<<<<< HEAD
     tAniBool               WmmStaInfoPresent;
 
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tAniBool               WmmStaInfoPresent;
+#endif
+
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED) 
+    tANI_U16                  seqNum;
+    tAniBool             wniIndicator;
+    tAniBool             bpIndicator;
+    tSirBpIndicatorType  bpType;
+    tSirNwType           nwType;
+    tSirAssocType        reassocType; // Indicates whether STA is LB'ed or not
+    tSirLoad             load; // Current load on the radio for LB
+    tANI_U32                  numBss; // List received from STA
+    tSirNeighborBssInfo  neighborList[1]; // List received from STA
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     // Required for indicating the frames to upper layer
     tANI_U32             beaconLength;
     tANI_U8*             beaconPtr;
@@ -455,6 +566,12 @@ typedef struct sLimMlmLinkTestStopReq
 {
     tSirMacAddr    peerMacAddr;
     tANI_U8       sessionId;
+<<<<<<< HEAD
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+    tANI_U16             aid;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tLimMlmLinkTestStopReq, *tpLimMlmLinkTestStopReq;
 
 
@@ -639,7 +756,15 @@ void limHandleCFGparamUpdate(tpAniSirGlobal, tANI_U32);
 // Function to apply CFG parameters before join/reassoc/start BSS
 void limApplyConfiguration(tpAniSirGlobal,tpPESession);
 
+<<<<<<< HEAD
 void limSetCfgProtection(tpAniSirGlobal pMac, tpPESession pesessionEntry);
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+void limSetCfgProtection(tpAniSirGlobal pMac, tpPESession pesessionEntry);
+#else
+void limSetCfgProtection(tpAniSirGlobal pMac);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 // Function to Initialize MLM state machine on STA
@@ -663,7 +788,11 @@ void limProcessProbeReqFrame_multiple_BSS(tpAniSirGlobal, tANI_U8 *,tpPESession)
 // Process Auth frame when we have a session in progress.
 void limProcessAuthFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 #ifdef WLAN_FEATURE_VOWIFI_11R
+<<<<<<< HEAD
 tSirRetStatus limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *, void *body);
+=======
+int limProcessAuthFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *, void *body);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 void limProcessAssocReqFrame(tpAniSirGlobal, tANI_U8 *, tANI_U8, tpPESession);
@@ -674,7 +803,13 @@ void limProcessAssocRspFrame(tpAniSirGlobal, tANI_U8 *, tANI_U8,tpPESession);
 void limProcessDisassocFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 void limProcessDeauthFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 void limProcessActionFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
+<<<<<<< HEAD
 void limProcessActionFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxMetaInfo);
+=======
+#if defined WLAN_FEATURE_P2P
+void limProcessActionFrameNoSession(tpAniSirGlobal pMac, tANI_U8 *pRxMetaInfo);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 tSirRetStatus limPopulateMacHeader(tpAniSirGlobal, tANI_U8*, tANI_U8, tANI_U8, tSirMacAddr,tSirMacAddr);
@@ -695,20 +830,36 @@ void limSendAddtsReqActionFrame(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr,
 void limSendAddtsRspActionFrame(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr,
                            tANI_U16 statusCode, tSirAddtsReqInfo *addts, tSirMacScheduleIE *pSchedule,tpPESession);
 
+<<<<<<< HEAD
 void limSendAssocRspMgmtFrame(tpAniSirGlobal, tANI_U16, tANI_U16, tSirMacAddr, tANI_U8, tpDphHashNode pSta,tpPESession);
 
 void limSendNullDataFrame(tpAniSirGlobal, tpDphHashNode);
 void limSendDisassocMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr, tpPESession, tANI_BOOLEAN waitForAck);
 void limSendDeauthMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr, tpPESession, tANI_BOOLEAN waitForAck);
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+void limSendAssocRspMgmtFrame(tpAniSirGlobal, tANI_U16, tANI_U16, tSirMacAddr, tANI_U8, tpDphHashNode pSta,tpPESession);
+#endif
+void limSendAssocRspMgmtFrame(tpAniSirGlobal, tANI_U16, tANI_U16, tSirMacAddr, tANI_U8, tpDphHashNode pSta,tpPESession);
+
+void limSendNullDataFrame(tpAniSirGlobal, tpDphHashNode);
+void limSendDisassocMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr,tpPESession);
+void limSendDeauthMgmtFrame(tpAniSirGlobal, tANI_U16, tSirMacAddr,tpPESession);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 void limContinueChannelScan(tpAniSirGlobal);
 tSirResultCodes limMlmAddBss(tpAniSirGlobal, tLimMlmStartReq *,tpPESession psessionEntry);
 
+<<<<<<< HEAD
 tSirRetStatus limSendChannelSwitchMgmtFrame(tpAniSirGlobal, tSirMacAddr, tANI_U8, tANI_U8, tANI_U8, tpPESession);
 
 #ifdef WLAN_FEATURE_11AC
 tSirRetStatus limSendVHTOpmodeNotificationFrame(tpAniSirGlobal pMac,tSirMacAddr peer,tANI_U8 nMode, tpPESession  psessionEntry );
 tSirRetStatus limSendVHTChannelSwitchMgmtFrame(tpAniSirGlobal pMac,tSirMacAddr peer,tANI_U8 nChanWidth, tANI_U8 nNewChannel, tANI_U8 ncbMode, tpPESession  psessionEntry );
+=======
+#if 1 //(WNI_POLARIS_FW_PACKAGE == ADVANCED) && defined(ANI_PRODUCT_TYPE_AP)
+tSirRetStatus limSendChannelSwitchMgmtFrame(tpAniSirGlobal, tSirMacAddr, tANI_U8, tANI_U8, tANI_U8, tpPESession);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 #if defined WLAN_FEATURE_VOWIFI
@@ -721,6 +872,7 @@ tSirRetStatus limSendRadioMeasureReportActionFrame(tpAniSirGlobal, tANI_U8, tANI
 void limProcessIappFrame(tpAniSirGlobal, tANI_U8 *,tpPESession);
 #endif
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
 tSirRetStatus limSendTdlsDisReqFrame(tpAniSirGlobal pMac, 
            tSirMacAddr peer_mac, tANI_U8 dialog, tpPESession psessionEntry);
@@ -752,6 +904,8 @@ tSirRetStatus limSendTdlsTeardownFrame(tpAniSirGlobal pMac,
            tANI_U8 *addIe, tANI_U16 addIeLen); 
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 // Algorithms & Link Monitoring related functions
 tSirBackgroundScanMode limSelectsBackgroundScanMode(tpAniSirGlobal);
 void limTriggerBackgroundScan(tpAniSirGlobal);
@@ -763,6 +917,22 @@ void limHandleHeartBeatFailure(tpAniSirGlobal,tpPESession);
 /// Function that triggers link tear down with AP upon HB failure
 void limTearDownLinkWithAp(tpAniSirGlobal,tANI_U8, tSirMacReasonCodes);
 
+<<<<<<< HEAD
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+/// Function that performs periodic release of AIDs
+void limReleaseAIDHandler(tpAniSirGlobal);
+
+/// Function that performs periodic cleanup of Pre-auth contexts
+void limPreAuthClnupHandler(tpAniSirGlobal);
+
+/// Function that processes CF-poll response message from SCH
+void limHandleCFpollRsp(tANI_U32);
+
+/// Function that processes PS-poll message from PMM
+void limHandlePSpoll(tANI_U32);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /// Function that sends keep alive message to peer(s)
 void limSendKeepAliveToPeer(tpAniSirGlobal);
@@ -836,8 +1006,11 @@ void limSendHalEndScanReq( tpAniSirGlobal, tANI_U8, tLimLimHalScanState);
 void limSendHalFinishScanReq( tpAniSirGlobal, tLimLimHalScanState);
 
 void limContinuePostChannelScan(tpAniSirGlobal pMac);
+<<<<<<< HEAD
 void limCovertChannelScanType(tpAniSirGlobal pMac,tANI_U8 channelNum, tANI_BOOLEAN passiveToActive);
 void limSetDFSChannelList(tpAniSirGlobal pMac,tANI_U8 channelNum, tSirDFSChannelList *dfsChannelList);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void limContinueChannelLearn( tpAniSirGlobal );
 //WLAN_SUSPEND_LINK Related
 tANI_U8 limIsLinkSuspended(tpAniSirGlobal pMac);
@@ -905,7 +1078,11 @@ limPostSmeMessage(tpAniSirGlobal pMac, tANI_U32 msgType, tANI_U32 *pMsgBuf)
     
     if(pMsgBuf == NULL)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGE,FL("Buffer is Pointing to NULL"));
+=======
+        limLog(pMac, LOGE,FL("Buffer is Pointing to NULL\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            return;
     }
       
@@ -950,7 +1127,11 @@ limPostMlmMessage(tpAniSirGlobal pMac, tANI_U32 msgType, tANI_U32 *pMsgBuf)
     tSirMsgQ msg;
     if(pMsgBuf == NULL)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGE,FL("Buffer is Pointing to NULL"));
+=======
+        limLog(pMac, LOGE,FL("Buffer is Pointing to NULL\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            return;
     }
     msg.type = (tANI_U16) msgType;
@@ -1023,6 +1204,10 @@ limGetIElenFromBssDescription(tpSirBssDescription pBssDescr)
                    sizeof(tANI_U32) - sizeof(tSirBssDescription)));
 } /*** end limGetIElenFromBssDescription() ***/
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  * limSendBeaconInd()
  *
@@ -1039,7 +1224,13 @@ limGetIElenFromBssDescription(tpSirBssDescription pBssDescr)
 
 void 
 limSendBeaconInd(tpAniSirGlobal pMac, tpPESession psessionEntry);
+<<<<<<< HEAD
 
+=======
+#endif
+
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 void limGetWPSPBCSessions(tpAniSirGlobal pMac, tANI_U8 *addr, tANI_U8 *uuid_e, eWPSPBCOverlap *overlap, tpPESession psessionEntry);
 void limWPSPBCTimeout(tpAniSirGlobal pMac, tpPESession psessionEntry);
@@ -1051,6 +1242,10 @@ tSirRetStatus
 limIsSmeGetWPSPBCSessionsReqValid(tpAniSirGlobal pMac, tSirSmeGetWPSPBCSessionsReq *pGetWPSPBCSessionsReq, tANI_U8 *pBuf);
 
 #define LIM_WPS_OVERLAP_TIMER_MS                 10000
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 void
 limSuspendLink(tpAniSirGlobal pMac, tSirLinkTrafficCheck trafficCheck,  SUSPEND_RESUME_LINK_CALLBACK callback, tANI_U32 *data);
@@ -1061,6 +1256,7 @@ void
 limChangeChannelWithCallback(tpAniSirGlobal pMac, tANI_U8 newChannel, 
    CHANGE_CHANNEL_CALLBACK callback, tANI_U32 *cbdata, tpPESession psessionEntry);
 
+<<<<<<< HEAD
 void limSendSmeMgmtFrameInd(
                     tpAniSirGlobal pMac, tANI_U8 frameType,
                     tANI_U8  *frame, tANI_U32 frameLen, tANI_U16 sessionId,
@@ -1108,5 +1304,17 @@ void limProcessRxScanEvent(tpAniSirGlobal mac, void *buf);
 
 int limProcessRemainOnChnlReq(tpAniSirGlobal pMac, tANI_U32 *pMsg);
 void limRemainOnChnRsp(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data);
+=======
+#ifdef WLAN_FEATURE_P2P
+void limSendSmeMgmtFrameInd(
+                    tpAniSirGlobal pMac, tANI_U8 frameType,
+                    tANI_U8  *frame, tANI_U32 frameLen, tANI_U16 sessionId,
+                    tANI_U32 rxChan, tpPESession psessionEntry);
+void limProcessRemainOnChnTimeout(tpAniSirGlobal pMac);
+void limSendP2PActionFrame(tpAniSirGlobal pMac, tpSirMsgQ pMsg);
+void limAbortRemainOnChan(tpAniSirGlobal pMac);
+tSirRetStatus __limProcessSmeNoAUpdate(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* __LIM_TYPES_H */
 

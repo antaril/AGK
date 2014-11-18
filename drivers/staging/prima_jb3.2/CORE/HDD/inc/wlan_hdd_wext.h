@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -56,6 +59,7 @@
 #define HDD_WLAN_WMM_PARAM_HANDLE                       0
 #define HDD_WLAN_WMM_PARAM_TID                          1
 #define HDD_WLAN_WMM_PARAM_DIRECTION                    2
+<<<<<<< HEAD
 #define HDD_WLAN_WMM_PARAM_APSD                         3
 #define HDD_WLAN_WMM_PARAM_USER_PRIORITY                4
 #define HDD_WLAN_WMM_PARAM_NOMINAL_MSDU_SIZE            5
@@ -82,6 +86,27 @@
 #define WLAN_HDD_UI_BAND_2_4_GHZ                       2
 #define WLAN_HDD_UI_SET_BAND_VALUE_OFFSET              8
 
+=======
+#define HDD_WLAN_WMM_PARAM_USER_PRIORITY                3
+#define HDD_WLAN_WMM_PARAM_NOMINAL_MSDU_SIZE            4
+#define HDD_WLAN_WMM_PARAM_MAXIMUM_MSDU_SIZE            5
+#define HDD_WLAN_WMM_PARAM_MINIMUM_DATA_RATE            6
+#define HDD_WLAN_WMM_PARAM_MEAN_DATA_RATE               7
+#define HDD_WLAN_WMM_PARAM_PEAK_DATA_RATE               8
+#define HDD_WLAN_WMM_PARAM_MAX_BURST_SIZE               9
+#define HDD_WLAN_WMM_PARAM_MINIMUM_PHY_RATE            10
+#define HDD_WLAN_WMM_PARAM_SURPLUS_BANDWIDTH_ALLOWANCE 11
+#define HDD_WLAN_WMM_PARAM_SERVICE_INTERVAL            12
+#define HDD_WLAN_WMM_PARAM_SUSPENSION_INTERVAL         13
+#define HDD_WLAN_WMM_PARAM_BURST_SIZE_DEFN             14
+#define HDD_WLAN_WMM_PARAM_ACK_POLICY                  15
+#define HDD_WLAN_WMM_PARAM_INACTIVITY_INTERVAL         16
+#define HDD_WLAN_WMM_PARAM_MAX_SERVICE_INTERVAL        17
+#define HDD_WLAN_WMM_PARAM_COUNT                       18
+
+#define MHZ 6
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef enum
 {
    HDD_WLAN_WMM_DIRECTION_UPSTREAM      = 0,
@@ -202,6 +227,10 @@ typedef enum
 
 #define HDD_WPA_ELEM_VENDOR_EXTENSION       0x1049
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define HDD_WPS_MANUFACTURER_LEN            64
 #define HDD_WPS_MODEL_NAME_LEN              32
 #define HDD_WPS_MODEL_NUM_LEN               32
@@ -219,6 +248,7 @@ typedef enum
 #define HDD_WPS_ELEM_SERIAL_NUM             0x1042 
 #define HDD_WPS_ELEM_DEVICE_NAME            0x1011
 #define HDD_WPS_ELEM_REGISTRA_CONF_METHODS  0x1053
+<<<<<<< HEAD
 
 
 
@@ -233,6 +263,20 @@ typedef enum
 
 #define HS20_OUI_TYPE   "\x50\x6f\x9a\x10"
 #define HS20_OUI_TYPE_SIZE  4
+=======
+#endif
+
+
+ 
+#define WPS_OUI_TYPE   "\x00\x50\xf2\x04"
+#define WPS_OUI_TYPE_SIZE  4
+ 
+#ifdef WLAN_FEATURE_P2P
+#define P2P_OUI_TYPE   "\x50\x6f\x9a\x09"
+#define P2P_OUI_TYPE_SIZE  4
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_FEATURE_WFD
 #define WFD_OUI_TYPE   "\x50\x6f\x9a\x0a"
@@ -324,8 +368,15 @@ typedef struct ccp_freq_chan_map_s{
 #define wlan_hdd_get_wps_ie_ptr(ie, ie_len) \
     wlan_hdd_get_vendor_oui_ie_ptr(WPS_OUI_TYPE, WPS_OUI_TYPE_SIZE, ie, ie_len)
 
+<<<<<<< HEAD
 #define wlan_hdd_get_p2p_ie_ptr(ie, ie_len) \
     wlan_hdd_get_vendor_oui_ie_ptr(P2P_OUI_TYPE, P2P_OUI_TYPE_SIZE, ie, ie_len)
+=======
+#ifdef WLAN_FEATURE_P2P
+#define wlan_hdd_get_p2p_ie_ptr(ie, ie_len) \
+    wlan_hdd_get_vendor_oui_ie_ptr(P2P_OUI_TYPE, P2P_OUI_TYPE_SIZE, ie, ie_len)
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_FEATURE_WFD
 #define wlan_hdd_get_wfd_ie_ptr(ie, ie_len) \
@@ -339,8 +390,15 @@ extern int hdd_wlan_get_rts_threshold(hdd_adapter_t *pAdapter,
                                       union iwreq_data *wrqu);
 extern int hdd_wlan_get_frag_threshold(hdd_adapter_t *pAdapter,
                                       union iwreq_data *wrqu);
+<<<<<<< HEAD
 extern void hdd_wlan_get_version(hdd_adapter_t *pAdapter,
                                  union iwreq_data *wrqu, char *extra);
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+extern int hdd_wlan_get_version(hdd_adapter_t *pAdapter,
+                                union iwreq_data *wrqu, char *extra);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern int iw_get_scan(struct net_device *dev, 
                        struct iw_request_info *info,
@@ -414,6 +472,7 @@ VOS_STATUS wlan_hdd_get_station_stats(hdd_adapter_t *pAdapter);
 
 VOS_STATUS wlan_hdd_get_rssi(hdd_adapter_t *pAdapter, v_S7_t *rssi_value);
 
+<<<<<<< HEAD
 void hdd_wmm_tx_snapshot(hdd_adapter_t *pAdapter);
 
 #ifdef FEATURE_WLAN_TDLS
@@ -427,5 +486,7 @@ VOS_STATUS wlan_hdd_get_roam_rssi(hdd_adapter_t *pAdapter, v_S7_t *rssi_value);
 void wlan_hdd_set_mc_addr_list(hdd_adapter_t *pAdapter, v_U8_t set);
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif // __WEXT_IW_H__
 

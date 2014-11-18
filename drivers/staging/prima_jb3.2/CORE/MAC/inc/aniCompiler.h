@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -125,7 +128,11 @@
 #define __ani_attr_aligned_32
 #elif defined(__GNUC__)
 #define __ani_attr_pre_packed 
+<<<<<<< HEAD
 #define __ani_attr_packed                       __packed
+=======
+#define __ani_attr_packed                       __attribute__((packed))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define __ani_attr_aligned_2                    __attribute__((aligned(2)))
 #define __ani_attr_aligned_4                    __attribute__((aligned(4)))
 #define __ani_attr_aligned_8                    __attribute__((aligned(8)))
@@ -145,10 +152,17 @@
 #endif
 
 #if defined(ANI_DATAPATH_SECTION)
+<<<<<<< HEAD
 #define  __DP_SRC_RX                __attribute__((section(".dpsrcrx")))
 #define  __DP_SRC_TX                __attribute__((section(".dpsrctx")))
 #define  __DP_SRC                   __attribute__((section(".dpsrc")))
 #define  __ANIHDD_MODULE            __attribute__((section(".anihdd")))
+=======
+#define  __DP_SRC_RX                __attribute__  ((section(".dpsrcrx")))
+#define  __DP_SRC_TX                __attribute__  ((section(".dpsrctx")))
+#define  __DP_SRC                   __attribute__  ((section(".dpsrc")))
+#define  __ANIHDD_MODULE            __attribute__  ((section(".anihdd")))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #else
 #define  __DP_SRC_RX 
 #define  __DP_SRC_TX

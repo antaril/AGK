@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -58,8 +61,18 @@
 #include "dphGlobal.h"
 #include "limDebug.h"
 
+<<<<<<< HEAD
 
 #include "halMsgApi.h" 
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halCommonApi.h"
+#endif
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include "halMsgApi.h" 
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // ---------------------------------------------------------------------
 /**
@@ -178,12 +191,21 @@ tpDphHashNode dphLookupHashEntry(tpAniSirGlobal pMac, tANI_U8 staAddr[], tANI_U1
  *         NULL if lookup was a failure
  */
 
+<<<<<<< HEAD
 tpDphHashNode dphGetHashEntry(tpAniSirGlobal pMac, tANI_U16 peerIdx, dphHashTableClass* pDphHashTable)
 {
     if (peerIdx < pDphHashTable->size)
     {
         if (pDphHashTable->pDphNodeArray[peerIdx].added)
           return &pDphHashTable->pDphNodeArray[peerIdx];
+=======
+tpDphHashNode dphGetHashEntry(tpAniSirGlobal pMac, tANI_U16 assocId, dphHashTableClass* pDphHashTable)
+{
+    if (assocId < pDphHashTable->size)
+    {
+        if (pDphHashTable->pDphNodeArray[assocId].added)
+          return &pDphHashTable->pDphNodeArray[assocId];
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         else
             return NULL;
     }
@@ -263,14 +285,22 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
 
     if (assocId >= pDphHashTable->size)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Invalid Assoc Id %d"), assocId);)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("Invalid Assoc Id %d\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return NULL;
     }
 
     pStaDs = getNode(pMac, (tANI_U8) assocId, pDphHashTable);
     staIdx = pStaDs->staIndex;
 
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Assoc Id %d, Addr %08X"), assocId, pStaDs);)
+=======
+    PELOG1(limLog(pMac, LOG1, FL("Assoc Id %d, Addr %08X\n"), assocId, pStaDs);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // Clear the STA node except for the next pointer (last 4 bytes)
     palZeroMemory( pMac->hHdd, (tANI_U8 *) pStaDs, sizeof(tDphHashNode) - sizeof(tpDphHashNode));
@@ -287,13 +317,24 @@ tpDphHashNode dphInitStaState(tpAniSirGlobal pMac, tSirMacAddr staAddr,
 
     // Initialize fragmentation threshold
     if (wlan_cfgGetInt(pMac, WNI_CFG_FRAGMENTATION_THRESHOLD, &val) != eSIR_SUCCESS)
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve fragmentation threshold"));
+=======
+        limLog(pMac, LOGP, FL("could not retrieve fragmentation threshold\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     else
         pStaDs->fragSize = (tANI_U16) val;
 
     pStaDs->added = 1;
     pStaDs->encPolicy = HAL_ENC_POLICY_NULL;
 
+<<<<<<< HEAD
+=======
+#if defined( PLM_WDS)&&defined(LX5280)
+    pStaDs->wdsIndex=pStaDs->wdsPeerBeaconSeen=0;
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WMM_APSD
     pStaDs->stopQueue = 0;
     pStaDs->spStatus = 0;
@@ -327,19 +368,31 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
     tpDphHashNode ptr, node;
     tANI_U16 index = hashFunction(pMac, staAddr, pDphHashTable->size);
 
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr"),
+=======
+    PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            assocId, index);
     dphPrintMacAddr(pMac, staAddr, LOG1);)
 
     if (assocId >= pDphHashTable->size)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d"), assocId);)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return NULL;
     }
 
     if (pDphHashTable->pDphNodeArray[assocId].added)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("already added STA %d"), assocId);)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("already added STA %d\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return NULL;
     }
 
@@ -347,7 +400,11 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
     {
         if (ptr == ptr->next)
         {
+<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("Infinite Loop"));)
+=======
+            PELOGE(limLog(pMac, LOGE, FL("Infinite Loop\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             return NULL;
         }
 
@@ -358,7 +415,11 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
     if (ptr)
     {
         // Duplicate entry
+<<<<<<< HEAD
         limLog(pMac, LOGE, FL("assocId %d hashIndex %d entry exists"),
+=======
+        limLog(pMac, LOGE, FL("assocId %d hashIndex %d entry exists\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                      assocId, index);
         return NULL;
     }
@@ -366,7 +427,11 @@ tpDphHashNode dphAddHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_U16
     {
         if (dphInitStaState(pMac, staAddr, assocId, false, pDphHashTable) == NULL)
         {
+<<<<<<< HEAD
             PELOGE(limLog(pMac, LOGE, FL("could not Init STAid=%d"), assocId);)
+=======
+            PELOGE(limLog(pMac, LOGE, FL("could not Init STAid=%d\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     return NULL;
         }
 
@@ -404,19 +469,31 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
   tANI_U16 index = hashFunction(pMac, staAddr, pDphHashTable->size);
 
 
+<<<<<<< HEAD
   PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr"),
+=======
+  PELOG1(limLog(pMac, LOG1, FL("assocId %d index %d STA addr\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                   assocId, index);
   dphPrintMacAddr(pMac, staAddr, LOG1);)
 
   if (assocId >= pDphHashTable->size)
   {
+<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d"), assocId);)
+=======
+      PELOGE(limLog(pMac, LOGE, FL("invalid STA id %d\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return eSIR_FAILURE;
   }
 
   if (pDphHashTable->pDphNodeArray[assocId].added == 0)
   {
+<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("STA %d never added"), assocId);)
+=======
+      PELOGE(limLog(pMac, LOGE, FL("STA %d never added\n"), assocId);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return eSIR_FAILURE;
   }
 
@@ -429,7 +506,11 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
       break;
     if (prev == ptr)
     {
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Infinite Loop"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("Infinite Loop\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_FAILURE;
     }
   }
@@ -438,7 +519,10 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
     {
       /// Delete the entry after invalidating it
       ptr->valid = 0;
+<<<<<<< HEAD
       memset(ptr->staAddr, 0, sizeof(ptr->staAddr));
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       if (prev == 0)
          pDphHashTable->pHashTable[index] = ptr->next;
       else
@@ -449,7 +533,11 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
   else
     {
       /// Entry not present
+<<<<<<< HEAD
       PELOGE(limLog(pMac, LOGE, FL("Entry not present STA addr"));
+=======
+      PELOGE(limLog(pMac, LOGE, FL("Entry not present STA addr\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       dphPrintMacAddr(pMac, staAddr, LOGE);)
       return eSIR_FAILURE;
     }
@@ -477,7 +565,11 @@ tSirRetStatus dphDeleteHashEntry(tpAniSirGlobal pMac, tSirMacAddr staAddr, tANI_
 void
 dphPrintMacAddr(tpAniSirGlobal pMac, tANI_U8 addr[], tANI_U32 level)
 {
+<<<<<<< HEAD
     limLog(pMac, (tANI_U16) level, FL("MAC ADDR = %d:%d:%d:%d:%d:%d"),
+=======
+    limLog(pMac, (tANI_U16) level, FL("MAC ADDR = %d:%d:%d:%d:%d:%d\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            addr[0], addr[1], addr[2], addr[3], addr[4], addr[5]);
 }
 

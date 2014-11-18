@@ -560,6 +560,7 @@ static inline void kgsl_cancel_events_timestamp(struct kgsl_device *device,
 	kgsl_signal_event(device, context, timestamp, KGSL_EVENT_CANCELLED);
 }
 
+<<<<<<< HEAD
 
 /**
 * kgsl_process_private_get() - increment the refcount on a kgsl_process_private
@@ -582,6 +583,8 @@ void kgsl_process_private_put(struct kgsl_process_private *private);
 
 struct kgsl_process_private *kgsl_process_private_find(pid_t pid);
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  * kgsl_sysfs_store() - parse a string from a sysfs store function
  * @buf: Incoming string to parse

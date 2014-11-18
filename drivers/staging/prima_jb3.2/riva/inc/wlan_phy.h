@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,9 +49,15 @@
 
 Contains definitions of all PHY related structures that aree needed by FTM/PTT
 
+<<<<<<< HEAD
 Copyright (c) 2007 Qualcomm Technologies, Inc. All Rights Reserved. 
 Qualcomm Technologies Proprietary and Confidential
 
+=======
+Copyright (c) 2007 QUALCOMM Incorporated. 
+All Rights Reserved. 
+Qualcomm Confidential and Proprietary 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ============================================================================*/
 #include <wlan_nv.h>
  
@@ -104,11 +113,15 @@ typedef enum {
    PHYDBG_PREAMBLE_GREENFIELD,
    PHYDBG_PREAMBLE_MIXED,
    PHYDBG_PREAMBLE_SHORTB,
+<<<<<<< HEAD
    PHYDBG_PREAMBLE_LONGB,
 
    PHYDBG_LDPC_PREAMBLE_OFDM = 0x10,
    PHYDBG_LDPC_PREAMBLE_GREENFIELD = 0x11,
    PHYDBG_LDPC_PREAMBLE_MIXED = 0x12
+=======
+   PHYDBG_PREAMBLE_LONGB
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } ePhyDbgPreamble;
 
 
@@ -235,8 +248,11 @@ typedef tANI_U32 eGainSteps;
 //[RY] new for PRIMA
 #define DPD_RESPONSE_SIZE 128
 typedef PACKED_PRE struct PACKED_POST {
+<<<<<<< HEAD
     tANI_U8  dpdCalFailCnt;                     //Count for number of times DPD cal failed.
     tANI_U8  dpdCalSuccessCnt;                  //Count for number of times DPD cal passed.
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tANI_S16 dpd_threshold[DPD_RESPONSE_SIZE];
     tANI_S16 dpd_aoffset[DPD_RESPONSE_SIZE];
     tANI_S16 dpd_again[DPD_RESPONSE_SIZE];
@@ -916,6 +932,7 @@ typedef enum
 #define MAX_TPC_GAIN_LUT_DBM_2DEC_PLACES    (MAX_TPC_GAIN_LUT_DBM * 100)
 #define MIN_TPC_GAIN_LUT_DBM_2DEC_PLACES    (MIN_TPC_GAIN_LUT_DBM * 100)
 
+<<<<<<< HEAD
 typedef enum
 {
     RF_BANDWIDTH_20MHZ = 20,
@@ -926,4 +943,6 @@ typedef enum
     RF_BANDWIDTH_INVALID = 0x7FFFFFFF
 }eRfBandwidth;
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* WLAN_PHY_H */

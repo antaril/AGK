@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -77,7 +80,11 @@
   Include Files
   ------------------------------------------------------------------------*/
 #include <vos_trace.h>
+<<<<<<< HEAD
 #include <aniGlobal.h>
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*--------------------------------------------------------------------------
   Preprocessor definitions and constants
   ------------------------------------------------------------------------*/
@@ -114,6 +121,7 @@ moduleTraceInfo gVosTraceInfo[ VOS_MODULE_ID_MAX ] =
 {
    [VOS_MODULE_ID_BAP]        = { VOS_DEFAULT_TRACE_LEVEL, "BAP" },
    [VOS_MODULE_ID_TL]         = { VOS_DEFAULT_TRACE_LEVEL, "TL " },
+<<<<<<< HEAD
    [VOS_MODULE_ID_WDI]        = { VOS_DEFAULT_TRACE_LEVEL, "WDI"},
    [VOS_MODULE_ID_HDD]        = { VOS_DEFAULT_TRACE_LEVEL, "HDD" },
    [VOS_MODULE_ID_SME]        = { VOS_DEFAULT_TRACE_LEVEL, "SME" },
@@ -142,6 +150,33 @@ static tvosTraceData gvosTraceData;
  */
 static tpvosTraceCb vostraceCBTable[VOS_MODULE_ID_MAX];
 static tpvosTraceCb vostraceRestoreCBTable[VOS_MODULE_ID_MAX];
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+   [VOS_MODULE_ID_BAL]        = { VOS_DEFAULT_TRACE_LEVEL, "BAL" },
+   [VOS_MODULE_ID_SAL]        = { VOS_DEFAULT_TRACE_LEVEL, "SAL" },
+   [VOS_MODULE_ID_SSC]        = { VOS_DEFAULT_TRACE_LEVEL, "SSC" },
+#endif
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+   [VOS_MODULE_ID_WDI]        = { VOS_DEFAULT_TRACE_LEVEL, "WDI"},
+#endif
+   [VOS_MODULE_ID_HDD]        = { VOS_DEFAULT_TRACE_LEVEL, "HDD" },
+   [VOS_MODULE_ID_SME]        = { VOS_DEFAULT_TRACE_LEVEL, "SME" },
+   [VOS_MODULE_ID_PE]         = { VOS_DEFAULT_TRACE_LEVEL, "PE " },
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+   [VOS_MODULE_ID_HAL]        = { VOS_DEFAULT_TRACE_LEVEL, "HAL" },
+#else
+   [VOS_MODULE_ID_WDA]        = { VOS_DEFAULT_TRACE_LEVEL, "WDA" },
+#endif
+   [VOS_MODULE_ID_SYS]        = { VOS_DEFAULT_TRACE_LEVEL, "SYS" },
+   [VOS_MODULE_ID_VOSS]       = { VOS_DEFAULT_TRACE_LEVEL, "VOS" },
+#ifdef WLAN_SOFTAP_FEATURE
+   [VOS_MODULE_ID_SAP]        = { VOS_DEFAULT_TRACE_LEVEL, "SAP" },
+   [VOS_MODULE_ID_HDD_SOFTAP] = { VOS_DEFAULT_TRACE_LEVEL, "HSP" },
+#endif
+};
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*-------------------------------------------------------------------------
   Functions
   ------------------------------------------------------------------------*/
@@ -150,7 +185,11 @@ void vos_trace_setLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level )
    // Make sure the caller is passing in a valid LEVEL.
    if ( level >= VOS_TRACE_LEVEL_MAX )
    {
+<<<<<<< HEAD
       pr_err("%s: Invalid trace level %d passed in!\n", __func__, level);
+=======
+      pr_err("%s: Invalid trace level %d passed in!\n", __FUNCTION__, level);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return;
    }
 
@@ -173,14 +212,22 @@ void vos_trace_setValue( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, v_U8_t on)
    // Make sure the caller is passing in a valid LEVEL.
    if ( level < 0  || level >= VOS_TRACE_LEVEL_MAX )
    {
+<<<<<<< HEAD
       pr_err("%s: Invalid trace level %d passed in!\n", __func__, level);
+=======
+      pr_err("%s: Invalid trace level %d passed in!\n", __FUNCTION__, level);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return;
    }
 
    // Make sure the caller is passing in a valid module.
    if ( module < 0 || module >= VOS_MODULE_ID_MAX )
    {
+<<<<<<< HEAD
       pr_err("%s: Invalid module id %d passed in!\n", __func__, module);
+=======
+      pr_err("%s: Invalid module id %d passed in!\n", __FUNCTION__, module);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return;
    }
 
@@ -236,6 +283,7 @@ void vos_snprintf(char *strBuffer, unsigned  int size, char *strFormat, ...)
     va_end( val );
 }
 
+<<<<<<< HEAD
 #ifdef WCONN_TRACE_KMSG_LOG_BUFF
 
 /* 64k::  size should be power of 2 to
@@ -301,6 +349,9 @@ void vos_wconn_trace_exit(void)
 }
 
 #endif
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef VOS_ENABLE_TRACING
 
@@ -331,7 +382,10 @@ void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat
 {
    char strBuffer[VOS_TRACE_BUFFER_SIZE];
    int n;
+<<<<<<< HEAD
    unsigned long irq_flag;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    // Print the trace message when the desired level bit is set in the module
    // tracel level mask.
@@ -341,18 +395,28 @@ void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat
       // as the trace levels are defined in the enum (see VOS_TRACE_LEVEL) so we
       // can index into this array with the level and get the right string.  The
       // vos trace levels are...
+<<<<<<< HEAD
       // none, Fatal, Error, Warning, Info, InfoHigh, InfoMed, InfoLow, Debug
       static const char * TRACE_LEVEL_STR[] = { "  ", "F ", "E ", "W ", "I ", "IH", "IM", "IL", "D" };
+=======
+      // none, Fata, Error, Warning, Info, InfoHigh, InfoMed, InfoLow
+      static const char * TRACE_LEVEL_STR[] = { "  ", "F ", "E ", "W ", "I ", "IH", "IM", "IL" };
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       va_list val;
       va_start(val, strFormat);
 
       // print the prefix string into the string buffer...
+<<<<<<< HEAD
       n = snprintf(strBuffer, VOS_TRACE_BUFFER_SIZE, "wlan: [%d:%2s:%3s] ",
+=======
+      n = snprintf(strBuffer, VOS_TRACE_BUFFER_SIZE, "[WLAN][%d:%2s:%3s] ",
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    in_interrupt() ? 0 : current->pid,
                    (char *) TRACE_LEVEL_STR[ level ],
                    (char *) gVosTraceInfo[ module ].moduleNameStr );
 
       // print the formatted log message after the prefix string.
+<<<<<<< HEAD
       if ((n >= 0) && (n < VOS_TRACE_BUFFER_SIZE))
       {
          vsnprintf(strBuffer + n, VOS_TRACE_BUFFER_SIZE - n, strFormat, val );
@@ -365,6 +429,11 @@ void vos_trace_msg( VOS_MODULE_ID module, VOS_TRACE_LEVEL level, char *strFormat
          pr_err("%s\n", strBuffer);
       }
      va_end(val);
+=======
+      vsnprintf(strBuffer + n, VOS_TRACE_BUFFER_SIZE - n, strFormat, val );
+      pr_err("%s\n", strBuffer);
+      va_end( val);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 }
 
@@ -372,10 +441,17 @@ void vos_trace_display(void)
 {
    VOS_MODULE_ID moduleId;
 
+<<<<<<< HEAD
    pr_err("     1)FATAL  2)ERROR  3)WARN  4)INFO  5)INFO_H  6)INFO_M  7)INFO_L 8)DEBUG\n");
    for (moduleId = 0; moduleId < VOS_MODULE_ID_MAX; ++moduleId)
    {
       pr_err("%2d)%s    %s        %s       %s       %s        %s         %s         %s        %s\n",
+=======
+   pr_err("     1)FATAL  2)ERROR  3)WARN  4)INFO  5)INFO_H  6)INFO_M  7)INFO_L\n");
+   for (moduleId = 0; moduleId < VOS_MODULE_ID_MAX; ++moduleId)
+   {
+      pr_err("%2d)%s    %s        %s       %s       %s        %s         %s         %s\n",
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
              (int)moduleId,
              gVosTraceInfo[moduleId].moduleNameStr,
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_FATAL)) ? "X":" ",
@@ -384,12 +460,17 @@ void vos_trace_display(void)
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO)) ? "X":" ",
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_HIGH)) ? "X":" ",
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_MED)) ? "X":" ",
+<<<<<<< HEAD
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_LOW)) ? "X":" ",
              (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_DEBUG)) ? "X":" "
+=======
+             (gVosTraceInfo[moduleId].moduleTraceLevel & (1 << VOS_TRACE_LEVEL_INFO_LOW)) ? "X":" "
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
          );
    }
 }
 
+<<<<<<< HEAD
 /*----------------------------------------------------------------------------
 
   \brief vos_trace_hex_dump() - Externally called hex dump function
@@ -746,3 +827,6 @@ void vosTraceDumpAll(void *pMac, v_U8_t code, v_U8_t session,
         spin_unlock(&ltraceLock);
     }
 }
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

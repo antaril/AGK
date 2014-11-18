@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -49,7 +52,11 @@
  * History:-
  * Date           Modified by    Modification Information
  * --------------------------------------------------------------------
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  */
 #ifndef __MAC_PROP_EXTS_H
 #define __MAC_PROP_EXTS_H
@@ -65,6 +72,15 @@
 // Types definitions used within proprietary IE
 #define SIR_MAC_PROP_EXT_RATES_TYPE     0
 #define SIR_MAC_PROP_AP_NAME_TYPE       1
+<<<<<<< HEAD
+=======
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+#define SIR_MAC_PROP_HCF_TYPE           2
+#define SIR_MAC_PROP_WDS_TYPE           3
+#define SIR_MAC_PROP_BP_IND_TYPE        4
+#define SIR_MAC_PROP_NEIGHBOR_BSS_TYPE  5
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define SIR_MAC_PROP_LOAD_INFO_TYPE     6
 #define SIR_MAC_PROP_ASSOC_TYPE         7
 #define SIR_MAC_PROP_LOAD_BALANCE_TYPE  8
@@ -113,10 +129,17 @@
 
 // macro to set/get a capability bit, bitname is one of HCF/11EQOS/etc...
 #define PROP_CAPABILITY_SET(bitname, value) \
+<<<<<<< HEAD
   ((value) = (value) | ((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname)))
 
 #define PROP_CAPABILITY_RESET(bitname, value) \
   ((value) = (value) & ~((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname)))
+=======
+        (value) = (value) | ((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname))
+
+#define PROP_CAPABILITY_RESET(bitname, value) \
+        (value) = (value) & ~((tANI_U16)(1 << SIR_MAC_PROP_CAPABILITY_ ## bitname))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         
 #define PROP_CAPABILITY_GET(bitname, value) \
         (((value) >> SIR_MAC_PROP_CAPABILITY_ ## bitname) & 1)
@@ -128,6 +151,10 @@
           (dot11Mode == WNI_CFG_DOT11_MODE_TAURUS) || \
           (dot11Mode == WNI_CFG_DOT11_MODE_ALL)) ? TRUE: FALSE)
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define IS_DOT11_MODE_HT(dot11Mode) \
         (((dot11Mode == WNI_CFG_DOT11_MODE_11N) || \
           (dot11Mode ==  WNI_CFG_DOT11_MODE_11N_ONLY) || \
@@ -135,6 +162,16 @@
           (dot11Mode ==  WNI_CFG_DOT11_MODE_11AC_ONLY) || \
           (dot11Mode ==  WNI_CFG_DOT11_MODE_TAURUS) || \
           (dot11Mode ==  WNI_CFG_DOT11_MODE_ALL)) ? TRUE: FALSE)
+<<<<<<< HEAD
+=======
+#else
+#define IS_DOT11_MODE_HT(dot11Mode) \
+        (((dot11Mode == WNI_CFG_DOT11_MODE_11N) || \
+          (dot11Mode ==  WNI_CFG_DOT11_MODE_TAURUS) || \
+          (dot11Mode ==  WNI_CFG_DOT11_MODE_11AC) || \
+          (dot11Mode ==  WNI_CFG_DOT11_MODE_ALL)) ? TRUE: FALSE)
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_FEATURE_11AC
 #define IS_DOT11_MODE_VHT(dot11Mode) \
@@ -319,6 +356,19 @@ typedef struct sSirPropIEStruct
     tANI_U8                    triggerStaScanPresent:1;                
     tANI_U8                    rsvd:5;
 
+<<<<<<< HEAD
+=======
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+    tANI_U8                    hcfPresent:1;
+    tANI_U8                    wdsPresent:1;
+    tANI_U8                    neighborListPresent:1;
+    tANI_U8                    loadInfoPresent:1;
+    tANI_U8                    llsetPresent:1;
+    tANI_U8                    bpindPresent:1;
+    tANI_U8                    assocTypePresent:1;
+    tANI_U8                    rsvd1:1;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     tSirMacPropRateSet    propRates;
     tAniApName            apName;           // used in beacon/probe only
@@ -330,6 +380,23 @@ typedef struct sSirPropIEStruct
     tQuietBssIEStruct     quietBss;
     tANI_U8               triggerStaScanEnable;
 
+<<<<<<< HEAD
+=======
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+    tANI_U8                    hcfEnabled;
+    // used in beacon/probe response only
+    tANI_U8                    wdsLength;
+    tANI_U8                    wdsData[ANI_WDS_INFO_MAX_LENGTH];
+    tSirLoad              load;
+    tSirMacPropLLSet      llSet; 
+    // used in assoc request only
+    tANI_U8                    bpIndicator;
+    tANI_U8                    bpType;
+    tANI_U8                    numBss;
+    tANI_U8                    assocType;
+    tpSirNeighborBssInfo  pBssList;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 } tSirPropIEStruct, *tpSirPropIEStruct;
 

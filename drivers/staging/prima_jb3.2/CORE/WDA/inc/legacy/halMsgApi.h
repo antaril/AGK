@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -47,6 +50,13 @@
 #include "halTypes.h"
 #include "sirApi.h"
 #include "sirParams.h"
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halPhy.h"
+#include "halPhyApi.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define HAL_NUM_BSSID 2
 /* operMode in ADD BSS message */
@@ -59,9 +69,12 @@
 #define STA_ENTRY_BSSID             2
 #define STA_ENTRY_BCAST             3 //Special station id for transmitting broadcast frames.
 #define STA_ENTRY_PEER              STA_ENTRY_OTHER
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
 #define STA_ENTRY_TDLS_PEER         4
 #endif /* FEATURE_WLAN_TDLS */
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define STA_ENTRY_TRANSMITTER       STA_ENTRY_SELF
 #define STA_ENTRY_RECEIVER          STA_ENTRY_OTHER
@@ -130,6 +143,34 @@ typedef struct
 } tTCParams;
 
 
+<<<<<<< HEAD
+=======
+typedef enum eRxpMode {
+    eRXP_IDLE_MODE        = 0x0,
+    eRXP_SCAN_MODE        = 0x1,
+    eRXP_PRE_ASSOC_MODE   = 0x2,
+    eRXP_POST_ASSOC_MODE  = 0x4,
+    eRXP_AP_MODE          = 0x8,
+    eRXP_PROMISCUOUS_MODE = 0x10,
+    eRXP_LEARN_MODE       = 0x20,
+    eRXP_POWER_SAVE_MODE  = 0x40,
+    eRXP_IBSS_MODE        = 0x80,
+    eRXP_BTAMP_PREASSOC_MODE    = 0x100,
+    eRXP_BTAMP_POSTASSOC_MODE   = 0x200,
+    eRXP_BTAMP_AP_MODE          = 0x400,
+    eRXP_BTAMP_STA_MODE         = 0x800,
+    eRXP_MULTI_BSS_MODE         = 0x1000
+#ifdef FEATURE_OEM_DATA_SUPPORT
+   ,eRXP_OEM_DATA_MODE             = 0x2000
+#endif
+#ifndef WLAN_FTM_STUB
+    ,eRXP_FTM_MODE         = 0x4000
+#endif
+   ,eRXP_LISTEN_MODE      = 0x8000
+} tRxpMode;
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef struct
 {
     // First two fields bssid and assocId are used to find staid for sta.
@@ -291,17 +332,29 @@ typedef struct
     tANI_U8     sessionId; //PE session id for PE<->HAL interface 
     // HAL just sends back what it receives.
 
+<<<<<<< HEAD
     /*if this is a P2P Capable Sta*/
     tANI_U8     p2pCapableSta;
+=======
+#ifdef WLAN_FEATURE_P2P
+    /*if this is a P2P Capable Sta*/
+    tANI_U8     p2pCapableSta;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_FEATURE_11AC
     tANI_U8    vhtCapable;
     tANI_U8    vhtTxChannelWidthSet;
+<<<<<<< HEAD
     tANI_U8    vhtTxBFCapable;
 #endif
 
     tANI_U8    htLdpcCapable;
     tANI_U8    vhtLdpcCapable;
+=======
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tAddStaParams, *tpAddStaParams;
 
 
@@ -353,7 +406,15 @@ typedef struct
     tAniEdType      encType;        // Encryption/Decryption type
     tAniWepType     wepType;        // valid only for WEP
     tANI_U8         defWEPIdx;      // Default WEP key, valid only for static WEP, must between 0 and 3
+<<<<<<< HEAD
     tSirKeys        key[SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS];            // valid only for non-static WEP encyrptions
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tSirKeys        key[SIR_MAC_MAX_NUM_OF_DEFAULT_KEYS];            // valid only for non-static WEP encyrptions
+#else
+    tSirKeys        key;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tANI_U8         singleTidRc;    // 1=Single TID based Replay Count, 0=Per TID based RC
     /*
      * Following parameter is for returning status
@@ -552,7 +613,13 @@ typedef struct {
 
     tANI_U8 notifyBss;
 
+<<<<<<< HEAD
     tANI_U8 useNoA;
+=======
+#ifdef WLAN_FEATURE_P2P
+    tANI_U8 useNoA;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // If this flag is set HAL notifies PE when SMAC returns status.
     tANI_U8 notifyHost;
@@ -580,12 +647,20 @@ typedef struct {
 
 } tInitScanParams, * tpInitScanParams;
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef enum  eDelStaReasonCode{
    HAL_DEL_STA_REASON_CODE_KEEP_ALIVE = 0x1,
    HAL_DEL_STA_REASON_CODE_TIM_BASED  = 0x2,
    HAL_DEL_STA_REASON_CODE_RA_BASED   = 0x3,
    HAL_DEL_STA_REASON_CODE_UNKNOWN_A2 = 0x4
 }tDelStaReasonCode;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 //
 // Msg header is used from tSirMsgQ
@@ -596,8 +671,15 @@ typedef struct {
     tANI_U16    staId;
     tSirMacAddr bssId; // TO SUPPORT BT-AMP    
                        // HAL copies bssid from the sta table.
+<<<<<<< HEAD
     tSirMacAddr addr2;        //  
     tANI_U16    reasonCode;   // To unify the keepalive / unknown A2 / tim-based disa                                                                                                 
+=======
+#ifdef WLAN_SOFTAP_FEATURE                       
+    tSirMacAddr addr2;        //  
+    tANI_U16    reasonCode;   // To unify the keepalive / unknown A2 / tim-based disa                                                                                                 
+#endif    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tDeleteStaContext, * tpDeleteStaContext;
 
 
@@ -690,6 +772,7 @@ typedef struct {
 
 } tFinishScanParams, * tpFinishScanParams;
 
+<<<<<<< HEAD
 #ifdef FEATURE_OEM_DATA_SUPPORT 
 
 #ifndef OEM_DATA_REQ_SIZE
@@ -697,6 +780,16 @@ typedef struct {
 #endif
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 1968
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#ifdef FEATURE_OEM_DATA_SUPPORT 
+
+#ifndef OEM_DATA_REQ_SIZE
+#define OEM_DATA_REQ_SIZE 70
+#endif
+#ifndef OEM_DATA_RSP_SIZE
+#define OEM_DATA_RSP_SIZE 968
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 typedef struct
@@ -711,6 +804,10 @@ typedef struct
     tANI_U8             oemDataRsp[OEM_DATA_RSP_SIZE];
 } tStartOemDataRsp, *tpStartOemDataRsp;
 #endif
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sBeaconGenStaInfo {
     tANI_U16    assocId;
@@ -741,16 +838,32 @@ typedef struct {
     tSirMacAddr bssId;
     tANI_U8 *beacon;     // Beacon data.
     tANI_U32 beaconLength; //length of the template.
+<<<<<<< HEAD
     tANI_U32 timIeOffset; //TIM IE offset from the beginning of the template.
     tANI_U16 p2pIeOffset; //P2P IE offset from the begining of the template
 } tSendbeaconParams, * tpSendbeaconParams;
 
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    tANI_U32 timIeOffset; //TIM IE offset from the beginning of the template.
+#ifdef WLAN_FEATURE_P2P    
+    tANI_U16 p2pIeOffset; //P2P IE offset from the begining of the template
+#endif    
+#endif
+} tSendbeaconParams, * tpSendbeaconParams;
+
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef struct sSendProbeRespParams {
     tSirMacAddr bssId;
     tANI_U8      *pProbeRespTemplate; 
     tANI_U32     probeRespTemplateLen;
     tANI_U32     ucProxyProbeReqValidIEBmap[8];
 } tSendProbeRespParams, * tpSendProbeRespParams;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*
  * This is used by PE to create a set of WEP keys for a given BSS.
@@ -873,6 +986,7 @@ typedef struct
     tANI_U16 paramChangeBitmap;
 }tUpdateBeaconParams, *tpUpdateBeaconParams;
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
 typedef struct 
 {
@@ -880,6 +994,9 @@ typedef struct
    tANI_U16  staId;
 }tUpdateVHTOpMode, *tpUpdateVHTOpMode;
 #endif
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 //HAL MSG: SIR_HAL_UPDATE_CF_IND
 typedef struct
@@ -1167,6 +1284,7 @@ typedef struct sUapsdParams
 
 //
 // Mesg header is used from tSirMsgQ
+<<<<<<< HEAD
 // Mesg Type = SIR_HAL_EXIT_UAPSD_REQ
 //
 typedef struct sExitUapsdParams
@@ -1177,6 +1295,8 @@ typedef struct sExitUapsdParams
 
 //
 // Mesg header is used from tSirMsgQ
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 // Mesg Type = SIR_LIM_DEL_BA_IND
 //
 typedef struct sBADeleteParams
@@ -1270,6 +1390,7 @@ typedef struct sEnterBmpsParams
     tANI_U8 respReqd;
 }tEnterBmpsParams, *tpEnterBmpsParams;
 
+<<<<<<< HEAD
 //BMPS response
 typedef struct sEnterBmpsRspParams
 {
@@ -1277,6 +1398,9 @@ typedef struct sEnterBmpsRspParams
     tANI_U32   status;
     tANI_U8    bssIdx;
 }tEnterBmpsRspParams, *tpEnterBmpsRspParams;
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 //
 // Mesg header is used from tSirMsgQ
 // Mesg Type = SIR_HAL_SET_MAX_TX_POWER_REQ
@@ -1307,6 +1431,10 @@ typedef struct sDelStaSelfParams
    tANI_U32 status;
 }tDelStaSelfParams, *tpDelStaSelfParams;
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef struct sP2pPsParams
 {
    tANI_U8   opp_ps;
@@ -1317,7 +1445,13 @@ typedef struct sP2pPsParams
    tANI_U32  single_noa_duration;
    tANI_U8   psSelection;
 }tP2pPsParams, *tpP2pPsParams;
+<<<<<<< HEAD
 
+=======
+#endif
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 static inline void halGetTxTSFtimer(tpAniSirGlobal pMac, 
                                                 tSirMacTimeStamp *pTime)
 {
@@ -1332,8 +1466,11 @@ typedef __ani_attr_pre_packed struct sBeaconFilterMsg
     tANI_U16    capabilityMask;
     tANI_U16    beaconInterval;
     tANI_U16    ieNum;
+<<<<<<< HEAD
     tANI_U8     bssIdx;
     tANI_U8     reserved;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } __ani_attr_packed tBeaconFilterMsg, *tpBeaconFilterMsg;
 
 typedef __ani_attr_pre_packed struct sEidByteInfo
@@ -1360,5 +1497,9 @@ typedef __ani_attr_pre_packed struct sRemBeaconFilterMsg
     tANI_U8  ucRemIeId[1];
 }  __ani_attr_packed tRemBeaconFilterMsg, *tpRemBeaconFilterMsg;
 
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* _HALMSGAPI_H_ */
 

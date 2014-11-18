@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -92,7 +95,11 @@ typedef enum ePmmState
     //UAPSD
     ePMM_STATE_UAPSD_WT_SLEEP_RSP,
     ePMM_STATE_UAPSD_SLEEP,
+<<<<<<< HEAD
     ePMM_STATE_UAPSD_WT_WAKEUP_RSP,
+=======
+    ePMM_STATE_UAPSD_WT_WAKEUP_RSP, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     //WOWLAN
     ePMM_STATE_WOWLAN,
@@ -104,7 +111,11 @@ typedef enum ePmmState
 typedef struct sPmmStaInfo
 {
     tANI_U16 assocId;
+<<<<<<< HEAD
     tANI_U32 staTxAckCnt;
+=======
+    tANI_U32 staTxAckCnt;   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }tPmmStaInfo, *tpPmmStaInfo;
 
 typedef struct sPmmTim
@@ -186,7 +197,11 @@ typedef struct sAniSirPmm
 
     tANI_U8  gPmmPsPollUpdate:1; // set when any sta state is update due to PS-Poll
     tANI_U8  rsvd: 7;
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /// STA Power management state array
     /**
      * An entry in this array records the power save state for an STA
@@ -200,7 +215,17 @@ typedef struct sAniSirPmm
     /// Flag to track if we are in a missed beacon scenario
     tANI_U8 inMissedBeaconScenario;
 
+<<<<<<< HEAD
     tPmmTim gPmmTim;
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+    tPmmStaState *gpPmmStaState; // Used for HCF - PS Poll 
+    tANI_U8 *gpPmmPSState;          // To Store the PS States in AP
+#endif
+#ifdef WLAN_SOFTAP_FEATURE
+    tPmmTim gPmmTim;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
     //Reason for which PMC is sending an EXIT_BMPS_REQ to PE

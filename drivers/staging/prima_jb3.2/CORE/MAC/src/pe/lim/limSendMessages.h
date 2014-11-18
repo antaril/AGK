@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -63,6 +66,7 @@ tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac,
                                   tpUpdateBeaconParams pUpdatedBcnParams,
                                   tpPESession  psessionEntry );
 //tSirRetStatus limSendBeaconParams(tpAniSirGlobal pMac, tpUpdateBeaconParams pUpdatedBcnParams);
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
 tSirRetStatus limSendModeUpdate(tpAniSirGlobal pMac, 
                                 tUpdateVHTOpMode *tempParam,
@@ -73,6 +77,8 @@ tANI_U32 limGetCenterChannel(tpAniSirGlobal pMac,
                              ePhyChanBondState secondaryChanOffset, 
                              tANI_U8 chanWidth);
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #if defined WLAN_FEATURE_VOWIFI  
 tSirRetStatus limSendSwitchChnlParams(tpAniSirGlobal pMac, tANI_U8 chnlNumber, 
                                       ePhyChanBondState secondaryChnlOffset, 
@@ -90,7 +96,11 @@ tSirRetStatus limSetLinkState(tpAniSirGlobal pMac, tSirLinkState state,  tSirMac
 extern tSirRetStatus limSetLinkStateFT(tpAniSirGlobal pMac, tSirLinkState 
 state,tSirMacAddr bssId, tSirMacAddr selfMacAddr, int ft, tpPESession psessionEntry);
 #endif
+<<<<<<< HEAD
 tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac, tANI_U32 *pTxPowerReq);
+=======
+tSirRetStatus limSendSetTxPowerReq(tpAniSirGlobal pMac, tpSirSetTxPowerReq pTxPowerReq);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 tSirRetStatus limSendGetTxPowerReq(tpAniSirGlobal pMac, tpSirGetTxPowerReq pTxPowerReq);
 void limSetActiveEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *plocalEdcaParams, tpPESession psessionEntry);
 #define CAPABILITY_FILTER_MASK  0x73CF
@@ -102,6 +112,7 @@ void limSetActiveEdcaParams(tpAniSirGlobal pMac, tSirMacEdcaParamRecord *plocalE
 #define HT_BYTE5_FILTER_MASK    0xFD
 #define DS_PARAM_CHANNEL_MASK   0x0
 
+<<<<<<< HEAD
 tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac, tpPESession psessionEntry);
 
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
@@ -109,5 +120,8 @@ tSirRetStatus limSendTdlsLinkEstablish(tpAniSirGlobal pMac, tANI_U8 bIsPeerRespo
                 tANI_U8 ptiBufStatusOffset, tANI_U8 ptiFrameLen, tANI_U8 *ptiFrame, tANI_U8 *extCapability);
 tSirRetStatus limSendTdlsLinkTeardown(tpAniSirGlobal pMac, tANI_U16 staId);
 #endif
+=======
+tSirRetStatus limSendBeaconFilterInfo(tpAniSirGlobal pMac);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif

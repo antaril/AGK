@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -80,6 +83,10 @@
 #include "wlan_hdd_mib.h"
 #include "wlan_hdd_wext.h"
 #include "wlan_hdd_main.h"
+<<<<<<< HEAD
+=======
+#include "wlan_hdd_version.h"
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include "wlan_hdd_tx_rx.h"
 
 #ifdef FEATURE_OEM_DATA_SUPPORT

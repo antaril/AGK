@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,11 +46,14 @@
 #if!defined( __LIM_SESSION_UTILS_H )
 #define __LIM_SESSION_UTILS_H
 
+<<<<<<< HEAD
 /*
 * Copyright (c) 2012-2013 Qualcomm Atheros, Inc.
 * All Rights Reserved.
 * Qualcomm Atheros Confidential and Proprietary.
 */
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**=========================================================================
   
@@ -85,6 +91,7 @@
   ------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------
   
+<<<<<<< HEAD
   \brief peGetVhtCapable() - Returns the Vht capable from a valid session.
  
   This function iterates the session Table and returns the VHT capable from first valid session
@@ -97,6 +104,20 @@
 
  --------------------------------------------------------------------------*/
 tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
+=======
+          \brief peGetVhtCapable() - Returns the Vht capable from a valid session.
+ 
+          This function itrates the session Table and returns the VHT capable from first valid session
+          if no sessions are valid/present  it returns FALSE
+
+         \param pMac	                - pointer to global adapter context
+          \return                        - channel to scan from valid session else zero.
+          
+          \sa
+           
+ --------------------------------------------------------------------------*/
+   tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 /*--------------------------------------------------------------------------
@@ -104,10 +125,17 @@ tANI_U8 peGetVhtCapable(tpAniSirGlobal pMac);
 
   This function is called to validate the Join Request for a BT-AMP station. If start BSS session is present
   this function returns TRUE else returns FALSE.
+<<<<<<< HEAD
 
   \param pMac  - pointer to global adapter context
   \return      - return TRUE if start BSS session is present else return FALSE.
 
+=======
+    
+  \param pMac                   - pointer to global adapter context
+  \return                           - return TRUE if start BSS session is present else return FALSE.
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   \sa
   --------------------------------------------------------------------------*/
 tANI_U8 peValidateBtJoinRequest(tpAniSirGlobal pMac);
@@ -232,6 +260,7 @@ limIsQuietBegin (tpAniSirGlobal pMac);
   --------------------------------------------------------------------------*/
 tANI_U8
 limIsInMCC (tpAniSirGlobal pMac);
+<<<<<<< HEAD
 /*--------------------------------------------------------------------------
   \brief peGetCurrentSTAsCount() - Returns total stations associated on 
                                       all session.
@@ -259,5 +288,7 @@ limIsFastRoamEnabled(tpAniSirGlobal pMac, tANI_U8 sessionId);
 #endif
 
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif //#if !defined( __LIM_SESSION_UTILS_H )
 

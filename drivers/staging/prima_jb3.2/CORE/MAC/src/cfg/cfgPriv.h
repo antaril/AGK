@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -65,7 +68,15 @@
 #include <cfgApi.h>
 #include "cfgDef.h"
 
+<<<<<<< HEAD
     #include <wniCfgSta.h>
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+    #include <wniCfgAp.h>
+#else
+    #include <wniCfgSta.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*--------------------------------------------------------------------*/
 /* CFG miscellaneous definition                                       */

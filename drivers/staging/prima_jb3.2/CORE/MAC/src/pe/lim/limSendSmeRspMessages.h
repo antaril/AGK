@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -49,7 +52,11 @@
  * History:-
  * Date           Modified by    Modification Information
  * --------------------------------------------------------------------
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  */
 #ifndef __LIM_SEND_SME_RSP_H
 #define __LIM_SEND_SME_RSP_H
@@ -63,9 +70,12 @@
 void limSendSmeRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes, tANI_U8 , tANI_U16);
 void limSendSmeStartBssRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes,tpPESession,tANI_U8,tANI_U16);
 void limSendSmeScanRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes,tANI_U8, tANI_U16);
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 void limSendSmeLfrScanRsp(tpAniSirGlobal, tANI_U16, tSirResultCodes,tANI_U8, tANI_U16);
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void limPostSmeScanRspMessage(tpAniSirGlobal, tANI_U16, tSirResultCodes,tANI_U8,tANI_U16); 
 void limSendSmeAuthRsp(tpAniSirGlobal, tSirResultCodes,
                        tSirMacAddr, tAniAuthType, tANI_U16,tpPESession,tANI_U8,tANI_U16);
@@ -75,9 +85,14 @@ void limSendSmeDisassocNtf(tpAniSirGlobal, tSirMacAddr, tSirResultCodes, tANI_U1
 void limSendSmeDeauthNtf(tpAniSirGlobal, tSirMacAddr, tSirResultCodes, tANI_U16, tANI_U16, tANI_U8, tANI_U16);
 void limSendSmeDisassocInd(tpAniSirGlobal, tpDphHashNode,tpPESession);
 void limSendSmeDeauthInd(tpAniSirGlobal, tpDphHashNode, tpPESession psessionEntry);
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 void limSendSmeCandidateFoundInd(tpAniSirGlobal, tANI_U8);
 #endif
+=======
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 void limSendSmeWmStatusChangeNtf(tpAniSirGlobal, tSirSmeStatusChangeCode, tANI_U32 *, tANI_U16, tANI_U8);
 void limSendSmeSetContextRsp(tpAniSirGlobal,
@@ -85,6 +100,12 @@ void limSendSmeSetContextRsp(tpAniSirGlobal,
 void limSendSmePromiscuousModeRsp(tpAniSirGlobal pMac);
 void limSendSmeNeighborBssInd(tpAniSirGlobal,
                               tLimScanResultNode *);
+<<<<<<< HEAD
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+void limSendSmeMeasurementInd(tpAniSirGlobal);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void limHandleDeleteBssRsp(tpAniSirGlobal pMac,tpSirMsgQ MsgQ);
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
@@ -101,9 +122,12 @@ void limSendSmeDeltsInd(tpAniSirGlobal pMac, tpSirDeltsReqInfo delts, tANI_U16 a
 void limSendSmeStatsRsp(tpAniSirGlobal pMac, tANI_U16 msgtype, void * stats);
 
 void limSendSmePEStatisticsRsp(tpAniSirGlobal pMac, tANI_U16 msgtype, void * stats);
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 void limSendSmePEGetRoamRssiRsp(tpAniSirGlobal pMac, tANI_U16 msgtype, void * stats);
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void limSendSmeRemoveKeyRsp(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tSirResultCodes resultCode,tpPESession,tANI_U8,tANI_U16);
 
 
@@ -120,11 +144,14 @@ void limSendSmeOemDataRsp(tpAniSirGlobal pMac, tANI_U32* pMsgBuf, tSirResultCode
 void limSendSmePreChannelSwitchInd(tpAniSirGlobal pMac);
 void limSendSmePostChannelSwitchInd(tpAniSirGlobal pMac);
 void limSendSmeMaxAssocExceededNtf(tpAniSirGlobal pMac, tSirMacAddr peerMacAddr, tANI_U8 smesessionId);
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
 void limSendSmeTdlsDisRsp(tpAniSirGlobal pMac, tSirResultCodes statusCode, tANI_U16 msgType);
 void limSendSmeTdlsLinkStartRsp(tpAniSirGlobal pMac, tSirResultCodes statusCode, tSirMacAddr peerMac, tANI_U16 msgType);
 void limSendSmeTdlsTeardownRsp(tpAniSirGlobal pMac, tSirResultCodes statusCode, tSirMacAddr peerMac, tANI_U16 msgType);
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif /* __LIM_SEND_SME_RSP_H */
 

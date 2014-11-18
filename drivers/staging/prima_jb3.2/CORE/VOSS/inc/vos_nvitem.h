@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -107,9 +110,15 @@ ADD_VNV_ITEM( VNV_MAXIMUM_TX_POWER, 1, 1, NV_WLAN_MAX_TX_POWER_I ) \
 ADD_VNV_ITEM( VNV_RX_SENSITIVITY, 1, MAC_RATE_COUNT, NV_WLAN_RX_SENSITIVITY_I)\
 ADD_VNV_ITEM( VNV_NETWORK_TYPE, 1, 1, NV_WLAN_NETWORK_TYPE_I ) \
 ADD_VNV_ITEM( VNV_CAL_MEMORY, 1, 3460, NV_WLAN_CAL_MEMORY_I ) \
+<<<<<<< HEAD
 ADD_VNV_ITEM( VNV_FW_CONFIG, 1, 32, NV_WLAN_FW_CONFIG_I ) \
 ADD_VNV_ITEM( VNV_RSSI_CHANNEL_OFFSETS, 2, 56, NV_WLAN_RSSI_CHANNEL_OFFSETS_I ) \
 ADD_VNV_ITEM( VNV_HW_CAL_VALUES, 1, 48, NV_WLAN_HW_CAL_VALUES_I ) \
+=======
+ADD_VNV_ITEM( VNV_CAL_STATUS, 1, 32, NV_WLAN_CAL_STATUS_I ) \
+ADD_VNV_ITEM( VNV_RSSI_CHANNEL_OFFSETS, 2, 56, NV_WLAN_RSSI_CHANNEL_OFFSETS_I ) \
+ADD_VNV_ITEM( VNV_RF_CAL_VALUES, 1, 48, NV_WLAN_RF_CAL_VALUES_I ) \
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ADD_VNV_ITEM( VNV_ANTENNA_PATH_LOSS, 14, 2, NV_WLAN_ANTENNA_PATH_LOSS_I ) \
 ADD_VNV_ITEM( VNV_PACKET_TYPE_POWER_LIMITS, 42, 2, NV_WLAN_PACKET_TYPE_POWER_LIMITS_I ) \
 ADD_VNV_ITEM( VNV_OFDM_CMD_PWR_OFFSET, 1, 2, NV_WLAN_OFDM_CMD_PWR_OFFSET_I ) \
@@ -124,7 +133,11 @@ ADD_VNV_ITEM( VNV_TABLE_VIRTUAL_RATE, 1, 4, VNV_TABLE_VIRTUAL_RATE_I ) \
 #define VOS_NV_FREQUENCY_FOR_1_3V_SUPPLY_1P6MH 1   //1.6 Mhz
 
 
+<<<<<<< HEAD
 /*!
+=======
+/*! 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * The path (from the root of the DPP_FOLDER_PATH\QCOM) to the file containing
  * the CLPC provisioning data. This is being temporarily put here. This should go
  * to esp_dpp.h where the WLAN_PROVISION_DATA is present.
@@ -628,14 +641,22 @@ VOS_STATUS vos_nv_open(void);
 VOS_STATUS vos_nv_close(void);
 
 /**------------------------------------------------------------------------
+<<<<<<< HEAD
   \brief vos_nv_getNVBuffer -
   \param pBuffer  - to return the buffer address
          pSize    - buffer size.
+=======
+  \brief vos_nv_getBuffer - 
+  \param pBuffer  - to return the buffer address
+            pNvBitmap - Nv Bit map
+            pSize     - buffer size.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   \return status of the NV read operation
   \sa
   -------------------------------------------------------------------------*/
 VOS_STATUS vos_nv_getNVBuffer(v_VOID_t **pNvBuffer ,v_SIZE_t *pSize);
 
+<<<<<<< HEAD
 /**------------------------------------------------------------------------
   \brief vos_nv_setRegDomain -
   \param clientCtxt  - Client Context, Not used for PRIMA
@@ -649,6 +670,20 @@ VOS_STATUS vos_nv_setRegDomain(void * clientCtxt, v_REGDOMAIN_t regId,
 
 /**------------------------------------------------------------------------
   \brief vos_nv_getChannelEnabledState -
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+/**------------------------------------------------------------------------
+  \brief vos_nv_setRegDomain - 
+  \param clientCtxt  - Client Context, Not used for PRIMA
+              regId  - Regulatory Domain ID
+  \return status set REG domain operation
+  \sa
+  -------------------------------------------------------------------------*/
+VOS_STATUS vos_nv_setRegDomain(void * clientCtxt, v_REGDOMAIN_t regId);
+
+/**------------------------------------------------------------------------
+  \brief vos_nv_getChannelEnabledState - 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   \param rfChannel  - input channel number to know enabled state
   \return eNVChannelEnabledType enabled state for channel
              * enabled
@@ -661,5 +696,9 @@ eNVChannelEnabledType vos_nv_getChannelEnabledState
 (
    v_U32_t    rfChannel
 );
+<<<<<<< HEAD
+=======
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif // __VOS_NVITEM_H

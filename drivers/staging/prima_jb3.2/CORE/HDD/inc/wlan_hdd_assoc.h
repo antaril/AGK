@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +43,7 @@
  */
 
 #if !defined( HDD_CONNECTION_H__ ) 
+<<<<<<< HEAD
 #define HDD_CONNECTION_H__
 #include <wlan_hdd_mib.h>
 #define HDD_MAX_NUM_IBSS_STA ( 9 )
@@ -48,6 +52,11 @@
 #define TDLS_STA_INDEX_VALID(staId) \
                           (((staId) >= 4) && ((staId) < 0xFF))
 #endif
+=======
+#define HDD_CONNECTION_H__ 
+#include <wlan_hdd_mib.h>
+#define HDD_MAX_NUM_IBSS_STA ( 4 )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define TKIP_COUNTER_MEASURE_STARTED 1
 #define TKIP_COUNTER_MEASURE_STOPED  0 
 /* Timeout (in ms) for Link to Up before Registering Station */
@@ -56,10 +65,13 @@ typedef enum
 {
    /** Not associated in Infra or participating in an IBSS / Ad-hoc network.*/
    eConnectionState_NotConnected,
+<<<<<<< HEAD
 
    /** While connection in progress */
    eConnectionState_Connecting,
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /** Associated in an Infrastructure network.*/
    eConnectionState_Associated,
 
@@ -72,7 +84,11 @@ typedef enum
 
    /** Disconnecting in an Infrastructure network.*/
    eConnectionState_Disconnecting
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }eConnectionState;
 /**This structure stores the connection information */
 typedef struct connection_info_s
@@ -112,9 +128,12 @@ typedef struct connection_info_s
    
     /** Remembers authenticated state */
    v_U8_t uIsAuthenticated;
+<<<<<<< HEAD
 
    /** Dot11Mode */
    tANI_U32 dot11Mode;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    
 }connection_info_t;
 /*Forward declaration of Adapter*/
@@ -122,7 +141,13 @@ typedef struct hdd_adapter_s hdd_adapter_t;
 typedef struct hdd_context_s hdd_context_t;
 typedef struct hdd_station_ctx hdd_station_ctx_t;
 typedef struct hdd_ap_ctx_s  hdd_ap_ctx_t;
+<<<<<<< HEAD
 typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
+=======
+#ifdef CONFIG_CFG80211   
+typedef struct hdd_mon_ctx_s  hdd_mon_ctx_t;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 extern v_BOOL_t hdd_connIsConnected( hdd_station_ctx_t *pHddStaCtx );
@@ -131,13 +156,20 @@ extern eHalStatus hdd_smeRoamCallback( void *pContext, tCsrRoamInfo *pRoamInfo, 
 
 extern v_VOID_t hdd_connSaveConnectInfo( hdd_adapter_t *pAdapter, tCsrRoamInfo *pRoamInfo, eCsrRoamBssType eBssType );
 
+<<<<<<< HEAD
 v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx,
+=======
+extern v_BOOL_t hdd_connGetConnectedBssType( hdd_station_ctx_t *pHddCtx, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         eMib_dot11DesiredBssType *pConnectedBssType );
 
 int hdd_SetGENIEToCsr( hdd_adapter_t *pAdapter, eCsrAuthType *RSNAuthType );
 
 int hdd_set_csr_auth_type( hdd_adapter_t *pAdapter, eCsrAuthType RSNAuthType );
+<<<<<<< HEAD
 VOS_STATUS hdd_roamRegisterTDLSSTA( hdd_adapter_t *pAdapter,
                                     tANI_U8 *peerMac, tANI_U16 staId, tANI_U8 ucastSig);
 void hdd_PerformRoamSetKeyComplete(hdd_adapter_t *pAdapter);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif

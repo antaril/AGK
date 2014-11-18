@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -108,12 +111,16 @@ when        who    what, where, why
 /*In prima 12 HW stations are supported including BCAST STA(staId 0)
  and SELF STA(staId 1) so total ASSOC stations which can connect to Prima
  SoftAP = 12 - 1(Self STa) - 1(Bcast Sta) = 10 Stations. */
+<<<<<<< HEAD
  
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
 #define WDI_MAX_SUPPORTED_STAS   41
 #else
 #define WDI_MAX_SUPPORTED_STAS   12
 #endif
+=======
+#define WDI_MAX_SUPPORTED_STAS    12 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define WDI_MAX_SUPPORTED_BSS     5 
 
 /* Control transport channel size*/
@@ -122,7 +129,13 @@ when        who    what, where, why
 /*Invalid BSS index ! TO DO: Must come from the HAL header file*/
 #define WDI_BSS_INVALID_IDX 0xFF
 
+<<<<<<< HEAD
 #define WDI_FTM_MAX_RECEIVE_BUFFER   6500
+=======
+#ifdef ANI_MANF_DIAG
+#define WDI_FTM_MAX_RECEIVE_BUFFER   6500
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*---------------------------------------------------------------------------
   DAL Control Path Main States
@@ -434,6 +447,7 @@ typedef enum
   /* Send a capability exchange message to HAL */
   WDI_FEATURE_CAPS_EXCHANGE_REQ                 = 79,
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
   /* Send a capability exchange message to HAL */
   WDI_UPDATE_VHT_OP_MODE_REQ                    = 80,
@@ -445,14 +459,19 @@ typedef enum
   /*WLAN DAL Set Tx Power Request*/
   WDI_SET_TX_POWER_REQ                          = 82,
   WDI_ROAM_SCAN_OFFLOAD_REQ                     = 83,
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   WDI_MAX_REQ,
 
   /*Send a suspend Indication down to HAL*/
   WDI_HOST_SUSPEND_IND          = WDI_MAX_REQ ,
 
+<<<<<<< HEAD
   /* Send a traffic stats indication to HAL */
   WDI_TRAFFIC_STATS_IND,
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   /*Keep adding the indications to the max request
     such that we keep them sepparate */
 
@@ -699,6 +718,7 @@ typedef enum
   /* FW sends its capability bitmap as a response */
   WDI_FEATURE_CAPS_EXCHANGE_RESP                = 78,
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
   WDI_UPDATE_VHT_OP_MODE_RESP                   = 79,
 #endif
@@ -708,6 +728,8 @@ typedef enum
 
   WDI_SET_TX_POWER_RESP                         = 81,
   WDI_ROAM_SCAN_OFFLOAD_RESP                    = 82,
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   /*-------------------------------------------------------------------------
     Indications
      !! Keep these last in the enum if possible
@@ -751,10 +773,14 @@ typedef enum
 
   /* Tx PER Hit Indication */
   WDI_HAL_TX_PER_HIT_IND              = WDI_HAL_IND_MIN + 11,
+<<<<<<< HEAD
 
   /* NOA Start Indication from FW to Host */
   WDI_HAL_P2P_NOA_START_IND            = WDI_HAL_IND_MIN + 12,
 
+=======
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   WDI_MAX_RESP
 }WDI_ResponseEnumType; 
 
@@ -1059,22 +1085,33 @@ typedef struct
   DXE when DXE wakes up from power save*/
   unsigned int                dxePhyAddr;
 
+<<<<<<< HEAD
   wpt_boolean                 dxeRingsEmpty;
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   /*NV download request parameters  */
   WDI_NvDownloadReqParamsType   wdiCachedNvDownloadReq;
 
   /* Driver Type */
   tDriverType                 driverMode;  
 
+<<<<<<< HEAD
   /* Statically allocated FTM Response Buffer */
   wpt_uint8                   ucFTMCommandRspBuffer[WDI_FTM_MAX_RECEIVE_BUFFER];
+=======
+#ifdef ANI_MANF_DIAG
+  /* Statically allocated FTM Response Buffer */
+  wpt_uint8                   ucFTMCommandRspBuffer[WDI_FTM_MAX_RECEIVE_BUFFER];
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   /*Driver in BMPS state*/
   wpt_boolean                 bInBmps;
 
   /*version of the PNO implementation in RIVA*/
   wpt_uint8                   wdiPNOVersion;
+<<<<<<< HEAD
 
   /*SSR timer*/
   wpt_timer                   ssrTimer;
@@ -1090,6 +1127,8 @@ typedef struct
 
   /* enable/disable SSR on WDI timeout */
   wpt_boolean                 bEnableSSR;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }WDI_ControlBlockType; 
 
 
@@ -2012,6 +2051,7 @@ WDI_ProcessGetStatsReq
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 /**
  @brief Process Get Roam rssi Request function (called when Main FSM
@@ -2051,6 +2091,8 @@ WDI_ProcessGetRoamRssiRsp
 #endif
 
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  @brief Process Update Cfg Request function (called when Main 
         FSM allows it)
@@ -2185,6 +2227,7 @@ WDI_Status WDI_ProcessSetMaxTxPowerReq
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
 /**
  @brief Process Set Tx Power Request function (called when Main
         FSM allows it)
@@ -2201,6 +2244,9 @@ WDI_Status WDI_ProcessSetTxPowerReq
   WDI_EventInfoType*     pEventData
 );
 
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  @brief Process P2P Notice Of Absence Request function (called when Main FSM
         allows it)
@@ -2217,6 +2263,10 @@ WDI_ProcessP2PGONOAReq
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 );
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**
  @brief Process Enter IMPS Request function (called when 
@@ -2716,6 +2766,7 @@ WDI_ProcessHostSuspendInd
 );
 
 
+<<<<<<< HEAD
 /**
  @brief Process Traffic Stats Indications function (called when Main FSM allows it)
 
@@ -2731,6 +2782,8 @@ WDI_ProcessTrafficStatsInd
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 );
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*========================================================================
           Main DAL Control Path Response Processing API 
 ========================================================================*/
@@ -3368,6 +3421,7 @@ WDI_ProcessSetMaxTxPowerRsp
   WDI_EventInfoType*             pEventData
 );
 
+<<<<<<< HEAD
   /**
  @brief Process Set Tx Power Rsp function (called when a response
         is being received over the bus from HAL)
@@ -3385,6 +3439,8 @@ WDI_ProcessSetTxPowerRsp
   WDI_EventInfoType*             pEventData
 );
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  @brief Process Nv download(called when a response
         is being received over the bus from HAL)
@@ -3402,6 +3458,10 @@ WDI_ProcessNvDownloadRsp
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  @brief Process P2P Group Owner Notice Of Absense Rsp function (called 
         when a response is being received over the bus from HAL)
@@ -3418,6 +3478,10 @@ WDI_ProcessP2PGONOARsp
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 );
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**
  @brief Process Enter IMPS Rsp function (called when a response 
@@ -4047,6 +4111,7 @@ WDI_ProcessTxCompleteInd
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
 /**
 *@brief Process Noa Start Indication function (called when
         an indication of this kind is being received over the
@@ -4065,6 +4130,9 @@ WDI_ProcessP2pNoaStartInd
   WDI_EventInfoType*     pEventData
 );
 
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
 *@brief Process Noa Attr Indication function (called when
         an indication of this kind is being received over the
@@ -4082,6 +4150,10 @@ WDI_ProcessP2pNoaAttrInd
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 );
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**
 *@brief Process Tx Per Hit Indication function (called when
@@ -4138,6 +4210,10 @@ WDI_ProcessAggrAddTSpecRsp
 
 #endif /* WLAN_FEATURE_VOWIFI_11R */
 
+<<<<<<< HEAD
+=======
+#ifdef ANI_MANF_DIAG
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  @brief WDI_ProcessFTMCommandReq
         Process FTM Command, simply route to HAL
@@ -4171,6 +4247,10 @@ WDI_ProcessFTMCommandRsp
   WDI_ControlBlockType*  pWDICtx,
   WDI_EventInfoType*     pEventData
 );
+<<<<<<< HEAD
+=======
+#endif /* ANI_MANF_DIAG */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**
  @brief WDI_ProcessHALDumpCmdReq
         Process Hal Dump Command, simply route to HAL
@@ -4216,7 +4296,11 @@ WDI_ProcessHALDumpCmdRsp
 
  @return Result of the function call
 */
+<<<<<<< HEAD
 WDI_Status
+=======
+WPT_INLINE WDI_Status
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 WDI_CleanCB
 (
   WDI_ControlBlockType*  pWDICtx
@@ -4232,7 +4316,11 @@ WDI_CleanCB
  @see
  @return Result of the function call
 */
+<<<<<<< HEAD
 WDI_Status
+=======
+WPT_INLINE WDI_Status
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 WDI_ProcessRequest
 (
   WDI_ControlBlockType*  pWDICtx,
@@ -4677,7 +4765,11 @@ WDI_FindAssocSessionByIdx
  @see
  @return 
 */
+<<<<<<< HEAD
 void
+=======
+WPT_INLINE void 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 WDI_DS_AssignDatapathContext 
 (
   void *pContext, 
@@ -4693,7 +4785,11 @@ WDI_DS_AssignDatapathContext
  @see
  @return pointer to Datapath context
 */
+<<<<<<< HEAD
 void *
+=======
+WPT_INLINE void * 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 WDI_DS_GetDatapathContext 
 (
   void *pContext
@@ -4709,7 +4805,11 @@ WDI_DS_GetDatapathContext
  @see
  @return void
 */
+<<<<<<< HEAD
 void
+=======
+WPT_INLINE void  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 WDT_AssignTransportDriverContext 
 (
   void *pContext, 
@@ -4725,7 +4825,11 @@ WDT_AssignTransportDriverContext
  @see
  @return pointer to datapath context 
 */
+<<<<<<< HEAD
 void *
+=======
+WPT_INLINE void * 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 WDT_GetTransportDriverContext 
 (
   void *pContext
@@ -4848,6 +4952,7 @@ WDI_ProcessUpdateScanParamsRsp
 );
 #endif // FEATURE_WLAN_SCAN_PNO
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 /**
  @brief Process Start Roam Candidate Lookup Request function
@@ -4882,6 +4987,8 @@ WDI_ProcessRoamScanOffloadRsp
 );
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_FEATURE_PACKET_FILTERING
 /**
  @brief Process 8023 Multicast List Request function
@@ -5120,6 +5227,7 @@ WDI_ProcessFeatureCapsExchangeRsp
   WDI_EventInfoType*     pEventData
 );
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
 WDI_Status
 WDI_ProcessUpdateVHTOpModeReq
@@ -5153,5 +5261,7 @@ WDI_wdiEdTypeEncToEdTypeEnc
 );
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /*WLAN_QCT_WDI_I_H*/
 

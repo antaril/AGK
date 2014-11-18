@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -77,7 +80,11 @@ typedef unsigned long long wpt_uint64;
 
 typedef long long wpt_int64;
 
+<<<<<<< HEAD
 #define WPT_INLINE __inline__
+=======
+#define WPT_INLINE /*__inline__*/
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define WPT_STATIC static
 
 

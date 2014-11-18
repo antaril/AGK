@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,7 +60,11 @@
 #include "limTypes.h"
 
 
+<<<<<<< HEAD
 // LIM SME request messages related utility functions
+=======
+// LIM SME requst messages related utilility functions
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 tANI_U8 limIsSmeStartReqValid(tpAniSirGlobal, tANI_U32 *);
 tANI_U8 limIsSmeStartBssReqValid(tpAniSirGlobal, tpSirSmeStartBssReq);
 tANI_U8 limSetRSNieWPAiefromSmeStartBSSReqMessage(tpAniSirGlobal, 

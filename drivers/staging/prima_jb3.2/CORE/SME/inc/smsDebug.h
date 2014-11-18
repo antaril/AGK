@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -61,6 +64,9 @@
 #include "sirDebug.h"
 
 void smsLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...); 
+<<<<<<< HEAD
 void pmcLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif // __HAL_DEBUG_H__

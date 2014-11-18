@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -196,7 +199,11 @@ WLANDXE_ChannelConfigType chanRXLowPriConfig =
    WLANDXE_CHANNEL_HANDLE_CIRCULA,
 
    /* Number of Descriptor, NOT CLEAR YET !!! */
+<<<<<<< HEAD
    256,
+=======
+   512,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* MAX num RX Buffer, NOT CLEAR YET !!! */
    1,
@@ -236,7 +243,11 @@ WLANDXE_ChannelConfigType chanRXHighPriConfig =
    WLANDXE_CHANNEL_HANDLE_CIRCULA,
 
    /* Number of Descriptor, NOT CLEAR YET !!! */
+<<<<<<< HEAD
    256,
+=======
+   40,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* MAX num RX Buffer, NOT CLEAR YET !!! */
    1,
@@ -386,7 +397,11 @@ wpt_status dxeCommonDefaultConfig
       All the channels must have it's own configurations
 
   @  Parameters
+<<<<<<< HEAD
       WLANDXE_CtrlBlkType:    *dxeCtrlBlk,
+=======
+      WLANDXE_CtrlBlkType     *dxeCtrlBlk,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                DXE host driver main control block
       WLANDXE_ChannelCBType   *channelEntry
                                Channel specific control block
@@ -409,7 +424,10 @@ wpt_status dxeChannelDefaultConfig
    wpt_uint32                  dxeControlWriteEop = 0;
    wpt_uint32                  dxeControlWriteEopInt = 0;
    wpt_uint32                  idx;
+<<<<<<< HEAD
    wpt_uint32                  rxResourceCount = 0;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    WLANDXE_ChannelMappingType *mappedChannel = NULL;
 
    /* Sanity Check */
@@ -432,7 +450,11 @@ wpt_status dxeChannelDefaultConfig
    if((NULL == mappedChannel) || (WDTS_CHANNEL_MAX == idx))
    {
       HDXE_MSG(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s Failed to map channel", __func__);
+=======
+              "%s Failed to map channel", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return eWLAN_PAL_STATUS_E_INVAL;
    }
 
@@ -622,6 +644,7 @@ wpt_status dxeChannelDefaultConfig
    channelEntry->extraConfig.intMask = channelInterruptMask[mappedChannel->DMAChannel];
 
 
+<<<<<<< HEAD
    wpalGetNumRxRawPacket(&rxResourceCount);
    if((WDTS_CHANNEL_TX_LOW_PRI == channelEntry->channelType) ||
       (0 == rxResourceCount))
@@ -632,6 +655,9 @@ wpt_status dxeChannelDefaultConfig
    {
       channelEntry->numDesc         = rxResourceCount / 4;
    }
+=======
+   channelEntry->numDesc            = mappedChannel->channelConfig->nDescs;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    channelEntry->assignedDMAChannel = mappedChannel->DMAChannel;
    channelEntry->numFreeDesc             = 0;
    channelEntry->numRsvdDesc             = 0;

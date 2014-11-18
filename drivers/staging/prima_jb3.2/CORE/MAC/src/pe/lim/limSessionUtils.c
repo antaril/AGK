@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
   * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
   *
   * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -18,13 +19,39 @@
   * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   * PERFORMANCE OF THIS SOFTWARE.
 */
+=======
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+ *
+ * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
+ *
+ *
+ * Permission to use, copy, modify, and/or distribute this software for
+ * any purpose with or without fee is hereby granted, provided that the
+ * above copyright notice and this permission notice appear in all
+ * copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ * WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+ * AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ * PERFORMANCE OF THIS SOFTWARE.
+ */
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**=========================================================================
 
   \file  limSessionUtils.c
   \brief implementation for lim Session Utility  APIs
   \author Sunit Bhatia
   
+<<<<<<< HEAD
   Copyright 2008 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
+=======
+  Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ========================================================================*/
 
 
@@ -248,7 +275,11 @@ isLimSessionOffChannel(tpAniSirGlobal pMac, tANI_U8 sessionId)
 /*--------------------------------------------------------------------------
   \brief peGetActiveSessionChannel() - Gets the operating channel of first  
                                     valid session. Returns 0 if there is no
+<<<<<<< HEAD
                                     valid session.
+=======
+									valid session.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   \param pMac                   - pointer to global adapter context
   
@@ -260,7 +291,10 @@ void
 peGetActiveSessionChannel (tpAniSirGlobal pMac, tANI_U8* resumeChannel, ePhyChanBondState* resumePhyCbState)
 {
     tANI_U8 i;
+<<<<<<< HEAD
     ePhyChanBondState prevPhyCbState = PHY_SINGLE_CHANNEL_CENTERED;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // Initialize the pointers passed to INVALID values in case we don't find a valid session
     *resumeChannel = 0;
@@ -278,6 +312,7 @@ peGetActiveSessionChannel (tpAniSirGlobal pMac, tANI_U8* resumeChannel, ePhyChan
                /*Get 11ac cbState from 11n cbState*/
                 *resumePhyCbState = limGet11ACPhyCBState(pMac, 
                                     pMac->lim.gpSession[i].currentOperChannel,
+<<<<<<< HEAD
                                     pMac->lim.gpSession[i].htSecondaryChannelOffset,
                                     pMac->lim.gpSession[i].apCenterChan,
                                     &pMac->lim.gpSession[i]);
@@ -285,6 +320,11 @@ peGetActiveSessionChannel (tpAniSirGlobal pMac, tANI_U8* resumeChannel, ePhyChan
 #endif
             *resumePhyCbState = (*resumePhyCbState > prevPhyCbState )? *resumePhyCbState : prevPhyCbState;
             prevPhyCbState = *resumePhyCbState;
+=======
+                                    pMac->lim.gpSession[i].htSecondaryChannelOffset);
+            }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         }
     }
     return;
@@ -403,6 +443,7 @@ limIsInMCC (tpAniSirGlobal pMac)
     }
     return FALSE;
 }
+<<<<<<< HEAD
 
 /*--------------------------------------------------------------------------
   \brief peGetCurrentSTAsCount() - Returns total stations associated on 
@@ -457,3 +498,5 @@ tANI_U8 limIsFastRoamEnabled(tpAniSirGlobal pMac, tANI_U8 sessionId)
 }
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

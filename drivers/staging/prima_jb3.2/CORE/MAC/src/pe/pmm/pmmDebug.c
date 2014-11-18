@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -53,6 +56,7 @@
   
   ========================================================================*/
 
+<<<<<<< HEAD
 #include "vos_trace.h"
 #include "pmmDebug.h"
 #define LOG_SIZE 256
@@ -73,3 +77,25 @@ void pmmLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString, ...)
        VOS_TRACE(VOS_MODULE_ID_PMC, vosDebugLevel, "%s", logBuffer);
        va_end( marker );
  }
+=======
+#include "pmmDebug.h"
+
+void pmmLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) 
+{
+#ifdef WLAN_DEBUG
+    // Verify against current log level
+    if ( loglevel > pMac->utils.gLogDbgLevel[LOG_INDEX_FOR_MODULE( SIR_PMM_MODULE_ID )] )
+        return;
+    else
+    {
+        va_list marker;
+
+        va_start( marker, pString );     /* Initialize variable arguments. */
+
+        logDebug(pMac, SIR_PMM_MODULE_ID, loglevel, pString, marker);
+        
+        va_end( marker );              /* Reset variable arguments.      */
+    }
+#endif
+}
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

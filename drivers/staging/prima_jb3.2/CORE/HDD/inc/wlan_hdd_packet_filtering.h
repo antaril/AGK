@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
  *
@@ -25,14 +29,20 @@
 *
 * Description: Packet Filter Definitions.
 *
+<<<<<<< HEAD
 * Copyright (c) 2011 Qualcomm Technologies, Inc. All Rights Reserved.
 * Qualcomm Technologies Proprietary and Confidential.
+=======
+* Copyright (c) 2011 QUALCOMM Incorporated. All Rights Reserved.
+* QUALCOMM Proprietary and Confidential.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 *
 ******************************************************************************/
 
 #ifndef __WLAN_HDD_PACKET_FILTERING_H__
 #define __WLAN_HDD_PACKET_FILTERING_H__
 
+<<<<<<< HEAD
 
 
 #ifdef WLAN_FEATURE_PACKET_FILTERING
@@ -50,6 +60,16 @@
 
 #define HDD_WLAN_MAC_ADDR_LEN             6
 #define HDD_MAX_NUM_MULTICAST_ADDRESS     10
+=======
+typedef struct
+{
+    v_U8_t       mcastBcastFilterSetting;
+}tMcBcFilterCfg, *tpMcBcFilterCfg;
+
+
+#ifdef WLAN_FEATURE_PACKET_FILTERING
+#define HDD_MAX_CMP_PER_PACKET_FILTER     5     
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef enum
 {
@@ -70,7 +90,11 @@ typedef enum
   HDD_RCV_FILTER_MAX
 }eFilterAction;
 
+<<<<<<< HEAD
 typedef enum
+=======
+typedef enum 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 {
   HDD_FILTER_CMP_TYPE_INVALID = 0,
   HDD_FILTER_CMP_TYPE_EQUAL = 1,
@@ -83,7 +107,11 @@ typedef enum
 struct PacketFilterParamsCfg
 {
     v_U8_t              protocolLayer;
+<<<<<<< HEAD
     v_U8_t              cmpFlag;
+=======
+    v_U8_t              cmpFlag;   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     v_U8_t              dataOffset;
     v_U8_t              dataLength;
     v_U8_t              compareData[8];
@@ -92,6 +120,7 @@ struct PacketFilterParamsCfg
 
 typedef struct
 {
+<<<<<<< HEAD
     v_U8_t            filterAction;
     v_U8_t            filterId;
     v_U8_t            numParams;
@@ -107,5 +136,14 @@ typedef struct
     tHddMacAddr    multicastAddr[HDD_MAX_NUM_MULTICAST_ADDRESS];
 } tRcvFltMcAddrList, *tpRcvFltMcAddrList;
 
+=======
+    v_U8_t            filterAction;    
+    v_U8_t            filterId;
+    v_U8_t            numParams;
+    struct PacketFilterParamsCfg paramsData [HDD_MAX_CMP_PER_PACKET_FILTER];
+    v_U8_t            bssIdx;
+}tPacketFilterCfg, *tpPacketFilterCfg;
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 #endif // __WLAN_HDD_PACKET_FILTERING_H__

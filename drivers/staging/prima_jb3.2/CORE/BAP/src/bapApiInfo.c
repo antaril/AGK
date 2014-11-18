@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -170,7 +173,11 @@ WLAN_BAPReadLocalVersionInfo
     }
 
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
     /* Format the command complete event to return... */ 
@@ -246,7 +253,11 @@ WLAN_BAPReadLocalSupportedCmds
     }
 
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
     /* Format the command complete event to return... */ 
@@ -312,7 +323,11 @@ WLAN_BAPReadBufferSize
     }
 
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
     /* Format the command complete event to return... */ 
@@ -382,7 +397,11 @@ WLAN_BAPReadDataBlockSize
    }
 
 
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
+=======
+   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
    /* Format the command complete event to return... */ 
@@ -543,13 +562,21 @@ WLAN_BAPDisconnect
     VOS_STATUS  vosStatus;
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL, "%s: btampHandle value: %p", __func__,  btampHandle);
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     /* Validate params */ 
     if (btampHandle == NULL) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                      "btampHandle is NULL in %s", __func__);
+=======
+                     "btampHandle is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
       return VOS_STATUS_E_FAULT;
     }
@@ -609,13 +636,21 @@ v_BOOL_t WLAN_BAPSessionOn
    ptBtampContext btampContext = (ptBtampContext) btampHandle;
    /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
+<<<<<<< HEAD
    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %p", __func__,  btampHandle);
+=======
+   VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: btampHandle value: %x", __FUNCTION__,  btampHandle); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* Validate params */ 
    if (btampHandle == NULL) 
    {
        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                     "btampHandle is NULL in %s", __func__);
+=======
+                    "btampHandle is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
        //?? shall we say true or false
        return VOS_FALSE;

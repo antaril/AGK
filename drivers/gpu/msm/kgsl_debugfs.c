@@ -301,6 +301,7 @@ kgsl_process_init_debugfs(struct kgsl_process_private *private)
 	snprintf(name, sizeof(name), "%d", private->pid);
 
 	private->debug_root = debugfs_create_dir(name, proc_d_debugfs);
+<<<<<<< HEAD
 
 	if (!private->debug_root)
 		return -EINVAL;
@@ -326,6 +327,10 @@ kgsl_process_init_debugfs(struct kgsl_process_private *private)
 	}
 
 	return ret;
+=======
+	debugfs_create_file("mem", 0444, private->debug_root, private,
+			    &process_mem_fops);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }
 
 void kgsl_core_debugfs_init(void)

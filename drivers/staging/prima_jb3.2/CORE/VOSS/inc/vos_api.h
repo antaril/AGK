@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -122,9 +125,17 @@ VOS_STATUS vos_preOpen ( v_CONTEXT_t *pVosContext );
 
 VOS_STATUS vos_preClose( v_CONTEXT_t *pVosContext );
 
+<<<<<<< HEAD
 
 VOS_STATUS vos_preStart( v_CONTEXT_t vosContext );
 
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+
+VOS_STATUS vos_preStart( v_CONTEXT_t vosContext );
+
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize );
 
@@ -186,6 +197,7 @@ v_CONTEXT_t vos_get_global_context( VOS_MODULE_ID moduleId,
 
 v_U8_t vos_is_logp_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext);
 void vos_set_logp_in_progress(VOS_MODULE_ID moduleId, v_U8_t value);
+<<<<<<< HEAD
 
 v_U8_t vos_is_load_unload_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext);
 void vos_set_load_unload_in_progress(VOS_MODULE_ID moduleId, v_U8_t value);
@@ -193,6 +205,11 @@ void vos_set_load_unload_in_progress(VOS_MODULE_ID moduleId, v_U8_t value);
 v_U8_t vos_is_reinit_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext);
 void vos_set_reinit_in_progress(VOS_MODULE_ID moduleId, v_U8_t value);
 
+=======
+v_U8_t vos_is_load_unload_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext);
+void vos_set_load_unload_in_progress(VOS_MODULE_ID moduleId, v_U8_t value);
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**---------------------------------------------------------------------------
   
   \brief vos_alloc_context() - allocate a context within the VOSS global Context
@@ -324,6 +341,7 @@ VOS_STATUS vos_wlanReInit(void);
 */
 VOS_STATUS vos_wlanRestart(void);
 
+<<<<<<< HEAD
 /**
   @brief vos_fwDumpReq()
 
@@ -340,4 +358,6 @@ VOS_STATUS vos_wlanRestart(void);
 */
 v_VOID_t vos_fwDumpReq(tANI_U32 cmd, tANI_U32 arg1, tANI_U32 arg2,
                         tANI_U32 arg3, tANI_U32 arg4);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif // if !defined __VOS_NVITEM_H

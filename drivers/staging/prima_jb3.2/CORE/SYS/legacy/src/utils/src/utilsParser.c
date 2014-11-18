@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +43,10 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file utilsParser.cc contains the code for parsing
  * 802.11 messages.
@@ -165,6 +172,10 @@ tSirRetStatus ConvertWscOpaque( tpAniSirGlobal      pMac,
     return eSIR_SUCCESS;
 }
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 tSirRetStatus ConvertP2POpaque( tpAniSirGlobal      pMac,
                                 tSirAddie           *pOld,
                                 tDot11fIEP2PIEOpaque *pNew )
@@ -184,6 +195,10 @@ tSirRetStatus ConvertP2POpaque( tpAniSirGlobal      pMac,
 
     return eSIR_SUCCESS;
 }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_FEATURE_WFD
 tSirRetStatus ConvertWFDOpaque( tpAniSirGlobal      pMac,
@@ -420,7 +435,11 @@ tSirRetStatus ConvertTCLAS(tpAniSirGlobal  pMac,
                                  tSirTclasInfo  *pOld,
                                  tDot11fIETCLAS *pNew)
 {
+<<<<<<< HEAD
     tANI_U32 length = 0;
+=======
+    tANI_U32 length;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     if ( DOT11F_FAILED( dot11fGetPackedIETCLAS( pMac, pNew, &length ) ) )
     {
@@ -489,7 +508,11 @@ void ConvertWMMTSPEC(tpAniSirGlobal     pMac,
     pOld->tsinfo.traffic.psb          = (tANI_U16)pNew->psb;
     pOld->tsinfo.traffic.userPrio     = (tANI_U16)pNew->user_priority;
     pOld->tsinfo.traffic.ackPolicy    = (tANI_U16)pNew->tsinfo_ack_pol;
+<<<<<<< HEAD
     pOld->nomMsduSz                   = (pNew->fixed << 15) | pNew->size;
+=======
+    pOld->nomMsduSz                   = pNew->size;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     pOld->maxMsduSz                   = pNew->max_msdu_size;
     pOld->minSvcInterval              = pNew->min_service_int;
     pOld->maxSvcInterval              = pNew->max_service_int;
@@ -510,7 +533,11 @@ tSirRetStatus ConvertWMMTCLAS(tpAniSirGlobal    pMac,
                                     tSirTclasInfo     *pOld,
                                     tDot11fIEWMMTCLAS *pNew)
 {
+<<<<<<< HEAD
     tANI_U32 length = 0;
+=======
+    tANI_U32 length;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     if ( DOT11F_FAILED( dot11fGetPackedIEWMMTCLAS( pMac, pNew, &length ) ) )
     {

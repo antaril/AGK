@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -319,6 +322,7 @@ extern VOS_STATUS hdd_softap_change_STA_state( hdd_adapter_t *pAdapter, v_MACADD
   =========================================================================== */
 extern VOS_STATUS hdd_softap_GetStaId( hdd_adapter_t *pAdapter, v_MACADDR_t *pMacAddress, v_U8_t *staId);
 
+<<<<<<< HEAD
 /**============================================================================
   @brief hdd_softap_GetConnectedStaId - Helper function to get station Id of the connected device
 
@@ -353,4 +357,6 @@ VOS_STATUS hdd_start_trafficMonitor( hdd_adapter_t *pAdapter );
   ========================================================================== */
 VOS_STATUS hdd_stop_trafficMonitor( hdd_adapter_t *pAdapter );
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif    // end #if !defined( WLAN_HDD_SOFTAP_TX_RX_H )

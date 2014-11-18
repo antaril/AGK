@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -41,9 +44,12 @@
 
 
 /*
+<<<<<<< HEAD
  * Copyright (c) 2011-2013 Qualcomm Atheros, Inc.
  * All Rights Reserved.
  * Qualcomm Atheros Confidential and Proprietary.
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  *
  * Woodside Networks, Inc proprietary. All rights reserved
  * sysStartup.h: System startup header file.
@@ -59,6 +65,12 @@
 # ifndef __SYSSTARTUP_H
 # define __SYSSTARTUP_H
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halDataStruct.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include "sirParams.h"
 
 /* Defines */
@@ -66,6 +78,12 @@
 /* Function */
 
 extern void sysMACCleanup(void *);
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+extern void sysBbtProcessMessage( tHalHandle hHal, tpHalBufDesc pBD );
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 extern tSirRetStatus sysBbtProcessMessageCore(struct sAniSirGlobal *, tpSirMsgQ,
                                                tANI_U32, tANI_U32);
 

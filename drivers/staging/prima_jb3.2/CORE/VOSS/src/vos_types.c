@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -93,7 +96,11 @@ v_U32_t vos_atomic_set_U32( v_U32_t *pTarget, v_U32_t value )
 
   if (pTarget == NULL)
   {
+<<<<<<< HEAD
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__func__);
+=======
+     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return 0;
   }
   local_irq_save(flags);
@@ -123,7 +130,11 @@ v_U32_t vos_atomic_increment_U32( v_U32_t *pTarget )
   unsigned long flags;
   if (pTarget == NULL)
   {
+<<<<<<< HEAD
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__func__);
+=======
+     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return 0;
   }
   local_irq_save(flags);
@@ -151,7 +162,11 @@ v_U32_t vos_atomic_decrement_U32( v_U32_t *pTarget )
   unsigned long flags;
   if (pTarget == NULL)
   {
+<<<<<<< HEAD
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__func__);
+=======
+     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return 0;
   }
    // return atomic_dec_return(pTarget);
@@ -166,7 +181,11 @@ v_U32_t vos_atomic_increment_U32_by_value( v_U32_t *pTarget, v_U32_t value )
    unsigned long flags;
    if (pTarget == NULL)
    {
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__func__);
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return 0;
    }
    local_irq_save(flags);
@@ -180,7 +199,11 @@ v_U32_t vos_atomic_decrement_U32_by_value( v_U32_t *pTarget, v_U32_t value )
    unsigned long flags;
    if (pTarget == NULL)
    {
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__func__);
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "NULL ptr passed into %s",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return 0;
    }
    local_irq_save(flags);

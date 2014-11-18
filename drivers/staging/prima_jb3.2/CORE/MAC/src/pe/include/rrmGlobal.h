@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,8 +60,12 @@
 
   ========================================================================*/
 
+<<<<<<< HEAD
 #define SIR_BCN_REPORT_MAX_BSS_DESC_PER_ACTION_FRAME    3
 #define SIR_BCN_REPORT_MAX_BSS_PER_CHANNEL             15
+=======
+#define SIR_BCN_REPORT_MAX_BSS_DESC                4
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef enum eRrmRetStatus
 {
@@ -100,7 +107,11 @@ typedef struct sSirBeaconReportXmitInd
    tANI_U16    duration;
    tANI_U8     regClass;
    tANI_U8     numBssDesc;
+<<<<<<< HEAD
    tpSirBssDescription pBssDescription[SIR_BCN_REPORT_MAX_BSS_DESC_PER_ACTION_FRAME];
+=======
+   tpSirBssDescription pBssDescription[SIR_BCN_REPORT_MAX_BSS_DESC];
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tSirBeaconReportXmitInd, * tpSirBeaconReportXmitInd;
 
 typedef struct sSirNeighborReportReqInd

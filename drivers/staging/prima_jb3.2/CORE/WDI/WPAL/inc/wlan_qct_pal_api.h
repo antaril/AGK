@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -72,7 +75,11 @@
 #define WPAL_MIN( _x, _y ) ( ( (_x) < (_y) ) ? (_x) : (_y)  )  
 
 // macro to get the ceiling of an integer division operation...
+<<<<<<< HEAD
 #define WPAL_CEIL_DIV( _a, _b ) (( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ))
+=======
+#define WPAL_CEIL_DIV( _a, _b ) ( 0 != (_a) % (_b) ) ? ( (_a) / (_b) + 1 ) : ( (_a) / (_b) ) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // macro to return the floor of an integer division operation
 #define WPAL_FLOOR_DIV( _a, _b ) ( ( (_a) - ( (_a) % (_b) ) ) / (_b) )
@@ -81,8 +88,13 @@
    ( ( ( (_x) << 8 ) & 0xFF00 ) | ( ( (_x) >> 8 ) & 0x00FF ) )
 
 #define WPAL_SWAP_U32(_x) \
+<<<<<<< HEAD
   (( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
    ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) ))
+=======
+   ( ( ( (_x) << 24 ) & 0xFF000000 ) | ( ( (_x) >> 24 ) & 0x000000FF ) ) | \
+   ( ( ( (_x) << 8 ) & 0x00FF0000 ) | ( ( (_x) >> 8 ) & 0x0000FF00 ) )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // Endian operations for Big Endian and Small Endian modes
 #ifndef ANI_BIG_BYTE_ENDIAN
@@ -324,6 +336,7 @@ wpt_status wpalRivaSubystemRestart(void);
        NONE
 ---------------------------------------------------------------------------*/
 void wpalWlanReload(void);
+<<<<<<< HEAD
 
 /*---------------------------------------------------------------------------
     wpalWcnssResetIntr -  Trigger the reset FIQ to Riva
@@ -371,4 +384,6 @@ void wpalDevicePanic(void);
        STATUS
 --------------------------------------------------------------------------*/
 int  wpalIsWDresetInProgress(void);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif // __WLAN_QCT_PAL_API_H

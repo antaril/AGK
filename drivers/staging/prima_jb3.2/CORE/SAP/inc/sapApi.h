@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -91,7 +94,13 @@ when           who                what, where, why
 #include "vos_packet.h" 
 #include "vos_types.h"
 
+<<<<<<< HEAD
 #include "p2p_Api.h"
+=======
+#ifdef WLAN_FEATURE_P2P
+#include "p2p_Api.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
@@ -109,9 +118,16 @@ when           who                what, where, why
 /*--------------------------------------------------------------------------
   defines and enum
   ------------------------------------------------------------------------*/
+<<<<<<< HEAD
 
 #define       MAX_SSID_LEN                 32
 #define       MAX_ACL_MAC_ADDRESS          16
+=======
+  
+#define       MAX_SSID_LEN                 32
+#define       MAX_MAC_ADDRESS_ACCEPTED     16
+#define       MAX_MAC_ADDRESS_DENIED       MAX_MAC_ADDRESS_ACCEPTED
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define       AUTO_CHANNEL_SELECT          0
 #define       MAX_ASSOC_IND_IE_LEN         255
 
@@ -203,11 +219,19 @@ typedef enum {
     eSAP_ASSOC_STA_CALLBACK_EVENT,  /*Event sent when user called WLANSAP_GetAssocStations */
     eSAP_GET_WPSPBC_SESSION_EVENT,  /* Event send when user call  WLANSAP_getWpsSessionOverlap */  
     eSAP_WPS_PBC_PROBE_REQ_EVENT, /* Event send on WPS PBC probe request is received */
+<<<<<<< HEAD
     eSAP_INDICATE_MGMT_FRAME,
     eSAP_REMAIN_CHAN_READY,
     eSAP_SEND_ACTION_CNF,
     eSAP_DISCONNECT_ALL_P2P_CLIENT,
     eSAP_MAC_TRIG_STOP_BSS_EVENT,
+=======
+#ifdef WLAN_FEATURE_P2P
+    eSAP_INDICATE_MGMT_FRAME,
+    eSAP_REMAIN_CHAN_READY,
+    eSAP_SEND_ACTION_CNF,
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     eSAP_UNKNOWN_STA_JOIN, /* Event send when a STA in neither white list or black list tries to associate in softap mode */
     eSAP_MAX_ASSOC_EXCEEDED, /* Event send when a new STA is rejected association since softAP max assoc limit has reached */
 } eSapHddEvent;
@@ -272,10 +296,18 @@ typedef struct sap_StationAssocIndication_s {
     tANI_U32     assocReqLength;
     tANI_U8*     assocReqPtr;
     tANI_BOOLEAN fWmmEnabled;
+<<<<<<< HEAD
+=======
+#if WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     eCsrAuthType negotiatedAuthType;
     eCsrEncryptionType negotiatedUCEncryptionType;
     eCsrEncryptionType negotiatedMCEncryptionType;
     tANI_BOOLEAN fAuthRequired;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tSap_StationAssocIndication;
 
 typedef struct sap_StationAssocReassocCompleteEvent_s {
@@ -355,10 +387,18 @@ typedef struct sap_WPSPBCProbeReqEvent_s {
     tSirWPSPBCProbeReq WPSPBCProbeReq;
 } tSap_WPSPBCProbeReqEvent; 
 
+<<<<<<< HEAD
 typedef struct sap_ManagementFrameInfo_s {
     tANI_U32 nFrameLength;
     tANI_U8  frameType;
     tANI_U32 rxChan;            //Channel of where packet is received 
+=======
+#ifdef WLAN_FEATURE_P2P
+typedef struct sap_ManagementFrameInfo_s {
+    tANI_U32 nFrameLength;
+    tANI_U8  frameType;
+    tANI_U32 rxChan;            //Channel of where packet is recevied 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tANI_U8 *pbFrames;         //Point to a buffer contain the beacon, assoc req, assoc rsp frame, in that order
                              //user needs to use nBeaconLength, nAssocReqLength, nAssocRspLength to desice where
                             //each frame starts and ends.
@@ -367,6 +407,10 @@ typedef struct sap_ManagementFrameInfo_s {
 typedef struct sap_SendActionCnf_s {
     eSapStatus actionSendSuccess; 
 } tSap_SendActionCnf;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sap_UnknownSTAJoinEvent_s {
     v_MACADDR_t    macaddr;  
@@ -396,8 +440,15 @@ typedef struct sap_Event_s {
         tSap_AssocStaListEvent                    sapAssocStaListEvent; /*SAP_ASSOC_STA_CALLBACK_EVENT */
         tSap_GetWPSPBCSessionEvent                sapGetWPSPBCSessionEvent; /*SAP_GET_WPSPBC_SESSION_EVENT */
         tSap_WPSPBCProbeReqEvent                  sapPBCProbeReqEvent; /*eSAP_WPS_PBC_PROBE_REQ_EVENT */
+<<<<<<< HEAD
         tSap_ManagementFrameInfo                  sapManagementFrameInfo; /*eSAP_INDICATE_MGMT_FRAME*/
         tSap_SendActionCnf                        sapActionCnf;  /* eSAP_SEND_ACTION_CNF */ 
+=======
+#ifdef WLAN_FEATURE_P2P
+        tSap_ManagementFrameInfo                  sapManagementFrameInfo; /*eSAP_INDICATE_MGMT_FRAME*/
+        tSap_SendActionCnf                        sapActionCnf;  /* eSAP_SEND_ACTION_CNF */ 
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         tSap_UnknownSTAJoinEvent                  sapUnknownSTAJoin; /* eSAP_UNKNOWN_STA_JOIN */
         tSap_MaxAssocExceededEvent                sapMaxAssocExceeded; /* eSAP_MAX_ASSOC_EXCEEDED */
     } sapevt;
@@ -418,11 +469,19 @@ typedef struct sap_Config {
     tSap_SSIDInfo_t SSIDinfo;
     eSapPhyMode     SapHw_mode; /* Wireless Mode */
     eSapMacAddrACL  SapMacaddr_acl;
+<<<<<<< HEAD
     v_MACADDR_t     accept_mac[MAX_ACL_MAC_ADDRESS]; /* MAC filtering */
     v_BOOL_t        ieee80211d;      /*Specify if 11D is enabled or disabled*/
     v_BOOL_t        protEnabled;     /*Specify if protection is enabled or disabled*/
     v_BOOL_t        obssProtEnabled; /*Specify if OBSS protection is enabled or disabled*/
     v_MACADDR_t     deny_mac[MAX_ACL_MAC_ADDRESS]; /* MAC filtering */
+=======
+    v_MACADDR_t     accept_mac[MAX_MAC_ADDRESS_ACCEPTED]; /* MAC filtering */
+    v_BOOL_t        ieee80211d;      /*Specify if 11D is enabled or disabled*/
+    v_BOOL_t        protEnabled;     /*Specify if protection is enabled or disabled*/
+    v_BOOL_t        obssProtEnabled; /*Specify if OBSS protection is enabled or disabled*/
+    v_MACADDR_t     deny_mac[MAX_MAC_ADDRESS_DENIED]; /* MAC filtering */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     v_MACADDR_t     self_macaddr; //self macaddress or BSSID
    
     v_U8_t          channel;         /* Operation channel */
@@ -547,12 +606,15 @@ typedef struct sap_WPSIE_s {
     } sapwpsie;
 } tSap_WPSIE, *tpSap_WPSIE;
 
+<<<<<<< HEAD
 #ifdef WLANTL_DEBUG
 #define MAX_RATE_INDEX      136
 #define MAX_NUM_RSSI        100
 #define MAX_RSSI_INTERVAL     5
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef struct sap_SoftapStats_s {
    v_U32_t txUCFcnt;
    v_U32_t txMCFcnt;
@@ -569,6 +631,7 @@ typedef struct sap_SoftapStats_s {
    v_U32_t rxBcnt;
    v_U32_t rxBcntCRCok;
    v_U32_t rxRate;
+<<<<<<< HEAD
 #ifdef WLANTL_DEBUG
    v_U32_t pktCounterRateIdx[MAX_RATE_INDEX];
    v_U32_t pktCounterRssi[MAX_NUM_RSSI];
@@ -579,6 +642,11 @@ typedef struct sap_SoftapStats_s {
 int sapSetPreferredChannel(tANI_U8* ptr);
 void sapCleanupChannelList(void);
 
+=======
+} tSap_SoftapStats, *tpSap_SoftapStats;
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*==========================================================================
   FUNCTION    WLANSAP_Set_WpsIe
 
@@ -906,6 +974,7 @@ WLANSAP_StartBss
 );
 
 /*==========================================================================
+<<<<<<< HEAD
   FUNCTION    WLANSAP_SetMacACL
 
   DESCRIPTION
@@ -938,6 +1007,8 @@ WLANSAP_SetMacACL
 );
 
 /*==========================================================================
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   FUNCTION    WLANSAP_Stop
 
   DESCRIPTION 
@@ -1408,6 +1479,10 @@ VOS_STATUS WLANSAP_Set_WPARSNIes(v_PVOID_t pvosGCtx, v_U8_t *pWPARSNIEs, v_U32_t
 ============================================================================*/
 VOS_STATUS WLANSAP_GetStatistics(v_PVOID_t pvosGCtx, tSap_SoftapStats *statBuf, v_BOOL_t bReset);
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*==========================================================================
 
   FUNCTION    WLANSAP_SendAction
@@ -1548,6 +1623,10 @@ VOS_STATUS WLANSAP_RegisterMgmtFrame( v_PVOID_t pvosGCtx, tANI_U16 frameType,
 ============================================================================*/
 VOS_STATUS WLANSAP_DeRegisterMgmtFrame( v_PVOID_t pvosGCtx, tANI_U16 frameType, 
                                       tANI_U8* matchData, tANI_U16 matchLen );
+<<<<<<< HEAD
+=======
+#endif // WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 #ifdef __cplusplus

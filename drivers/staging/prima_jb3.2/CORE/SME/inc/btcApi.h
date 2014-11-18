@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -368,7 +371,10 @@ typedef struct sSmeBtcInfo
    v_BOOL_t      fA2DPTrafStop;/*flag to check A2DP_STOP event has come before MODE_CHANGED*/
    v_U16_t       btcScoHandles[BT_MAX_SCO_SUPPORT];  /* Handles for SCO, if any*/
    v_BOOL_t      fA2DPUp;        /*remember whether A2DP is in session*/
+<<<<<<< HEAD
    v_BOOL_t      btcScanCompromise;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tSmeBtcInfo, *tpSmeBtcInfo;
 
 

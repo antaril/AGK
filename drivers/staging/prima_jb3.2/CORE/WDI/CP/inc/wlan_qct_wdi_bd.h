@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -309,6 +312,7 @@ typedef struct
     
         /* 0x10 */
 #ifdef WPT_BIG_BYTE_ENDIAN
+<<<<<<< HEAD
 
         /** This is the length (in number of bytes) of the entire MPDU
         (header and data). Note that the length does not include FCS field. */
@@ -329,16 +333,36 @@ typedef struct
 #endif //WCN_PRONTO
 
 
+=======
+    
+        /** This is the length (in number of bytes) of the entire MPDU 
+        (header and data). Note that the length does not include FCS field. */
+        wpt_uint32 mpduLength:16;
+    
+#ifdef WCN_PRONTO
+        wpt_uint32 reserved3: 3;
+        wpt_uint32 rxDXEPriorityRouting:1; 
+#else
+        wpt_uint32 reserved3:4;
+#endif //WCN_PRONTO
+    
+    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         /** Traffic Identifier
         Indicates the traffic class the frame belongs to. For non QoS frames,
         this field is set to zero. */
         wpt_uint32 tid:4;
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         wpt_uint32 reserved4:8;
 #else
         wpt_uint32 reserved4:8;
         wpt_uint32 tid:4;
 #ifdef WCN_PRONTO
+<<<<<<< HEAD
         wpt_uint32 rxDXEPriorityRouting:1;
         wpt_uint32 reserved3: 1;
 #else
@@ -354,6 +378,17 @@ typedef struct
         wpt_uint32 mpduLength:16;
 #endif
 
+=======
+        wpt_uint32 rxDXEPriorityRouting:1; 
+        wpt_uint32 reserved3: 3;
+#else
+        wpt_uint32 reserved3:4;
+#endif //WCN_PRONTO
+    
+        wpt_uint32 mpduLength:16;
+#endif
+    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         /* 0x14 */
 #ifdef WPT_BIG_BYTE_ENDIAN
     

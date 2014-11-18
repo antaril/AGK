@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -213,7 +216,10 @@ void WDI_DS_MemPoolDestroy(WDI_DS_BdMemPoolType *memPool)
 WPT_STATIC WPT_INLINE int find_leading_zero_and_setbit(wpt_uint32 *bitmap, wpt_uint32 maxNumPool)
 {
   wpt_uint32 i,j, word;
+<<<<<<< HEAD
   int ret_val = -1;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   for(i=0; i < (maxNumPool/32 + 1); i++){
     j = 0;
@@ -226,7 +232,11 @@ WPT_STATIC WPT_INLINE int find_leading_zero_and_setbit(wpt_uint32 *bitmap, wpt_u
       word >>= 1;
     }
   }
+<<<<<<< HEAD
   return ret_val;
+=======
+  return -1;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }
 
 void *WDI_DS_MemPoolAlloc(WDI_DS_BdMemPoolType *memPool, void **pPhysAddress,
@@ -253,7 +263,11 @@ void *WDI_DS_MemPoolAlloc(WDI_DS_BdMemPoolType *memPool, void **pPhysAddress,
   }
   //Find the leading 0 in the allocation bitmap
 
+<<<<<<< HEAD
   if((index = find_leading_zero_and_setbit(memPool->AllocationBitmap, maxNumPool)) == -EPERM)
+=======
+  if((index = find_leading_zero_and_setbit(memPool->AllocationBitmap, maxNumPool)) == -1)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   {
      //DbgBreakPoint();
      DTI_TRACE(  DTI_TRACE_LEVEL_INFO, "WDI_DS_MemPoolAlloc: index:%d(NULL), numChunks:%d",

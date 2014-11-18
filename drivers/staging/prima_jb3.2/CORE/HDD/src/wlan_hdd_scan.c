@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -82,8 +85,15 @@
 #include "bap_hdd_misc.h"
 #endif
 
+<<<<<<< HEAD
 #include <linux/wireless.h>
 #include <net/cfg80211.h>
+=======
+#ifdef CONFIG_CFG80211
+#include <linux/wireless.h>
+#include <net/cfg80211.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define GET_IE_LEN_IN_BSS(lenInBss) ( lenInBss + sizeof(lenInBss) - \
               ((int) OFFSET_OF( tSirBssDescription, ieFields)))
@@ -283,7 +293,11 @@ static eHalStatus hdd_IndicateScanResult(hdd_scan_info_t *scanInfo, tCsrScanResu
        break;
    default:
        hddLog( LOGW, "%s: Unknown network type [%d]",
+<<<<<<< HEAD
               __func__, descriptor->nwType);
+=======
+              __FUNCTION__, descriptor->nwType);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        modestr = "?";
        break;
    }
@@ -407,7 +421,11 @@ static eHalStatus hdd_IndicateScanResult(hdd_scan_info_t *scanInfo, tCsrScanResu
       {
           int i;
 
+<<<<<<< HEAD
           numBasicRates = pDot11SuppRates->num_rates;
+=======
+          numBasicRates = pDot11SuppRates->num_rates;;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
           for (i=0; i<pDot11SuppRates->num_rates; i++)
           {
               if (0 != (pDot11SuppRates->rates[i] & 0x7F))
@@ -534,7 +552,11 @@ static eHalStatus hdd_IndicateScanResult(hdd_scan_info_t *scanInfo, tCsrScanResu
    /* AGE */
    event.cmd = IWEVCUSTOM;
    p = custom;
+<<<<<<< HEAD
    p += scnprintf(p, MAX_CUSTOM_LEN, " Age: %lu",
+=======
+   p += snprintf(p, MAX_CUSTOM_LEN, " Age: %lu",
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                  vos_timer_get_system_ticks() - descriptor->nReceivedTime);
    event.u.data.length = p - custom;
    current_event = iwe_stream_add_point (scanInfo->info,current_event, end,
@@ -570,7 +592,10 @@ static eHalStatus hdd_ScanRequestCallback(tHalHandle halHandle, void *pContext,
 {
     struct net_device *dev = (struct net_device *) pContext;
     hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR(dev) ;
+<<<<<<< HEAD
     hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     union iwreq_data wrqu;
     int we_event;
     char *msg;
@@ -578,7 +603,11 @@ static eHalStatus hdd_ScanRequestCallback(tHalHandle halHandle, void *pContext,
     ENTER();
 
     hddLog(LOGW,"%s called with halHandle = %p, pContext = %p, scanID = %d,"
+<<<<<<< HEAD
            " returned status = %d", __func__, halHandle, pContext,
+=======
+           " returned status = %d", __FUNCTION__, halHandle, pContext,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            (int) scanId, (int) status);
 
     /* if there is a scan request pending when the wlan driver is unloaded
@@ -588,20 +617,35 @@ static eHalStatus hdd_ScanRequestCallback(tHalHandle halHandle, void *pContext,
     if (pAdapter->dev != dev)
     {
        hddLog(LOGW, "%s: device mismatch %p vs %p",
+<<<<<<< HEAD
                __func__, pAdapter->dev, dev);
+=======
+               __FUNCTION__, pAdapter->dev, dev);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eHAL_STATUS_SUCCESS;
     }
 
     /* Check the scanId */
+<<<<<<< HEAD
     if (pHddCtx->scan_info.scanId != scanId)
     {
         hddLog(LOGW, "%s called with mismatched scanId pHddCtx->scan_info.scanId = %d "
                "scanId = %d ", __func__, (int) pHddCtx->scan_info.scanId,
+=======
+    if (pAdapter->scan_info.scanId != scanId)
+    {
+        hddLog(LOGW, "%s called with mismatched scanId pAdapter->scan_info.scanId = %d "
+               "scanId = %d ", __FUNCTION__, (int) pAdapter->scan_info.scanId,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 (int) scanId);
     }
 
     /* Scan is no longer pending */
+<<<<<<< HEAD
     pHddCtx->scan_info.mScanPending = VOS_FALSE;
+=======
+    pAdapter->scan_info.mScanPending = VOS_FALSE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // notify any applications that may be interested
     memset(&wrqu, '\0', sizeof(wrqu));
@@ -636,7 +680,10 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
                  union iwreq_data *wrqu, char *extra)
 {
    hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR(dev) ;
+<<<<<<< HEAD
    hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    hdd_wext_state_t *pwextBuf = WLAN_HDD_GET_WEXT_STATE_PTR(pAdapter);
    tCsrScanRequest scanRequest;
    v_U32_t scanId = 0;
@@ -655,7 +702,11 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
        return eHAL_STATUS_SUCCESS;
    }
 #endif
+<<<<<<< HEAD
    if(pHddCtx->scan_info.mScanPending == TRUE)
+=======
+   if(pAdapter->scan_info.mScanPending == TRUE)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    {
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:mScanPending is TRUE !!!",__func__);
        return eHAL_STATUS_SUCCESS;
@@ -670,7 +721,11 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
    if (NULL != wrqu->data.pointer)
    {
        /* set scanType, active or passive */
+<<<<<<< HEAD
        if ((IW_SCAN_TYPE_ACTIVE ==  scanReq->scan_type) || (eSIR_ACTIVE_SCAN == pHddCtx->scan_info.scan_mode))
+=======
+       if ((IW_SCAN_TYPE_ACTIVE ==  scanReq->scan_type) || (eSIR_ACTIVE_SCAN == pAdapter->scan_info.scan_mode))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        {
            scanRequest.scanType = eSIR_ACTIVE_SCAN;
        }
@@ -695,7 +750,11 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
               else
               {
                 scanRequest.SSIDs.numOfSSIDs = 0;
+<<<<<<< HEAD
                 VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, "%s: Unable to allocate memory",__func__);
+=======
+                VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, "%s: Unable to allocate memory",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 VOS_ASSERT(0);
               }
           }
@@ -708,7 +767,11 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
    }
    else
    {
+<<<<<<< HEAD
        if(pHddCtx->scan_info.scan_mode == eSIR_ACTIVE_SCAN) {
+=======
+       if(pAdapter->scan_info.scan_mode == eSIR_ACTIVE_SCAN) {
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            /* set the scan type to active */
            scanRequest.scanType = eSIR_ACTIVE_SCAN;
        } else {
@@ -736,6 +799,7 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
    /* if previous genIE is not NULL, update ScanIE */
    if (0 != pwextBuf->genIE.length)
    {
+<<<<<<< HEAD
        memset( &pHddCtx->scan_info.scanAddIE, 0, sizeof(pHddCtx->scan_info.scanAddIE) );
        memcpy( pHddCtx->scan_info.scanAddIE.addIEdata, pwextBuf->genIE.addIEdata, 
            pwextBuf->genIE.length );
@@ -754,16 +818,34 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
            VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
                      "Invalid ScanIE, Length is %d", pwextBuf->genIE.length);
        }
+=======
+       memset( &pAdapter->scan_info.scanAddIE, 0, sizeof(pAdapter->scan_info.scanAddIE) );
+       memcpy( pAdapter->scan_info.scanAddIE.addIEdata, pwextBuf->genIE.addIEdata, 
+           pwextBuf->genIE.length );
+       pAdapter->scan_info.scanAddIE.length = pwextBuf->genIE.length;
+
+       pwextBuf->roamProfile.pAddIEScan = pAdapter->scan_info.scanAddIE.addIEdata;
+       pwextBuf->roamProfile.nAddIEScanLength = pAdapter->scan_info.scanAddIE.length;
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        /* clear previous genIE after use it */
        memset( &pwextBuf->genIE, 0, sizeof(pwextBuf->genIE) );
    }
 
    /* push addIEScan in scanRequset if exist */
+<<<<<<< HEAD
    if (pHddCtx->scan_info.scanAddIE.addIEdata && 
        pHddCtx->scan_info.scanAddIE.length)
    { 
        scanRequest.uIEFieldLen = pHddCtx->scan_info.scanAddIE.length;
        scanRequest.pIEField = pHddCtx->scan_info.scanAddIE.addIEdata;
+=======
+   if (pAdapter->scan_info.scanAddIE.addIEdata && 
+       pAdapter->scan_info.scanAddIE.length)
+   { 
+       scanRequest.uIEFieldLen = pAdapter->scan_info.scanAddIE.length;
+       scanRequest.pIEField = pAdapter->scan_info.scanAddIE.addIEdata;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    status = sme_ScanRequest( (WLAN_HDD_GET_CTX(pAdapter))->hHal, pAdapter->sessionId,&scanRequest, &scanId, &hdd_ScanRequestCallback, dev ); 
@@ -773,9 +855,15 @@ int iw_set_scan(struct net_device *dev, struct iw_request_info *info,
        goto error;
    }
 
+<<<<<<< HEAD
    pHddCtx->scan_info.mScanPending = TRUE;
 
    pHddCtx->scan_info.scanId = scanId;
+=======
+   pAdapter->scan_info.mScanPending = TRUE;
+
+   pAdapter->scan_info.scanId = scanId;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 error:
    if ((wrqu->data.flags & IW_SCAN_THIS_ESSID) && (scanReq->essid_len))
@@ -807,7 +895,10 @@ int iw_get_scan(struct net_device *dev,
                          union iwreq_data *wrqu, char *extra)
 {
    hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR(dev) ;
+<<<<<<< HEAD
    hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
    tCsrScanResultInfo *pScanResult;
    eHalStatus status = eHAL_STATUS_SUCCESS;
@@ -819,7 +910,11 @@ int iw_get_scan(struct net_device *dev,
        __func__, (wrqu->data.length)?wrqu->data.length:IW_SCAN_MAX_DATA);
    ENTER();
 
+<<<<<<< HEAD
    if (TRUE == pHddCtx->scan_info.mScanPending)
+=======
+   if (TRUE == pAdapter->scan_info.mScanPending)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    {
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s:mScanPending is TRUE !!!",__func__);
        return -EAGAIN;
@@ -886,14 +981,22 @@ static eHalStatus hdd_CscanRequestCallback(tHalHandle halHandle, void *pContext,
     ENTER();
 
     hddLog(LOG1,"%s called with halHandle = %p, pContext = %p, scanID = %d,"
+<<<<<<< HEAD
            " returned status = %d", __func__, halHandle, pContext,
+=======
+           " returned status = %d", __FUNCTION__, halHandle, pContext,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             (int) scanId, (int) status);
 
     /* Check the scanId */
     if (pwextBuf->scanId != scanId)
     {
         hddLog(LOGW, "%s called with mismatched scanId pWextState->scanId = %d "
+<<<<<<< HEAD
                "scanId = %d ", __func__, (int) pwextBuf->scanId,
+=======
+               "scanId = %d ", __FUNCTION__, (int) pwextBuf->scanId,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 (int) scanId);
     }
 
@@ -925,7 +1028,10 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
                  union iwreq_data *wrqu, char *extra)
 {
     hdd_adapter_t *pAdapter = WLAN_HDD_GET_PRIV_PTR(dev) ;
+<<<<<<< HEAD
     hdd_context_t *pHddCtx = WLAN_HDD_GET_CTX(pAdapter);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     hdd_wext_state_t *pwextBuf = WLAN_HDD_GET_WEXT_STATE_PTR(pAdapter);
     tCsrScanRequest scanRequest;
     v_U32_t scanId = 0;
@@ -959,7 +1065,12 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
         int i, j, ssid_start;
         hdd_scan_pending_option_e scanPendingOption = WEXT_SCAN_PENDING_GIVEUP;
 
+<<<<<<< HEAD
         str_ptr = extra;
+=======
+        /* save the original buffer */
+        str_ptr = wrqu->data.pointer;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         i = WEXT_CSCAN_HEADER_SIZE;
 
@@ -968,24 +1079,40 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
             scanPendingOption = (hdd_scan_pending_option_e)str_ptr[++i];
             ++i;
         }
+<<<<<<< HEAD
         pHddCtx->scan_info.scan_pending_option = scanPendingOption;
 
         if(pHddCtx->scan_info.mScanPending == TRUE)
+=======
+        pAdapter->scan_info.scan_pending_option = scanPendingOption;
+
+        if(pAdapter->scan_info.mScanPending == TRUE)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         {
             hddLog(LOG1,"%s: mScanPending is TRUE",__func__);
             /* If any scan is pending, just giveup this scan request */
             if(WEXT_SCAN_PENDING_GIVEUP == scanPendingOption)
             {
+<<<<<<< HEAD
                 pHddCtx->scan_info.waitScanResult = FALSE;
+=======
+                pAdapter->scan_info.waitScanResult = FALSE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 return eHAL_STATUS_SUCCESS; 
             }
             /* If any scan pending, wait till finish current scan,
                and try this scan request when previous scan finish */
             else if(WEXT_SCAN_PENDING_DELAY == scanPendingOption)
             {
+<<<<<<< HEAD
                 pHddCtx->scan_info.waitScanResult = TRUE;
                 vos_event_reset(&pHddCtx->scan_info.scan_finished_event);
                 if(vos_wait_single_event(&pHddCtx->scan_info.scan_finished_event,
+=======
+                pAdapter->scan_info.waitScanResult = TRUE;
+                vos_event_reset(&pAdapter->scan_info.scan_finished_event);
+                if(vos_wait_single_event(&pAdapter->scan_info.scan_finished_event,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                           WEXT_CSCAN_SCAN_DONE_WAIT_TIME))
                 {
                     hddLog(LOG1,"%s: Previous SCAN does not finished on time",__func__);
@@ -995,11 +1122,19 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
             /* Piggyback previous scan result */
             else if(WEXT_SCAN_PENDING_PIGGYBACK == scanPendingOption)
             {
+<<<<<<< HEAD
                 pHddCtx->scan_info.waitScanResult = TRUE;
                 return eHAL_STATUS_SUCCESS; 
             }
         }
         pHddCtx->scan_info.waitScanResult = FALSE;
+=======
+                pAdapter->scan_info.waitScanResult = TRUE;
+                return eHAL_STATUS_SUCCESS; 
+            }
+        }
+        pAdapter->scan_info.waitScanResult = FALSE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         /* Check for scan IE */
         while( WEXT_CSCAN_SSID_SECTION == str_ptr[i] ) 
@@ -1090,7 +1225,11 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
         if( WEXT_CSCAN_PASV_DWELL_SECTION == (str_ptr[i]) ) 
         {
             /* No SSID specified, num_ssid == 0, then start paasive scan */
+<<<<<<< HEAD
             if (!num_ssid || (eSIR_PASSIVE_SCAN == pHddCtx->scan_info.scan_mode))
+=======
+            if (!num_ssid || (eSIR_PASSIVE_SCAN == pAdapter->scan_info.scan_mode))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             {
                 scanRequest.scanType = eSIR_PASSIVE_SCAN;
                 scanRequest.minChnTime = (v_U8_t)str_ptr[++i];//scanReq->min_channel_time;
@@ -1106,7 +1245,11 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
         /* H indicates active channel time */
         if( WEXT_CSCAN_HOME_DWELL_SECTION == (str_ptr[i]) ) 
         {
+<<<<<<< HEAD
             if (num_ssid || (eSIR_ACTIVE_SCAN == pHddCtx->scan_info.scan_mode))
+=======
+            if (num_ssid || (eSIR_ACTIVE_SCAN == pAdapter->scan_info.scan_mode))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             {
                 scanRequest.scanType = eSIR_ACTIVE_SCAN;
                 scanRequest.minChnTime = str_ptr[++i];//scanReq->min_channel_time;
@@ -1121,11 +1264,16 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
         scanRequest.BSSType = eCSR_BSS_TYPE_ANY;
         /* set requestType to full scan */
         scanRequest.requestType = eCSR_SCAN_REQUEST_FULL_SCAN;
+<<<<<<< HEAD
         pHddCtx->scan_info.mScanPending = TRUE;
+=======
+        pAdapter->scan_info.mScanPending = TRUE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         /* if previous genIE is not NULL, update ScanIE */
         if(0 != pwextBuf->genIE.length)
         {
+<<<<<<< HEAD
             memset( &pHddCtx->scan_info.scanAddIE, 0, sizeof(pHddCtx->scan_info.scanAddIE) );
             memcpy( pHddCtx->scan_info.scanAddIE.addIEdata, pwextBuf->genIE.addIEdata, 
                 pwextBuf->genIE.length );
@@ -1144,16 +1292,34 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
                          "Invalid ScanIE, Length is %d",
                           pwextBuf->genIE.length);
             }
+=======
+            memset( &pAdapter->scan_info.scanAddIE, 0, sizeof(pAdapter->scan_info.scanAddIE) );
+            memcpy( pAdapter->scan_info.scanAddIE.addIEdata, pwextBuf->genIE.addIEdata, 
+                pwextBuf->genIE.length );
+            pAdapter->scan_info.scanAddIE.length = pwextBuf->genIE.length;
+
+            pwextBuf->roamProfile.pAddIEScan = pAdapter->scan_info.scanAddIE.addIEdata;
+            pwextBuf->roamProfile.nAddIEScanLength = pAdapter->scan_info.scanAddIE.length;
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             /* clear previous genIE after use it */
             memset( &pwextBuf->genIE, 0, sizeof(pwextBuf->genIE) );
         }
 
         /* push addIEScan in scanRequset if exist */
+<<<<<<< HEAD
         if (pHddCtx->scan_info.scanAddIE.addIEdata && 
             pHddCtx->scan_info.scanAddIE.length)
         {
             scanRequest.uIEFieldLen = pHddCtx->scan_info.scanAddIE.length;
             scanRequest.pIEField = pHddCtx->scan_info.scanAddIE.addIEdata;
+=======
+        if (pAdapter->scan_info.scanAddIE.addIEdata && 
+            pAdapter->scan_info.scanAddIE.length)
+        {
+            scanRequest.uIEFieldLen = pAdapter->scan_info.scanAddIE.length;
+            scanRequest.pIEField = pAdapter->scan_info.scanAddIE.addIEdata;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         }
 
         status = sme_ScanRequest( (WLAN_HDD_GET_CTX(pAdapter))->hHal, 
@@ -1161,12 +1327,20 @@ int iw_set_cscan(struct net_device *dev, struct iw_request_info *info,
         if( !HAL_STATUS_SUCCESS(status) )
         {
             VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL, "%s: SME scan fail status %d !!!",__func__, status);
+<<<<<<< HEAD
             pHddCtx->scan_info.mScanPending = FALSE;
+=======
+            pAdapter->scan_info.mScanPending = FALSE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             status = -EINVAL;
             goto exit_point;
         }
 
+<<<<<<< HEAD
         pHddCtx->scan_info.scanId = scanId;
+=======
+        pAdapter->scan_info.scanId = scanId;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     } //end of data->pointer
     else {
@@ -1192,8 +1366,14 @@ exit_point:
 }
 
 /* Abort any MAC scan if in progress */
+<<<<<<< HEAD
 void hdd_abort_mac_scan(hdd_context_t* pHddCtx, eCsrAbortReason reason)
 {
     sme_AbortMacScan(pHddCtx->hHal, reason);
+=======
+void hdd_abort_mac_scan(hdd_context_t* pHddCtx)
+{
+    sme_AbortMacScan(pHddCtx->hHal);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }
 

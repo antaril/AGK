@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -175,7 +178,11 @@ when        who    what, where, why
 #define WLANBAP_LLC_OUI_OFFSET                 3
 
 /*Offset of the protocol type field inside the LLC/SNAP header*/
+<<<<<<< HEAD
 #define WLANBAP_LLC_PROTO_TYPE_OFFSET  (WLANBAP_LLC_OUI_OFFSET +  WLANBAP_LLC_OUI_SIZE)
+=======
+#define WLANBAP_LLC_PROTO_TYPE_OFFSET  WLANBAP_LLC_OUI_OFFSET +  WLANBAP_LLC_OUI_SIZE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define WLANBAP_MAX_NUM_TRIPLETS               5
 

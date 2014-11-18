@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -80,11 +83,14 @@
 #define     WPAL_SMSM_WLAN_TX_ENABLE          0x00000400
 #define     WPAL_SMSM_WLAN_TX_RINGS_EMPTY     0x00000200
 
+<<<<<<< HEAD
 typedef enum
 {
    WPAL_DEBUG_START_HEALTH_TIMER = 1<<0,
    WPAL_DEBUG_TX_DESC_RESYNC     = 1<<1,
 } WPAL_DeviceDebugFlags;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ====================================================================================================================
   @  Function Name 
       wpalIsrType

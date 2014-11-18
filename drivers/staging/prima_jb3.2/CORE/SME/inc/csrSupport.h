@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -68,7 +71,11 @@
 
 #define CSR_RSN_OUI_SIZE              ( 4 )
 #define CSR_RSN_VERSION_SUPPORTED     ( 1 )
+<<<<<<< HEAD
 #define CSR_RSN_MAX_AUTH_SUITES       ( 16 )
+=======
+#define CSR_RSN_MAX_AUTH_SUITES       ( 2 )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define CSR_RSN_MAX_CYPHERS           ( 5 )
 #define CSR_RSN_MAX_UNICAST_CYPHERS   ( 5 )
 #define CSR_RSN_MAX_MULTICAST_CYPHERS ( 1 )
@@ -823,17 +830,26 @@ eHalStatus
 csrIsconcurrentsessionValid(tpAniSirGlobal pMac,tANI_U32 cursessionId,
                                  tVOS_CON_MODE currBssPersona);
 
+<<<<<<< HEAD
 //Update beaconInterval for P2P-GO case if it is different 
 eHalStatus csrUpdatep2pBeaconInterval(tpAniSirGlobal pMac);
 
 //BeaconInterval validation for MCC support
 eHalStatus csrValidateMCCBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId,
+=======
+//BeaconInterval valiadation for MCC support
+eHalStatus csrValidateBeaconInterval(tpAniSirGlobal pMac, tANI_U8 channelId, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                      tANI_U16 *beaconInterval, tANI_U32 cursessionId,
                                      tVOS_CON_MODE currBssPersona);
 
 #ifdef WLAN_FEATURE_VOWIFI_11R
 tANI_BOOLEAN csrIsProfile11r( tCsrRoamProfile *pProfile );
+<<<<<<< HEAD
 tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType, tANI_U8 mdiePresent);
+=======
+tANI_BOOLEAN csrIsAuthType11r( eCsrAuthType AuthType );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 #ifdef FEATURE_WLAN_CCX

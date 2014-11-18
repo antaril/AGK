@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,6 +47,7 @@
 
 /**=============================================================================
   wlan_hdd_dp_utils.h
+<<<<<<< HEAD
 
   \brief      Utility functions for data path module
 
@@ -60,6 +64,19 @@
   ==============================================================================**/
 /* $HEADER$ */
 
+=======
+  
+  \brief      Utility functions for data path module
+  
+  Description...
+               Copyright 2008 (c) Qualcomm, Incorporated.
+               All Rights Reserved.
+               Qualcomm Confidential and Proprietary.
+  
+  ==============================================================================**/
+/* $HEADER$ */
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**-----------------------------------------------------------------------------
   Include files
   ----------------------------------------------------------------------------*/
@@ -70,12 +87,22 @@
 #include <vos_status.h>
 #include <linux/spinlock.h>
 #include <vos_trace.h>
+<<<<<<< HEAD
 #include <vos_list.h>
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include <vos_list.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**-----------------------------------------------------------------------------
   Preprocessor definitions and constants
  ----------------------------------------------------------------------------*/
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**-----------------------------------------------------------------------------
   Type declarations
  ----------------------------------------------------------------------------*/
@@ -114,7 +141,11 @@ VOS_INLINE_FN v_VOID_t hdd_list_destroy( hdd_list_t *pList )
 {
    if ( pList->count !=0 )
    {
+<<<<<<< HEAD
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "%s: list length not equal to zero",__func__);
+=======
+       VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH, "%s: list length not equal to zero",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 }
 

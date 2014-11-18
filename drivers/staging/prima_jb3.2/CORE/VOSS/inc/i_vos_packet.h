@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -66,8 +69,15 @@
 #include <linux/skbuff.h>
 #include <linux/list.h>
 
+<<<<<<< HEAD
 #include <wlan_qct_pal_packet.h>
 #include <wlan_qct_wdi_ds.h>
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include <wlan_qct_pal_packet.h>
+#include <wlan_qct_wdi_ds.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*--------------------------------------------------------------------------
   Preprocessor definitions and constants
@@ -110,9 +120,12 @@
 // dereferenced is really referencing a struct vos_pkt_t
 #define VPKT_MAGIC_NUMBER 0x56504B54  /* VPKT in ASCII */
 
+<<<<<<< HEAD
 // while allocating the skb->data is cache aligned, so the memory allocated
 // is more than VPKT_SIZE_BUFFER
 #define VPKT_SIZE_BUFFER_ALIGNED SKB_DATA_ALIGN(VPKT_SIZE_BUFFER)
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*--------------------------------------------------------------------------
   Type declarations
   ------------------------------------------------------------------------*/
@@ -122,9 +135,17 @@
 /// implementation specific vos packet type
 struct vos_pkt_t
 {
+<<<<<<< HEAD
 
    //palPacket MUST be the first member of vos_pkt_t
    wpt_packet palPacket;
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+
+   //palPacket MUST be the first member of vos_pkt_t
+   wpt_packet palPacket;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    // Node for linking vos packets into a free list
    struct list_head node;
@@ -190,14 +211,23 @@ typedef struct vos_pkt_context_s
    struct list_head txDataFreeList;
    struct list_head txMgmtFreeList;
 
+<<<<<<< HEAD
    //Existing list_size opearation traverse the list. Too slow for data path.
    //Add the field to enable faster flow control on tx path
    v_U32_t uctxDataFreeListCount;
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+   //Existing list_size opearation traverse the list. Too slow for data path.
+   //Add the field to enable faster flow control on tx path
+   v_U32_t uctxDataFreeListCount;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    // We keep a separate count of the number of RX_RAW packets
    // waiting to be replenished
    v_SIZE_t rxReplenishListCount;
 
+<<<<<<< HEAD
    // Count for the number of packets that could not be replenished
    // because the memory allocation API failed
    v_SIZE_t rxReplenishFailCount;
@@ -209,11 +239,14 @@ typedef struct vos_pkt_context_s
    // value to the driver to save the memory usage.
    v_SIZE_t numOfRxRawPackets;
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    // These are the structs to keep low-resource callback information.
    // There are separate low-resource callback information blocks for
    // RX_RAW, TX_DATA, and TX_MGMT.
    vos_pkt_low_resource_info rxRawLowResourceInfo;
    vos_pkt_low_resource_info txDataLowResourceInfo;
+<<<<<<< HEAD
    vos_pkt_low_resource_info txMgmtLowResourceInfo;
 
    struct mutex rxReplenishListLock;
@@ -221,10 +254,20 @@ typedef struct vos_pkt_context_s
    struct mutex txDataFreeListLock;
    struct mutex txMgmtFreeListLock;
 
+=======
+   vos_pkt_low_resource_info txMgmtLowResourceInfo;   
+
+   struct mutex mlock;
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /*Meta Information to be transported with the packet*/
    WDI_DS_TxMetaInfoType txMgmtMetaInfo[VPKT_NUM_TX_MGMT_PACKETS];
    WDI_DS_TxMetaInfoType txDataMetaInfo[VPKT_NUM_TX_DATA_PACKETS];
    WDI_DS_RxMetaInfoType rxMetaInfo[VPKT_NUM_RX_RAW_PACKETS];
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 } vos_pkt_context_t;
 

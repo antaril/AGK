@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -38,6 +41,10 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*
  *
  * Airgo Networks, Inc proprietary. All rights reserved.
@@ -59,11 +66,18 @@
 #include "sirMacPropExts.h"
 #include "sirCommon.h"
 #include "sirDebug.h"
+<<<<<<< HEAD
 #include "wniCfgSta.h"
 #include "csrApi.h"
 #include "sapApi.h"
 #ifdef FEATURE_WLAN_TDLS
 #include "dot11f.h"
+=======
+#include "wniCfgAp.h"
+#ifdef WLAN_SOFTAP_FEATURE
+#include "csrApi.h"
+#include "sapApi.h"
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 /// Maximum number of scan hash table entries
@@ -112,10 +126,19 @@ typedef enum eLimSystemRole
     eLIM_STA_IN_IBSS_ROLE,
     eLIM_STA_ROLE,
     eLIM_BT_AMP_STA_ROLE,
+<<<<<<< HEAD
     eLIM_BT_AMP_AP_ROLE,
     eLIM_P2P_DEVICE_ROLE,
     eLIM_P2P_DEVICE_GO,
     eLIM_P2P_DEVICE_CLIENT
+=======
+    eLIM_BT_AMP_AP_ROLE
+#ifdef WLAN_FEATURE_P2P
+    ,eLIM_P2P_DEVICE_ROLE
+    ,eLIM_P2P_DEVICE_GO
+    ,eLIM_P2P_DEVICE_CLINET
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tLimSystemRole;
 
 /**
@@ -201,7 +224,13 @@ typedef enum eLimMlmStates
     eLIM_MLM_WT_ADD_BSS_RSP_FT_REASSOC_STATE,
     eLIM_MLM_WT_FT_REASSOC_RSP_STATE,
 #endif
+<<<<<<< HEAD
     eLIM_MLM_P2P_LISTEN_STATE,
+=======
+#ifdef WLAN_FEATURE_P2P
+    eLIM_MLM_P2P_LISTEN_STATE,
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tLimMlmStates;
 
 // 11h channel quiet states
@@ -271,9 +300,87 @@ typedef enum eLimBAState
   eLIM_BA_STATE_WT_DEL_RSP //  We are waiting for Del response from HAL.
 } tLimBAState;
 
+<<<<<<< HEAD
 
 
 
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP) && (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+typedef struct sLimMeasParams
+{
+    TX_TIMER    measurementIndTimer;
+    TX_TIMER    learnIntervalTimer;
+    TX_TIMER    learnDurationTimer;
+    tANI_U32    rssiAlpha;
+    tANI_U32    chanUtilAlpha;
+    tANI_U8     shortDurationCount;
+    tANI_U8     isMeasIndTimerActive:1;
+    tANI_U8     disableMeasurements:1;
+    tANI_U8     rsvd:6;
+    tANI_U8     nextLearnChannelId;
+} tLimMeasParams, *tpLimMeasParams;
+
+typedef struct tLimMeasMatrixNode tLimMeasMatrixNode,
+                                  *tpLimMeasMatrixNode;
+struct tLimMeasMatrixNode
+{
+    tSirMeasMatrixInfo     matrix;
+    tANI_U32                    avgRssi;
+    tpLimMeasMatrixNode    next;
+};
+
+typedef struct tLimNeighborBssWdsNode tLimNeighborBssWdsNode,
+                                      *tpLimNeighborBssWdsNode;
+struct tLimNeighborBssWdsNode
+{
+    tSirNeighborBssWdsInfo     info;
+    tpLimNeighborBssWdsNode    next;
+};
+
+typedef struct sLimMeasData
+{
+    tANI_U32                duration;  
+    tANI_U32                prevTsfLo;
+    tANI_U32                prevChannelUtilization;
+    tANI_U16                avgChannelUtilization;
+    tANI_U8                 numMatrixNodes;
+    tpLimMeasMatrixNode     pMeasMatrixInfo;
+    tANI_U32                numBssWds;
+    tANI_U16                totalBssSize;
+    tpLimNeighborBssWdsNode pNeighborWdsInfo;
+} tLimMeasData, *tpLimMeasData;
+#endif
+
+#if (WNI_POLARIS_FW_PACKAGE == ADVANCED)
+/// Definition for Alternate BSS list
+typedef struct sSirMultipleAlternateRadioInfo
+{
+    tANI_U8                       numBss;
+    tSirAlternateRadioInfo   alternateRadio[SIR_MAX_NUM_ALTERNATE_RADIOS];
+} tSirMultipleAlternateRadioInfo, *tpSirMultipleAlternateRadioInfo;
+
+/// Definition for Neighbor BSS list
+typedef struct sSirMultipleNeighborBssInfo
+{
+    tANI_U32                  numBss;
+    tSirNeighborBssInfo  bssList[SIR_MAX_NUM_NEIGHBOR_BSS];
+} tSirMultipleNeighborBssInfo, *tpSirMultipleNeighborBssInfo;
+#endif
+
+
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+/**
+ * Following is definition of to-be-released AID list.
+ * When 'seen' AID is moved from to-be-released list
+ * to free pool.
+ */
+typedef struct sLimAIDtbr
+{
+    tANI_U8 tbr:1;
+    tANI_U8 seen:1;
+} tLimAIDtbr;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // MLM Req/Cnf structure definitions
 typedef struct sLimMlmAuthReq
@@ -300,14 +407,24 @@ typedef struct sLimMlmScanReq
     tSirScanType       scanType;
     tANI_U32           minChannelTime;
     tANI_U32           maxChannelTime;
+<<<<<<< HEAD
     tANI_U32           minChannelTimeBtc;
     tANI_U32           maxChannelTimeBtc;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tSirBackgroundScanMode  backgroundScanMode;
     tANI_U32 dot11mode;
     /* Number of SSIDs to scan(send Probe request) */
     tANI_U8            numSsid;
 
+<<<<<<< HEAD
     tANI_BOOLEAN   p2pSearch;
+=======
+#ifdef WLAN_FEATURE_P2P
+    tANI_BOOLEAN   p2pSearch;
+    tANI_BOOLEAN   skipDfsChnlInP2pSearch;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tANI_U16           uIEFieldLen;
     tANI_U16           uIEFieldOffset;
 
@@ -342,10 +459,17 @@ struct tLimScanResultNode
 #ifdef FEATURE_OEM_DATA_SUPPORT
 
 #ifndef OEM_DATA_REQ_SIZE 
+<<<<<<< HEAD
 #define OEM_DATA_REQ_SIZE 134
 #endif
 #ifndef OEM_DATA_RSP_SIZE
 #define OEM_DATA_RSP_SIZE 1968
+=======
+#define OEM_DATA_REQ_SIZE 70
+#endif
+#ifndef OEM_DATA_RSP_SIZE
+#define OEM_DATA_RSP_SIZE 968
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 // OEM Data related structure definitions
@@ -469,8 +593,23 @@ typedef struct sCacheParams
     
 } tCacheParams, *tpCacheParams;
 
+<<<<<<< HEAD
 #define LIM_PROT_STA_OVERLAP_CACHE_SIZE    HAL_NUM_ASSOC_STA
 #define LIM_PROT_STA_CACHE_SIZE            HAL_NUM_ASSOC_STA
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+#define LIM_PROT_STA_OVERLAP_CACHE_SIZE     10
+#define LIM_PROT_STA_CACHE_SIZE 256
+#else
+#ifdef WLAN_SOFTAP_FEATURE
+#define LIM_PROT_STA_OVERLAP_CACHE_SIZE    HAL_NUM_ASSOC_STA
+#define LIM_PROT_STA_CACHE_SIZE            HAL_NUM_ASSOC_STA
+#else
+#define LIM_PROT_STA_OVERLAP_CACHE_SIZE    5
+#define LIM_PROT_STA_CACHE_SIZE            5
+#endif
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sLimProtStaParams
 {
@@ -579,6 +718,7 @@ typedef struct sLimChannelSwitchInfo
     tANI_U8                  switchMode;
 } tLimChannelSwitchInfo, *tpLimChannelSwitchInfo;
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_11AC
 typedef struct sLimOperatingModeInfo
 {
@@ -596,6 +736,8 @@ typedef struct sLimWiderBWChannelSwitch
     tANI_U8      newCenterChanFreq1;
 }tLimWiderBWChannelSwitchInfo, *tpLimWiderBWChannelSwitchInfo;
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 // Enums used when stopping the Tx.
 typedef enum eLimQuietTxMode
 {
@@ -614,6 +756,18 @@ typedef enum eLimControlTx
     eLIM_STOP_TX
 } tLimControlTx;
 
+<<<<<<< HEAD
+=======
+#ifdef ANI_AP_SDK
+typedef struct sLimScanDurationConvert
+{
+    tANI_U32 shortChannelScanDuration_tick; /* Used to update timers, for optimization purposes.  Value converted to TICKS once */
+    tANI_U32 shortChannelScanDuration_TU; /* Used by quietBSS duration.  Converted to TU once */
+    tANI_U32 longChannelScanDuration_tick; /* Used to update timers, for optimization purposes.  Value converted to TICKS once */
+    tANI_U32 longChannelScanDuration_TU; /* Used by quietBSS duration.  Converted to TU once */
+} tLimScanDurationConvert, *tpLimScanDurationConvert;
+#endif /* ANI_AP_SDK */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // --------------------------------------------------------------------
 
@@ -661,7 +815,11 @@ typedef struct sLimWscIeInfo
 } tLimWscIeInfo, *tpLimWscIeInfo;
 
 // maximum number of tspec's supported
+<<<<<<< HEAD
 #define LIM_NUM_TSPEC_MAX      15
+=======
+#define LIM_NUM_TSPEC_MAX      4
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 //structure to hold all 11h specific data
@@ -679,6 +837,7 @@ typedef struct sLimSpecMgmtInfo
     tANI_BOOLEAN       fRadarDetCurOperChan; /* Radar detected in cur oper chan on AP */
     tANI_BOOLEAN       fRadarIntrConfigured; /* Whether radar interrupt has been configured */
 }tLimSpecMgmtInfo, *tpLimSpecMgmtInfo;
+<<<<<<< HEAD
 
 #ifdef FEATURE_WLAN_TDLS_INTERNAL
 typedef struct sLimDisResultList
@@ -734,4 +893,6 @@ typedef enum tdlsLinkMode
 } eLimTdlsLinkMode ;
 #endif  /* FEATURE_WLAN_TDLS */
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif

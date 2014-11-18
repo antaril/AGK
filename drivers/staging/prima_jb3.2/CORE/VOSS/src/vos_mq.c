@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -97,7 +100,11 @@ __inline VOS_STATUS vos_mq_init(pVosMqType pMq)
   /* Some quick sanity check*/
   if (pMq == NULL) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: NULL pointer passed",__func__);
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return VOS_STATUS_E_FAILURE;
   }
 
@@ -135,7 +142,11 @@ __inline void vos_mq_deinit(pVosMqType pMq)
   */
   if (pMq == NULL) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: NULL pointer passed",__func__);
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return ;
   }
 
@@ -168,7 +179,11 @@ __inline void vos_mq_put(pVosMqType pMq, pVosMsgWrapper pMsgWrapper)
   */
   if ((pMq == NULL) || (pMsgWrapper == NULL)) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: NULL pointer passed",__func__);
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return ;
   }
 
@@ -207,7 +222,11 @@ __inline pVosMsgWrapper vos_mq_get(pVosMqType pMq)
   
   if (pMq == NULL) {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: NULL pointer passed",__func__);
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return NULL;
   }
  
@@ -216,7 +235,11 @@ __inline pVosMsgWrapper vos_mq_get(pVosMqType pMq)
   if( list_empty(&pMq->mqList) )
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
              "%s: VOS Message Queue is empty",__func__);
+=======
+             "%s: VOS Message Queue is empty",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   }
   else
   {
@@ -256,7 +279,11 @@ __inline v_BOOL_t vos_is_mq_empty(pVosMqType pMq)
   if (pMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: NULL pointer passed",__func__);
+=======
+         "%s: NULL pointer passed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return VOS_STATUS_E_FAILURE;
   }
 

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -152,7 +155,10 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   WDI_DS_BdMemPoolType *pMemPool;
   wpt_uint8      ucBdPoolType;
   wpt_uint8      staId;
+<<<<<<< HEAD
   WDI_Status wdiStatus;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   // Do Sanity checks
   if (NULL == pContext)
@@ -182,6 +188,7 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   switch(ucType)
   {
     case WDI_MAC_DATA_FRAME:
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
        /* I utilizes TDLS mgmt frame always sent at BD_RATE2. (See limProcessTdls.c)
           Assumption here is data frame sent by WDA_TxPacket() <- HalTxFrame/HalTxFrameWithComplete()
@@ -199,12 +206,21 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
        break;
        }
     // intentional fall-through to handle eapol packet as mgmt
+=======
+       pMemPool = &(pClientData->dataMemPool);
+       ucBdPoolType = WDI_DATA_POOL_ID;
+    break;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case WDI_MAC_MGMT_FRAME:
        pMemPool = &(pClientData->mgmtMemPool);
        ucBdPoolType = WDI_MGMT_POOL_ID;
     break;
     default:
+<<<<<<< HEAD
       return WDI_STATUS_E_FAILURE;
+=======
+      return WDI_STATUS_E_FAILURE;;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   }
 
   // Allocate BD header from pool
@@ -217,6 +233,7 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   alignment = 0;
   WDI_DS_PrepareBDHeader(pFrame, ucSwFrameTXXlation, alignment);
 
+<<<<<<< HEAD
   wdiStatus = WDI_FillTxBd(pContext, ucTypeSubtype, pSTAMACAddress, pAddr2MACAddress,
     &ucUP, 1, pvBDHeader, ucTxFlag /* No ACK */, 0, &staId);
 
@@ -228,6 +245,14 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
 
   pTxMetadata->staIdx = staId;
 
+=======
+  if(WDI_STATUS_SUCCESS != 
+      WDI_FillTxBd( pContext, ucTypeSubtype, pSTAMACAddress, pAddr2MACAddress, 
+        &ucUP, 1, pvBDHeader, ucTxFlag /* No ACK */, 0, &staId)){
+    WDI_DS_MemPoolFree(pMemPool, pvBDHeader, physBDHeader);
+    return WDI_STATUS_E_FAILURE;
+  }
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   // Send packet to transport layer.
   if(eWLAN_PAL_STATUS_SUCCESS !=WDTS_TxPacket(pContext, pFrame)){
     WDI_DS_MemPoolFree(pMemPool, pvBDHeader, physBDHeader);
@@ -235,6 +260,7 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
   }  
 
   /* resource count only for data packet */
+<<<<<<< HEAD
   // EAPOL packet doesn't use data mem pool if being treated as higher priority
 #ifdef FEATURE_WLAN_TDLS
   /* I utilizes TDLS mgmt frame always sent at BD_RATE2. (See limProcessTdls.c)
@@ -246,6 +272,9 @@ WDI_Status WDI_DS_TxPacket(void *pContext,
 #else
   if(WDI_MAC_DATA_FRAME == ucType && (!pTxMetadata->isEapol))
 #endif
+=======
+  if(WDI_MAC_DATA_FRAME == ucType)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   {
     WDI_DS_MemPoolIncreaseReserveCount(pMemPool, staId);
   }
@@ -517,6 +546,7 @@ WDI_Status WDI_DS_ClearStaIdxPerBssIdx(void *pContext, wpt_uint8 bssIdx, wpt_uin
   /* Could not find associated STA index with BSS index */
   return WDI_STATUS_E_FAILURE;
 }
+<<<<<<< HEAD
 
 /* @brief: WDI_DS_GetTrafficStats
  * This function should be invoked to fetch the current stats
@@ -560,3 +590,5 @@ void WDI_DS_ClearTrafficStats(void)
    return WDTS_ClearTrafficStats();
 }
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

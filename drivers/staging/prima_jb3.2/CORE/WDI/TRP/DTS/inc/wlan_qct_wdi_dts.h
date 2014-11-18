@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -41,9 +44,12 @@
 
 #ifndef __WLAN_QCT_DTS_H
 #define __WLAN_QCT_DTS_H
+<<<<<<< HEAD
 
 #include "wlan_qct_wdi.h"
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**=========================================================================
  *     
  *       \file  wlan_qct_wdi_dts.h
@@ -128,7 +134,11 @@ typedef struct {
   wpt_status (*setPowerState) (void *pContext, WDTS_PowerStateType   powerState, 
                                WDTS_SetPSCbType cBack);
   void (*channelDebug)(wpt_boolean displaySnapshot,
+<<<<<<< HEAD
                        wpt_uint8   debugFlags);
+=======
+                       wpt_boolean enableStallDetect);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   wpt_status (*stop) (void *pContext);
   wpt_status (*close) (void *pContext);
   wpt_uint32 (*getFreeTxDataResNumber) (void *pContext);
@@ -139,6 +149,7 @@ typedef struct {
    void*        pUserData;
 } WDTS_SetPowerStateCbInfoType;
 
+<<<<<<< HEAD
 /* Tx/Rx stats function
  * This function should be invoked to fetch the current stats
   * Parameters:
@@ -169,6 +180,8 @@ void WDTS_ActivateTrafficStats(void);
  */
 void WDTS_ClearTrafficStats(void);
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* DTS open  function. 
  * On open the transport device should initialize itself.
  * Parameters:
@@ -238,6 +251,7 @@ wpt_status WDTS_SetPowerState(void *pContext, WDTS_PowerStateType powerState,
  * User may request to display DXE channel snapshot
  * Or if host driver detects any abnormal stcuk may display
  * Parameters:
+<<<<<<< HEAD
  *  displaySnapshot : Display DXE snapshot option
  *  debugFlags      : Enable stall detect features
  *                    defined by WPAL_DeviceDebugFlags
@@ -249,6 +263,16 @@ wpt_status WDTS_SetPowerState(void *pContext, WDTS_PowerStateType powerState,
  *
  */
 void WDTS_ChannelDebug(wpt_boolean displaySnapshot, wpt_uint8 debugFlags);
+=======
+ *  displaySnapshot : Dispaly DXE snapshot option
+ *  enableStallDetect : Enable stall detect feature
+                        This feature will take effect to data performance
+                        Not integrate till fully verification
+ * Return Value: NONE
+ *
+ */
+void WDTS_ChannelDebug(wpt_boolean dispalySnapshot, wpt_boolean toggleStallDetect);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* DTS Stop function. 
  * Stop Transport driver, ie DXE, SDIO

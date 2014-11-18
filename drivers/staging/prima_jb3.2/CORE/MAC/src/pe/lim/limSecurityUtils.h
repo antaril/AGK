@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -54,12 +57,25 @@
 #define __LIM_SECURITY_UTILS_H
 #include "sirMacProtDef.h" //for tSirMacAuthFrameBody
 
+<<<<<<< HEAD
 #define LIM_ENCR_AUTH_BODY_LEN  (sizeof(tSirMacAuthFrameBody) + \
                                 SIR_MAC_WEP_IV_LENGTH + \
                                 SIR_MAC_WEP_ICV_LENGTH)
 struct tLimPreAuthNode;
 
 tANI_U8        limIsAuthAlgoSupported(tpAniSirGlobal, tAniAuthType, tpPESession);
+=======
+#define LIM_ENCR_AUTH_BODY_LEN  sizeof(tSirMacAuthFrameBody) + \
+                                SIR_MAC_WEP_IV_LENGTH + \
+                                SIR_MAC_WEP_ICV_LENGTH
+struct tLimPreAuthNode;
+
+#ifdef WLAN_SOFTAP_FEATURE
+tANI_U8        limIsAuthAlgoSupported(tpAniSirGlobal, tAniAuthType, tpPESession);
+#else
+tANI_U8        limIsAuthAlgoSupported(tpAniSirGlobal, tAniAuthType);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // MAC based authentication related functions
 void               limInitPreAuthList(tpAniSirGlobal);

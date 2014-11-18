@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,9 +43,13 @@
  */
 
 /**=========================================================================
+<<<<<<< HEAD
 * Copyright (c) 2013 Qualcomm Atheros, Inc.
 * All Rights Reserved.
 * Qualcomm Atheros Confidential and Proprietary.
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   \file  limTrace.c
 
   \brief implementation for trace related APIs
@@ -60,17 +67,29 @@
   Include Files
   ------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 #include "aniGlobal.h" //for tpAniSirGlobal
 
 #include "limTrace.h"
 #include "limTimerUtils.h"
 #include "vos_trace.h"
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include "aniGlobal.h" //for tpAniSirGlobal
+#endif
+
+#include "limTrace.h"
+#include "limTimerUtils.h"
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 #ifdef LIM_TRACE_RECORD
 tANI_U32 gMgmtFrameStats[14];
 
+<<<<<<< HEAD
 #define LIM_TRACE_MAX_SUBTYPES 14
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
@@ -87,6 +106,12 @@ static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
         CASE_RETURN_STRING(eLIM_PRE_AUTH_CLEANUP_TIMER);
         CASE_RETURN_STRING(eLIM_HEART_BEAT_TIMER);
         CASE_RETURN_STRING(eLIM_BACKGROUND_SCAN_TIMER);
+<<<<<<< HEAD
+=======
+#ifdef ANI_PRODUCT_TYPE_AP
+        CASE_RETURN_STRING(eLIM_LEARN_INTERVAL_TIMER);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         CASE_RETURN_STRING(eLIM_KEEPALIVE_TIMER);
         CASE_RETURN_STRING(eLIM_CNF_WAIT_TIMER);
         CASE_RETURN_STRING(eLIM_AUTH_RSP_TIMER);
@@ -97,6 +122,7 @@ static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
         CASE_RETURN_STRING(eLIM_LEARN_DURATION_TIMER);
         CASE_RETURN_STRING(eLIM_QUIET_TIMER);
         CASE_RETURN_STRING(eLIM_QUIET_BSS_TIMER);
+<<<<<<< HEAD
         CASE_RETURN_STRING(eLIM_WPS_OVERLAP_TIMER);
 #ifdef WLAN_FEATURE_VOWIFI_11R
         CASE_RETURN_STRING(eLIM_FT_PREAUTH_RSP_TIMER);
@@ -111,6 +137,8 @@ static tANI_U8* __limTraceGetTimerString( tANI_U16 timerId )
         CASE_RETURN_STRING(eLIM_PERIODIC_JOIN_PROBE_REQ_TIMER);
         CASE_RETURN_STRING(eLIM_INSERT_SINGLESHOT_NOA_TIMER);
         CASE_RETURN_STRING(eLIM_CONVERT_ACTIVE_CHANNEL_TO_PASSIVE);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         default:
             return( "UNKNOWN" );
             break;
@@ -140,16 +168,27 @@ static tANI_U8* __limTraceGetMgmtDropReasonString( tANI_U16 dropReason )
 
 void limTraceInit(tpAniSirGlobal pMac)
 {
+<<<<<<< HEAD
     vosTraceRegister(VOS_MODULE_ID_PE, (tpvosTraceCb)&limTraceDump);
+=======
+    macTraceRegister(pMac,  VOS_MODULE_ID_PE, limTraceDump);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }
 
 
 
 
+<<<<<<< HEAD
 void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recIndex)
 {
 
     static char *frameSubtypeStr[LIM_TRACE_MAX_SUBTYPES] =
+=======
+void limTraceDump(tpAniSirGlobal pMac, tpTraceRecord pRecord, tANI_U16 recIndex)
+{
+
+    static char *frameSubtypeStr[14] =
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     {
         "Association request",
         "Association response",
@@ -167,6 +206,7 @@ void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recInd
         "Action"
     };
 
+<<<<<<< HEAD
 
     switch (pRecord->code) {
         case TRACE_CODE_MLM_STATE:
@@ -179,10 +219,24 @@ void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recInd
             break;
         case TRACE_CODE_TX_MGMT:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+=======
+    switch (pRecord->code) {
+        case TRACE_CODE_MLM_STATE:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                           "MLM State:", limTraceGetMlmStateString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_SME_STATE:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "SME State:", limTraceGetSmeStateString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_TX_MGMT:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                             "TX Mgmt:", frameSubtypeStr[pRecord->data], pRecord->data );
             break;
 
         case TRACE_CODE_RX_MGMT:
+<<<<<<< HEAD
             if (LIM_TRACE_MAX_SUBTYPES <= LIM_TRACE_GET_SUBTYPE(pRecord->data))
             {
                 limLog(pMac, LOGE, "Wrong Subtype - %d", LIM_TRACE_GET_SUBTYPE(pRecord->data));
@@ -203,24 +257,52 @@ void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recInd
 
         case TRACE_CODE_RX_MGMT_TSF:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s0x%x(%d) ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)    SN: %d \n", recIndex, pRecord->time, pRecord->session,
+                                            "RX Mgmt:", frameSubtypeStr[LIM_TRACE_GET_SUBTYPE(pRecord->data)],
+                                            LIM_TRACE_GET_SUBTYPE(pRecord->data),
+                                            LIM_TRACE_GET_SSN(pRecord->data) );
+            break;
+        case TRACE_CODE_RX_MGMT_DROP:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(%d)  \n", recIndex, pRecord->time, pRecord->session,
+                                            "Drop RX Mgmt:", __limTraceGetMgmtDropReasonString((tANI_U16)pRecord->data), pRecord->data);
+            break;
+
+            
+        case TRACE_CODE_RX_MGMT_TSF:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s0x%x(%d) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                             "RX Mgmt TSF:", " ", pRecord->data, pRecord->data );
             break;
 
         case TRACE_CODE_TX_COMPLETE:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                             "TX Complete" );
             break;
 
         case TRACE_CODE_TX_SME_MSG:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
                                             "TX SME Msg:", macTraceGetSmeMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_RX_SME_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX SME Msg:", macTraceGetSmeMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_RX_SME_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                             LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX Sme Msg:",
                                             macTraceGetSmeMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
 
+<<<<<<< HEAD
         case TRACE_CODE_TX_WDA_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
                                             "TX WDA Msg:", macTraceGetWdaMsgString((tANI_U16)pRecord->data), pRecord->data );
@@ -238,21 +320,49 @@ void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recInd
             break;
         case TRACE_CODE_RX_LIM_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+=======
+        case TRACE_CODE_TX_HAL_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX HAL Msg:", macTraceGetHalMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+
+        case TRACE_CODE_RX_HAL_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX HAL Msg:",
+                                            macTraceGetHalMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+
+        case TRACE_CODE_TX_LIM_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX LIM Msg:", macTraceGetLimMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_RX_LIM_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                             LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX LIM Msg",
                                             macTraceGetLimMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_TX_CFG_MSG:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
                                             "TX CFG Msg:", macTraceGetCfgMsgString((tANI_U16)pRecord->data), pRecord->data );
             break;
         case TRACE_CODE_RX_CFG_MSG:
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "TX CFG Msg:", macTraceGetCfgMsgString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_RX_CFG_MSG:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                             LIM_TRACE_GET_DEFRD_OR_DROPPED(pRecord->data) ? "Def/Drp LIM Msg:": "RX CFG Msg:",
                                             macTraceGetCfgMsgString((tANI_U16)MAC_TRACE_GET_MSG_ID(pRecord->data)),
                                             pRecord->data );
             break;
 
         case TRACE_CODE_TIMER_ACTIVATE:
+<<<<<<< HEAD
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) ", recIndex, pRecord->time, pRecord->session,
                                             "Timer Actvtd", __limTraceGetTimerString((tANI_U16)pRecord->data), pRecord->data );
             break;
@@ -267,6 +377,18 @@ void limTraceDump(tpAniSirGlobal pMac, tpvosTraceRecord pRecord, tANI_U16 recInd
             break;
         default :
             limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s(%d) (0x%x) ", recIndex, pRecord->time, pRecord->session,
+=======
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "Timer Actvtd", __limTraceGetTimerString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+        case TRACE_CODE_TIMER_DEACTIVATE:
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s  %-30s(0x%x) \n", recIndex, pRecord->time, pRecord->session,
+                                            "Timer DeActvtd", __limTraceGetTimerString((tANI_U16)pRecord->data), pRecord->data );
+            break;
+
+        default :
+            limLog(pMac, LOGE, "%04d    %012u  S%d    %-14s(%d) (0x%x) \n", recIndex, pRecord->time, pRecord->session,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                              "Unknown Code", pRecord->code, pRecord->data );
             break;
     }
@@ -288,7 +410,11 @@ void macTraceMsgTx(tpAniSirGlobal pMac, tANI_U8 session, tANI_U32 data)
                 macTrace(pMac, TRACE_CODE_TX_SME_MSG, session, data);
             break;
         case SIR_WDA_MODULE_ID:
+<<<<<<< HEAD
             macTrace(pMac, TRACE_CODE_TX_WDA_MSG, session, data);
+=======
+            macTrace(pMac, TRACE_CODE_TX_HAL_MSG, session, data);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
         case SIR_CFG_MODULE_ID:
             macTrace(pMac, TRACE_CODE_TX_CFG_MSG, session, data);
@@ -311,7 +437,11 @@ void macTraceMsgTxNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 session, tANI
                 macTraceNew(pMac, module, TRACE_CODE_TX_SME_MSG, session, data);
             break;
         case SIR_WDA_MODULE_ID:
+<<<<<<< HEAD
             macTraceNew(pMac, module, TRACE_CODE_TX_WDA_MSG, session, data);
+=======
+            macTraceNew(pMac, module, TRACE_CODE_TX_HAL_MSG, session, data);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
         case SIR_CFG_MODULE_ID:
             macTraceNew(pMac, module, TRACE_CODE_TX_CFG_MSG, session, data);
@@ -338,7 +468,11 @@ void macTraceMsgRx(tpAniSirGlobal pMac, tANI_U8 session, tANI_U32 data)
                 macTrace(pMac, TRACE_CODE_RX_SME_MSG, session, data);
             break;
         case SIR_WDA_MODULE_ID:
+<<<<<<< HEAD
             macTrace(pMac, TRACE_CODE_RX_WDA_MSG, session, data);
+=======
+            macTrace(pMac, TRACE_CODE_RX_HAL_MSG, session, data);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
         case SIR_CFG_MODULE_ID:
             macTrace(pMac, TRACE_CODE_RX_CFG_MSG, session, data);
@@ -367,7 +501,11 @@ void macTraceMsgRxNew(tpAniSirGlobal pMac, tANI_U8 module, tANI_U8 session, tANI
                 macTraceNew(pMac, module, TRACE_CODE_RX_SME_MSG, session, data);
             break;
         case SIR_WDA_MODULE_ID:
+<<<<<<< HEAD
             macTraceNew(pMac, module, TRACE_CODE_RX_WDA_MSG, session, data);
+=======
+            macTraceNew(pMac, module, TRACE_CODE_RX_HAL_MSG, session, data);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
         case SIR_CFG_MODULE_ID:
             macTraceNew(pMac, module, TRACE_CODE_RX_CFG_MSG, session, data);
@@ -403,7 +541,11 @@ tANI_U8* limTraceGetMlmStateString( tANI_U32 mlmState )
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_DEL_BSS_RSP_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_ASSOC_STATE);
+<<<<<<< HEAD
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE);
+=======
+        CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_PREASSOC_STATE);        
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_BSS_RSP_REASSOC_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_ADD_STA_RSP_STATE);
         CASE_RETURN_STRING( eLIM_MLM_WT_DEL_STA_RSP_STATE);

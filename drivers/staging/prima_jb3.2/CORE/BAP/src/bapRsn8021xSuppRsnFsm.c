@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -75,7 +78,11 @@
 
 static tSuppRsnFsmConsts suppConsts = { 2000, 3 };    //timeout, retry limit
 
+<<<<<<< HEAD
 int gReadToSetKey;
+=======
+int gReadToSetKey = 0;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**************************************
  * Static functions in this module
@@ -652,7 +659,11 @@ gotoStateGroupKeySet(tSuppRsnFsm *fsm,
         {
             retVal = ANI_ERROR;
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "Supp could not send eapol. Disconnect\n" );
+<<<<<<< HEAD
             break;
+=======
+            break;;    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         }
 
         //FIX_RSN there is no need to set GTK retVal = setGtk(fsm->suppCtx, rxDesc->keyRecvSeqCounter);
@@ -797,7 +808,11 @@ int checkPeerReplayCounter(tSuppRsnFsm *fsm,
     if (cmp > 0) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
             "BP got old EAPOL replay counter from AP" );
+=======
+            "BP radio %d got old EAPOL replay counter from AP\n" );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         retVal = ANI_E_REPLAY_CHECK_FAILED;
 
     } 
@@ -875,7 +890,11 @@ int checkTransition(tSuppRsnFsm *fsm, void *arg)
 
                     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
                                     "Resending EAPOL-Key Msg2 from "
+<<<<<<< HEAD
                                   "supplicant to AP" );
+=======
+                                  "supplicant radio %d to AP\n" );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     retVal = gotoStateStaKeyStart(fsm, data, eANI_BOOLEAN_TRUE);
 
                 } 
@@ -1041,7 +1060,11 @@ static int suppRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     if ((pvosGCtx == NULL) || (NULL == pPacket))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "param is NULL in %s", __func__);
+=======
+                     "param is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return retVal;
     }
@@ -1049,7 +1072,11 @@ static int suppRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     if (NULL == ctx) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "ctx is NULL in %s", __func__);
+=======
+                     "ctx is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return retVal;
     }
@@ -1058,7 +1085,11 @@ static int suppRsnRxFrameHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
     if (NULL == fsm) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "fsm is NULL in %s", __func__);
+=======
+                     "fsm is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return retVal;
     }
@@ -1096,7 +1127,11 @@ static int suppRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     if (pvosGCtx == NULL)
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "param is NULL in %s", __func__);
+=======
+                     "param is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return ANI_ERROR;
     }
@@ -1104,7 +1139,11 @@ static int suppRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     if (NULL == ctx) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "ctx is NULL in %s", __func__);
+=======
+                     "ctx is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return ANI_ERROR;
     }
@@ -1113,7 +1152,11 @@ static int suppRsnTxCompleteHandler( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket, VOS
     if (NULL == fsm) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "fsm is NULL in %s", __func__);
+=======
+                     "fsm is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return ANI_ERROR;
     }

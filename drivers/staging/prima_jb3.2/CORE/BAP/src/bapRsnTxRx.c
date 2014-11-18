@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -62,8 +65,13 @@
 #include "vos_memory.h"
 
 
+<<<<<<< HEAD
 static pnfTxCompleteHandler bapRsnFsmTxCmpHandler;
 static pnfRxFrameHandler bapRsnFsmRxFrameHandler;
+=======
+static pnfTxCompleteHandler bapRsnFsmTxCmpHandler = NULL;
+static pnfRxFrameHandler bapRsnFsmRxFrameHandler = NULL;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern int gReadToSetKey;
 
@@ -131,7 +139,11 @@ static VOS_STATUS bapRsnTxCompleteCallback( v_PVOID_t pvosGCtx, vos_pkt_t *pPack
     if (NULL == pvosGCtx) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "pvosGCtx is NULL in %s", __func__);
+=======
+                     "pvosGCtx is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return VOS_STATUS_E_FAULT;
     }
@@ -140,7 +152,11 @@ static VOS_STATUS bapRsnTxCompleteCallback( v_PVOID_t pvosGCtx, vos_pkt_t *pPack
     if (NULL == btampContext) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "btampContext is NULL in %s", __func__);
+=======
+                     "btampContext is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return VOS_STATUS_E_FAULT;
     }
@@ -149,7 +165,11 @@ static VOS_STATUS bapRsnTxCompleteCallback( v_PVOID_t pvosGCtx, vos_pkt_t *pPack
     if (NULL == fsm) 
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "fsm is NULL in %s", __func__);
+=======
+                     "fsm is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return VOS_STATUS_E_FAULT;
     }
@@ -223,7 +243,11 @@ static VOS_STATUS bapRsnTxFrame( v_PVOID_t pvosGCtx, vos_pkt_t *pPacket )
 VOS_STATUS bapRsnSendEapolFrame( v_PVOID_t pvosGCtx, tAniPacket *pAniPkt )
 {
     VOS_STATUS status;
+<<<<<<< HEAD
     vos_pkt_t *pPacket = NULL;
+=======
+    vos_pkt_t *pPacket;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     v_U8_t *pData, *pSrc;
     int pktLen = aniAsfPacketGetBytes( pAniPkt, &pSrc );
 
@@ -232,7 +256,11 @@ VOS_STATUS bapRsnSendEapolFrame( v_PVOID_t pvosGCtx, tAniPacket *pAniPkt )
         return VOS_STATUS_E_EMPTY;
     }
     status = bapRsnAcquirePacket( &pPacket, &pData, pktLen );
+<<<<<<< HEAD
     if( VOS_IS_STATUS_SUCCESS( status ) && ( NULL != pPacket ))
+=======
+    if( VOS_IS_STATUS_SUCCESS( status ) )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     {
         vos_mem_copy( pData, pSrc, pktLen );
         //Send the packet, need to check whether we have an outstanding packet first.

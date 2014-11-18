@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -57,10 +60,48 @@
 
 #include "utilsApi.h"
 
+<<<<<<< HEAD
 
 
 
 
+=======
+#if defined (ANI_OS_TYPE_WINDOWS)
+
+/**---------------------------------------------------------------------
+ * sirBusyWaitIntern() 
+ *
+ * FUNCTION:
+ * This function is called to put processor in a busy loop for
+ * a given amount of duration
+ *
+ * LOGIC:
+ *
+ * ASSUMPTIONS:
+ * None.
+ *
+ * NOTE:
+ * 1. Argument to this function should be in nano second units
+ * 2. OS specific calls used if available. Otherwise this need
+ *    to be enhanced.
+ *
+ * @param  duration    Duration to be busy slept
+ * @return None
+ */
+
+void
+sirBusyWaitIntern(void *pMacGlobal, tANI_U32 duration)
+{
+        NdisStallExecution((duration+999)/1000); // This routine takes the duration in uSecs.
+} // sirBusyWaitIntern()
+
+#endif // (WNI_POLARIS_FW_OS == SIR_WINDOWS)
+
+
+
+#if !defined ANI_OS_TYPE_OSX
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 // -------------------------------------------------------------------
 /**
  * sirDumpBuf()
@@ -112,3 +153,13 @@ sirDumpBuf(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 level, tANI_U8 *buf, tAN
     }
 
 }/*** end sirDumpBuf() ***/
+<<<<<<< HEAD
+=======
+#else
+void
+sirDumpBuf(tpAniSirGlobal pMac, tANI_U8 modId, tANI_U32 level, tANI_U8 *buf, tANI_U32 size)
+{
+    (void)pMac; (void)modId; (void)level; (void)buf; (void)size;
+}
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

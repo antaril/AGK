@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2014, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,6 +46,7 @@
 #define WLAN_HDD_HOSTAPD_H
 
 /**===========================================================================
+<<<<<<< HEAD
 
   \file  WLAN_HDD_HOSTAPD_H.h
 
@@ -62,6 +66,22 @@
   Include files
   -------------------------------------------------------------------------*/
 
+=======
+  
+  \file  WLAN_HDD_HOSTAPD_H.h
+  
+  \brief Linux HDD HOSTAPD include file
+         Copyright 2008 (c) Qualcomm, Incorporated.
+         All Rights Reserved.
+         Qualcomm Confidential and Proprietary.
+  
+  ==========================================================================*/
+  
+/*--------------------------------------------------------------------------- 
+  Include files
+  -------------------------------------------------------------------------*/ 
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>
 #include <vos_list.h>
@@ -70,12 +90,18 @@
 #include <wlan_qct_tl.h>
 #include <wlan_hdd_main.h>
 
+<<<<<<< HEAD
 /*---------------------------------------------------------------------------
   Preprocessor definitions and constants
   -------------------------------------------------------------------------*/
 
 /* max length of command string in hostapd ioctl */
 #define HOSTAPD_IOCTL_COMMAND_STRLEN_MAX   2048
+=======
+/*--------------------------------------------------------------------------- 
+  Preprocessor definitions and constants
+  -------------------------------------------------------------------------*/ 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 hdd_adapter_t* hdd_wlan_create_ap_dev( hdd_context_t *pHddCtx, tSirMacAddr macAddr, tANI_U8 *name);
 
@@ -98,7 +124,11 @@ hdd_TranslateWPAToCsrAuthType(u_int8_t auth_suite[4]);
 eCsrEncryptionType 
 hdd_TranslateWPAToCsrEncryptionType(u_int8_t cipher_suite[4]);
 
+<<<<<<< HEAD
 VOS_STATUS hdd_softap_sta_deauth(hdd_adapter_t*,v_U8_t*);
+=======
+void hdd_softap_sta_deauth(hdd_adapter_t*,v_U8_t*);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 void hdd_softap_sta_disassoc(hdd_adapter_t*,v_U8_t*);
 void hdd_softap_tkip_mic_fail_counter_measure(hdd_adapter_t*,v_BOOL_t);
 int hdd_softap_unpackIE( tHalHandle halHandle,
@@ -108,8 +138,17 @@ int hdd_softap_unpackIE( tHalHandle halHandle,
                 u_int16_t gen_ie_len, 
                 u_int8_t *gen_ie );
 
+<<<<<<< HEAD
 VOS_STATUS hdd_hostapd_SAPEventCB( tpSap_Event pSapEvent, v_PVOID_t usrDataForCallback);
 VOS_STATUS hdd_init_ap_mode( hdd_adapter_t *pAdapter );
 void hdd_set_ap_ops( struct net_device *pWlanHostapdDev );
 int hdd_hostapd_stop (struct net_device *dev);
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+VOS_STATUS hdd_hostapd_SAPEventCB( tpSap_Event pSapEvent, v_PVOID_t usrDataForCallback);
+VOS_STATUS hdd_init_ap_mode( hdd_adapter_t *pAdapter );
+void hdd_set_ap_ops( struct net_device *pWlanHostapdDev );
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif    // end #if !defined( WLAN_HDD_HOSTAPD_H )

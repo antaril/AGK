@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -51,7 +54,12 @@
                Qualcomm Confidential and Proprietary.
 
 ==========================================================================*/
+<<<<<<< HEAD
 #define ACTION_FRAME_TX_TIMEOUT 2000
+=======
+#ifdef CONFIG_CFG80211
+#define ACTION_FRAME_TX_TIMEOUT 1000
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define WAIT_CANCEL_REM_CHAN    1000
 #define WAIT_REM_CHAN_READY     1000
 #define WAIT_CHANGE_CHANNEL_FOR_OFFCHANNEL_TX 3000
@@ -71,6 +79,7 @@ enum hdd_rx_flags {
 };
 
 
+<<<<<<< HEAD
 #define P2P_POWER_SAVE_TYPE_OPPORTUNISTIC        (1 << 0)
 #define P2P_POWER_SAVE_TYPE_PERIODIC_NOA         (1 << 1)
 #define P2P_POWER_SAVE_TYPE_SINGLE_NOA           (1 << 2)
@@ -89,6 +98,12 @@ typedef enum  { P2P_NOT_ACTIVE,
 
 extern tP2PConnectionStatus globalP2PConnectionStatus;
 #endif
+=======
+#ifdef WLAN_FEATURE_P2P
+#define P2P_POWER_SAVE_TYPE_OPPORTUNISTIC        1 << 0;
+#define P2P_POWER_SAVE_TYPE_PERIODIC_NOA         1 << 1;
+#define P2P_POWER_SAVE_TYPE_SINGLE_NOA           1 << 2;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct p2p_app_setP2pPs{
    tANI_U8     opp_ps;
@@ -101,30 +116,42 @@ typedef struct p2p_app_setP2pPs{
 }p2p_app_setP2pPs_t;
 
 int wlan_hdd_cfg80211_remain_on_channel( struct wiphy *wiphy,
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
                                 struct wireless_dev *wdev,
 #else
                                 struct net_device *dev,
 #endif
+=======
+                                struct net_device *dev,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                 struct ieee80211_channel *chan,
                                 enum nl80211_channel_type channel_type,
                                 unsigned int duration, u64 *cookie );
 
 int wlan_hdd_cfg80211_cancel_remain_on_channel( struct wiphy *wiphy,
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
                                        struct wireless_dev *wdev,
 #else
                                        struct net_device *dev,
 #endif
+=======
+                                       struct net_device *dev,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                        u64 cookie );
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38))
 int wlan_hdd_cfg80211_mgmt_tx_cancel_wait(struct wiphy *wiphy, 
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
                                           struct wireless_dev *wdev,
 #else
                                           struct net_device *dev,
 #endif
+=======
+                                          struct net_device *dev,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                           u64 cookie);
 #endif
 
@@ -135,11 +162,16 @@ int hdd_setP2pNoa( struct net_device *dev, tANI_U8 *command );
 void hdd_indicateMgmtFrame( hdd_adapter_t *pAdapter,
                             tANI_U32 nFrameLength, tANI_U8* pbFrames,
                             tANI_U8 frameType,
+<<<<<<< HEAD
                             tANI_U32 rxChan, tANI_S8 rxRssi);
+=======
+                            tANI_U32 rxChan);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 void hdd_remainChanReadyHandler( hdd_adapter_t *pAdapter );
 void hdd_sendActionCnf( hdd_adapter_t *pAdapter, tANI_BOOLEAN actionSendSuccess );
 int wlan_hdd_check_remain_on_channel(hdd_adapter_t *pAdapter);
+<<<<<<< HEAD
 void wlan_hdd_cancel_existing_remain_on_channel(hdd_adapter_t *pAdapter);
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0))
@@ -150,6 +182,10 @@ int wlan_hdd_action( struct wiphy *wiphy, struct wireless_dev *wdev,
                      const u8 *buf, size_t len,  bool no_cck,
                      bool dont_wait_for_ack, u64 *cookie );
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
+=======
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
                      struct ieee80211_channel *chan, bool offchan,
                      enum nl80211_channel_type channel_type,
@@ -170,6 +206,7 @@ int wlan_hdd_action( struct wiphy *wiphy, struct net_device *dev,
                      const u8 *buf, size_t len, u64 *cookie );
 #endif
 
+<<<<<<< HEAD
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0))
 struct wireless_dev* wlan_hdd_add_virtual_intf(
@@ -196,5 +233,16 @@ int wlan_hdd_del_virtual_intf( struct wiphy *wiphy, struct wireless_dev *wdev );
 int wlan_hdd_del_virtual_intf( struct wiphy *wiphy, struct net_device *dev );
 #endif
 
+=======
+#endif // WLAN_FEATURE_P2P
+
+struct net_device* wlan_hdd_add_virtual_intf(
+                  struct wiphy *wiphy, char *name, enum nl80211_iftype type,
+                  u32 *flags, struct vif_params *params );
+
+int wlan_hdd_del_virtual_intf( struct wiphy *wiphy, struct net_device *dev );
+
+#endif // CONFIG_CFG80211
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif // __P2P_H

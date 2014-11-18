@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -43,6 +46,7 @@
 #define __VOS_GETBIN_H
 
 /**=========================================================================
+<<<<<<< HEAD
 
   \file  vos_getBin.h
 
@@ -53,11 +57,23 @@
    These APIs allow components to retrieve binary contents (firmware, 
    configuration data, etc.) from a storage medium on the platform.
 <<<<<<< HEAD:CORE/VOSS/inc/vos_getBin.h
+=======
+  
+  \file  vos_getBin.h
+  
+  \brief virtual Operating System Services (vOSS) binary APIs
+               
+   Binary retrieval definitions and APIs.  
+   
+   These APIs allow components to retrieve binary contents (firmware, 
+   configuration data, etc.) from a storage medium on the platform.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   
    Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
    
    Qualcomm Confidential and Proprietary.
   
+<<<<<<< HEAD
 =======
 
    Copyright 2008 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
@@ -65,6 +81,8 @@
    Qualcomm Technologies Confidential and Proprietary.
 
 >>>>>>> 1cc7c78... wlan: voss: remove obsolete "WLAN_SOFTAP_FEATURE" featurization:prima/CORE/VOSS/inc/vos_getBin.h
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ========================================================================*/
 
 /* $Header$ */
@@ -156,10 +174,18 @@ typedef enum
 VOS_STATUS vos_get_binary_blob( VOS_BINARY_ID binaryId, 
                                 v_VOID_t *pBuffer, v_SIZE_t *pBufferSize );
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**----------------------------------------------------------------------------
    \brief vos_get_conparam()- function to read the insmod parameters
 -----------------------------------------------------------------------------*/
 tVOS_CON_MODE vos_get_conparam( void );
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 tVOS_CONCURRENCY_MODE vos_get_concurrency_mode( void );
 v_BOOL_t vos_concurrent_sessions_running(void);
 

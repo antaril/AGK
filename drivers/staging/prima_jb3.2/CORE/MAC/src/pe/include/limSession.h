@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,12 +47,25 @@
 
 
 /**=========================================================================
+<<<<<<< HEAD
 
   \file  limSession.h
 
   \brief prototype for lim Session related APIs
 
   \author Sunit Bhatia
+=======
+  
+  \file  limSession.h
+  
+  \brief prototype for lim Session related APIs
+
+  \author Sunit Bhatia
+  
+   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   Qualcomm Confidential and Proprietary.
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ========================================================================*/
 
 
@@ -62,7 +78,13 @@
 /*-------------------------------------------------------------------------- 
   Preprocessor definitions and constants
   ------------------------------------------------------------------------*/
+<<<<<<< HEAD
 #define NUM_WEP_KEYS 4
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#define NUM_WEP_KEYS 4
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*-------------------------------------------------------------------------- 
   Type declarations
@@ -106,11 +128,16 @@ typedef struct sPESession           // Added to Support BT-AMP
     tSirNwType              nwType;
     tpSirSmeStartBssReq     pLimStartBssReq;        //handle to smestart bss req
     tpSirSmeJoinReq         pLimJoinReq;            // handle to sme join req
+<<<<<<< HEAD
     tpSirSmeJoinReq         pLimReAssocReq;         //handle to sme reassoc req
     tpLimMlmJoinReq         pLimMlmJoinReq;         //handle to MLM join Req
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
     void                    *pLimMlmReassocRetryReq; //keep reasoc req for retry
 #endif
+=======
+    tpSirSmeReassocReq      pLimReAssocReq;         //handle to sme reassoc req
+    tpLimMlmJoinReq         pLimMlmJoinReq;         //handle to MLM join Req
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     void                    *pLimMlmReassocReq;      //handle to MLM reassoc Req
     tANI_U16                channelChangeReasonCode;
     tANI_U8                 dot11mode;
@@ -198,6 +225,10 @@ typedef struct sPESession           // Added to Support BT-AMP
 #endif
     tANI_U32                encryptType;
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tANI_BOOLEAN            bTkipCntrMeasActive;    // Used to keep record of TKIP counter measures start/stop
 
     tANI_U8                 gLimProtectionControl;  //used for 11n protection
@@ -260,6 +291,10 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_U8                 ssidHidden;
     tANI_BOOLEAN            fwdWPSPBCProbeReq;
     tANI_U8                 wps_state;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     tANI_U8            limQosEnabled:1; //11E
     tANI_U8            limWmeEnabled:1; //WME
@@ -289,10 +324,17 @@ typedef struct sPESession           // Added to Support BT-AMP
 #ifdef FEATURE_WLAN_LFR
     tAniBool            isFastRoamIniFeatureEnabled;
 #endif
+<<<<<<< HEAD
     tSirNoAParam p2pNoA;
     tSirP2PNoaAttr p2pGoPsUpdate;
     tANI_U32 defaultAuthFailureTimeout;
     tSirP2PNoaStart p2pGoPsNoaStartInd;
+=======
+#ifdef WLAN_FEATURE_P2P
+    tSirNoAParam p2pNoA;
+    tSirP2PNoaAttr p2pGoPsUpdate;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     /* EDCA QoS parameters
      * gLimEdcaParams - These EDCA parameters are used locally on AP or STA.
@@ -317,12 +359,15 @@ typedef struct sPESession           // Added to Support BT-AMP
 #ifdef WLAN_FEATURE_11AC
     tANI_U8 vhtCapability;
     tANI_U8 vhtTxChannelWidthSet;
+<<<<<<< HEAD
     tLimOperatingModeInfo  gLimOperatingMode;
     tLimWiderBWChannelSwitchInfo  gLimWiderBWChannelSwitch;
     tANI_U8    vhtCapabilityPresentInBeacon;
     tANI_U8    apCenterChan;
     tANI_U8    apChanWidth;
     tANI_U8    txBFIniFeatureEnabled;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
     tANI_U8            spectrumMgtEnabled;
     /* *********************11H related*****************************/
@@ -335,6 +380,7 @@ typedef struct sPESession           // Added to Support BT-AMP
     /*Flag to Track Status/Indicate HBFailure on this session */
     tANI_BOOLEAN LimHBFailureStatus;
     tANI_U32           gLimPhyMode;
+<<<<<<< HEAD
     tANI_U8            amsduSupportedInBA;
     tANI_U8          txLdpcIniFeatureEnabled;
     /**
@@ -354,6 +400,9 @@ typedef struct sPESession           // Added to Support BT-AMP
     tANI_BOOLEAN fDeauthReceived;
     tANI_BOOLEAN isCiscoVendorAP;
     tANI_U8 isAmsduSupportInAMPDU;
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }tPESession, *tpPESession;
 
 #define LIM_MAX_ACTIVE_SESSIONS 4
@@ -402,6 +451,7 @@ tpPESession peFindSessionByBssid(tpAniSirGlobal pMac,  tANI_U8*  bssid,    tANI_
 
 
 /*--------------------------------------------------------------------------
+<<<<<<< HEAD
   \brief peFindSessionByBssIdx() - looks up the PE session given the bssIdx.
 
   This function returns the session context  if the session
@@ -417,6 +467,8 @@ tpPESession peFindSessionByBssIdx(tpAniSirGlobal pMac,  tANI_U8 bssIdx);
 
 
 /*--------------------------------------------------------------------------
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   \brief peFindSessionByPeerSta() - looks up the PE session given the Peer Station Address.
 
   This function returns the session context and the session ID if the session 

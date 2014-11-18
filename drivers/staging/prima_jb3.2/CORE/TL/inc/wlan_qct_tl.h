@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -39,11 +42,18 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
+=======
+/*
+ * */
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifndef WLAN_QCT_WLANTL_H
 #define WLAN_QCT_WLANTL_H
 
 /*===========================================================================
 
+<<<<<<< HEAD
                W L A N   T R A N S P O R T   L A Y E R
                        E X T E R N A L  A P I
 
@@ -54,6 +64,19 @@ DESCRIPTION
       
   Copyright (c) 2008 Qualcomm Technologies, Inc. All Rights Reserved.
   Qualcomm Technologies Confidential and Proprietary
+=======
+               W L A N   T R A N S P O R T   L A Y E R 
+                       E X T E R N A L  A P I
+                
+                   
+DESCRIPTION
+  This file contains the external API exposed by the wlan transport layer 
+  module.
+  
+      
+  Copyright (c) 2008 QUALCOMM Incorporated. All Rights Reserved.
+  Qualcomm Confidential and Proprietary
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ===========================================================================*/
 
 
@@ -97,8 +120,16 @@ when        who    what, where, why
 #include "vos_api.h" 
 #include "vos_packet.h" 
 #include "sirApi.h"
+<<<<<<< HEAD
 #include "csrApi.h"
 #include "sapApi.h"
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include "csrApi.h"
+#include "sapApi.h"
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -125,9 +156,20 @@ when        who    what, where, why
 /*Maximum number of ACs */
 #define WLANTL_MAX_AC                         4
 
+<<<<<<< HEAD
 /* Maximum number of station supported by TL, including BC. */
 #define WLAN_MAX_STA_COUNT  (HAL_NUM_STA)
 #define WLAN_NON32_STA_COUNT   14
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+
+/* Bit Mask to represent All Stations */
+#define WLAN_ALL_STA                         0xFF
+
+/* Maximum number of station supported by TL, including BC. */
+#define WLAN_MAX_STA_COUNT  (HAL_NUM_STA)
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* The symbolic station ID return to HDD to specify the packet is bc/mc */
 #define WLAN_RX_BCMC_STA_ID (WLAN_MAX_STA_COUNT + 1)
 
@@ -142,12 +184,20 @@ when        who    what, where, why
    the broadcast client or allocate station strcuture to keep per-station info.*/
 //#define WLANTL_BC_STA_ID  0x00
 
+<<<<<<< HEAD
 
 #define WLANTL_MAX_TID                        15
 /* Default RSSI average Alpha */
 #define WLANTL_HO_DEFAULT_ALPHA               5
 #define WLANTL_HO_TDLS_ALPHA                  7
 
+=======
+#endif
+
+#ifdef ANI_CHIPSET_VOLANS
+#define WLANTL_MAX_TID                        15
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*--------------------------------------------------------------------------
   Access category enum used by TL
   - order must be kept as these values are used to setup the AC mask
@@ -174,6 +224,7 @@ typedef enum
   /* BT-AMP link*/
   WLAN_STA_BT_AMP,
 
+<<<<<<< HEAD
   /* SoftAP station */
   WLAN_STA_SOFTAP,
 
@@ -183,6 +234,13 @@ typedef enum
 #endif
 
 
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  /* SoftAP station */
+  WLAN_STA_SOFTAP,
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   /* Invalid link*/
   WLAN_STA_MAX
 
@@ -213,12 +271,20 @@ typedef enum
 
 } WLANTL_BAPFrameEnumType;
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* Type used to specify LWM threshold unit */
 typedef enum  {
     WLAN_LWM_THRESHOLD_BYTE = 0,
 
     WLAN_LWM_THRESHOLD_PACKET
 } WLAN_LWM_Threshold_Type;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*---------------------------------------------------------------------------
   TL States
@@ -292,9 +358,17 @@ typedef struct
 
   /*Initial state at which the STA should be brought up to*/
   WLANTL_STAStateType ucInitState;
+<<<<<<< HEAD
  /* 1 means replay check is needed for the station,
     0 means replay check is not needed for the station*/ 
   v_BOOL_t      ucIsReplayCheckValid; 
+=======
+#ifdef ANI_CHIPSET_VOLANS
+ /* 1 means replay check is needed for the station,
+    0 means replay check is not needed for the station*/ 
+  v_BOOL_t      ucIsReplayCheckValid; 
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }WLAN_STADescType;
 
 /*---------------------------------------------------------------------------
@@ -309,8 +383,15 @@ typedef struct
     often when it has established that the App is suspended*/
   v_U32_t  uDelayedTriggerFrmInt;  
 
+<<<<<<< HEAD
   /* Min Threshold for Processing Frames in TL */
   v_U8_t   uMinFramesProcThres;
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  /* Min Threshold for Processing Frames in TL */
+  v_U8_t   uMinFramesProcThres;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }WLANTL_ConfigInfoType;
 
 /*---------------------------------------------------------------------------
@@ -427,12 +508,15 @@ typedef struct
   v_U8_t    ucUP;
   /* Address 3 Index of the received packet */
   v_U16_t   ucDesSTAId;
+<<<<<<< HEAD
  /*Rssi based on the received packet */
   v_S7_t    rssiAvg;
  #ifdef FEATURE_WLAN_TDLS
  /* Packet received on direct link/AP link */
   v_U8_t    isStaTdls;
  #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }WLANTL_RxMetaInfoType;
 
 
@@ -488,7 +572,32 @@ typedef struct
    WLANTL_HO_NRT_TRAFFIC_STATUS_TYPE  nrtTrafficStatus;
 } WLANTL_HO_TRAFFIC_STATUS_TYPE;
 
+<<<<<<< HEAD
 typedef tSap_SoftapStats WLANTL_TRANSFER_STA_TYPE;
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+typedef tSap_SoftapStats WLANTL_TRANSFER_STA_TYPE;
+#else
+typedef struct
+{
+   v_U32_t txUCFcnt;
+   v_U32_t txMCFcnt;
+   v_U32_t txBCFcnt;
+   v_U32_t txUCBcnt;
+   v_U32_t txMCBcnt;
+   v_U32_t txBCBcnt;
+   v_U32_t rxUCFcnt;
+   v_U32_t rxMCFcnt;
+   v_U32_t rxBCFcnt;
+   v_U32_t rxUCBcnt;
+   v_U32_t rxMCBcnt;
+   v_U32_t rxBCBcnt;
+   v_U32_t rxBcnt;
+   v_U32_t rxBcntCRCok;
+   v_U32_t rxRate;
+}WLANTL_TRANSFER_STA_TYPE;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* Under here not public items, just use for internal */
 /* 3 SME 1 HDD */
@@ -764,8 +873,12 @@ typedef VOS_STATUS (*WLANTL_RSSICrossThresholdCBType)
 (
    v_PVOID_t                       pAdapter,
    v_U8_t                          rssiNotification,
+<<<<<<< HEAD
    v_PVOID_t                       pUserCtxt,
    v_S7_t                          avgRssi
+=======
+   v_PVOID_t                       pUserCtxt
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 );
 
 typedef struct
@@ -775,7 +888,10 @@ typedef struct
     v_U16_t                         msgLen;  // length of the entire request
     v_U8_t                          sessionId; //sme Session Id
     v_U8_t                          rssiNotification;    
+<<<<<<< HEAD
     v_U8_t                          avgRssi;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     v_PVOID_t                       tlCallback;
     v_PVOID_t                       pAdapter;
     v_PVOID_t                       pUserCtxt;
@@ -920,6 +1036,7 @@ WLANTL_Close
   v_PVOID_t  pvosGCtx 
 );
 
+<<<<<<< HEAD
 /*===========================================================================
 
   FUNCTION    WLANTL_StartForwarding
@@ -967,6 +1084,8 @@ WLANTL_StartForwarding
   v_U8_t ucUcastSig,
   v_U8_t ucBcastSig
 );
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*----------------------------------------------------------------------------
     INTERACTION WITH HDD
@@ -1146,6 +1265,7 @@ WLANTL_ChangeSTAState
 
 /*===========================================================================
 
+<<<<<<< HEAD
   FUNCTION    WLANTL_STAPtkInstalled
 
   DESCRIPTION
@@ -1184,6 +1304,8 @@ WLANTL_STAPtkInstalled
 );
 /*===========================================================================
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   FUNCTION    WLANTL_GetSTAState
 
   DESCRIPTION
@@ -1948,6 +2070,7 @@ WLANTL_McProcessMsg
 );
 
 /*==========================================================================
+<<<<<<< HEAD
   FUNCTION    WLANTL_RxProcessMsg
 
   DESCRIPTION
@@ -1986,6 +2109,8 @@ WLANTL_RxProcessMsg
 );
 
 /*==========================================================================
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   FUNCTION    WLANTL_McFreeMsg
 
   DESCRIPTION 
@@ -2404,6 +2529,10 @@ VOS_STATUS WLANTL_ResetSpecStatistic
    WLANTL_TRANSFER_STATIC_TYPE  statType,
    v_U8_t                       STAid
 );
+<<<<<<< HEAD
+=======
+#ifdef ANI_CHIPSET_VOLANS
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*===============================================================================
   FUNCTION      WLANTL_IsReplayPacket
    
@@ -2445,6 +2574,10 @@ WLANTL_GetReplayCounterFromRxBD
 (
    v_U8_t *pucRxBDHeader
 );
+<<<<<<< HEAD
+=======
+#endif /*End of #ifdef ANI_CHIPSET_VOLANS*/
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 
@@ -2486,6 +2619,10 @@ WLANTL_SetACWeights
   v_U8_t*               pACWeights
 );
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*==========================================================================
   FUNCTION      WLANTL_GetSoftAPStatistics
 
@@ -2503,11 +2640,16 @@ WLANTL_SetACWeights
 
 ============================================================================*/
 VOS_STATUS WLANTL_GetSoftAPStatistics(v_PVOID_t pAdapter, WLANTL_TRANSFER_STA_TYPE *statsSum, v_BOOL_t bReset);
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef __cplusplus
  }
 #endif 
 
+<<<<<<< HEAD
 /*===========================================================================
 
   FUNCTION    WLANTL_EnableCaching
@@ -2533,6 +2675,8 @@ VOS_STATUS WLANTL_GetSoftAPStatistics(v_PVOID_t pAdapter, WLANTL_TRANSFER_STA_TY
 
 ============================================================================*/
 void WLANTL_EnableCaching(v_U8_t staId);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
  /*===========================================================================
 
@@ -2638,6 +2782,7 @@ VOS_STATUS WLANTL_Finish_ULA( void (*callbackRoutine) (void *callbackContext),
 
 void WLANTL_UpdateRssiBmps(v_PVOID_t pvosGCtx, v_U8_t staId, v_S7_t rssi);
 
+<<<<<<< HEAD
 /*==========================================================================
   FUNCTION   WLANTL_SetTxXmitPending
 
@@ -2892,4 +3037,6 @@ WLANTL_TLDebugMessage
   v_BOOL_t displaySnapshot
 );
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* #ifndef WLAN_QCT_WLANTL_H */

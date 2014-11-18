@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -92,8 +95,11 @@
 #include "wlan_qct_pal_trace.h"
 
 #include "wlan_qct_dev_defs.h"
+<<<<<<< HEAD
 #define MAC_ADDR_ARRAY(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 #define MAC_ADDRESS_STR "%02x:%02x:%02x:%02x:%02x:%02x"
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern uint8 WDA_IsWcnssWlanCompiledVersionGreaterThanOrEqual(uint8 major, uint8 minor, uint8 version, uint8 revision);
 extern uint8 WDA_IsWcnssWlanReportedVersionGreaterThanOrEqual(uint8 major, uint8 minor, uint8 version, uint8 revision);
@@ -137,8 +143,15 @@ WDI_DP_UtilsInit
 {
   WDI_RxBdType*  pAmsduRxBdFixMask; 
 
+<<<<<<< HEAD
     // WQ to be used for filling the TxBD
   pWDICtx->ucDpuRF = BMUWQ_BTQM_TX_MGMT; 
+=======
+#ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+    // WQ to be used for filling the TxBD
+  pWDICtx->ucDpuRF = BMUWQ_BTQM_TX_MGMT; 
+#endif //FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_PERF
   pWDICtx->uBdSigSerialNum = 0;
@@ -456,11 +469,19 @@ WDI_FillTxBd
      -----------------------------------------------------------------------*/
     pBd->bdt   = HWBD_TYPE_GENERIC; 
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     // Route all trigger enabled frames to FW WQ, for FW to suspend trigger frame generation 
     // when no traffic is exists on trigger enabled ACs
     if(ucTxFlag & WDI_TRIGGER_ENABLED_AC_MASK) {
         pBd->dpuRF = pWDICtx->ucDpuRF; 
     } else 
+<<<<<<< HEAD
+=======
+#endif //FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     {
         pBd->dpuRF = BMUWQ_BTQM_TX_MGMT; 
     }
@@ -541,12 +562,15 @@ WDI_FillTxBd
         {
             pBd->bdRate = (ucUnicastDst)? WDI_TXBD_BDRATE_DEFAULT : WDI_BDRATE_BCDATA_FRAME;
         }
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
         if ( ucTxFlag & WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME)
         {
            pBd->bdRate = WDI_BDRATE_CTRL_FRAME;
         }
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         pBd->rmf    = WDI_RMF_DISABLED;     
 
         /* sanity: Might already be set by caller, but enforce it here again */
@@ -607,6 +631,7 @@ WDI_FillTxBd
          * Sanity: Force HW frame translation OFF for mgmt frames.
          --------------------------------------------------------------------*/
          /* apply to both ucast/mcast mgmt frames */
+<<<<<<< HEAD
          /* Probe requests are sent using BD rate */
          if( ucSubType ==  WDI_MAC_MGMT_PROBE_REQ )
          {
@@ -624,6 +649,18 @@ WDI_FillTxBd
              }
          }
          if ( ucTxFlag & WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME)
+=======
+         if (useStaRateForBcastFrames)
+         {
+             pBd->bdRate = (ucUnicastDst)? WDI_BDRATE_BCMGMT_FRAME : WDI_TXBD_BDRATE_DEFAULT; 
+         }
+         else
+         {
+             pBd->bdRate = WDI_BDRATE_BCMGMT_FRAME;
+         }
+
+         if ( ucTxFlag & WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
          {
            pBd->bdRate = WDI_BDRATE_CTRL_FRAME;
          }
@@ -684,7 +721,11 @@ WDI_FillTxBd
            if (WDI_STATUS_SUCCESS != wdiStatus) 
            {
                 WPAL_TRACE(eWLAN_MODULE_DAL_DATA, eWLAN_PAL_TRACE_LEVEL_ERROR, "WDI_STATableFindStaidByAddr failed");
+<<<<<<< HEAD
                 return WDI_STATUS_E_NOT_ALLOWED;
+=======
+                return WDI_STATUS_E_FAILURE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            }
 #else
             ucStaId = pWDICtx->ucSelfStaId;
@@ -798,7 +839,11 @@ WDI_FillTxBd
                                               *(wpt_macAddr*)pAddr2, &ucStaId ); 
               if (WDI_STATUS_SUCCESS != wdiStatus)
               {
+<<<<<<< HEAD
                 return WDI_STATUS_E_NOT_ALLOWED;
+=======
+                return WDI_STATUS_E_FAILURE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
               }
 
               // Get the Bss Index related to the staId
@@ -905,6 +950,7 @@ WDI_FillTxBd
             WPAL_TRACE( WPT_WDI_CONTROL_MODULE, WPT_MSG_LEVEL_HIGH, "halDpu_GetSignature() failed for dpuId = %d\n", pBd->dpuDescIdx));
             return VOS_STATUS_E_FAILURE;
         } */
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
        // if this is a Virtual Station then change the DPU Routing Flag so
        // that the frame will be routed to Firmware for queuing & transmit
@@ -913,6 +959,8 @@ WDI_FillTxBd
            pBd->dpuRF = BMUWQ_FW_DPU_TX;
        }
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     } 
     

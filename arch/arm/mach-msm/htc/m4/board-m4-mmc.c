@@ -30,7 +30,10 @@
 #include <asm/mach/mmc.h>
 #include <mach/msm_iomap.h>
 #include <linux/mfd/pm8xxx/pm8038.h>
+<<<<<<< HEAD
 #include <mach/htc_sleep_clk.h>
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include "board-8930.h"
 #include "board-storage-common-a.h"
 
@@ -170,7 +173,10 @@ int m4_wifi_power(int on)
 				  ARRAY_SIZE(wifi_off_gpio_table));
 	}
 
+<<<<<<< HEAD
 	htc_wifi_bt_sleep_clk_ctl(on, ID_WIFI);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 	mdelay(1);
 	gpio_set_value(MSM_WL_REG_ON, on);
 
@@ -194,6 +200,17 @@ static struct msm_rpmrs_level msm_rpmrs_levels[] __initdata = {
 		true,
 		1, 784, 180000, 100,
 	},
+<<<<<<< HEAD
+=======
+#if 0
+	{
+		MSM_PM_SLEEP_MODE_POWER_COLLAPSE_STANDALONE,
+		MSM_RPMRS_LIMITS(ON, ACTIVE, MAX, ACTIVE),
+		true,
+		1300, 228, 1200000, 2000,
+	},
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 	{
 		MSM_PM_SLEEP_MODE_POWER_COLLAPSE,
 		MSM_RPMRS_LIMITS(ON, GDHS, MAX, ACTIVE),

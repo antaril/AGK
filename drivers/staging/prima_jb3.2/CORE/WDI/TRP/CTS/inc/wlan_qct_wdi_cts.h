@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -256,7 +259,11 @@ WCTS_SendMessage
 );
 
 /**
+<<<<<<< HEAD
  @brief    This helper function is used to clean up the pending
+=======
+ @brief    This helper function is used to clean up the pending 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            messages in the transport queue
 
  @param wctsHandlehandle:  transport handle

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -58,6 +61,7 @@
  */
 
 #ifdef WCN_PRONTO
+<<<<<<< HEAD
 
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
 //supports both V1 and V2
@@ -102,6 +106,9 @@
 #define HAL_NUM_STA_INCLUDING_VSTA  32
 
 #elif WCN_PRONTO_V1
+=======
+#ifdef WCN_PRONTO_V1
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* In Pronto 1.0 TPE descriptor size is increased to 1K per station
  * but not the cMEM allocated for hardware descriptors. Due to this
@@ -116,6 +123,7 @@
  * and SELF STA(staId 1). So total ASSOC stations which can connect to
  * Pronto 1.0 Softap = 9 - 1(self sta) - 1(Bcast sta) = 7 stations
  */
+<<<<<<< HEAD
 #define HAL_NUM_HW_STA              9
 #define HAL_NUM_STA                 (HAL_NUM_HW_STA)
 #define HAL_NUM_BSSID               2
@@ -199,6 +207,31 @@
 
 #endif /* WCN_PRONTO */
 
+=======
+#define HAL_NUM_STA                 9
+#define HAL_NUM_BSSID               2
+#define HAL_NUM_UMA_DESC_ENTRIES    9
+
+#else /* WCN_PRONTO_V1 */
+
+#define HAL_NUM_STA                 14
+#define HAL_NUM_BSSID               4
+#define HAL_NUM_UMA_DESC_ENTRIES    14
+
+#endif /* WCN_PRONTO_V1 */
+#else  /* WCN_PRONTO */
+
+/*In prima 12 HW stations are supported including BCAST STA(staId 0)
+ and SELF STA(staId 1) so total ASSOC stations which can connect to Prima
+ SoftAP = 12 - 1(Self STa) - 1(Bcast Sta) = 10 Stations. */
+#define HAL_NUM_STA                 12
+#define HAL_NUM_BSSID               2
+#define HAL_NUM_UMA_DESC_ENTRIES    12
+
+#endif /* WCN_PRONTO */
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define HAL_INVALID_BSSIDX          HAL_NUM_BSSID
 
 #define MAX_NUM_OF_BACKOFFS         8
@@ -319,8 +352,11 @@ typedef enum sBmuWqId {
     //BMUWQ_FW_DXECH2_0 = 15,  /* BD/PDU<->MEM conversion using DxE CH2.  Not in use by FW */
     BMUWQ_FW_DXECH2_1 = 16,  /* BD/PDU<->MEM conversion using DxE CH2.  Not in use by FW */
 
+<<<<<<< HEAD
     /* NDPA Addr3 workaround */
     BMUWQ_RXP_DEFAULT_PUSH_WQ = 17,
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*  These WQs are not supported in Volans
     BMUWQ_BMU_WQ17 = 17,
     BMUWQ_BMU_WQ18 = 18,
@@ -377,6 +413,7 @@ typedef enum
 #define HWBD_TYPE_GENERIC                  0   /* generic BD format */
 #define HWBD_TYPE_FRAG                     1   /* fragmentation BD format*/
 
+<<<<<<< HEAD
 /*---------------------------------------------------------------------- */
 /* HW Tx power                                                           */
 /*---------------------------------------------------------------------- */
@@ -389,4 +426,6 @@ typedef enum
    #define WLAN_SOC_PRIMA_MIN_TX_POWER 6
 #endif //#ifdef WCN_PRIMA
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* __WLAN_QCT_DEV_DEFS_H */

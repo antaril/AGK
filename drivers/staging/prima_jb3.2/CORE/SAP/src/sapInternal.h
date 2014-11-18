@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -113,7 +116,16 @@ when           who        what, where, why
 // How do I get SAP context from voss context? 
 #define VOS_GET_SAP_CB(ctx) vos_get_context( VOS_MODULE_ID_SAP, ctx) 
 
+<<<<<<< HEAD
 #define VOS_GET_HAL_CB(ctx) vos_get_context( VOS_MODULE_ID_PE, ctx) 
+=======
+#if defined(FEATURE_WLAN_NON_INTEGRATED_SOC)
+// How do I get halHandle from voss context? 
+#define VOS_GET_HAL_CB(ctx) vos_get_context( VOS_MODULE_ID_HAL, ctx) 
+#else
+#define VOS_GET_HAL_CB(ctx) vos_get_context( VOS_MODULE_ID_PE, ctx) 
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 //MAC Address length
 #define ANI_EAPOL_KEY_RSN_NONCE_SIZE      32
 
@@ -161,7 +173,11 @@ typedef struct sSapContext {
 
     // Include the current channel of AP
     v_U32_t             channel;
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     // Include the SME(CSR) sessionId here
     v_U8_t              sessionId;
 
@@ -204,9 +220,15 @@ typedef struct sSapContext {
 
     // Mac filtering settings
     eSapMacAddrACL      eSapMacAddrAclMode;
+<<<<<<< HEAD
     v_MACADDR_t         acceptMacList[MAX_ACL_MAC_ADDRESS];
     v_U8_t              nAcceptMac;
     v_MACADDR_t         denyMacList[MAX_ACL_MAC_ADDRESS];
+=======
+    v_MACADDR_t         acceptMacList[MAX_MAC_ADDRESS_ACCEPTED];
+    v_U8_t              nAcceptMac;
+    v_MACADDR_t         denyMacList[MAX_MAC_ADDRESS_DENIED];
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     v_U8_t              nDenyMac;
 
     // QOS config
@@ -222,7 +244,10 @@ typedef struct sSapContext {
     v_U32_t           nStaAddIeLength;
     v_U8_t            pStaAddIE[MAX_ASSOC_IND_IE_LEN]; 
     v_U8_t            *channelList;
+<<<<<<< HEAD
     tSapChannelListInfo SapChnlList;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } *ptSapContext;
 
 
@@ -427,7 +452,10 @@ WLANSAP_pmcFullPwrReqCB
 
     IN
        halHandle : Pointer to HAL handle
+<<<<<<< HEAD
        pSapCtx : Pointer to SAP context
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        pResult : Pointer to tScanResultHandle
    
   RETURN VALUE
@@ -436,8 +464,12 @@ WLANSAP_pmcFullPwrReqCB
   SIDE EFFECTS 
 
 ============================================================================*/
+<<<<<<< HEAD
 
 v_U8_t sapSelectChannel(tHalHandle halHandle, ptSapContext pSapCtx, tScanResultHandle pScanResult);
+=======
+v_U8_t sapSelectChannel(tHalHandle halHandle, tScanResultHandle pScanResult);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*==========================================================================
 
@@ -592,6 +624,7 @@ sapSortMacList(v_MACADDR_t *macList, v_U8_t size);
 
   FUNCTION    sapAddMacToACL
 
+<<<<<<< HEAD
   DESCRIPTION
     Function to ADD a mac address in an ACL.
     The function ensures that the ACL list remains sorted after the addition.
@@ -608,12 +641,32 @@ sapSortMacList(v_MACADDR_t *macList, v_U8_t size);
        macList          : ACL list of mac addresses (black/white list)
        size (I/O)       : size of the ACL. It is an I/O arg. The API takes care
                           of incrementing the size by 1.
+=======
+  DESCRIPTION 
+    Function to ADD a mac address in an ACL.
+    The function ensures that the ACL list remains sorted after the addition.
+    This API does not take care of buffer overflow i.e. if the list is already maxed out while adding a mac address,
+    it will still try to add. 
+    The caller must take care that the ACL size is less than MAX_MAC_ADDRESS_ACCEPTED before calling this function.
+
+  DEPENDENCIES 
+
+  PARAMETERS 
+
+    IN
+       macList          : ACL list of mac addresses (black/white list)
+       size (I/O)       : size of the ACL. It is an I/O arg. The API takes care of incrementing the size by 1.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        peerMac          : Mac address of the peer to be added
 
  RETURN VALUE
     None.
 
+<<<<<<< HEAD
   SIDE EFFECTS
+=======
+  SIDE EFFECTS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 ============================================================================*/
 void
@@ -751,9 +804,12 @@ sap_AcquireGlobalLock( ptSapContext  pSapCtx );
 VOS_STATUS
 sap_ReleaseGlobalLock( ptSapContext  pSapCtx );
 
+<<<<<<< HEAD
 VOS_STATUS
 wlan_sap_select_cbmode(void *pAdapter,eSapPhyMode SapHw_mode, v_U8_t channel);
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef __cplusplus
 }
 #endif 

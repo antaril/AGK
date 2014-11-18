@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -79,6 +82,7 @@ typedef struct sRemainOnChn{
   void *pCBContext;
 }tRemainOnChn, tpRemainOnChn;
 
+<<<<<<< HEAD
 #define SIZE_OF_NOA_DESCRIPTOR 13
 #define MAX_NOA_PERIOD_IN_MICROSECS 3000000
 
@@ -87,6 +91,8 @@ typedef struct sRemainOnChn{
 #define P2P_PERIODIC_NOA 2
 #define P2P_SINGLE_NOA 4
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_FEATURE_P2P_INTERNAL
 
 #define MAX_SOCIAL_CHANNELS 3
@@ -103,6 +109,15 @@ typedef struct sRemainOnChn{
 #define ACTION_FRAME_RETRY_TIMEOUT 50
 #define P2P_COUNTRY_CODE_LEN 3
 
+<<<<<<< HEAD
+=======
+#define P2P_CLEAR_POWERSAVE 0
+#define P2P_OPPORTUNISTIC_PS 1
+#define P2P_PERIODIC_NOA 2
+#define P2P_SINGLE_NOA 4
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* Wi-Fi Direct Device Discovery Type */
 typedef enum ep2pDiscoverType {
    /** Driver must perform device discovery only using the scan phase*/
@@ -520,7 +535,10 @@ eHalStatus p2pSendAction( tHalHandle hHal, tANI_U8 sessionId,
                            tANI_U16 wait, tANI_BOOLEAN noack);
 eHalStatus p2pCancelRemainOnChannel( tHalHandle hHal, tANI_U8 sessionId );
 eHalStatus p2pSetPs( tHalHandle hHal, tP2pPsConfig *pNoA );
+<<<<<<< HEAD
 tSirRFBand GetRFBand(tANI_U8 channel);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_FEATURE_P2P_INTERNAL
 eHalStatus p2pRemainOnChannelCallback(tHalHandle halHandle, void *pContext, eHalStatus scan_status);
 eHalStatus P2P_DiscoverRequest(tHalHandle hHal, tANI_U8 SessionID, tP2PDiscoverRequest *pDiscoverRequest, 

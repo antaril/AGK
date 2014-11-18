@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +43,10 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Airgo Networks, Inc proprietary. All rights reserved.
  * This file utilsParser.h contains the utility function protos
  * used internally by the parser
@@ -83,7 +90,13 @@ void          ConvertTSDelay        (tpAniSirGlobal, tSirMacTsDelayIE*,         
 void          ConvertSchedule       (tpAniSirGlobal, tSirMacScheduleIE*,         tDot11fIESchedule*);
 void          ConvertWMMSchedule    (tpAniSirGlobal, tSirMacScheduleIE*,         tDot11fIEWMMSchedule*);
 tSirRetStatus ConvertWscOpaque      (tpAniSirGlobal, tSirAddie*,                 tDot11fIEWscIEOpaque*);
+<<<<<<< HEAD
 tSirRetStatus ConvertP2POpaque      (tpAniSirGlobal, tSirAddie*,                 tDot11fIEP2PIEOpaque*);
+=======
+#ifdef WLAN_FEATURE_P2P
+tSirRetStatus ConvertP2POpaque      (tpAniSirGlobal, tSirAddie*,                 tDot11fIEP2PIEOpaque*);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_FEATURE_WFD
 tSirRetStatus ConvertWFDOpaque      (tpAniSirGlobal, tSirAddie*,                 tDot11fIEWFDIEOpaque*);
 #endif

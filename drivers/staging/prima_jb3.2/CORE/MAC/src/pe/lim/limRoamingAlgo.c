@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -52,6 +55,7 @@
  *
  */
 
+<<<<<<< HEAD
 #include "wniCfgSta.h"
 #include "cfgApi.h"
 #include "limTypes.h"
@@ -60,6 +64,21 @@
 
 
 
+=======
+#if (WNI_POLARIS_FW_PRODUCT == AP)
+#include "wniCfgAp.h"
+#else
+#include "wniCfgSta.h"
+#endif
+#include "cfgApi.h"
+#include "limTypes.h"
+#include "limTimerUtils.h"
+
+
+
+
+#if (WNI_POLARIS_FW_PRODUCT == WLAN_STA) || defined(ANI_AP_CLIENT_SDK)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /** ----------------------------------------------------------------------
 \fn      limSelectsBackgroundScanMode() 
 \brief   This function is called by limIsBackgroundScanAllowed(). 
@@ -79,7 +98,11 @@ tSirBackgroundScanMode limSelectsBackgroundScanMode(tpAniSirGlobal pMac)
 
     if (wlan_cfgGetInt(pMac, WNI_CFG_MAX_CONSECUTIVE_BACKGROUND_SCAN_FAILURE, &cfgVal) != eSIR_SUCCESS)
     {
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("Fail to get WNI_CFG_MAX_CONSECUTIVE_BACKGROUND_SCAN_FAILURE value"));
+=======
+        limLog(pMac, LOGP, FL("Fail to get WNI_CFG_MAX_CONSECUTIVE_BACKGROUND_SCAN_FAILURE value\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return eSIR_NORMAL_BACKGROUND_SCAN;
     }
   
@@ -94,7 +117,11 @@ tSirBackgroundScanMode limSelectsBackgroundScanMode(tpAniSirGlobal pMac)
     {
         pMac->lim.gLimNumOfForcedBkgndScan += 1;
         limLog(pMac, LOGE,
+<<<<<<< HEAD
                FL("Had %d consec scan fail(when expect < %d). Trigger AGGRESSIVE bkgnd scan."),
+=======
+               FL("Had %d consec scan fail(when expect < %d). Trigger AGGRESSIVE bkgnd scan.\n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pMac->lim.gLimNumOfConsecutiveBkgndScanFailure, cfgVal);
         return eSIR_AGGRESSIVE_BACKGROUND_SCAN;
     }
@@ -167,12 +194,20 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     tSirMacAddr      bcAddr = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
     tSirBackgroundScanMode   backgroundScan;
 
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Background Scan: %d success, %d consec fail "),
+=======
+    PELOG1(limLog(pMac, LOG1, FL("Background Scan: %d success, %d consec fail \n"),
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         pMac->lim.gLimNumOfBackgroundScanSuccess,  pMac->lim.gLimNumOfConsecutiveBkgndScanFailure);)
 
     if (! limIsBackgroundScanAllowed(pMac))
     {
+<<<<<<< HEAD
         PELOG1(limLog(pMac, LOG1, FL("Skipping Background Scan "));)
+=======
+        PELOG1(limLog(pMac, LOG1, FL("Skipping Background Scan \n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return;
     }
 
@@ -185,7 +220,11 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
          * Could not get Valid channel list from CFG.
          * Log error.
          */
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve valid channel list"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("could not retrieve valid channel list\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return;
     }
@@ -203,7 +242,11 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
                     (tANI_U32 *) &ssidLen) != eSIR_SUCCESS)
     {
         /// Could not get SSID from CFG. Log error.
+<<<<<<< HEAD
         limLog(pMac, LOGP, FL("could not retrieve SSID"));
+=======
+        limLog(pMac, LOGP, FL("could not retrieve SSID\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }
     smeScanReq.ssId[0].length = (tANI_U8) ssidLen;
     smeScanReq.numSsid = 1;
@@ -215,7 +258,11 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
                   &smeScanReq.minChannelTime) != eSIR_SUCCESS)
     {
         /// Could not get minChlTime value from CFG. Log error.
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve minChlTime value"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("could not retrieve minChlTime value\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return;
     }
@@ -224,7 +271,11 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
                   &smeScanReq.maxChannelTime) != eSIR_SUCCESS)
     {
         /// Could not get maxChlTime value from CFG. Log error.
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("could not retrieve maxChlTime value"));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("could not retrieve maxChlTime value\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return;
     }
@@ -248,28 +299,44 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     {
         pMac->lim.gLimBackgroundScanChannelId = 0;
 
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Skipping Background Scan since the channel list is exhausted."));)
         PELOGE(limLog(pMac, LOGE, FL("SME should send WNI_CFG_BACKGROUND_SCAN_PERIOD indication to start the background scan again."));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("Skipping Background Scan since the channel list is exhausted.\n"));)
+        PELOGE(limLog(pMac, LOGE, FL("SME should send WNI_CFG_BACKGROUND_SCAN_PERIOD indication to start the background scan again.\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         /* Stop the BG scan timer here. SME should send WNI_CFG_BACKGROUND_SCAN_PERIOD 
          * indication to start the background scan again.
          */
         if (TX_TIMER_VALID(pMac->lim.limTimers.gLimBackgroundScanTimer))
         {
+<<<<<<< HEAD
             MTRACE(macTrace(pMac, TRACE_CODE_TIMER_DEACTIVATE, NO_SESSION, eLIM_BACKGROUND_SCAN_TIMER));
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             if (tx_timer_deactivate(&pMac->lim.limTimers.gLimBackgroundScanTimer)
                             != TX_SUCCESS)
             {
                 // Could not deactivate BackgroundScanTimer timer.
                 // Log error
                 limLog(pMac, LOGP,
+<<<<<<< HEAD
                    FL("unable to deactivate BackgroundScanTimer timer"));
+=======
+                   FL("unable to deactivate BackgroundScanTimer timer\n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             }
         }
 
         pMac->lim.gLimBackgroundScanTerminate = TRUE;
 
+<<<<<<< HEAD
         PELOGE(limLog(pMac, LOGE, FL("Send dummy scan with returnFreshResults as 0 to report BG scan results to SME."));)
+=======
+        PELOGE(limLog(pMac, LOGE, FL("Send dummy scan with returnFreshResults as 0 to report BG scan results to SME.\n"));)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return;
     }
     smeScanReq.channelList.channelNumber[0] =
@@ -279,7 +346,11 @@ void limTriggerBackgroundScan(tpAniSirGlobal pMac)
     smeScanReq.uIEFieldOffset = sizeof(tSirSmeScanReq);
     
     backgroundScan = limSelectsBackgroundScanMode(pMac);
+<<<<<<< HEAD
     PELOG1(limLog(pMac, LOG1, FL("Performing (mode %d) Background Scan "), backgroundScan);)
+=======
+    PELOG1(limLog(pMac, LOG1, FL("Performing (mode %d) Background Scan \n"), backgroundScan);)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     smeScanReq.backgroundScanMode = backgroundScan;
     
     //determine whether to send the results or not, If so, notify the BG scan results to SME
@@ -307,7 +378,11 @@ void limAbortBackgroundScan(tpAniSirGlobal pMac)
 
     if(pMac->lim.gLimBackgroundScanTerminate == FALSE) 
     {
+<<<<<<< HEAD
         limLog(pMac, LOGE, FL("Abort Background Scan "));
+=======
+        limLog(pMac, LOGE, FL("Abort Background Scan \n"));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         if (TX_TIMER_VALID(pMac->lim.limTimers.gLimBackgroundScanTimer))
         {
             limDeactivateAndChangeTimer(pMac, eLIM_BACKGROUND_SCAN_TIMER); 
@@ -332,3 +407,7 @@ void limAbortBackgroundScan(tpAniSirGlobal pMac)
     return;
 }
 
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

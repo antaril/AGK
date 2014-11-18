@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,6 +43,11 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
+ *
+ * Airgo Networks, Inc proprietary. All rights reserved.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * This file sirTypes.h contains the common types
  *
  * Author:    V. K. Kandarpa
@@ -53,6 +61,27 @@
 #define __SIR_TYPES_H
 
 #include "halTypes.h"
+<<<<<<< HEAD
+=======
+/*
+ typedef unsigned char  tANI_U8;
+ typedef unsigned short tANI_U16;
+ typedef unsigned long  tANI_U32;
+ typedef signed char    tANI_S8;
+ typedef signed short   tANI_S16;
+ typedef signed long    tANI_S32;
+
+ #ifndef tANI_BOOLEAN
+ #define tANI_BOOLEAN tANI_U8
+ #endif
+*/
+
+
+#if defined( ANI_OS_TYPE_WINDOWS )
+#define inline __inline
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ********************************************** *
  *                                                *

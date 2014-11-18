@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -61,8 +64,11 @@
 #include "wlan_qct_os_timer.h"
 
 
+<<<<<<< HEAD
 typedef VOS_TIMER_STATE WPAL_TIMER_STATE;
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef void (*wpal_timer_callback)(void *pUserData);
 
 typedef struct
@@ -113,6 +119,7 @@ wpt_status wpalTimerStart(wpt_timer * pTimer, wpt_uint32 timeout);
 wpt_status wpalTimerStop(wpt_timer * pTimer);
 
 /*---------------------------------------------------------------------------
+<<<<<<< HEAD
     wpalTimerGetCurStatus - Get the current status of timer
 
     pTimer - a pointer to caller allocated wpt_timer object
@@ -131,6 +138,8 @@ WPAL_TIMER_STATE wpalTimerGetCurStatus(wpt_timer * pTimer);
 wpt_uint32 wpalGetSystemTime(void);
 
 /*---------------------------------------------------------------------------
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     wpalSleep - sleep for a specified interval
     Param:
         timeout - amount of time to sleep. In unit of milli-seconds.
@@ -139,6 +148,7 @@ wpt_uint32 wpalGetSystemTime(void);
 ---------------------------------------------------------------------------*/
 wpt_status wpalSleep(wpt_uint32 timeout);
 
+<<<<<<< HEAD
 /*---------------------------------------------------------------------------
     wpalBusyWait - Thread busy wait with specified usec
     Param:
@@ -147,5 +157,8 @@ wpt_status wpalSleep(wpt_uint32 timeout);
         NONE
 ---------------------------------------------------------------------------*/
 void wpalBusyWait(wpt_uint32 usecDelay);
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif // __WLAN_QCT_PAL_TIMER_H

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -55,7 +58,11 @@
 #define WLAN_NLINK_SRV_H 
 
 #include <linux/skbuff.h>
+<<<<<<< HEAD
 #include <net/netlink.h>
+=======
+#include <linux/netlink.h>
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include <wlan_nlink_common.h>
 
 #define NLINK_MAX_CALLBACKS (WLAN_NL_MSG_MAX - WLAN_NL_MSG_BASE)

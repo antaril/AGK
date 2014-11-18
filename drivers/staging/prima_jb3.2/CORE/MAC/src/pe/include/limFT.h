@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -44,8 +47,13 @@
   
    Macros and Function prototypes FT and 802.11R purposes 
 
+<<<<<<< HEAD
    Copyright 2010 (c) Qualcomm Technologies, Inc.  All Rights Reserved.
    Qualcomm Technologies Confidential and Proprietary.
+=======
+   Copyright 2010 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   Qualcomm Confidential and Proprietary.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   
   ========================================================================*/
 
@@ -72,10 +80,17 @@ extern void limPerformFTPreAuth(tpAniSirGlobal pMac, eHalStatus status, tANI_U32
 void        limPerformPostFTPreAuth(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data, 
                 tpPESession psessionEntry);
 void        limFTResumeLinkCb(tpAniSirGlobal pMac, eHalStatus status, tANI_U32 *data);
+<<<<<<< HEAD
 void        limPostFTPreAuthRsp(tpAniSirGlobal pMac, tSirRetStatus status,
                 tANI_U8 *auth_rsp, tANI_U16  auth_rsp_length,
                 tpPESession psessionEntry);
 void        limHandleFTPreAuthRsp(tpAniSirGlobal pMac, tSirRetStatus status,
+=======
+void        limPostFTPreAuthRsp(tpAniSirGlobal pMac, eHalStatus status,
+                tANI_U8 *auth_rsp, tANI_U16  auth_rsp_length,
+                tpPESession psessionEntry);
+void        limHandleFTPreAuthRsp(tpAniSirGlobal pMac, eHalStatus status,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 tANI_U8 *auth_rsp, tANI_U16  auth_rsp_len,
                 tpPESession psessionEntry);
 void        limProcessMlmFTReassocReq(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf,

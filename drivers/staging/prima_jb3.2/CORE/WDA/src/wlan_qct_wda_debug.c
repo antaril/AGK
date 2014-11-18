@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -61,6 +64,10 @@
   Qualcomm Confidential and Proprietary
 ===========================================================================*/
 
+<<<<<<< HEAD
+=======
+#if defined( FEATURE_WLAN_INTEGRATED_SOC )
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #include "palTypes.h"
 #include "wlan_qct_wda_debug.h"
@@ -78,3 +85,7 @@ void wdaLog(tpAniSirGlobal pMac, tANI_U32 loglevel, const char *pString,...) {
     va_end( marker );              /* Reset variable arguments.      */
 }
 
+<<<<<<< HEAD
+=======
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

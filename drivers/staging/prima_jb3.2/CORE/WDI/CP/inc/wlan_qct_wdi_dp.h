@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -124,7 +127,13 @@ when        who    what, where, why
 #define WDI_WAPI_STA_MASK            0x8  //bit 3. If set, this frame is for WAPI station
 #endif
 
+<<<<<<< HEAD
 #define WDI_TRIGGER_ENABLED_AC_MASK         0x10 //bit 4 for data frames belonging to trigger enabled AC
+=======
+#ifdef FEATURE_WLAN_UAPSD_FW_TRG_FRAMES
+#define WDI_TRIGGER_ENABLED_AC_MASK         0x10 //bit 4 for data frames belonging to trigger enabled AC
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define WDI_USE_NO_ACK_REQUESTED_MASK       0x20
 
 #define WDI_USE_BD_RATE2_FOR_MANAGEMENT_FRAME 0x40 // Bit 6 will be used to control BD rate for Management frames
@@ -250,7 +259,11 @@ when        who    what, where, why
 
 #define WDI_RX_BD_GET_SUBTYPE( _pvBDHeader )        ((((WDI_RxBdType*)_pvBDHeader)->frameTypeSubtype) & WDI_FRAME_SUBTYPE_MASK)
 
+<<<<<<< HEAD
 #define WDI_RX_BD_GET_TYPE( _pvBDHeader )     (((((WDI_RxBdType*)_pvBDHeader)->frameTypeSubtype) & WDI_FRAME_TYPE_MASK) >> WDI_FRAME_TYPE_OFFSET)
+=======
+#define WDI_RX_BD_GET_TYPE( _pvBDHeader )      ((((WDI_RxBdType*)_pvBDHeader)->frameTypeSubtype) & WDI_FRAME_TYPE_MASK) >> WDI_FRAME_TYPE_OFFSET;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define WDI_RX_BD_GET_RTSF( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->rtsf)
 
@@ -299,11 +312,14 @@ when        who    what, where, why
 #define WDI_RX_FC_BD_GET_FC( _pvBDHeader )     (((WDI_FcRxBdType*)_pvBDHeader)->fc)
 #define WDI_RX_FC_BD_GET_STA_VALID_MASK( _pvBDHeader )     (((WDI_FcRxBdType*)_pvBDHeader)->fcSTAValidMask)
 
+<<<<<<< HEAD
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
 //LFR scan related
 #define WDI_RX_BD_GET_OFFLOADSCANLEARN( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->offloadScanLearn)
 #define WDI_RX_BD_GET_ROAMCANDIDATEIND( _pvBDHeader )         (((WDI_RxBdType*)_pvBDHeader)->roamCandidateInd)
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*------------ RSSI and SNR Information extraction -------------*/
 #define WDI_RX_BD_GET_RSSI0( _pvBDHeader )  \

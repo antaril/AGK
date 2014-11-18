@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -61,12 +64,18 @@
 #ifndef MEMORY_DEBUG
 #include "vos_memory.h"
 #endif /* MEMORY_DEBUG */
+<<<<<<< HEAD
 #include "vos_sched.h"
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include "vos_api.h"
 
 #include "dma-mapping.h"
 #include <mach/subsystem_restart.h>
+<<<<<<< HEAD
 #include <linux/wcnss_wlan.h>
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sPalStruct
 {
@@ -116,7 +125,11 @@ wpt_status wpalOpen(void **ppPalContext, void *pOSContext)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                  "%s: wpalDeviceInit failed with status %u",
+<<<<<<< HEAD
                  __func__, status);
+=======
+                 __FUNCTION__, status);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    return status;
@@ -235,7 +248,11 @@ void *wpalDmaMemoryAllocate(wpt_uint32 size, void **ppPhysicalAddr)
    if ( NULL == pv ) 
    {
      WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
                  "%s Unable to allocate DMA buffer\n", __func__);
+=======
+                 "%s Unable to allocate DMA buffer\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return NULL;
    }
 
@@ -389,10 +406,17 @@ wpt_status wpalRivaSubystemRestart(void)
     {
          WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_FATAL,
                  "%s: loading/unloading in progress,"
+<<<<<<< HEAD
                  " SSR will be done at the end of unload", __func__);
          return eWLAN_PAL_STATUS_E_FAILURE;
     }
     if (0 == subsystem_restart("wcnss")) 
+=======
+                 " SSR will be done at the end of unload", __FUNCTION__);
+         return eWLAN_PAL_STATUS_E_FAILURE;
+    }
+    if (0 == subsystem_restart("riva")) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     {
         return eWLAN_PAL_STATUS_SUCCESS;
     }
@@ -411,6 +435,7 @@ void wpalWlanReload(void)
 {
    vos_wlanRestart();
    return;
+<<<<<<< HEAD
 }
 
 /*---------------------------------------------------------------------------
@@ -476,3 +501,6 @@ int  wpalIsWDresetInProgress(void)
 {
    return isWDresetInProgress();
 }
+=======
+}
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

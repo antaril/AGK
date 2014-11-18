@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -73,7 +76,10 @@ typedef struct
         v_U8_t hostIpv4Addr [4];
         v_U8_t hostIpv6Addr [16];
     } params;
+<<<<<<< HEAD
     v_MACADDR_t bssId;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tHostOffloadRequest, *tpHostOffloadRequest;
 
 #endif // __WLAN_HDD_HOST_OFFLOAD_H__

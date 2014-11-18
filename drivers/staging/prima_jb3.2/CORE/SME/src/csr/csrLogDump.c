@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -59,7 +62,11 @@ dump_csr( tpAniSirGlobal pMac, tANI_U32 arg1, tANI_U32 arg2, tANI_U32 arg3, tANI
 {
     static tCsrRoamProfile x;
     static tSirMacSSid ssid;   //To be allocated for array of SSIDs
+<<<<<<< HEAD
     static tANI_U8 sessionId; // Defined for fixed session ID
+=======
+    static tANI_U8 sessionId = 0; // Defined for fixed session ID
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     palZeroMemory(pMac->hHdd, (void*)&x, sizeof(x)); 
     x.SSIDs.numOfSSIDs=1 ;
     x.SSIDs.SSIDList[0].SSID = ssid ;
@@ -78,7 +85,11 @@ static char *dump_btcSetEvent( tpAniSirGlobal pMac, tANI_U32 arg1,
     tSmeBtEvent btEvent;
     if( arg1 < BT_EVENT_TYPE_MAX )
     {
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" signal BT event (%d) handle (%d) 3rd param(%d)"), arg1, arg2, arg3);
+=======
+        smsLog(pMac, LOGE, FL(" signal BT event (%d) handle (%d) 3rd param(%d)\n"), arg1, arg2, arg3);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         vos_mem_zero(&btEvent, sizeof(tSmeBtEvent));
         btEvent.btEventType = arg1;
         switch( arg1 )
@@ -112,6 +123,7 @@ static char *dump_btcSetEvent( tpAniSirGlobal pMac, tANI_U32 arg1,
     }
     else
     {
+<<<<<<< HEAD
         smsLog(pMac, LOGE, FL(" invalid event (%d)"), arg1);
     }
     return p;
@@ -136,12 +148,21 @@ static char* dump_csrApConcScanParams( tpAniSirGlobal pMac, tANI_U32 arg1,
         (int)pMac->roam.configParam.nActiveMinChnTimeConc, (int) pMac->roam.configParam.nActiveMaxChnTimeConc);
     return p;
 }
+=======
+        smsLog(pMac, LOGE, FL(" invalid event (%d)\n"), arg1);
+    }
+    return p;
+}
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 static tDumpFuncEntry csrMenuDumpTable[] = {
     {0,     "CSR (850-860)",                                    NULL},
     {851,   "CSR: CSR testing connection to AniNet",            dump_csr},
     {852,   "BTC: Fake BT events (event, handle)",              dump_btcSetEvent},
+<<<<<<< HEAD
     {853,   "CSR: Split Scan related params",                   dump_csrApConcScanParams},
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 };
 
 void csrDumpInit(tHalHandle hHal)

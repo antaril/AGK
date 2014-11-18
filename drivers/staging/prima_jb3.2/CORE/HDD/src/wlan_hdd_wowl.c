@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -69,9 +72,17 @@
  * Type Declarations
  * -------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 char *g_hdd_wowl_ptrns[WOWL_MAX_PTRNS_ALLOWED]; //Patterns 0-7 
 
 int hdd_parse_hex(unsigned char c)
+=======
+static struct hdd_context_s *pAdapterHandle = NULL;
+
+char *g_hdd_wowl_ptrns[WOWL_MAX_PTRNS_ALLOWED]; //Patterns 0-7 
+
+static int parse_hex(unsigned char c)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 {
   if (c >= '0' && c <= '9')
     return c-'0';
@@ -96,7 +107,11 @@ static inline int find_ptrn_len(const char* ptrn)
 static void hdd_wowl_callback( void *pContext, eHalStatus halStatus )
 {
   VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO, 
+<<<<<<< HEAD
     "%s: Return code = (%ld)\n", __func__, halStatus );
+=======
+    "%s: Return code = (%ld)\n", __FUNCTION__, halStatus );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 }
 
 static void dump_hdd_wowl_ptrn(tSirWowlAddBcastPtrn *ptrn)
@@ -129,14 +144,21 @@ static void dump_hdd_wowl_ptrn(tSirWowlAddBcastPtrn *ptrn)
   @return     : FALSE if any errors encountered
               : TRUE otherwise
   ===========================================================================*/
+<<<<<<< HEAD
 v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn) 
+=======
+v_BOOL_t hdd_add_wowl_ptrn (const char * ptrn) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 {
   tSirWowlAddBcastPtrn localPattern;
   int i, first_empty_slot, len, offset;
   eHalStatus halStatus;
   const char *temp;
+<<<<<<< HEAD
   tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
   v_U8_t sessionId = pAdapter->sessionId;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   len = find_ptrn_len(ptrn);
 
@@ -159,7 +181,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(first_empty_slot == -1)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
           "%s: Cannot add anymore patterns. No free slot!", __func__);
+=======
+          "%s: Cannot add anymore patterns. No free slot!", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_FALSE;
     }
 
@@ -183,24 +209,40 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
        ptrn[5] != WOWL_INTRA_PTRN_TOKENIZER)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
           "%s: Malformed pattern string. Skip!\n", __func__);
+=======
+          "%s: Malformed pattern string. Skip!\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       ptrn += len; 
       goto next_ptrn;
     }
 
     // Extract the pattern size
     localPattern.ucPatternSize = 
+<<<<<<< HEAD
       ( hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
 
     // Extract the pattern mask size
     localPattern.ucPatternMaskSize = 
       ( hdd_parse_hex( ptrn[3] ) * 0x10 ) + hdd_parse_hex( ptrn[4] );
+=======
+      ( parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
+
+    // Extract the pattern mask size
+    localPattern.ucPatternMaskSize = 
+      ( parse_hex( ptrn[3] ) * 0x10 ) + parse_hex( ptrn[4] );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     if(localPattern.ucPatternSize > WOWL_PTRN_MAX_SIZE ||
        localPattern.ucPatternMaskSize > WOWL_PTRN_MASK_MAX_SIZE)
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
           "%s: Invalid length specified. Skip!\n", __func__);
+=======
+          "%s: Invalid length specified. Skip!\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       ptrn += len; 
       goto next_ptrn;
     }
@@ -210,7 +252,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(offset >= len || ptrn[offset] != WOWL_INTRA_PTRN_TOKENIZER) 
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
           "%s: Malformed pattern string..skip!\n", __func__);
+=======
+          "%s: Malformed pattern string..skip!\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       ptrn += len; 
       goto next_ptrn;
     }
@@ -220,7 +266,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(offset+1 != len) //offset begins with 0
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
           "%s: Malformed pattern string...skip!\n", __func__);
+=======
+          "%s: Malformed pattern string...skip!\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       ptrn += len; 
       goto next_ptrn;
     }
@@ -234,7 +284,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     for(i=0; i < localPattern.ucPatternSize; i++)
     {
       localPattern.ucPattern[i] = 
+<<<<<<< HEAD
         (hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
+=======
+        (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       ptrn += 2; //skip to next byte
     }
 
@@ -244,7 +298,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     for(i=0; i < localPattern.ucPatternMaskSize; i++)
     {
       localPattern.ucPatternMask[i] = 
+<<<<<<< HEAD
         (hdd_parse_hex( ptrn[0] ) * 0x10 ) + hdd_parse_hex( ptrn[1] );
+=======
+        (parse_hex( ptrn[0] ) * 0x10 ) + parse_hex( ptrn[1] );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       ptrn += 2; //skip to next byte
     }
 
@@ -253,7 +311,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     if(g_hdd_wowl_ptrns[first_empty_slot] == NULL) 
     {
       VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
           "%s: kmalloc failure", __func__);
+=======
+          "%s: kmalloc failure", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_FALSE;
     }
 
@@ -263,7 +325,11 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
     localPattern.ucPatternByteOffset = 0;
 
     // Register the pattern downstream
+<<<<<<< HEAD
     halStatus = sme_WowlAddBcastPattern( hHal, &localPattern, sessionId );
+=======
+    halStatus = sme_WowlAddBcastPattern( pAdapterHandle->hHal, &localPattern );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if ( !HAL_STATUS_SUCCESS( halStatus ) )
     {
       // Add failed, so invalidate the local storage
@@ -297,6 +363,7 @@ v_BOOL_t hdd_add_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
   @return     : FALSE if any errors encountered
               : TRUE otherwise
   ===========================================================================*/
+<<<<<<< HEAD
 v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn) 
 {
   tSirWowlDelBcastPtrn delPattern;
@@ -305,6 +372,14 @@ v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
   v_BOOL_t patternFound = VOS_FALSE;
   eHalStatus halStatus;
   v_U8_t sessionId = pAdapter->sessionId;
+=======
+v_BOOL_t hdd_del_wowl_ptrn (const char * ptrn) 
+{
+  tSirWowlDelBcastPtrn delPattern;
+  unsigned char id;
+  v_BOOL_t patternFound = VOS_FALSE;
+  eHalStatus halStatus;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   // Detect pattern
   for (id=0; id<WOWL_MAX_PTRNS_ALLOWED && g_hdd_wowl_ptrns[id] != NULL; id++)
@@ -320,7 +395,11 @@ v_BOOL_t hdd_del_wowl_ptrn (hdd_adapter_t *pAdapter, const char * ptrn)
   if(patternFound)
   {
     delPattern.ucPatternId = id;
+<<<<<<< HEAD
     halStatus = sme_WowlDelBcastPattern( hHal, &delPattern, sessionId );
+=======
+    halStatus = sme_WowlDelBcastPattern( pAdapterHandle->hHal, &delPattern );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if ( HAL_STATUS_SUCCESS( halStatus ) )
     {
       // Remove from local storage as well
@@ -349,7 +428,10 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
 {
   tSirSmeWowlEnterParams wowParams;
   eHalStatus halStatus;
+<<<<<<< HEAD
   tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   wowParams.ucPatternFilteringEnable = enable_pbm;
   wowParams.ucMagicPktEnable = enable_mp;
@@ -360,8 +442,13 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
   }
 
   // Request to put Libra into WoWL
+<<<<<<< HEAD
   halStatus = sme_EnterWowl( hHal, hdd_wowl_callback, 
                              pAdapter, &wowParams, pAdapter->sessionId);
+=======
+  halStatus = sme_EnterWowl( pAdapterHandle->hHal, hdd_wowl_callback, 
+      pAdapterHandle, &wowParams );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   if ( !HAL_STATUS_SUCCESS( halStatus ) )
   {
@@ -382,12 +469,20 @@ v_BOOL_t hdd_enter_wowl (hdd_adapter_t *pAdapter, v_BOOL_t enable_mp, v_BOOL_t e
   @return           : FALSE if any errors encountered
                     : TRUE otherwise
   ===========================================================================*/
+<<<<<<< HEAD
 v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter) 
 {
   tHalHandle hHal = WLAN_HDD_GET_HAL_CTX(pAdapter);
   eHalStatus halStatus;
 
   halStatus = sme_ExitWowl( hHal );
+=======
+v_BOOL_t hdd_exit_wowl (void) 
+{
+  eHalStatus halStatus;
+
+  halStatus = sme_ExitWowl( pAdapterHandle->hHal );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   if ( !HAL_STATUS_SUCCESS( halStatus ) )
   {
     VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,
@@ -405,15 +500,25 @@ v_BOOL_t hdd_exit_wowl (hdd_adapter_t*pAdapter)
   @return           : FALSE if any errors encountered
                     : TRUE otherwise
   ===========================================================================*/
+<<<<<<< HEAD
 v_BOOL_t hdd_init_wowl (hdd_adapter_t*pAdapter) 
 {
   hdd_context_t *pHddCtx = NULL;
   pHddCtx = pAdapter->pHddCtx;
+=======
+v_BOOL_t hdd_init_wowl (void *pAdapter) 
+{
+  pAdapterHandle = (struct hdd_context_s*)pAdapter;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   memset(g_hdd_wowl_ptrns, 0, sizeof(g_hdd_wowl_ptrns));
 
   //Add any statically configured patterns 
+<<<<<<< HEAD
   hdd_add_wowl_ptrn(pAdapter, pHddCtx->cfg_ini->wowlPattern); 
+=======
+  hdd_add_wowl_ptrn(pAdapterHandle->cfg_ini->wowlPattern); 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   return VOS_TRUE;
 }

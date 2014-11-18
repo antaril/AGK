@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -74,11 +77,16 @@ wpt_status wpalPostCtrlMsg(void *pPalContext, wpt_msg *pMsg)
    if (NULL == pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: NULL message pointer", __func__);
+=======
+                 "%s: NULL message pointer", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       WPAL_ASSERT(0);
       return status;
    }
 
+<<<<<<< HEAD
    if ((WPAL_MC_MSG_SMD_NOTIF_OPEN_SIG == pMsg->type) ||
        (WPAL_MC_MSG_SMD_NOTIF_DATA_SIG == pMsg->type))
    {
@@ -93,6 +101,9 @@ wpt_status wpalPostCtrlMsg(void *pPalContext, wpt_msg *pMsg)
        * VOS MC MSG flush procedure will free MSG body */
       msg.type = 0;
    }
+=======
+   msg.type = 0;  //This field is not used because VOSS doesn't check it.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    msg.reserved = 0;
    msg.bodyval = 0;
    msg.bodyptr = pMsg;
@@ -103,7 +114,11 @@ wpt_status wpalPostCtrlMsg(void *pPalContext, wpt_msg *pMsg)
    else
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s fail to post msg %d\n",
+<<<<<<< HEAD
                   __func__, pMsg->type);
+=======
+                  __FUNCTION__, pMsg->type);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    return status;
@@ -125,7 +140,11 @@ wpt_status wpalPostTxMsg(void *pPalContext, wpt_msg *pMsg)
    if (NULL == pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: NULL message pointer", __func__);
+=======
+                 "%s: NULL message pointer", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       WPAL_ASSERT(0);
       return status;
    }
@@ -141,7 +160,11 @@ wpt_status wpalPostTxMsg(void *pPalContext, wpt_msg *pMsg)
    else
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s fail to post msg %d\n",
+<<<<<<< HEAD
                   __func__, pMsg->type);
+=======
+                  __FUNCTION__, pMsg->type);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    return status;
@@ -162,7 +185,11 @@ wpt_status wpalPostRxMsg(void *pPalContext, wpt_msg *pMsg)
    if (NULL == pMsg)
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: NULL message pointer", __func__);
+=======
+                 "%s: NULL message pointer", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       WPAL_ASSERT(0);
       return status;
    }
@@ -178,7 +205,11 @@ wpt_status wpalPostRxMsg(void *pPalContext, wpt_msg *pMsg)
    else
    {
       WPAL_TRACE(eWLAN_MODULE_PAL, eWLAN_PAL_TRACE_LEVEL_ERROR, "%s fail to post msg %d\n",
+<<<<<<< HEAD
                   __func__, pMsg->type);
+=======
+                  __FUNCTION__, pMsg->type);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    return status;

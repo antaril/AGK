@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -51,10 +54,17 @@
 #include <wlan_hdd_includes.h>
 #include <vos_trace.h>
 // Global variables
+<<<<<<< HEAD
 static struct hdd_context_s *pHddCtx;
 
 static int gWiFiChannel;  /* WiFi associated channel 1-13, or 0 (none) */
 static int gAmpChannel;   /* AMP associated channel 1-13, or 0 (none) */
+=======
+static struct hdd_context_s *pHddCtx = NULL;
+
+static int gWiFiChannel = 0;  /* WiFi associated channel 1-13, or 0 (none) */
+static int gAmpChannel = 0;   /* AMP associated channel 1-13, or 0 (none) */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 static int gBtcDriverMode = WLAN_HDD_INFRA_STATION;  /* Driver mode in BTC */
 
 
@@ -207,7 +217,10 @@ void send_btc_nlink_msg (int type, int dest_pid)
       default:
          VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR, 
             "BTC: Attempt to send unknown nlink message %d\n", type);
+<<<<<<< HEAD
          kfree_skb(skb);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
          return;
    }
    if(dest_pid == 0)

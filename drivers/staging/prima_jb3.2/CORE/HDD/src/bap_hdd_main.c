@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -95,7 +98,13 @@
 #include <net/bluetooth/bluetooth.h>
 #include <net/bluetooth/hci_core.h>
 
+<<<<<<< HEAD
 #include <wlan_hdd_misc.h>
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+#include <wlan_hdd_misc.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*----------------------------------------------------------------------------
  * Preprocessor Definitions and Constants
  * -------------------------------------------------------------------------*/
@@ -199,6 +208,7 @@ if I exceed that.  ( Think 8-bit CPUs.  And the limitations of an 8-bit length
 #define DBGLOG printf
 //#define DUMPLOG
 #if defined DUMPLOG
+<<<<<<< HEAD
 #define DUMPLOG(n, name1, name2, aStr, size) do {                       \
         int i;                                                          \
         DBGLOG("%d. %s: %s = \n", n, name1, name2);                     \
@@ -206,6 +216,17 @@ if I exceed that.  ( Think 8-bit CPUs.  And the limitations of an 8-bit length
             DBGLOG("%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
         DBGLOG("\n");                                                   \
     } while (0)
+=======
+#define DUMPLOG(n, name1, name2, aStr, size) \
+    if (1) \
+{\
+    int i;\
+    DBGLOG("%d. %s: %s = \n", n, name1, name2); \
+    for (i = 0; i < size; i++) \
+        DBGLOG("%2.2x%s", ((unsigned char *)aStr)[i], i % 16 == 15 ? "\n" : " "); \
+    DBGLOG("\n"); \
+}
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #else
 #define DUMPLOG(n, name1, name2, aStr, size)
 #endif
@@ -501,7 +522,11 @@ static VOS_STATUS WLANBAP_STAFetchPktCB
         return VosStatus;
     }
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: pVosPkt(vos_pkt_t *)=%p\n", __func__,
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: pVosPkt(vos_pkt_t *)=%p\n", __FUNCTION__,
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                pVosPkt );
 
     VosStatus = WLANBAP_XlateTxDataPkt( pctx->bapHdl, pPhyCtx->PhyLinkHdl,
@@ -525,7 +550,11 @@ static VOS_STATUS WLANBAP_STAFetchPktCB
     // provide the meta-info BAP provided previously
     *tlMetaInfo = TlMetaInfo;
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: *vosDataBuff(vos_pkt_t *)=%p\n", __func__, *vosDataBuff );
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: *vosDataBuff(vos_pkt_t *)=%p\n", __FUNCTION__, *vosDataBuff );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     return(VOS_STATUS_SUCCESS);
 } // WLANBAP_STAFetchPktCB()
@@ -595,7 +624,11 @@ static VOS_STATUS WLANBAP_STARxCB
        // both "success" and "empty" are acceptable results
        if (!((VosStatus == VOS_STATUS_SUCCESS) || (VosStatus == VOS_STATUS_E_EMPTY)))
        {
+<<<<<<< HEAD
            VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,"%s: Failure walking packet chain", __func__);
+=======
+           VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,"%s: Failure walking packet chain", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            return VOS_STATUS_E_FAILURE;
        }
        
@@ -619,7 +652,11 @@ static VOS_STATUS WLANBAP_STARxCB
        if(!VOS_IS_STATUS_SUCCESS( VosStatus ))
        {
            VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: Failure extracting skb from vos pkt. "
+<<<<<<< HEAD
              "VosStatus = %d\n", __func__, VosStatus );
+=======
+             "VosStatus = %d\n", __FUNCTION__, VosStatus );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
            VosStatus = VOS_STATUS_E_FAILURE;
 
@@ -680,7 +717,11 @@ static VOS_STATUS WLANBAP_TxCompCB
     void* pOsPkt = NULL;
     BslPhyLinkCtxType* pctx;
     BslClientCtxType* ppctx;
+<<<<<<< HEAD
     static int num_packets;
+=======
+    static int num_packets = 0;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "WLANBAP_TxCompCB. vosDataBuff(vos_pkt_t *)=%p\n", vosDataBuff );
 
@@ -701,7 +742,11 @@ static VOS_STATUS WLANBAP_TxCompCB
     if(!VOS_IS_STATUS_SUCCESS( VosStatus ))
     {
         //This is bad but still try to free the VOSS resources if we can
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_ERROR,"%s: Failure extracting skb from vos pkt", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         vos_pkt_return_packet( vosDataBuff );
         return VOS_STATUS_E_FAILURE;
     }
@@ -722,7 +767,11 @@ static VOS_STATUS WLANBAP_TxCompCB
     num_packets = (num_packets + 1) % 4;
     if (num_packets == 0 )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: Sending up number of completed packets.  num_packets = %d.\n", __func__, num_packets );
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO, "%s: Sending up number of completed packets.  num_packets = %d.\n", __FUNCTION__, num_packets );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         WLANBAP_TxPacketMonitorHandler ( (v_PVOID_t) ppctx->bapHdl ); // our handle in BAP
     }
 
@@ -922,7 +971,11 @@ static VOS_STATUS WLANBAP_EventCB
     if(NULL == pctx)
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                      "pctx is NULL in %s", __func__);
+=======
+                     "pctx is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return VOS_STATUS_E_FAULT;
 
@@ -1489,7 +1542,11 @@ static VOS_STATUS WLANBAP_EventCB
     if(!VOS_IS_STATUS_SUCCESS( VosStatus ))
     {
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: Failure extracting skb from vos pkt. "
+<<<<<<< HEAD
           "VosStatus = %d\n", __func__, VosStatus );
+=======
+          "VosStatus = %d\n", __FUNCTION__, VosStatus );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         // return the packet
         VosStatus = vos_pkt_return_packet( pVosPkt );
@@ -1565,7 +1622,11 @@ static BOOL BslFindAndInitClientCtx
 
     if ( !VOS_IS_STATUS_SUCCESS( VosStatus ) )
     {
+<<<<<<< HEAD
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientLock already inited",__func__);
+=======
+        VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientLock already inited",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         // return(0);
     }
 
@@ -1573,7 +1634,11 @@ static BOOL BslFindAndInitClientCtx
     {
         if ( !BslClientCtx[i].used )
         {
+<<<<<<< HEAD
             VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientCtx[%d] selected",__func__, i);
+=======
+            VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,"%s:BslClientCtx[%d] selected",__FUNCTION__, i);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             BslClientCtx[i].used = TRUE;
             break;
         }
@@ -1597,7 +1662,11 @@ static BOOL BslFindAndInitClientCtx
     {
         pctx->used = FALSE;
 
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_GetNewHndl Failed",__func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_GetNewHndl Failed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return(FALSE);
     }
@@ -1612,7 +1681,11 @@ static BOOL BslFindAndInitClientCtx
     {
         pctx->used = FALSE;
 
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_BAPRegsiterBAPCallaback Failed",__func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:WLAN_BAPRegsiterBAPCallaback Failed",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         return(FALSE);
     }
@@ -2312,7 +2385,11 @@ static BOOL BslProcessHCICommand
 
         /* Flush the TX queue */
 //#ifdef BAP_DEBUG
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s:HCI Flush command  - will flush Tx Queue", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s:HCI Flush command  - will flush Tx Queue", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 //#endif //BAP_DEBUG
         // JEZ100604: Temporary short cut
         pPhyCtx = &BslPhyLinkCtx[0];
@@ -2346,7 +2423,11 @@ static BOOL BslProcessHCICommand
         }
 
         /* Flush the TX queue */
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:HCI Flush command  - will flush Tx Queue for pkt type %d", __func__, FlushCmd.packet_type);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s:HCI Flush command  - will flush Tx Queue for pkt type %d", __FUNCTION__, FlushCmd.packet_type);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         // We support BE traffic only
         if(WLANTL_AC_BE == FlushCmd.packet_type)
         {
@@ -3252,7 +3333,11 @@ static BOOL BslProcessHCICommand
         // unpack
 
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "BslProcessHCICommand: HCI_Write_Remote_AMP_ASSOC_Cmd Count = %d", Count);
+<<<<<<< HEAD
         DUMPLOG(1, __func__, "HCI_Write_Remote_AMP_ASSOC cmd",
+=======
+        DUMPLOG(1, __FUNCTION__, "HCI_Write_Remote_AMP_ASSOC cmd",
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 pBuf,
                 Count);
 
@@ -3543,7 +3628,11 @@ static BOOL BslProcessACLDataTx
     struct sk_buff *skb;
 #endif
 #if 0
+<<<<<<< HEAD
     static int num_packets;
+=======
+    static int num_packets = 0;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_LOW, "BslProcessACLDataTx\n" );
@@ -3720,6 +3809,10 @@ int BSL_Init ( v_PVOID_t  pvosGCtx )
         return 0;
     }
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if (VOS_STA_SAP_MODE == hdd_get_conparam())
     {
         status = hdd_get_front_adapter ( pHddCtx, &pAdapterNode );
@@ -3736,6 +3829,10 @@ int BSL_Init ( v_PVOID_t  pvosGCtx )
         }
      }
     else
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         pAdapter = hdd_get_adapter(pHddCtx, WLAN_HDD_INFRA_STATION);
 
 
@@ -4045,7 +4142,11 @@ static int BSL_Flush(struct hci_dev *hdev)
     BslPhyLinkCtxType* pPhyCtx;
 
     //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "BSL_Flush - will flush ALL Tx Queues");
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s - will flush ALL Tx Queues", __func__);
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s - will flush ALL Tx Queues", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     /* Flush the TX queue */
     // JEZ100604: Temporary short cut
@@ -4097,22 +4198,38 @@ static int BSL_Write(struct sk_buff *skb)
     //char *bslBuff = NULL;
     BslHciWorkStructure *pHciContext;
 
+<<<<<<< HEAD
     //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s", __func__);
+=======
+    //VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // Sanity check inputs
     if ( skb == NULL )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         //return -EFAULT; /* Bad address */
         return 0;
     }
 
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __func__, skb->len);
+=======
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __FUNCTION__, skb->len);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // Sanity check inputs
     if ( 0 == skb->len )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is empty", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         //return -EFAULT; /* Bad address */
         return 0;
     }
@@ -4122,7 +4239,11 @@ static int BSL_Write(struct sk_buff *skb)
     // Sanity check the HCI device in the skb
     if ( hdev == NULL )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         //return -ENODEV; /* no device */
         return 0;
     }
@@ -4132,7 +4253,11 @@ static int BSL_Write(struct sk_buff *skb)
     // Sanity check inputs
     if ( pctx == NULL )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         //return -EFAULT; /* Bad address */
         return 0;
         /* Maybe I should return "no device" */
@@ -4146,7 +4271,11 @@ static int BSL_Write(struct sk_buff *skb)
         // Directly execute the data write
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                   "%s: HCI ACL data tx, skb=%p",
+<<<<<<< HEAD
                   __func__, skb);
+=======
+                  __FUNCTION__, skb);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         // ACL data
         hdev->stat.acl_tx++;
         // Correct way of doing this...
@@ -4161,7 +4290,11 @@ static int BSL_Write(struct sk_buff *skb)
         break;
     case HCI_COMMAND_PKT:
         // Defer the HCI command writes
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         hdev->stat.cmd_tx++;
 
         // Allocate an HCI context. To use as a "container" for the "work" to be deferred.
@@ -4170,7 +4303,11 @@ static int BSL_Write(struct sk_buff *skb)
         {
             // no memory for HCI context.  Nothing we can do but drop
             VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                       "%s: Unable to allocate context", __func__);
+=======
+                      "%s: Unable to allocate context", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             kfree_skb(skb);
             return 0;
         }
@@ -4186,14 +4323,22 @@ static int BSL_Write(struct sk_buff *skb)
 
         VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
                   "%s: Scheduling work for skb %p, BT-AMP Client context %p, work %p",
+<<<<<<< HEAD
                   __func__, skb, pctx, pHciContext);
+=======
+                  __FUNCTION__, skb, pctx, pHciContext);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         status = schedule_work(&pHciContext->hciInterfaceProcessing);
 
         // Check result
         if ( 0 == status )
         {
+<<<<<<< HEAD
             VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: hciInterfaceProcessing work already queued. This should never happen.", __func__);
+=======
+            VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR, "%s: hciInterfaceProcessing work already queued. This should never happen.", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         }
 
 
@@ -4202,7 +4347,11 @@ static int BSL_Write(struct sk_buff *skb)
         written = skb->len;
         break;
     case HCI_SCODATA_PKT:
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         hdev->stat.sco_tx++;
         // anything else including HCI events and SCO data
         status = FALSE;
@@ -4250,12 +4399,20 @@ static void bslWriteFinish(struct work_struct *work)
 
     VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_LOW,
               "%s: Entered, context %p",
+<<<<<<< HEAD
               __func__, pctx);
+=======
+              __FUNCTION__, pctx);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     // Sanity check inputs
     if ( pctx == NULL )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx is bad i/p", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return; // -EFAULT; /* Bad address */
     }
 
@@ -4266,18 +4423,30 @@ static void bslWriteFinish(struct work_struct *work)
     // Sanity check inputs
     if ( skb == NULL )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __func__);
         return; // -EFAULT; /* Bad address */
     }
 
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __func__, skb->len);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: skb is bad i/p", __FUNCTION__);
+        return; // -EFAULT; /* Bad address */
+    }
+
+    VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Count (skb->len)=%d", __FUNCTION__, skb->len);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     hdev = (struct hci_dev *)(skb->dev);
 
     // Sanity check the HCI device in the skb
     if ( hdev == NULL )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: Frame for Unknown HCI device (hdev=NULL)", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return; // -ENODEV; /* no device */
     }
 
@@ -4285,7 +4454,11 @@ static void bslWriteFinish(struct work_struct *work)
     // Sanity check inputs
     if ( pctx != (BslClientCtxType *)hci_get_drvdata(hdev));
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx and hdev not consistent - bad i/p", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: pctx and hdev not consistent - bad i/p", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return; // -EFAULT; /* Bad address */
         /* Maybe I should return "no device" */
         //return -ENODEV; /* no device */
@@ -4295,7 +4468,11 @@ static void bslWriteFinish(struct work_struct *work)
     switch (bt_cb(skb)->pkt_type)
     {
     case HCI_COMMAND_PKT:
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: HCI command", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         hdev->stat.cmd_tx++;
         // HCI command
         status = BslProcessHCICommand( pctx, skb->data, skb->len-CMD_TLV_TYPE_AND_LEN_SIZE);
@@ -4304,7 +4481,11 @@ static void bslWriteFinish(struct work_struct *work)
         written = skb->len;
         break;
     case HCI_SCODATA_PKT:
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __func__);
+=======
+        VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH, "%s: unknown type", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         hdev->stat.sco_tx++;
         // anything else including HCI events and SCO data
         status = FALSE;
@@ -4317,7 +4498,11 @@ static void bslWriteFinish(struct work_struct *work)
 
     VOS_TRACE(VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_INFO_HIGH,
               "%s: Freeing skb %p",
+<<<<<<< HEAD
               __func__, skb);
+=======
+              __FUNCTION__, skb);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     consume_skb(skb);
 

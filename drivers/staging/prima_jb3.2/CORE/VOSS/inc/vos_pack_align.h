@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -111,8 +114,13 @@
 
 #elif defined _MSC_VER
 
+<<<<<<< HEAD
 #define VOS_PACK_START  __pragma(pack(push,1))
 #define VOS_PACK_END  __pragma(pack(pop))
+=======
+  #define VOS_PACK_START  __pragma (pack(push,1))
+  #define VOS_PACK_END  __pragma (pack(pop))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   #define VOS_PACK_PRE 
   #define VOS_PACK_POST

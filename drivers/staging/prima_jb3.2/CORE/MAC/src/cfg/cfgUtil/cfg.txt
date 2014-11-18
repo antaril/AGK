@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  *
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
@@ -18,6 +19,8 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  *
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 *
 * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -495,7 +498,11 @@ LIM
 WNI_CFG_REASSOCIATION_FAILURE_TIMEOUT    I    4    7
 V    RW    NP
 NONE
+<<<<<<< HEAD
 0    65535    1000
+=======
+0    65535    2000
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 V    RW    NP
 NONE
 0    65535    3000
@@ -691,10 +698,17 @@ NONE
 *
 
 WNI_CFG_BSSID    S    6    7
+<<<<<<< HEAD
 V    RW    NP RESTART
 NONE
 6    0x22 0x22 0x11 0x11 0x33 0x33
 V    RW    NP RESTART
+=======
+V    RO    NP RESTART
+NONE
+6    0x22 0x22 0x11 0x11 0x33 0x33
+V    RO    NP RESTART
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 NONE
 6    0x22 0x22 0x11 0x11 0x33 0x33
 
@@ -789,10 +803,17 @@ SCH
 WNI_CFG_FIXED_RATE  I   4   0
 V    RW    NP
 HAL
+<<<<<<< HEAD
 0    44     0
 V    RW    NP
 HAL
 0    44     0
+=======
+0    31     0
+V    RW    NP
+HAL
+0    31     0
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ENUM AUTO 	                                0
 
@@ -832,6 +853,7 @@ HAL
 #ENUM 0_5MBPS_SLR_20MHZ_SIMO                30
 
 #ENUM 68_25MBPS_QC_PROP_20MHZ_SIMO          31
+<<<<<<< HEAD
 #ENUM 54MBPS_MCS3_40MHZ_SIMO                32
 #ENUM 81MBPS_MCS4_40MHZ_SIMO                33
 #ENUM 108MBPS_MCS5_40MHZ_SIMO               34
@@ -845,6 +867,8 @@ HAL
 #ENUM 120MBPS_MCS5_40MHZ_SIMO_SGI           42
 #ENUM 135MBPS_MCS6_40MHZ_SIMO_SGI           43
 #ENUM 150MBPS_MCS7_40MHZ_SIMO_SGI           44
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 * *********************************************************
 *
@@ -1255,10 +1279,17 @@ NONE
 WNI_CFG_MAX_TX_POWER_5    S    128    8
 V    RW    NP
 NONE
+<<<<<<< HEAD
 3 36 126 20
 V    RW    NP
 NONE
 3 36 126 20
+=======
+3 36 126 14
+V    RW    NP
+NONE
+3 36 126 14
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * Cell size configurations. These are canned configurations for a specified
@@ -2846,6 +2877,7 @@ LIM
 WNI_CFG_VHT_SU_BEAMFORMEE_CAP  I    4    19
 V    RW    NP    
 LIM
+<<<<<<< HEAD
 0    1    0
 V    RW    NP    
 LIM
@@ -2854,14 +2886,31 @@ LIM
 *
 * Compressed Steering Number of Beamformer Antennas Supported
 * Riva does not support,Pronto supports, default set to 0
+=======
+0    1    1
+V    RW    NP    
+LIM
+0    1    1
+
+*
+* Compressed Steering Number of Beamformer Antennas Supported
+* Riva/Pronto does not support, default set to 0
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 *
 WNI_CFG_VHT_CSN_BEAMFORMEE_ANT_SUPPORTED  I    4    19
 V    RW    NP    
 LIM
+<<<<<<< HEAD
 0    3    0
 V    RW    NP    
 LIM
 0    3    0
+=======
+0    1    0
+V    RW    NP    
+LIM
+0    1    0
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * Number of Sounding Dimensions indicates Number
@@ -2871,10 +2920,17 @@ LIM
 WNI_CFG_VHT_NUM_SOUNDING_DIMENSIONS  I    4    19
 V    RW    NP    
 LIM
+<<<<<<< HEAD
 0    3    0
 V    RW    NP    
 LIM
 0    3    0
+=======
+0    1    1
+V    RW    NP    
+LIM
+0    1    1
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * MU Beamformer Capable
@@ -3001,10 +3057,17 @@ LIM
 WNI_CFG_VHT_RX_HIGHEST_SUPPORTED_DATA_RATE  I    4    19
 V    RW    NP    
 LIM
+<<<<<<< HEAD
 0    390   0
 V    RW    NP    
 LIM
 0    390   0
+=======
+1    434   434
+V    RW    NP    
+LIM
+1    434   434
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * Tx Highest supported data rate.
@@ -3012,10 +3075,17 @@ LIM
 WNI_CFG_VHT_TX_HIGHEST_SUPPORTED_DATA_RATE  I    4    19
 V    RW    NP    
 LIM
+<<<<<<< HEAD
 0    390    0
 V    RW    NP    
 LIM
 0    390    0
+=======
+1    434    434
+V    RW    NP    
+LIM
+1    434    434
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * VHT Operation Information
@@ -3062,10 +3132,17 @@ LIM
 WNI_CFG_VHT_BASIC_MCS_SET  I    4    19
 V    RW    NP    
 LIM
+<<<<<<< HEAD
 0    0xFFFF    0xFFFE
 V    RW    NP    
 LIM
 0    0xFFFF    0xFFFE
+=======
+0    3     0 
+V    RW    NP    
+LIM
+0    3     0
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * MU-MIMO Capable STA Count
@@ -3158,6 +3235,7 @@ V    RW    NP    RESTART
 LIM
 0    7    0
 
+<<<<<<< HEAD
 *
 * NUM BUFFERS ADVERTISED
 * Defines number of buffers advertised in ADDBA
@@ -3169,6 +3247,8 @@ LIM
 V    RW    NP    
 LIM
 0    128    64
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 * Maximum Rx AMPDU Factor
@@ -3268,6 +3348,24 @@ LIM
 WNI_CFG_RSSI_FILTER_PERIOD    I    4    5
 V    RW    NP
 LIM
+<<<<<<< HEAD
+=======
+0    255    20
+NV    RW    NP
+LIM
+0    255    20
+
+*
+* Period for which Firmware will collect the 
+* RSSI stats. Its in units of beacon interval. 
+* Rssi Filter period should always be >=
+* the num_beacon_per_rssi_average.
+* This value is used ONLY for CCX and 11r Fasttransition
+*
+WNI_CFG_FT_RSSI_FILTER_PERIOD    I    4    5
+V    RW    NP
+LIM
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 0    255    5
 NV    RW    NP
 LIM
@@ -3473,6 +3571,7 @@ LIM
 0    0xff    0
 
 *
+<<<<<<< HEAD
 * Delete all Rx BA sessions in 2.4 GHz
 * when BTC requests to disable agg.
 *
@@ -3486,6 +3585,8 @@ LIM
 
 
 *
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 * Valid Channel List
 *
 
@@ -4336,10 +4437,17 @@ HAL
 WNI_CFG_ASSOC_STA_LIMIT    I   4   8
 V    RW    NP
 LIM
+<<<<<<< HEAD
 1    32    10
 V    RW    NP
 LIM
 1    32    10
+=======
+1    10    10
+V    RW    NP
+LIM
+1    10    10
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 *
 *  SAP channel select start channel number
@@ -4449,6 +4557,7 @@ HAL
 V    RW    NP
 HAL
 0    1     0
+<<<<<<< HEAD
 
 *
 * UC Filter will be enabled if value is set to 1
@@ -4565,3 +4674,5 @@ NONE
 V    RW    NP
 NONE
 0    1    0
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

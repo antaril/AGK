@@ -123,10 +123,13 @@ int wlan_hdd_ftm_start(hdd_context_t *pAdapter);
 #endif
 #include "wlan_qct_pal_trace.h"
 #include "qwlan_version.h"
+<<<<<<< HEAD
 #include "wlan_qct_wda.h"
 #ifdef FEATURE_WLAN_TDLS
 #include "wlan_hdd_tdls.h"
 #endif
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef MODULE
 #define WLAN_MODULE_NAME  module_name(THIS_MODULE)
@@ -5392,6 +5395,10 @@ free_hdd_ctx:
   --------------------------------------------------------------------------*/
 static VOS_STATUS hdd_update_config_from_nv(hdd_context_t* pHddCtx)
 {
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_BOOL_t itemIsValid = VOS_FALSE;
    VOS_STATUS status;
    v_MACADDR_t macFromNV[VOS_MAX_CONCURRENCY_PERSONA];
@@ -5450,6 +5457,16 @@ static VOS_STATUS hdd_update_config_from_nv(hdd_context_t* pHddCtx)
       return VOS_STATUS_E_FAILURE;
    }
 
+<<<<<<< HEAD
+=======
+   if (!HAL_STATUS_SUCCESS( halStatus ))
+   {
+      hddLog(VOS_TRACE_LEVEL_ERROR,"%s: Failed to set MAC Address. "
+          "HALStatus is %08d [x%08x]",__func__, halStatus, halStatus );
+      return VOS_STATUS_E_FAILURE;
+   }
+#endif /* FEATURE_WLAN_INTEGRATED_SOC */
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    return VOS_STATUS_SUCCESS;
 }
@@ -5769,6 +5786,67 @@ static int hdd_generate_iface_mac_addr_auto(hdd_context_t *pHddCtx,
 
 /**---------------------------------------------------------------------------
 
+  \brief hdd_generate_iface_mac_addr_auto() - HDD Mac Interface Auto
+                                              generate function
+
+  This is generate the random mac address for WLAN interface
+
+  \param  - pHddCtx  - Pointer to HDD context
+            idx      - Start interface index to get auto
+                       generated mac addr.
+            mac_addr - Mac address
+
+  \return -  0 for success, < 0 for failure
+
+  --------------------------------------------------------------------------*/
+
+static int hdd_generate_iface_mac_addr_auto(hdd_context_t *pHddCtx,
+                                            int idx, v_MACADDR_t mac_addr)
+{
+   int i;
+   unsigned int serialno;
+   serialno = wcnss_get_serial_number();
+
+   if (0 != serialno)
+   {
+      /* MAC address has 3 bytes of OUI so we have a maximum of 3
+         bytes of the serial number that can be used to generate
+         the other 3 bytes of the MAC address.  Mask off all but
+         the lower 3 bytes (this will also make sure we don't
+         overflow in the next step) */
+      serialno &= 0x00FFFFFF;
+
+      /* we need a unique address for each session */
+      serialno *= VOS_MAX_CONCURRENCY_PERSONA;
+
+      /* autogen other Mac addresses */
+      for (i = idx; i < VOS_MAX_CONCURRENCY_PERSONA; i++)
+      {
+         /* start with the entire default address */
+         pHddCtx->cfg_ini->intfMacAddr[i] = mac_addr;
+         /* then replace the lower 3 bytes */
+         pHddCtx->cfg_ini->intfMacAddr[i].bytes[3] = (serialno >> 16) & 0xFF;
+         pHddCtx->cfg_ini->intfMacAddr[i].bytes[4] = (serialno >> 8) & 0xFF;
+         pHddCtx->cfg_ini->intfMacAddr[i].bytes[5] = serialno & 0xFF;
+
+         serialno++;
+         hddLog(VOS_TRACE_LEVEL_ERROR,
+                   "%s: Derived Mac Addr: "
+                   MAC_ADDRESS_STR, __func__,
+                   MAC_ADDR_ARRAY(pHddCtx->cfg_ini->intfMacAddr[i].bytes));
+      }
+
+   }
+   else
+   {
+      hddLog(LOGE, FL("Failed to Get Serial NO"));
+      return -1;
+   }
+   return 0;
+}
+
+/**---------------------------------------------------------------------------
+
   \brief hdd_wlan_startup() - HDD init function
 
   This is the driver startup code executed once a WLAN device has been detected
@@ -5793,6 +5871,13 @@ int hdd_wlan_startup(struct device *dev )
 #endif
    int ret;
    struct wiphy *wiphy;
+<<<<<<< HEAD
+=======
+#endif
+#ifdef ANI_BUS_TYPE_SDIO
+   struct sdio_func *sdio_func_dev = dev_to_sdio_func(dev);
+#endif //ANI_BUS_TYPE_SDIO
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    v_MACADDR_t mac_addr;
 
    ENTER();

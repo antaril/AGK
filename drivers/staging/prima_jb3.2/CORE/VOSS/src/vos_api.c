@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2014, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,10 +43,21 @@
  */
 
 /**=========================================================================
+<<<<<<< HEAD
 
   \file  vos_api.c
 
   \brief Stub file for all virtual Operating System Services (vOSS) APIs
+=======
+  
+  \file  vos_api.c
+
+  \brief Stub file for all virtual Operating System Services (vOSS) APIs
+               
+   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   
+   Qualcomm Confidential and Proprietary.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   
   ========================================================================*/
  /*=========================================================================== 
@@ -66,6 +80,15 @@
 /*--------------------------------------------------------------------------
   Include Files
   ------------------------------------------------------------------------*/
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "aniGlobal.h"
+#include "halTypes.h"
+#include "wlan_qct_sal.h"
+#include "wlan_qct_bal.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include <vos_mq.h>
 #include "vos_sched.h"
 #include <vos_api.h>
@@ -82,10 +105,18 @@
 #include "wlan_qct_wda.h"
 #include "wlan_hdd_main.h"
 #include <linux/vmalloc.h>
+<<<<<<< HEAD
 #include "wlan_hdd_cfg80211.h"
 
 #include "sapApi.h"
 #include "vos_trace.h"
+=======
+
+
+#ifdef WLAN_SOFTAP_FEATURE
+#include "sapApi.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 
@@ -108,9 +139,12 @@
 /* Approximate amount of time to wait for WDA to stop WDI */
 #define VOS_WDA_STOP_TIMEOUT WDA_STOP_TIMEOUT 
 
+<<<<<<< HEAD
 /* Approximate amount of time to wait for WDA to issue a DUMP req */
 #define VOS_WDA_RESP_TIMEOUT WDA_STOP_TIMEOUT
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*---------------------------------------------------------------------------
  * Data definitions
  * ------------------------------------------------------------------------*/
@@ -122,10 +156,22 @@ static pVosContextType gpVosContext;
  * ------------------------------------------------------------------------*/
 v_VOID_t vos_sys_probe_thread_cback ( v_VOID_t *pUserData );
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+v_VOID_t vos_sys_start_complete_cback  ( v_VOID_t *pUserData );
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 v_VOID_t vos_core_return_msg(v_PVOID_t pVContext, pVosMsgWrapper pMsgWrapper);
 
 v_VOID_t vos_fetch_tl_cfg_parms ( WLANTL_ConfigInfoType *pTLConfig, 
     hdd_config_t * pConfig );
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+VOS_STATUS vos_get_fwbinary( v_VOID_t **ppBinary, v_SIZE_t *pNumBytes );
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 /*---------------------------------------------------------------------------
@@ -172,6 +218,7 @@ VOS_STATUS vos_preOpen ( v_CONTEXT_t *pVosContext )
 
    *pVosContext = gpVosContext;
 
+<<<<<<< HEAD
    /* Initialize the spinlock */
    vos_trace_spin_lock_init();
    /* it is the right time to initialize MTRACE structures */
@@ -179,6 +226,8 @@ VOS_STATUS vos_preOpen ( v_CONTEXT_t *pVosContext )
        vosTraceInit();
    #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    return VOS_STATUS_SUCCESS;
 
 } /* vos_preOpen()*/
@@ -278,7 +327,10 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
    /* Initialize the timer module */
    vos_timer_module_init();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /* Initialize the probe event */
    if (vos_event_init(&gpVosContext->ProbeEvent) != VOS_STATUS_SUCCESS)
    {
@@ -287,6 +339,10 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAILURE;
    }
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    if (vos_event_init( &(gpVosContext->wdaCompleteEvent) ) != VOS_STATUS_SUCCESS )
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
@@ -296,6 +352,18 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       goto err_probe_event;
    }
 
+<<<<<<< HEAD
+=======
+   /* Saving the HDD context */
+   /* This is saved in hdd_wlan_start_up before calling vos_open
+      gpVosContext->pHDDContext = pHddContext;*/
+ 
+   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+               "%s: HDD context is saved successfully", __func__);
+   
+#endif
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /* Initialize the free message queue */
    vStatus = vos_mq_init(&gpVosContext->freeVosMq);
    if (! VOS_IS_STATUS_SUCCESS(vStatus))
@@ -305,7 +373,15 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Failed to initialize VOS free message queue", __func__);
       VOS_ASSERT(0);
+<<<<<<< HEAD
       goto err_wda_complete_event;
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+      goto err_probe_event;
+#else
+      goto err_wda_complete_event;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    for (iter = 0; iter < VOS_CORE_MAX_MESSAGES; iter++)
@@ -315,6 +391,23 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       INIT_LIST_HEAD(&gpVosContext->aMsgWrappers[iter].msgNode);
       vos_mq_put(&gpVosContext->freeVosMq, &(gpVosContext->aMsgWrappers[iter]));
    }
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+   /* Initialize here the VOS Packet sub module */
+   vStatus = vos_packet_open( gpVosContext, &gpVosContext->vosPacket,
+                              sizeof( vos_pkt_context_t ) );
+
+   if ( !VOS_IS_STATUS_SUCCESS( vStatus ) )
+   {
+      /* Critical Error ...  Cannot proceed further */
+      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                "%s: Failed to open VOS Packet Module", __func__);
+      VOS_ASSERT(0);
+      goto err_msg_queue;
+   }
+#endif   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* Now Open the VOS Scheduler */
    vStatus= vos_sched_open(gpVosContext, &gpVosContext->vosSched,
@@ -326,9 +419,20 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Failed to open VOS Scheduler", __func__);
       VOS_ASSERT(0);
+<<<<<<< HEAD
       goto err_msg_queue;
    }
 
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+      goto err_packet_close;
+#else
+      goto err_msg_queue;
+#endif
+   }
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /*
    ** Need to open WDA first because it calls WDI_Init, which calls wpalOpen
    ** The reason that is needed becasue vos_packet_open need to use PAL APIs
@@ -364,6 +468,10 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_ASSERT(0);
       goto err_wda_close;
    }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* Open the SYS module */
    vStatus = sysOpen(gpVosContext);
@@ -374,7 +482,15 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
                 "%s: Failed to open SYS module", __func__);
       VOS_ASSERT(0);
+<<<<<<< HEAD
       goto err_packet_close;
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+      goto err_sched_close;
+#else
+      goto err_packet_close;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
 
@@ -387,6 +503,36 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
                 "%s: Failed to initialize the NV module", __func__);
      goto err_sys_close;
    }
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+   /* Probe the MC thread */
+   sysMcThreadProbe(gpVosContext, 
+                    &vos_sys_probe_thread_cback,
+                    gpVosContext);
+
+   if (vos_wait_single_event(&gpVosContext->ProbeEvent, 0)!= VOS_STATUS_SUCCESS)
+   {
+      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                "%s: Failed to probe MC Thread", __func__);
+      VOS_ASSERT(0);
+      goto err_nv_close;
+   }
+
+   /*Now probe the Tx thread */
+   sysTxThreadProbe(gpVosContext, 
+                    &vos_sys_probe_thread_cback,
+                    gpVosContext);
+   
+   if (vos_wait_single_event(&gpVosContext->ProbeEvent, 0)!= VOS_STATUS_SUCCESS)
+   {
+      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+                "%s: Failed to probe TX Thread", __func__);
+      VOS_ASSERT(0);
+      goto err_nv_close;
+   }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* If we arrive here, both threads dispacthing messages correctly */
    
@@ -406,10 +552,13 @@ VOS_STATUS vos_open( v_CONTEXT_t *pVosContext, v_SIZE_t hddContextSize )
      VOS_ASSERT(0);
      goto err_nv_close;
    }
+<<<<<<< HEAD
 /* call crda before sme_Open which will read NV and store the default country code */
    wlan_hdd_get_crda_regd_entry(
       ((hdd_context_t*)(gpVosContext->pHDDContext))->wiphy,
       ((hdd_context_t*)(gpVosContext->pHDDContext))->cfg_ini);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* Now proceed to open the SME */
    vStatus = sme_Open(gpVosContext->pMACContext);
@@ -456,21 +605,43 @@ err_nv_close:
 err_sys_close:   
    sysClose(gpVosContext);
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 err_packet_close:
    vos_packet_close( gpVosContext );
 
 err_wda_close:
    WDA_close(gpVosContext);
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 err_sched_close:   
    vos_sched_close(gpVosContext);
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+err_packet_close:
+   vos_packet_close( gpVosContext );
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 err_msg_queue:
    vos_mq_deinit(&gpVosContext->freeVosMq);
 
+<<<<<<< HEAD
 err_wda_complete_event:
    vos_event_destroy( &gpVosContext->wdaCompleteEvent );
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+err_wda_complete_event:
+   vos_event_destroy( &gpVosContext->wdaCompleteEvent );
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 err_probe_event:
    vos_event_destroy(&gpVosContext->ProbeEvent);
@@ -479,6 +650,10 @@ err_probe_event:
 
 } /* vos_open() */
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*---------------------------------------------------------------------------
 
   \brief vos_preStart() -
@@ -513,6 +688,7 @@ VOS_STATUS vos_preStart( v_CONTEXT_t vosContext )
    VOS_TRACE(VOS_MODULE_ID_SYS, VOS_TRACE_LEVEL_INFO,
              "vos prestart");
 
+<<<<<<< HEAD
    if (gpVosContext != pVosContext)
    {
       VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
@@ -536,6 +712,13 @@ VOS_STATUS vos_preStart( v_CONTEXT_t vosContext )
        VOS_ASSERT(0);
        return VOS_STATUS_E_INVAL;
    }
+=======
+   VOS_ASSERT(gpVosContext == pVosContext);
+
+   VOS_ASSERT( NULL != pVosContext->pMACContext);
+
+   VOS_ASSERT( NULL != pVosContext->pWDAContext);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* call macPreStart */
    vStatus = macPreStart(gpVosContext->pMACContext);
@@ -588,6 +771,10 @@ VOS_STATUS vos_preStart( v_CONTEXT_t vosContext )
 
    return VOS_STATUS_SUCCESS;
 }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*---------------------------------------------------------------------------
   
@@ -628,6 +815,13 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   tSirRetStatus sirStatus     = eSIR_SUCCESS;
   pVosContextType pVosContext = (pVosContextType)vosContext;
   tHalMacStartParameters halStartParams;
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  v_VOID_t *pFwBinary = NULL;
+  v_SIZE_t  numFwBytes = 0;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "%s: Starting Libra SW", __func__);
@@ -636,15 +830,40 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   if (gpVosContext != pVosContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
            "%s: mismatch in context", __func__);
      return VOS_STATUS_E_FAILURE;
   }
 
+=======
+           "%s: mismatch in context", __FUNCTION__);
+     return VOS_STATUS_E_FAILURE;
+  }
+
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  if (( pVosContext->pBALContext == NULL) || ( pVosContext->pMACContext == NULL)
+     || ( pVosContext->pTLContext == NULL))
+  {
+     if (pVosContext->pBALContext == NULL)
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+            "%s: BAL NULL context", __FUNCTION__);
+     else if (pVosContext->pMACContext == NULL)
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+            "%s: MAC NULL context", __FUNCTION__);
+     else
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+            "%s: TL NULL context", __FUNCTION__);
+     
+     return VOS_STATUS_E_FAILURE;
+  }
+#else
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   if (( pVosContext->pWDAContext == NULL) || ( pVosContext->pMACContext == NULL)
      || ( pVosContext->pTLContext == NULL))
   {
      if (pVosContext->pWDAContext == NULL)
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
             "%s: WDA NULL context", __func__);
      else if (pVosContext->pMACContext == NULL)
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
@@ -652,6 +871,15 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
      else
         VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
             "%s: TL NULL context", __func__);
+=======
+            "%s: WDA NULL context", __FUNCTION__);
+     else if (pVosContext->pMACContext == NULL)
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+            "%s: MAC NULL context", __FUNCTION__);
+     else
+        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+            "%s: TL NULL context", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      
      return VOS_STATUS_E_FAILURE;
   }
@@ -688,6 +916,7 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
          "%s: WDA_NVDownload_start reporting other error", __func__);
      }
      VOS_ASSERT(0);
+<<<<<<< HEAD
      vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
      if (vos_is_logp_in_progress(VOS_MODULE_ID_VOSS, NULL))
      {
@@ -695,6 +924,9 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
      }
      WDA_setNeedShutdown(vosContext);
      return VOS_STATUS_E_FAILURE;
+=======
+     goto err_wda_stop;   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   }
 
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
@@ -711,17 +943,73 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "%s: WDA correctly started", __func__);
 
+<<<<<<< HEAD
   /* Start the MAC */
   vos_mem_zero((v_PVOID_t)&halStartParams, sizeof(tHalMacStartParameters));
 
   /* Start the MAC */
   sirStatus = macStart(pVosContext->pMACContext,(v_PVOID_t)&halStartParams);
 
+=======
+#endif
+  /* Start the MAC */
+  vos_mem_zero((v_PVOID_t)&halStartParams, sizeof(tHalMacStartParameters));
+
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  /* Attempt to get the firmware binary through VOS.  We need to pass this
+     to the MAC when starting. */
+  vStatus = vos_get_fwbinary(&pFwBinary, &numFwBytes);
+  
+  if ( !VOS_IS_STATUS_SUCCESS( vStatus ) )
+  {
+    VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+             "%s: Failed to get firmware binary", __func__);
+    return VOS_STATUS_E_FAILURE;
+  }
+
+  VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+             "%s: Firmware binary file found", __func__);
+   
+
+  //Begining kernel 2.6.31, memory buffer returned by request_firmware API
+  //cannot be overwritten. So need to copy the firmware into a separate buffer
+  //as HAL needs to modify the endianess of FW binary.
+
+  //Kernel may not have ~40 pages of free buffers always, so
+  //Store the pointer to the buffer provided by kernel for now,
+  //When required copy it to local buffer for translation.
+  //This is done in vos_api.c, during firmware download
+  //This would provide common fix for ftm driver issue aswell, 
+  //which is not creating the copy of firmware image for endian conversion.
+  halStartParams.FW.cbImage = numFwBytes;
+  halStartParams.FW.pImage = pFwBinary;
+
+ //determine the driverType for the mode of operation
+ halStartParams.driverType = eDRIVER_TYPE_PRODUCTION;
+#endif
+  /* Start the MAC */
+  sirStatus = macStart(pVosContext->pMACContext,(v_PVOID_t)&halStartParams);
+
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  hdd_release_firmware(WLAN_FW_FILE, pVosContext->pHDDContext);
+
+  halStartParams.FW.pImage = NULL;
+  halStartParams.FW.cbImage = 0;
+#endif 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   if (eSIR_SUCCESS != sirStatus)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
               "%s: Failed to start MAC", __func__);
+<<<<<<< HEAD
     goto err_wda_stop;
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    return VOS_STATUS_E_FAILURE;
+#else
+    goto err_wda_stop;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   }
    
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
@@ -751,11 +1039,58 @@ VOS_STATUS vos_start( v_CONTEXT_t vosContext )
 
   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "TL correctly started");
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC  
+  /* START SYS. This will trigger the CFG download */
+  sysMcStart(pVosContext, vos_sys_start_complete_cback, pVosContext);
+
+  if (vos_wait_single_event(&gpVosContext->ProbeEvent, 0)!= VOS_STATUS_SUCCESS)
+  {
+     VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+               "%s: Failed to start SYS module", __func__);
+     goto err_tl_stop;
+  }
+
+
+   /**
+   EVM issue is observed with 1.6Mhz freq for 1.3V RF supply in wlan standalone case.
+   During concurrent operation (e.g. WLAN and WCDMA) this issue is not observed.
+   To workaround, wlan will vote for 3.2Mhz during startup and will vote for 1.6Mhz
+   during exit.
+   Since using 3.2Mhz has a side effect on power (extra 200ua), this is left configurable.
+   If customers do their design right, they should not see the EVM issue and in that case they
+   can decide to keep 1.6Mhz by setting an NV.
+   If NV item is not present, use the default 3.2Mhz
+   vos_stop is also invoked if wlan startup seq fails (after vos_start, where 3.2Mhz is voted.)
+   */
+  {
+   sFreqFor1p3VSupply freq;
+   vStatus = vos_nv_read( NV_TABLE_FREQUENCY_FOR_1_3V_SUPPLY, &freq, NULL,
+         sizeof(freq) );
+   if (VOS_STATUS_SUCCESS != vStatus)
+    freq.freqFor1p3VSupply = VOS_NV_FREQUENCY_FOR_1_3V_SUPPLY_3P2MH;
+
+    if (vos_chipVoteFreqFor1p3VSupply(NULL, NULL, NULL, freq.freqFor1p3VSupply) != VOS_STATUS_SUCCESS)
+        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+                   "%s: Failed to set the freq %d for 1.3V Supply",
+                   __func__, freq.freqFor1p3VSupply );
+  }
+
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
             "%s: VOSS Start is successful!!", __func__);
 
   return VOS_STATUS_SUCCESS;
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+err_tl_stop:
+  WLANTL_Stop(pVosContext);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 err_sme_stop:
   sme_Stop(pVosContext->pMACContext, TRUE);
@@ -763,6 +1098,7 @@ err_sme_stop:
 err_mac_stop:
   macStop( pVosContext->pMACContext, HAL_STOP_TYPE_SYS_RESET );
 
+<<<<<<< HEAD
 err_wda_stop:   
   vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
   vStatus = WDA_stop( pVosContext, HAL_STOP_TYPE_RF_KILL);
@@ -794,6 +1130,30 @@ err_wda_stop:
        WDA_setNeedShutdown(vosContext);
     }
   }
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+err_wda_stop:   
+  vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
+  WDA_stop( pVosContext, HAL_STOP_TYPE_RF_KILL);
+  vStatus = vos_wait_single_event( &(gpVosContext->wdaCompleteEvent),
+                                   VOS_WDA_TIMEOUT );
+  if( vStatus != VOS_STATUS_SUCCESS )
+  {
+     if( vStatus == VOS_STATUS_E_TIMEOUT )
+     {
+        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+         "%s: Timeout occurred before WDA_stop complete", __func__);
+
+     }
+     else
+     {
+        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+         "%s: WDA_stop reporting other error", __func__);
+     }
+     VOS_ASSERT( 0 );
+  }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   return VOS_STATUS_E_FAILURE;
    
@@ -805,6 +1165,10 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
 {
   VOS_STATUS vosStatus;
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   /* WDA_Stop is called before the SYS so that the processing of Riva 
   pending responces will not be handled during uninitialization of WLAN driver */
   vos_event_reset( &(gpVosContext->wdaCompleteEvent) );
@@ -816,6 +1180,7 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
      VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
          "%s: Failed to stop WDA", __func__);
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
+<<<<<<< HEAD
      WDA_setNeedShutdown(vosContext);
   }
   else
@@ -838,6 +1203,28 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
        WDA_setNeedShutdown(vosContext);
     }
   }
+=======
+  }
+
+  vosStatus = vos_wait_single_event( &(gpVosContext->wdaCompleteEvent),
+                                     VOS_WDA_STOP_TIMEOUT );
+   
+  if ( vosStatus != VOS_STATUS_SUCCESS )
+  {
+     if ( vosStatus == VOS_STATUS_E_TIMEOUT )
+     {
+        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+         "%s: Timeout occurred before WDA complete", __func__);
+     }
+     else
+     {
+        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+         "%s: WDA_stop reporting other error", __func__ );
+     }
+     WDA_stopFailed(vosContext);
+  }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   /* SYS STOP will stop SME and MAC */
   vosStatus = sysStop( vosContext);
@@ -856,6 +1243,21 @@ VOS_STATUS vos_stop( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+   /**
+   EVM issue is observed with 1.6Mhz freq for 1.3V supply in wlan standalone case.
+   During concurrent operation (e.g. WLAN and WCDMA) this issue is not observed.
+   To workaround, wlan will vote for 3.2Mhz during startup and will vote for 1.6Mhz
+   during exit.
+   vos_stop is also invoked if wlan startup seq fails (after vos_start, where 3.2Mhz is voted.)
+   */
+   if (vos_chipVoteFreqFor1p3VSupply(NULL, NULL, NULL, VOS_NV_FREQUENCY_FOR_1_3V_SUPPLY_1P6MH) != VOS_STATUS_SUCCESS)
+        VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+               "%s: Failed to set the freq to 1.6Mhz for 1.3V Supply", __func__ );
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   return VOS_STATUS_SUCCESS;
 }
@@ -920,13 +1322,21 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   if ( TRUE == WDA_needShutdown(vosContext ))
   {
      /* if WDA stop failed, call WDA shutdown to cleanup WDA/WDI */
      vosStatus = WDA_shutdown( vosContext, VOS_TRUE );
      if (VOS_IS_STATUS_SUCCESS( vosStatus ) )
      {
+<<<<<<< HEAD
         hdd_set_ssr_required( HDD_SSR_REQUIRED );
+=======
+        hdd_set_ssr_required( VOS_TRUE );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      }
      else
      {
@@ -954,10 +1364,28 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
          "%s: Failed to close VOSS Packet", __func__);
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
+<<<<<<< HEAD
 
 
   vos_mq_deinit(&((pVosContextType)vosContext)->freeVosMq);
 
+=======
+#endif
+
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  vosStatus = vos_packet_close( vosContext );
+  if (!VOS_IS_STATUS_SUCCESS(vosStatus))
+  {
+     VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+         "%s: Failed to close VOSS Packet", __func__);
+     VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
+  }
+#endif
+
+  vos_mq_deinit(&((pVosContextType)vosContext)->freeVosMq);
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   vosStatus = vos_event_destroy(&gpVosContext->wdaCompleteEvent);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
   {
@@ -965,6 +1393,10 @@ VOS_STATUS vos_close( v_CONTEXT_t vosContext )
          "%s: failed to destroy wdaCompleteEvent", __func__);
      VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
   }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   vosStatus = vos_event_destroy(&gpVosContext->ProbeEvent);
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
@@ -1004,14 +1436,22 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
   if (pVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
         "%s: vos context pointer is null", __func__);
+=======
+        "%s: vos context pointer is null", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return NULL;
   }
 
   if (gpVosContext != pVosContext)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: pVosContext != gpVosContext", __func__);
+=======
+        "%s: pVosContext != gpVosContext", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return NULL;
   }
 
@@ -1023,6 +1463,28 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       break;
     }
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    case VOS_MODULE_ID_BAL:
+    {
+      pModContext = gpVosContext->pBALContext;
+      break;
+    }   
+
+    case VOS_MODULE_ID_SAL:
+    {
+      pModContext = gpVosContext->pSALContext;
+      break;
+    }   
+
+    case VOS_MODULE_ID_SSC:   
+    {
+      pModContext = gpVosContext->pSSCContext;
+      break;
+    }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_BTAMP_FEATURE
     case VOS_MODULE_ID_BAP:
     {
@@ -1031,6 +1493,10 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
     }    
 #endif //WLAN_BTAMP_FEATURE
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case VOS_MODULE_ID_SAP:
     {
       pModContext = gpVosContext->pSAPContext;
@@ -1042,6 +1508,10 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       pModContext = gpVosContext->pHDDSoftAPContext;
       break;
     }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     case VOS_MODULE_ID_HDD:
     {
@@ -1050,8 +1520,15 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
     }
 
     case VOS_MODULE_ID_SME:
+<<<<<<< HEAD
     case VOS_MODULE_ID_PE:
     case VOS_MODULE_ID_PMC:
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    case VOS_MODULE_ID_HAL:
+#endif
+    case VOS_MODULE_ID_PE:
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     {
       /* 
       ** In all these cases, we just return the MAC Context
@@ -1060,12 +1537,20 @@ v_VOID_t* vos_get_context( VOS_MODULE_ID moduleId,
       break;
     }
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case VOS_MODULE_ID_WDA:
     {
       /* For WDA module */
       pModContext = gpVosContext->pWDAContext;
       break;
     }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     case VOS_MODULE_ID_VOSS:
     {
@@ -1117,7 +1602,11 @@ v_CONTEXT_t vos_get_global_context( VOS_MODULE_ID moduleId,
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: global voss context is NULL", __func__);
+=======
+        "%s: global voss context is NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   }
 
   return gpVosContext;
@@ -1130,7 +1619,11 @@ v_U8_t vos_is_logp_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext)
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: global voss context is NULL", __func__);
+=======
+        "%s: global voss context is NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return 1;
   }
 
@@ -1142,7 +1635,11 @@ void vos_set_logp_in_progress(VOS_MODULE_ID moduleId, v_U8_t value)
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: global voss context is NULL", __func__);
+=======
+        "%s: global voss context is NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return;
   }
 
@@ -1154,7 +1651,11 @@ v_U8_t vos_is_load_unload_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleCo
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: global voss context is NULL", __func__);
+=======
+        "%s: global voss context is NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return 0; 
   }
 
@@ -1166,13 +1667,18 @@ void vos_set_load_unload_in_progress(VOS_MODULE_ID moduleId, v_U8_t value)
   if (gpVosContext == NULL)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: global voss context is NULL", __func__);
+=======
+        "%s: global voss context is NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return;
   }
 
    gpVosContext->isLoadUnloadInProgress = value;
 }
 
+<<<<<<< HEAD
 v_U8_t vos_is_reinit_in_progress(VOS_MODULE_ID moduleId, v_VOID_t *moduleContext)
 {
   if (gpVosContext == NULL)
@@ -1198,6 +1704,8 @@ void vos_set_reinit_in_progress(VOS_MODULE_ID moduleId, v_U8_t value)
 }
 
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**---------------------------------------------------------------------------
   
   \brief vos_alloc_context() - allocate a context within the VOSS global Context
@@ -1243,13 +1751,21 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
 
   if ( pVosContext == NULL) {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: vos context is null", __func__);
+=======
+        "%s: vos context is null", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return VOS_STATUS_E_FAILURE;
   }
 
   if (( gpVosContext != pVosContext) || ( ppModuleContext == NULL)) {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: context mismatch or null param passed", __func__);
+=======
+        "%s: context mismatch or null param passed", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return VOS_STATUS_E_FAILURE;
   }
 
@@ -1261,6 +1777,28 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
       break;
     }
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    case VOS_MODULE_ID_BAL:
+    {
+      pGpModContext = &(gpVosContext->pBALContext);
+      break;
+    }
+
+    case VOS_MODULE_ID_SAL:
+    {
+      pGpModContext = &(gpVosContext->pSALContext);
+      break;
+    }   
+
+    case VOS_MODULE_ID_SSC:
+    {
+      pGpModContext = &(gpVosContext->pSSCContext); 
+      break;
+    }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_BTAMP_FEATURE
     case VOS_MODULE_ID_BAP:
     {
@@ -1269,22 +1807,45 @@ VOS_STATUS vos_alloc_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
     }    
 #endif //WLAN_BTAMP_FEATURE
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case VOS_MODULE_ID_SAP:
     {
       pGpModContext = &(gpVosContext->pSAPContext);
       break;
     }
+<<<<<<< HEAD
 
+=======
+#endif
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case VOS_MODULE_ID_WDA:
     {
       pGpModContext = &(gpVosContext->pWDAContext);
       break;
     }
+<<<<<<< HEAD
     case VOS_MODULE_ID_SME:
     case VOS_MODULE_ID_PE:
     case VOS_MODULE_ID_PMC:
     case VOS_MODULE_ID_HDD:
     case VOS_MODULE_ID_HDD_SOFTAP:
+=======
+#endif
+    case VOS_MODULE_ID_SME:
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    case VOS_MODULE_ID_HAL:
+#endif
+    case VOS_MODULE_ID_PE:
+    case VOS_MODULE_ID_HDD:
+#ifdef WLAN_SOFTAP_FEATURE
+    case VOS_MODULE_ID_HDD_SOFTAP:
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     default:
     {     
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Module ID %i "
@@ -1386,6 +1947,28 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
       break;
     }
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    case VOS_MODULE_ID_BAL:
+    {
+      pGpModContext = &(gpVosContext->pBALContext);
+      break;
+    }   
+
+    case VOS_MODULE_ID_SAL:
+    {
+      pGpModContext = &(gpVosContext->pSALContext);
+      break;
+    }   
+
+    case VOS_MODULE_ID_SSC:
+    {
+      pGpModContext = &(gpVosContext->pSSCContext); 
+      break;
+    }
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_BTAMP_FEATURE
     case VOS_MODULE_ID_BAP:
     {
@@ -1394,22 +1977,45 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
     }
 #endif //WLAN_BTAMP_FEATURE
  
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case VOS_MODULE_ID_SAP:
     {
       pGpModContext = &(gpVosContext->pSAPContext); 
       break;
     }
+<<<<<<< HEAD
 
+=======
+#endif
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     case VOS_MODULE_ID_WDA:
     {
       pGpModContext = &(gpVosContext->pWDAContext);
       break;
     }
+<<<<<<< HEAD
     case VOS_MODULE_ID_HDD:
     case VOS_MODULE_ID_SME:
     case VOS_MODULE_ID_PE:
     case VOS_MODULE_ID_PMC:
     case VOS_MODULE_ID_HDD_SOFTAP:
+=======
+#endif
+    case VOS_MODULE_ID_HDD:
+    case VOS_MODULE_ID_SME:
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    case VOS_MODULE_ID_HAL:
+#endif
+    case VOS_MODULE_ID_PE:
+#ifdef WLAN_SOFTAP_FEATURE
+    case VOS_MODULE_ID_HDD_SOFTAP:
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     default:
     {     
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: Module ID %i "
@@ -1432,7 +2038,11 @@ VOS_STATUS vos_free_context( v_VOID_t *pVosContext, VOS_MODULE_ID moduleID,
   if (*pGpModContext != pModuleContext)
   {
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
         "%s: pGpModContext != pModuleContext", __func__);
+=======
+        "%s: pGpModContext != pModuleContext", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return VOS_STATUS_E_FAILURE;
   } 
   
@@ -1512,6 +2122,17 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        break;
     }
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    /// Message Queue ID for messages bound for HAL
+    case VOS_MQ_ID_HAL: 
+    {
+       pTargetMq = &(gpVosContext->vosSched.halMcMq);
+       break;
+    }
+#else
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     /// Message Queue ID for messages bound for WDA
     case VOS_MQ_ID_WDA: 
     {
@@ -1525,6 +2146,10 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        pTargetMq = &(gpVosContext->vosSched.wdiMcMq);
        break;
     }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     /// Message Queue ID for messages bound for TL
     case VOS_MQ_ID_TL: 
@@ -1553,7 +2178,11 @@ VOS_STATUS vos_mq_post_message( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
   if (pTargetMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: pTargetMq == NULL", __func__);
+=======
+         "%s: pTargetMq == NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return VOS_STATUS_E_FAILURE;
   } 
 
@@ -1644,12 +2273,27 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        break;
     }
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+    /// Message Queue ID for messages bound for SSC
+    case VOS_MQ_ID_SSC:  
+    {
+       pTargetMq = &(gpVosContext->vosSched.sscTxMq);
+       break;
+    }
+#else
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     /// Message Queue ID for messages bound for SSC
     case VOS_MQ_ID_WDI:  
     {
        pTargetMq = &(gpVosContext->vosSched.wdiTxMq);
        break;
     }
+<<<<<<< HEAD
+=======
+#endif 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     
     /// Message Queue ID for messages bound for the SYS module
     case VOS_MQ_ID_SYS:
@@ -1661,7 +2305,11 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
     default:
 
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: Trying to queue msg into unknown Tx Msg queue ID %d",
+=======
+              "Trying to queue msg into unknown Tx Msg queue ID %d",
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                __func__, msgQueueId);
 
     return VOS_STATUS_E_FAILURE;
@@ -1670,7 +2318,11 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
   if (pTargetMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: pTargetMq == NULL", __func__);
+=======
+         "%s: pTargetMq == NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return VOS_STATUS_E_FAILURE;
   } 
     
@@ -1703,6 +2355,10 @@ VOS_STATUS vos_tx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
 
 } /* vos_tx_mq_serialize()*/
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /**---------------------------------------------------------------------------
 
   \brief vos_rx_mq_serialize() - serialize a message to the Rx execution flow
@@ -1767,16 +2423,23 @@ VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
        pTargetMq = &(gpVosContext->vosSched.wdiRxMq);
        break;
     }
+<<<<<<< HEAD
     case VOS_MQ_ID_TL:
     {
        pTargetMq = &(gpVosContext->vosSched.tlRxMq);
        break;
     }
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     default:
 
     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
               "%s: Trying to queue msg into unknown Rx Msg queue ID %d",
+=======
+              "Trying to queue msg into unknown Rx Msg queue ID %d",
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                __func__, msgQueueId);
 
     return VOS_STATUS_E_FAILURE;
@@ -1785,7 +2448,11 @@ VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
   if (pTargetMq == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: pTargetMq == NULL", __func__);
+=======
+         "%s: pTargetMq == NULL", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return VOS_STATUS_E_FAILURE;
   }
 
@@ -1818,6 +2485,10 @@ VOS_STATUS vos_rx_mq_serialize( VOS_MQ_ID msgQueueId, vos_msg_t *pMsg )
 
 } /* vos_rx_mq_serialize()*/
 
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 v_VOID_t 
 vos_sys_probe_thread_cback 
 ( 
@@ -1827,19 +2498,53 @@ vos_sys_probe_thread_cback
   if (gpVosContext != pUserData)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: gpVosContext != pUserData", __func__);
+=======
+         "%s: gpVosContext != pUserData", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return;
   } 
 
   if (vos_event_set(&gpVosContext->ProbeEvent)!= VOS_STATUS_SUCCESS)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: vos_event_set failed", __func__);
+=======
+         "%s: vos_event_set failed", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return;
   }
 
 } /* vos_sys_probe_thread_cback() */
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+v_VOID_t vos_sys_start_complete_cback
+( 
+  v_VOID_t *pUserData
+)
+{
+
+  if (gpVosContext != pUserData)
+  {
+     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+         "%s: gpVosContext != pUserData", __FUNCTION__);
+     return;
+  } 
+
+  if (vos_event_set(&gpVosContext->ProbeEvent)!= VOS_STATUS_SUCCESS)
+  {
+     VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+         "%s: vos_event_set failed", __FUNCTION__);
+     return;
+  }
+
+} /* vos_sys_start_complete_cback() */
+#else
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 v_VOID_t vos_WDAComplete_cback
 (
   v_VOID_t *pUserData
@@ -1849,18 +2554,30 @@ v_VOID_t vos_WDAComplete_cback
   if (gpVosContext != pUserData)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: gpVosContext != pUserData", __func__);
+=======
+         "%s: gpVosContext != pUserData", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return;
   }
 
   if (vos_event_set(&gpVosContext->wdaCompleteEvent)!= VOS_STATUS_SUCCESS)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
          "%s: vos_event_set failed", __func__);
+=======
+         "%s: vos_event_set failed", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return;
   }
 
 } /* vos_WDAComplete_cback() */
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 v_VOID_t vos_core_return_msg
 (
@@ -1875,7 +2592,11 @@ v_VOID_t vos_core_return_msg
   if (gpVosContext != pVosContext)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: gpVosContext != pVosContext", __func__);
+=======
+         "%s: gpVosContext != pVosContext", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return;
   } 
 
@@ -1884,7 +2605,11 @@ v_VOID_t vos_core_return_msg
   if (pMsgWrapper == NULL)
   {
      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, 
+<<<<<<< HEAD
          "%s: pMsgWrapper == NULL in function", __func__);
+=======
+         "%s: pMsgWrapper == NULL in function", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return;
   } 
   
@@ -1916,7 +2641,11 @@ vos_fetch_tl_cfg_parms
 {
   if (pTLConfig == NULL)
   {
+<<<<<<< HEAD
    VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s NULL ptr passed in!", __func__);
+=======
+   VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s NULL ptr passed in!", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    return;
   }
 
@@ -1925,7 +2654,13 @@ vos_fetch_tl_cfg_parms
   pTLConfig->ucAcWeights[2] = pConfig->WfqViWeight;
   pTLConfig->ucAcWeights[3] = pConfig->WfqVoWeight;
   pTLConfig->uDelayedTriggerFrmInt = pConfig->DelayedTriggerFrmInt;
+<<<<<<< HEAD
   pTLConfig->uMinFramesProcThres = pConfig->MinFramesProcThres;
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+  pTLConfig->uMinFramesProcThres = pConfig->MinFramesProcThres;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 }
 
@@ -1953,7 +2688,11 @@ void vos_abort_mac_scan(void)
        return;
     }
 
+<<<<<<< HEAD
     hdd_abort_mac_scan(pHddCtx, eCSR_SCAN_ABORT_DEFAULT);
+=======
+    hdd_abort_mac_scan(pHddCtx);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return;
 }
 
@@ -2015,6 +2754,17 @@ VOS_STATUS vos_shutdown(v_CONTEXT_t vosContext)
 
   ((pVosContextType)vosContext)->pMACContext = NULL;
 
+<<<<<<< HEAD
+=======
+  vosStatus = vos_nv_close();
+  if (!VOS_IS_STATUS_SUCCESS(vosStatus))
+  {
+     VOS_TRACE( VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+         "%s: Failed to close NV", __func__);
+     VOS_ASSERT( VOS_IS_STATUS_SUCCESS( vosStatus ) );
+  }
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   vosStatus = sysClose( vosContext );
   if (!VOS_IS_STATUS_SUCCESS(vosStatus))
   {
@@ -2176,6 +2926,7 @@ VOS_STATUS vos_wlanRestart(void)
    vstatus = wlan_hdd_restart_driver(pHddCtx);
    return vstatus;
 }
+<<<<<<< HEAD
 
 
 /**
@@ -2197,3 +2948,5 @@ v_VOID_t vos_fwDumpReq(tANI_U32 cmd, tANI_U32 arg1, tANI_U32 arg2,
 {
    WDA_HALDumpCmdReq(NULL, cmd, arg1, arg2, arg3, arg4, NULL);
 }
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -77,7 +80,11 @@ struct wlan_snap_hdr {
    unsigned char ssap;
    unsigned char ctrl;
    unsigned char oui[WLAN_SNAP_OUI_LEN];
+<<<<<<< HEAD
 } __packed;
+=======
+} __attribute__((packed));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 struct wlan_8023 {
    unsigned char        h_dest[ETH_ALEN];
@@ -85,7 +92,11 @@ struct wlan_8023 {
    __be16               h_len;
    struct wlan_snap_hdr h_snap;
    __be16               h_proto;
+<<<<<<< HEAD
 } __packed;
+=======
+} __attribute__((packed));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 struct wlan_8023_vlan {
    unsigned char        h_dest[ETH_ALEN];
@@ -95,7 +106,11 @@ struct wlan_8023_vlan {
    __be16               h_len;
    struct wlan_snap_hdr h_snap;
    __be16               h_proto;
+<<<<<<< HEAD
 } __packed;
+=======
+} __attribute__((packed));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 union generic_ethhdr {
    struct ethhdr eth_II;

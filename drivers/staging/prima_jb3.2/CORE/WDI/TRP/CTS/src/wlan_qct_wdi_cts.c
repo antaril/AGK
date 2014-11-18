@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -185,7 +188,11 @@ typedef struct
 static WCTS_ControlBlockType  *ctsCB;
 
 /* If port open once, not try to actual open next time */
+<<<<<<< HEAD
 static int                     port_open;
+=======
+static int                     port_open = 0;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* FEATURE_R33D */
 /*----------------------------------------------------------------------------
  * Static Function Declarations and Definitions
@@ -523,7 +530,11 @@ WCTS_NotifyCallback
    if (WCTS_CB_MAGIC != pWCTSCb->wctsMagic) {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Received unexpected SMD event %u",
+<<<<<<< HEAD
                  __func__, event);
+=======
+                 __FUNCTION__, event);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
       /* TODO_PRIMA what error recovery options do we have? */
       return;
@@ -533,7 +544,11 @@ WCTS_NotifyCallback
    switch (event) {
    case SMD_EVENT_OPEN:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                  "%s: received SMD_EVENT_OPEN from SMD", __func__);
+=======
+                 "%s: received SMD_EVENT_OPEN from SMD", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       /* If the prev state was 'remote closed' then it is a Riva 'restart',
        * subsystem restart re-init
        */
@@ -541,7 +556,11 @@ WCTS_NotifyCallback
       {
            WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
                  "%s: received SMD_EVENT_OPEN in WCTS_STATE_REM_CLOSED state",
+<<<<<<< HEAD
                  __func__);
+=======
+                 __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            /* call subsystem restart re-init function */
            wpalDriverReInit();
            return;
@@ -554,37 +573,61 @@ WCTS_NotifyCallback
       {
            WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: received SMD data when the state is remote closed ",
+<<<<<<< HEAD
                  __func__);
+=======
+                 __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            /* we should not be getting any data now */
            return;
       }
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                  "%s: received SMD_EVENT_DATA from SMD", __func__);
+=======
+                 "%s: received SMD_EVENT_DATA from SMD", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       palMsg = &pWCTSCb->wctsDataMsg;
       break;
 
    case SMD_EVENT_CLOSE:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                  "%s: received SMD_EVENT_CLOSE from SMD", __func__);
+=======
+                 "%s: received SMD_EVENT_CLOSE from SMD", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       /* SMD channel was closed from the remote side,
        * this would happen only when Riva crashed and SMD is
        * closing the channel on behalf of Riva */
       pWCTSCb->wctsState = WCTS_STATE_REM_CLOSED;
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
                  "%s: received SMD_EVENT_CLOSE WLAN driver going down now",
+<<<<<<< HEAD
                  __func__);
+=======
+                 __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       /* subsystem restart: shutdown */
       wpalDriverShutdown();
       return;
 
    case SMD_EVENT_STATUS:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                  "%s: received SMD_EVENT_STATUS from SMD", __func__);
+=======
+                 "%s: received SMD_EVENT_STATUS from SMD", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return;
 
    case SMD_EVENT_REOPEN_READY:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                  "%s: received SMD_EVENT_REOPEN_READY from SMD", __func__);
+=======
+                 "%s: received SMD_EVENT_REOPEN_READY from SMD", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
       /* unlike other events which occur when our kernel threads are
          running, this one is received when the threads are closed and
@@ -595,7 +638,11 @@ WCTS_NotifyCallback
    default:
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: Unexpected event %u received from SMD",
+<<<<<<< HEAD
                  __func__, event);
+=======
+                 __FUNCTION__, event);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
       return;
    }
@@ -734,11 +781,17 @@ WCTS_OpenTransport
     */
    pWCTSCb->wctsOpenMsg.callback = WCTS_PALOpenCallback;
    pWCTSCb->wctsOpenMsg.pContext = pWCTSCb;
+<<<<<<< HEAD
    pWCTSCb->wctsOpenMsg.type= WPAL_MC_MSG_SMD_NOTIF_OPEN_SIG;
 
    pWCTSCb->wctsDataMsg.callback = WCTS_PALDataCallback;
    pWCTSCb->wctsDataMsg.pContext = pWCTSCb;
    pWCTSCb-> wctsDataMsg.type= WPAL_MC_MSG_SMD_NOTIF_DATA_SIG;
+=======
+
+   pWCTSCb->wctsDataMsg.callback = WCTS_PALDataCallback;
+   pWCTSCb->wctsDataMsg.pContext = pWCTSCb;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /*---------------------------------------------------------------------
      Open the SMD channel
@@ -753,7 +806,11 @@ WCTS_OpenTransport
    if (0 != smdstatus) {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: smd_named_open_on_edge failed with status %d",
+<<<<<<< HEAD
                  __func__, smdstatus);
+=======
+                 __FUNCTION__, smdstatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       goto fail;
    }
 
@@ -762,13 +819,21 @@ WCTS_OpenTransport
    if (eWLAN_PAL_STATUS_SUCCESS != status) {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: failed to receive SMD_EVENT_OPEN",
+<<<<<<< HEAD
                  __func__);
+=======
+                 __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       /* since we opened one end of the channel, close it */
       smdstatus = smd_close(pWCTSCb->wctsChannel);
       if (0 != smdstatus) {
          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                     "%s: smd_close failed with status %d",
+<<<<<<< HEAD
                     __func__, smdstatus);
+=======
+                    __FUNCTION__, smdstatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       }
       goto fail;
    }
@@ -854,7 +919,11 @@ WCTS_CloseTransport
    if (0 != smdstatus) {
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "%s: smd_close failed with status %d",
+<<<<<<< HEAD
                  __func__, smdstatus);
+=======
+                 __FUNCTION__, smdstatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       /* SMD did not successfully close the channel, therefore we
          won't receive an asynchronous close notification so don't
          bother to wait for an event that won't come */
@@ -865,7 +934,11 @@ WCTS_CloseTransport
       if (eWLAN_PAL_STATUS_SUCCESS != status) {
          WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                     "%s: failed to receive SMD_EVENT_REOPEN_READY",
+<<<<<<< HEAD
                     __func__);
+=======
+                    __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       }
 
       /* During the close sequence we deregistered from SMD.  As part
@@ -968,6 +1041,10 @@ WCTS_SendMessage
       WPAL_TRACE(eWLAN_MODULE_DAL_CTRL, eWLAN_PAL_TRACE_LEVEL_ERROR,
                  "WCTS_SendMessage: Failed to send message over the bus.");
       wpalMemoryFree(pMsg);
+<<<<<<< HEAD
+=======
+      WPAL_ASSERT(0);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return eWLAN_PAL_STATUS_E_FAILURE;
    } else if (written == len) {
       /* Message sent! No deferred state, free the buffer*/
@@ -1000,9 +1077,12 @@ WCTS_SendMessage
 
          smd_enable_read_intr(pWCTSCb->wctsChannel);
       }
+<<<<<<< HEAD
 
       /*indicate to client that message was placed in deferred queue*/
       return eWLAN_PAL_STATUS_E_RESOURCES;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    }
 
    return eWLAN_PAL_STATUS_SUCCESS;

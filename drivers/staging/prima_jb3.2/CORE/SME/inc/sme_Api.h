@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -70,6 +73,12 @@
 #include "btcApi.h"
 #include "vos_nvitem.h"
 #include "p2p_Api.h"
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+#include "halFw.h"
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef FEATURE_OEM_DATA_SUPPORT
 #include "oemDataApi.h"
@@ -92,8 +101,11 @@
 
 #define SME_INVALID_COUNTRY_CODE "XX"
 
+<<<<<<< HEAD
 //Macro to disable split scan
 #define SME_DISABLE_SPLIT_SCAN   255
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*-------------------------------------------------------------------------- 
   Type declarations
   ------------------------------------------------------------------------*/
@@ -113,11 +125,17 @@ typedef struct _smeConfigParams
    tP2PConfigParam  p2pConfig;
 #endif
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
+<<<<<<< HEAD
     tANI_U8       isFastTransitionEnabled;
     tANI_U8       RoamRssiDiff;
     tANI_BOOLEAN  isWESModeEnabled;
 #endif
     tANI_U8  isAmsduSupportInAMPDU;
+=======
+    tANI_U8   isFastTransitionEnabled;
+    tANI_U8   RoamRssiDiff;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tSmeConfigParams, *tpSmeConfigParams;
 
 
@@ -225,7 +243,11 @@ eHalStatus sme_Stop(tHalHandle hHal, tANI_BOOLEAN pmcFlag);
   \sa
   
   --------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus sme_OpenSession(tHalHandle hHal, csrRoamCompleteCallback callback, void *pContext,
+=======
+eHalStatus sme_OpenSession(tHalHandle hHal, csrRoamCompleteCallback callback, void *pContext, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                            tANI_U8 *pSelfMacAddr, tANI_U8 *pbSessionId);
 
 
@@ -295,6 +317,10 @@ eHalStatus sme_UpdateConfig(tHalHandle hHal, tpSmeConfigParams pSmeConfigParams)
 eHalStatus sme_UpdateChannelConfig(tHalHandle hHal);
 
 #endif // FEATURE_WLAN_SCAN_PNLO
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*--------------------------------------------------------------------------
   
   \brief sme_set11dinfo() - Set the 11d information about valid channels
@@ -334,6 +360,10 @@ eHalStatus sme_getSoftApDomain(tHalHandle hHal,  v_REGDOMAIN_t *domainIdSoftAp);
 
 eHalStatus sme_setRegInfo(tHalHandle hHal,  tANI_U8 *apCntryCode);
 
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_ChangeConfigParams
@@ -441,6 +471,7 @@ eHalStatus sme_ScanGetResult(tHalHandle hHal, tANI_U8 sessionId, tCsrScanResultF
     \return eHalStatus     
   ---------------------------------------------------------------------------*/
 eHalStatus sme_ScanFlushResult(tHalHandle hHal, tANI_U8 sessionId);
+<<<<<<< HEAD
 
 /*
  * ---------------------------------------------------------------------------
@@ -452,6 +483,8 @@ eHalStatus sme_ScanFlushResult(tHalHandle hHal, tANI_U8 sessionId);
  */
 eHalStatus sme_FilterScanResults(tHalHandle hHal, tANI_U8 sessionId);
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 eHalStatus sme_ScanFlushP2PResult(tHalHandle hHal, tANI_U8 sessionId);
 
 /* ---------------------------------------------------------------------------
@@ -555,7 +588,11 @@ eHalStatus sme_RoamConnect(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *
   -------------------------------------------------------------------------------*/
 eHalStatus sme_RoamReassoc(tHalHandle hHal, tANI_U8 sessionId, tCsrRoamProfile *pProfile,
                           tCsrRoamModifyProfileFields modProfileFields,
+<<<<<<< HEAD
                           tANI_U32 *pRoamId, v_BOOL_t fForce);
+=======
+                          tANI_U32 *pRoamId);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_RoamConnectToLastProfile
@@ -574,6 +611,10 @@ eHalStatus sme_RoamConnectToLastProfile(tHalHandle hHal, tANI_U8 sessionId);
   ---------------------------------------------------------------------------*/
 eHalStatus sme_RoamDisconnect(tHalHandle hHal, tANI_U8 sessionId, eCsrRoamDisconnectReason reason);
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ---------------------------------------------------------------------------
     \fn sme_RoamStopBss
     \brief a wrapper function to request CSR to stop bss
@@ -638,6 +679,10 @@ eHalStatus sme_RoamTKIPCounterMeasures(tHalHandle hHal, tANI_U8 sessionId, tANI_
 eHalStatus sme_RoamGetWpsSessionOverlap(tHalHandle hHal, tANI_U8 sessionId,
                                         void *pUsrContext, void *pfnSapEventCallback,
                                         v_MACADDR_t pRemoveMac);
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_RoamGetConnectState
@@ -786,6 +831,7 @@ eHalStatus sme_GetStatistics(tHalHandle hHal, eCsrStatsRequesterType requesterId
 eHalStatus sme_GetRssi(tHalHandle hHal, 
                              tCsrRssiCallback callback, 
                              tANI_U8 staId, tCsrBssid bssId, void *pContext, void* pVosContext);
+<<<<<<< HEAD
 #if defined WLAN_FEATURE_VOWIFI_11R || defined FEATURE_WLAN_CCX || defined(FEATURE_WLAN_LFR)
 eHalStatus sme_GetRoamRssi(tHalHandle hHal,
                            tCsrRssiCallback callback,
@@ -794,6 +840,9 @@ eHalStatus sme_GetRoamRssi(tHalHandle hHal,
                            void *pContext,
                            void* pVosContext);
 #endif
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ---------------------------------------------------------------------------
     \fn sme_CfgSetInt
     \brief a wrapper function that HDD calls to set parameters in CFG. 
@@ -826,6 +875,28 @@ eHalStatus sme_CfgSetStr(tHalHandle hHal, tANI_U32 cfgId, tANI_U8 *pStr,
                          tANI_U32 length, tCcmCfgSetCallback callback, 
                          eAniBoolean toBeSaved) ;
 
+<<<<<<< HEAD
+=======
+
+/* ---------------------------------------------------------------------------
+    \fn sme_GetModifyProfileFields
+    \brief HDD or SME - QOS calls this function to get the current values of 
+    connected profile fields, changing which can cause reassoc.
+    This function must be called after CFG is downloaded and STA is in connected
+    state. Also, make sure to call this function to get the current profile
+    fields before calling the reassoc. So that pModifyProfileFields will have
+    all the latest values plus the one(s) has been updated as part of reassoc
+    request.
+    \param pModifyProfileFields - pointer to the connected profile fields 
+    changing which can cause reassoc
+
+    \return eHalStatus     
+  -------------------------------------------------------------------------------*/
+eHalStatus sme_GetModifyProfileFields(tHalHandle hHal, tANI_U8 sessionId, 
+                                     tCsrRoamModifyProfileFields * pModifyProfileFields);
+
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*--------------------------------------------------------------------------
     \fn sme_SetConfigPowerSave
     \brief  Wrapper fn to change power save configuration in SME (PMC) module.
@@ -891,6 +962,7 @@ extern eHalStatus sme_DisablePowerSave (
    tHalHandle hHal,
    tPmcPowerSavingMode psMode);
 
+<<<<<<< HEAD
  /* ---------------------------------------------------------------------------
    \fn sme_SetHostPowerSave
     \brief   The BMPS logic is controlled by the User level Apps
@@ -902,6 +974,8 @@ extern eHalStatus sme_SetHostPowerSave (
    tHalHandle hHal,
    v_BOOL_t psMode);
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ---------------------------------------------------------------------------
     \fn sme_StartAutoBmpsTimer
     \brief  Starts a timer that periodically polls all the registered
@@ -1079,6 +1153,7 @@ extern eHalStatus sme_RegisterPowerSaveCheck (
    tANI_BOOLEAN (*checkRoutine) (void *checkContext), void *checkContext);
 
 /* ---------------------------------------------------------------------------
+<<<<<<< HEAD
     \fn sme_Register11dScanDoneCallback
     \brief  Register a routine of type csrScanCompleteCallback which is
             called whenever an 11d scan is done
@@ -1091,6 +1166,8 @@ extern eHalStatus sme_Register11dScanDoneCallback (
    csrScanCompleteCallback);
 
 /* ---------------------------------------------------------------------------
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     \fn sme_DeregisterPowerSaveCheck
     \brief  Deregister a power save check routine
     \param  hHal - The handle returned by macOpen.
@@ -1145,8 +1222,12 @@ extern eHalStatus sme_DeregisterDeviceStateUpdateInd (
   ---------------------------------------------------------------------------*/
 extern eHalStatus sme_WowlAddBcastPattern (
    tHalHandle hHal, 
+<<<<<<< HEAD
    tpSirWowlAddBcastPtrn pattern,
    tANI_U8 sessionId);
+=======
+   tpSirWowlAddBcastPtrn pattern);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_WowlDelBcastPattern
@@ -1159,8 +1240,12 @@ extern eHalStatus sme_WowlAddBcastPattern (
   ---------------------------------------------------------------------------*/
 extern eHalStatus sme_WowlDelBcastPattern (
    tHalHandle hHal, 
+<<<<<<< HEAD
    tpSirWowlDelBcastPtrn pattern,
    tANI_U8   sessionId);
+=======
+   tpSirWowlDelBcastPtrn pattern);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_EnterWowl
@@ -1204,7 +1289,11 @@ extern eHalStatus sme_EnterWowl (
     void (*wakeReasonIndCB) (void *callbackContext, tpSirWakeReasonInd pWakeReasonInd),
     void *wakeReasonIndCBContext,
 #endif // WLAN_WAKEUP_EVENTS
+<<<<<<< HEAD
     tpSirSmeWowlEnterParams wowlEnterParams, tANI_U8 sessionId);
+=======
+    tpSirSmeWowlEnterParams wowlEnterParams);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_ExitWowl
@@ -1405,8 +1494,11 @@ typedef void ( *tSmeChangeCountryCallback)(void *pContext);
 
     \param pCountry New Country Code String
 
+<<<<<<< HEAD
     \param sendRegHint If we want to send reg hint to nl80211
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     \return eHalStatus  SUCCESS.
 
                          FAILURE or RESOURCES  The API finished and failed.
@@ -1416,8 +1508,12 @@ eHalStatus sme_ChangeCountryCode( tHalHandle hHal,
                                   tSmeChangeCountryCallback callback,
                                   tANI_U8 *pCountry,
                                   void *pContext,
+<<<<<<< HEAD
                                   void* pVosContext,
                                   tAniBool sendRegHint);
+=======
+                                  void* pVosContext );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 /* ---------------------------------------------------------------------------
@@ -1512,6 +1608,14 @@ VOS_STATUS sme_DbgReadMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_U
 //Caller needs to validate the input values
 VOS_STATUS sme_DbgWriteMemory(tHalHandle hHal, v_U32_t memAddr, v_U8_t *pBuf, v_U32_t nLen);
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_NON_INTEGRATED_SOC
+//sme_GetFwVersion
+VOS_STATUS sme_GetFwVersion (tHalHandle hHal,FwVersionInfo *pVersion);
+#endif
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 VOS_STATUS sme_GetWcnssWlanCompiledVersion(tHalHandle hHal,
                                            tSirVersionType *pVersion);
 VOS_STATUS sme_GetWcnssWlanReportedVersion(tHalHandle hHal,
@@ -1522,6 +1626,10 @@ VOS_STATUS sme_GetWcnssSoftwareVersion(tHalHandle hHal,
 VOS_STATUS sme_GetWcnssHardwareVersion(tHalHandle hHal,
                                        tANI_U8 *pVersion,
                                        tANI_U32 versionBufferSize);
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 eHalStatus sme_RoamRegisterCallback(tHalHandle hHal,
                                     csrRoamCompleteCallback callback,
                                     void *pContext);
@@ -1620,6 +1728,10 @@ eHalStatus sme_getOemDataRsp(tHalHandle hHal,
 #endif /*FEATURE_OEM_DATA_SUPPORT*/
 
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
 
@@ -1630,9 +1742,15 @@ eHalStatus sme_getOemDataRsp(tHalHandle hHal,
 
     \param pAPWPSIES - pointer to a caller allocated object of tCsrRoamAPWPSIES
 
+<<<<<<< HEAD
     \return eHalStatus  SUCCESS  Roam callback will be called indicate actually results
 
                          FAILURE or RESOURCES  The API finished and failed.
+=======
+    \return eHalStatus  SUCCESS  Roam callback will be called indicate actually results
+
+                         FAILURE or RESOURCES  The API finished and failed.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   -------------------------------------------------------------------------------*/
 
@@ -1646,13 +1764,20 @@ eHalStatus sme_RoamUpdateAPWPSIE(tHalHandle, tANI_U8 sessionId, tSirAPWPSIEs *pA
 
     \param pAPSirRSNie - pointer to a caller allocated object of tSirRSNie with WPS/RSN IEs
 
+<<<<<<< HEAD
     \return eHalStatus  SUCCESS  
 
                          FAILURE or RESOURCES  The API finished and failed.
+=======
+    \return eHalStatus  SUCCESS  
+
+                         FAILURE or RESOURCES  The API finished and failed.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   -------------------------------------------------------------------------------*/
 eHalStatus sme_RoamUpdateAPWPARSNIEs(tHalHandle hHal, tANI_U8 sessionId, tSirRSNie * pAPSirRSNie);
 
+<<<<<<< HEAD
 /* ---------------------------------------------------------------------------
 
     sme_ChangeMCCBeaconInterval
@@ -1666,14 +1791,23 @@ eHalStatus sme_RoamUpdateAPWPARSNIEs(tHalHandle hHal, tANI_U8 sessionId, tSirRSN
 eHalStatus sme_ChangeMCCBeaconInterval(tHalHandle hHal, tANI_U8 sessionId);
 
 
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
   \fn sme_sendBTAmpEvent
   \brief API to send the btAMPstate to FW
   \param  hHal - The handle returned by macOpen.
   \param  btAmpEvent -- btAMP event
+<<<<<<< HEAD
   \return eHalStatus  SUCCESS 
                          FAILURE or RESOURCES  The API finished and failed.
+=======
+  \return eHalStatus  SUCCESS 
+
+                         FAILURE or RESOURCES  The API finished and failed.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 --------------------------------------------------------------------------- */
 
@@ -1710,7 +1844,11 @@ eHalStatus sme_SetKeepAlive (tHalHandle hHal, tANI_U8 sessionId,
             VOS_STATUS_E_FAILURE - failure
             VOS_STATUS_SUCCESS  success
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus sme_AbortMacScan(tHalHandle hHal, eCsrAbortReason reason);
+=======
+eHalStatus sme_AbortMacScan(tHalHandle hHal);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ----------------------------------------------------------------------------
    \fn sme_GetOperationChannel
@@ -1722,6 +1860,10 @@ eHalStatus sme_AbortMacScan(tHalHandle hHal, eCsrAbortReason reason);
 -------------------------------------------------------------------------------*/
 eHalStatus sme_GetOperationChannel(tHalHandle hHal, tANI_U32 *pChannel, tANI_U8 sessionId);
 
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ---------------------------------------------------------------------------
 
     \fn sme_RegisterMgtFrame
@@ -1749,6 +1891,10 @@ eHalStatus sme_RegisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId,
   -------------------------------------------------------------------------------*/
 eHalStatus sme_DeregisterMgmtFrame(tHalHandle hHal, tANI_U8 sessionId, 
                      tANI_U16 frameType, tANI_U8* matchData, tANI_U16 matchLen);
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
 
@@ -1800,6 +1946,10 @@ eHalStatus sme_ConfigureRxpFilter( tHalHandle hHal,
 --------------------------------------------------------------------------- */
 eHalStatus sme_ConfigureAppsCpuWakeupState( tHalHandle hHal, tANI_BOOLEAN  isAppsAwake);
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ---------------------------------------------------------------------------
 
   \fn    sme_ConfigureSuspendInd
@@ -1844,6 +1994,10 @@ eHalStatus sme_ConfigureSuspendInd( tHalHandle hHal,
 eHalStatus sme_ConfigureResumeReq( tHalHandle hHal, 
                              tpSirWlanResumeParam  wlanResumeParam);
 
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
 
@@ -1896,7 +2050,11 @@ tANI_U8 sme_GetConcurrentOperationChannel( tHalHandle hHal );
             VOS_STATUS_E_FAILURE - failure
             VOS_STATUS_SUCCESS  success
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus sme_AbortMacScan(tHalHandle hHal, eCsrAbortReason reason);
+=======
+eHalStatus sme_AbortMacScan(tHalHandle hHal);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_GetCfgValidChannels
@@ -1950,12 +2108,18 @@ eHalStatus sme_PreferredNetworkFoundInd (tHalHandle hHal, void* pMsg);
     \brief  API to set Power Parameters 
     \param  hHal - The handle returned by macOpen.
     \param  pwParams -  Pointer to the power parameters requested.
+<<<<<<< HEAD
     \param  forced - if true, not to be dropped silently in host, it must reach
     FW; It is added to avoid a race condition scenario where LIM hasn't deleted
     the session yet before power params gets sent to PMC
     \return eHalStatus
   ---------------------------------------------------------------------------*/
 eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams, tANI_BOOLEAN forced);
+=======
+    \return eHalStatus
+  ---------------------------------------------------------------------------*/
+eHalStatus sme_SetPowerParams(tHalHandle hHal, tSirSetPowerParamsReq* pwParams);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_SetTxPerTracking
@@ -1978,7 +2142,11 @@ eHalStatus sme_SetTxPerTracking (
     \param  pMulticastAddrs - Pointer to the Multicast Address List
     \return eHalStatus   
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus sme_8023MulticastList(tHalHandle hHal, tANI_U8 sessionId, tpSirRcvFltMcAddrList pMulticastAddrs);
+=======
+eHalStatus sme_8023MulticastList(tHalHandle hHal, tpSirRcvFltMcAddrList pMulticastAddrs);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_ReceiveFilterSetFilter
@@ -2000,8 +2168,12 @@ eHalStatus sme_ReceiveFilterSetFilter(tHalHandle hHal, tpSirRcvPktFilterCfgType 
   ---------------------------------------------------------------------------*/
 eHalStatus sme_GetFilterMatchCount(tHalHandle hHal, 
                                    FilterMatchCountCallback callbackRoutine, 
+<<<<<<< HEAD
                                    void *callbackContext,
                                    tANI_U8 sessionId);
+=======
+                                   void *callbackContext );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_ReceiveFilterClearFilter
@@ -2068,7 +2240,11 @@ eHalStatus sme_SetTxPerTracking (
     \param  pRequest -  Pointer to the GTK offload request.
     \return eHalStatus
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest, tANI_U8 sessionId);
+=======
+eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn sme_GetGTKOffload
@@ -2077,8 +2253,12 @@ eHalStatus sme_SetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pRequest, t
     \param  pRequest -  Pointer to the GTK offload response.
     \return eHalStatus
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 eHalStatus sme_GetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, 
                                     void *callbackContext, tANI_U8 sessionId);
+=======
+eHalStatus sme_GetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext );
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif // WLAN_FEATURE_GTK_OFFLOAD
 
 #ifdef WLAN_WAKEUP_EVENTS
@@ -2135,6 +2315,7 @@ eHalStatus sme_p2pGetResultFilter(tHalHandle hHal, tANI_U8 HDDSessionId,
 eHalStatus sme_SetMaxTxPower(tHalHandle hHal, tSirMacAddr pBssid, 
                              tSirMacAddr pSelfMacAddress, v_S7_t dB);
 
+<<<<<<< HEAD
 /* ---------------------------------------------------------------------------
 
     \fn sme_SetTxPower
@@ -2150,6 +2331,9 @@ eHalStatus sme_SetMaxTxPower(tHalHandle hHal, tSirMacAddr pBssid,
   -------------------------------------------------------------------------------*/
 eHalStatus sme_SetTxPower(tHalHandle hHal, v_U8_t sessionId, v_U8_t mW);
 
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* ---------------------------------------------------------------------------
 
     \fn sme_HideSSID
@@ -2164,6 +2348,10 @@ eHalStatus sme_SetTxPower(tHalHandle hHal, v_U8_t sessionId, v_U8_t mW);
 
   -------------------------------------------------------------------------------*/
 eHalStatus sme_HideSSID(tHalHandle hHal, v_U8_t sessionId, v_U8_t ssidHidden);
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
 
@@ -2190,6 +2378,7 @@ void sme_featureCapsExchange(tHalHandle hHal);
 
 /*---------------------------------------------------------------------------
 
+<<<<<<< HEAD
   \brief sme_disableActiveModeOffload() - SME interface to disable Active mode Offload capabilitu
   between in Host.
 
@@ -2202,6 +2391,8 @@ void sme_disableFeatureCapablity(tANI_U8 feature_index);
 
 /*---------------------------------------------------------------------------
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   \brief sme_GetDefaultCountryCodeFrmNv() - SME interface to get the default 
          country code
   Host and FW.
@@ -2209,7 +2400,11 @@ void sme_disableFeatureCapablity(tANI_U8 feature_index);
   \param  hHal - HAL handle for device
   \param  pCountry - pointer to country code
 
+<<<<<<< HEAD
   \return Success or failure
+=======
+  \return Sucess or failure
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
   ---------------------------------------------------------------------------*/
 eHalStatus sme_GetDefaultCountryCodeFrmNv(tHalHandle hHal, tANI_U8 *pCountry);
@@ -2231,13 +2426,18 @@ eHalStatus sme_GetCurrentCountryCode(tHalHandle hHal, tANI_U8 *pCountry);
     \fn sme_transportDebug
     \brief  Dynamically monitoring Transport channels
             Private IOCTL will querry transport channel status if driver loaded
+<<<<<<< HEAD
     \param  hHal Upper MAC context
     \param  displaySnapshot Display transport channel snapshot option
+=======
+    \param  displaySnapshot Dispaly transport cahnnel snapshot option
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     \param  toggleStallDetect Enable stall detect feature
                               This feature will take effect to data performance
                               Not integrate till fully verification
     \- return NONE
     -------------------------------------------------------------------------*/
+<<<<<<< HEAD
 void sme_transportDebug(tHalHandle hHal, v_BOOL_t displaySnapshot, v_BOOL_t toggleStallDetect);
 
 /* ---------------------------------------------------------------------------
@@ -2854,4 +3054,11 @@ void sme_enable_disable_split_scan (tHalHandle hHal, tANI_U8 nNumStaChan,
 void smeGetCommandQStatus( tHalHandle hHal );
 
 eHalStatus sme_RoamDelPMKIDfromCache( tHalHandle hHal, tANI_U8 sessionId, tANI_U8 *pBSSId );
+=======
+void sme_transportDebug
+(
+   v_BOOL_t  displaySnapshot,
+   v_BOOL_t  toggleStallDetect
+);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif //#if !defined( __SME_API_H )

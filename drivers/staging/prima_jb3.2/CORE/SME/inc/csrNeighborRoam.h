@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -84,10 +87,13 @@ typedef struct sCsrNeighborRoamCfgParams
     tANI_U32        minChannelScanTime;
     tANI_U32        maxChannelScanTime;
     tANI_U16        neighborResultsRefreshPeriod;
+<<<<<<< HEAD
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
     tCsrCountryChannelInfo countryChannelInfo;
 #endif
     tANI_U16        emptyScanRefreshPeriod;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tCsrNeighborRoamCfgParams, *tpCsrNeighborRoamCfgParams;
 
 #define CSR_NEIGHBOR_ROAM_INVALID_CHANNEL_INDEX    255
@@ -133,6 +139,11 @@ typedef struct sCsr11rAssocNeighborInfo
     tANI_BOOLEAN                preauthRspPending;
     tANI_BOOLEAN                neighborRptPending;
     tANI_U8                     currentNeighborRptRetryNum;
+<<<<<<< HEAD
+=======
+    tPalTimerHandle             preAuthRspWaitTimer; //This timer is used for preauth response
+    tCsrTimerInfo               preAuthRspWaitTimerInfo;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tCsrPreauthFailListInfo     preAuthFailList;
     tANI_U32                    neighborReportTimeout;
     tANI_U32                    PEPreauthRespTimeout;
@@ -149,6 +160,7 @@ typedef struct sCsr11rAssocNeighborInfo
  * NEIGHBOR_LOOKUP_THRESHOLD_INCREMENT_CONSTANT) */
 #define NEIGHBOR_LOOKUP_THRESHOLD_INCREMENT_CONSTANT    5
 #define LOOKUP_THRESHOLD_INCREMENT_MULTIPLIER_MAX       4
+<<<<<<< HEAD
 /*
  * Set lookup UP threshold 5 dB higher than the configured
  * lookup DOWN threshold to minimize thrashing between
@@ -173,6 +185,17 @@ typedef enum
     SPLIT_SCAN_OCCUPIED_LIST=1,
 } eNeighborRoamScanMode;
 #endif
+=======
+/* 
+ * For every scan that results in no candidates, double the scan periodicity 
+ * (initialized to NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MIN) until we hit 
+ * NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MAX (60s). Subsequently, scan every 
+ * 60s if we continue to find no candidates. Once a candidate is found, 
+ * the periodicity is reset back to NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MIN.
+ */
+#define NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MIN (1000)
+#define NEIGHBOR_SCAN_RESULTS_REFRESH_PERIOD_MAX (60000)
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* Complete control information for neighbor roam algorithm */
 typedef struct sCsrNeighborRoamControlInfo
@@ -184,7 +207,10 @@ typedef struct sCsrNeighborRoamControlInfo
     tANI_U8                     currAPoperationChannel; // current assoc AP
     tPalTimerHandle             neighborScanTimer;
     tPalTimerHandle             neighborResultsRefreshTimer;
+<<<<<<< HEAD
     tPalTimerHandle             emptyScanRefreshTimer;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     tCsrTimerInfo               neighborScanTimerInfo;
     tCsrNeighborRoamChannelInfo roamChannelInfo;
     tANI_U8                     currentNeighborLookupThreshold;
@@ -202,6 +228,7 @@ typedef struct sCsrNeighborRoamControlInfo
     tANI_BOOLEAN                isVOAdmitted;
     tANI_U32                    MinQBssLoadRequired;
 #endif
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_LFR
     tANI_U8                     uEmptyScanCount; /* Consecutive number of times scan
                                                     yielded no results. */
@@ -211,6 +238,9 @@ typedef struct sCsrNeighborRoamControlInfo
     tANI_S8                     lookupDOWNRssi;
     tANI_U8                     uScanMode;
 #endif
+=======
+    tANI_U16                    currentScanResultsRefreshPeriod;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tCsrNeighborRoamControlInfo, *tpCsrNeighborRoamControlInfo;
 
 
@@ -226,13 +256,18 @@ VOS_STATUS csrNeighborRoamTransitToCFGChanScan(tpAniSirGlobal pMac);
 VOS_STATUS csrNeighborRoamTransitionToPreauthDone(tpAniSirGlobal pMac);
 eHalStatus csrNeighborRoamPrepareScanProfileFilter(tpAniSirGlobal pMac, tCsrScanResultFilter *pScanFilter);
 void csrNeighborRoamGetHandoffAPInfo(tpAniSirGlobal pMac, tpCsrNeighborRoamBSSInfo pHandoffNode);
+<<<<<<< HEAD
 eHalStatus csrNeighborRoamPreauthRspHandler(tpAniSirGlobal pMac, tSirRetStatus limStatus);
+=======
+eHalStatus csrNeighborRoamPreauthRspHandler(tpAniSirGlobal pMac, VOS_STATUS vosStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #ifdef WLAN_FEATURE_VOWIFI_11R
 tANI_BOOLEAN csrNeighborRoamIs11rAssoc(tpAniSirGlobal pMac);
 #endif
 VOS_STATUS csrNeighborRoamCreateChanListFromNeighborReport(tpAniSirGlobal pMac);
 void csrNeighborRoamTranistionPreauthDoneToDisconnected(tpAniSirGlobal pMac);
 tANI_BOOLEAN csrNeighborRoamStatePreauthDone(tpAniSirGlobal pMac);
+<<<<<<< HEAD
 tANI_BOOLEAN csrNeighborRoamScanRspPending(tHalHandle hHal);
 tANI_BOOLEAN csrNeighborMiddleOfRoaming(tHalHandle hHal);
 VOS_STATUS csrNeighborRoamSetLookupRssiThreshold(tpAniSirGlobal pMac, v_U8_t neighborLookupRssiThreshold);
@@ -268,6 +303,9 @@ VOS_STATUS csrNeighborRoamChannelsFilterByCurrentBand(
 eHalStatus csrRoamOffloadScan(tpAniSirGlobal pMac, tANI_U8 command, tANI_U8 reason);
 eHalStatus csrNeighborRoamCandidateFoundIndHdlr(tpAniSirGlobal pMac, void* pMsg);
 #endif
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 #endif /* WLAN_FEATURE_NEIGHBOR_ROAMING */

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -46,6 +49,7 @@
   OVERVIEW:
 
   This software unit holds the implementation of the WLAN SAP Finite
+<<<<<<< HEAD
   State Machine modules
 
   DEPENDENCIES:
@@ -53,6 +57,15 @@
   Are listed for each API below.
 
 
+=======
+  State Machine modules  
+
+  DEPENDENCIES: 
+
+  Are listed for each API below. 
+
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   Copyright (c) 2010 QUALCOMM Incorporated.
   All Rights Reserved.
   Qualcomm Confidential and Proprietary
@@ -98,7 +111,11 @@
  * -------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------
+<<<<<<< HEAD
  *  External declarations for global context
+=======
+ *  External declarations for global context 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * -------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------
@@ -109,7 +126,11 @@
  * Static Function Declarations and Definitions
  * -------------------------------------------------------------------------*/
 #ifdef SOFTAP_CHANNEL_RANGE
+<<<<<<< HEAD
 static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelList,
+=======
+static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelList, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                  v_U8_t  *numberOfChannels);
 #endif
 /*----------------------------------------------------------------------------
@@ -123,6 +144,7 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelLis
 /*==========================================================================
   FUNCTION    sapEventInit
 
+<<<<<<< HEAD
   DESCRIPTION
     Function for initializing sWLAN_SAPEvent structure
 
@@ -139,6 +161,24 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext, v_U8_t **channelLis
     None
 
   SIDE EFFECTS
+=======
+  DESCRIPTION 
+    Function for initializing sWLAN_SAPEvent structure
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+
+    IN
+    sapEvent    : State machine event
+   
+  RETURN VALUE
+
+    None
+  
+  SIDE EFFECTS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ============================================================================*/
 static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
 {
@@ -151,6 +191,7 @@ static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
 /*==========================================================================
   FUNCTION    sapGotoChannelSel
 
+<<<<<<< HEAD
   DESCRIPTION
     Function for initiating scan request for SME
 
@@ -158,17 +199,35 @@ static inline void sapEventInit(ptWLAN_SAPEvent sapEvent)
     NA.
 
   PARAMETERS
+=======
+  DESCRIPTION 
+    Function for initiating scan request for SME 
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     IN
     sapContext  : Sap Context value
     sapEvent    : State machine event
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
+<<<<<<< HEAD
 
   SIDE EFFECTS
+=======
+  
+  SIDE EFFECTS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ============================================================================*/
 VOS_STATUS
 sapGotoChannelSel
@@ -195,7 +254,11 @@ sapGotoChannelSel
     {
         /* we have a serious problem */
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                    "In %s, invalid hHal", __func__);
+=======
+                   "In %s, invalid hHal", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAULT;
     }
 
@@ -205,13 +268,22 @@ sapGotoChannelSel
         channel = sme_GetConcurrentOperationChannel(hHal);
 
         if (channel)
+<<<<<<< HEAD
         { /*if a valid channel is returned then use concurrent channel.
+=======
+        { /*if a valid channel is returned then use concurrent channel. 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                   Else take whatever comes from configuartion*/
             sapContext->channel = channel;
         }
     }
+<<<<<<< HEAD
 
     if (sapContext->channel == AUTO_CHANNEL_SELECT)
+=======
+    
+    if (sapContext->channel == AUTO_CHANNEL_SELECT) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     {
         vos_mem_zero(&scanRequest, sizeof(scanRequest));
 
@@ -224,8 +296,13 @@ sapGotoChannelSel
 
         /* Set BSSType to default type */
         scanRequest.BSSType = eCSR_BSS_TYPE_ANY;
+<<<<<<< HEAD
 
 #ifndef SOFTAP_CHANNEL_RANGE
+=======
+        
+#ifndef SOFTAP_CHANNEL_RANGE        
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         /*Scan all the channels */
         scanRequest.ChannelInfo.numOfChannels = 0;
 
@@ -239,17 +316,29 @@ sapGotoChannelSel
 
         /*Scan the channels in the list*/
         scanRequest.ChannelInfo.numOfChannels = numOfChannels;
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         scanRequest.ChannelInfo.ChannelList = channelList;
 
         scanRequest.requestType = eCSR_SCAN_SOFTAP_CHANNEL_RANGE;
 
         sapContext->channelList = channelList;
+<<<<<<< HEAD
 
 #endif
         /* Set requestType to Full scan */
 
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, calling sme_ScanRequest", __func__);
+=======
+        
+#endif
+        /* Set requestType to Full scan */
+
+        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, calling sme_ScanRequest", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         halStatus = sme_ScanRequest(hHal,
                             0,//Not used in csrScanRequest
@@ -259,7 +348,11 @@ sapGotoChannelSel
                             sapContext);//void * pContext scanRequestID filled up
         if (eHAL_STATUS_SUCCESS != halStatus)
         {
+<<<<<<< HEAD
             VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "%s:sme_ScanRequest  fail %d!!!", __func__, halStatus);
+=======
+            VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "%s:sme_ScanRequest  fail %d!!!", __FUNCTION__, halStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "SoftAP Configuring for default channel, Ch= %d", sapContext->channel);
             /* In case of error, switch to default channel */
             sapContext->channel = SAP_DEFAULT_CHANNEL;
@@ -280,6 +373,7 @@ sapGotoChannelSel
         else
         {
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, return from sme_ScanRequest, scanRequestID=%d, Ch= %d",
+<<<<<<< HEAD
                    __func__, scanRequestID, sapContext->channel);
         }
 
@@ -287,6 +381,15 @@ sapGotoChannelSel
     else
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, for configured channel, Ch= %d", __func__, sapContext->channel);
+=======
+                   __FUNCTION__, scanRequestID, sapContext->channel);
+        }
+
+    }
+    else 
+    {
+        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, for configured channel, Ch= %d", __FUNCTION__, sapContext->channel);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         /* Fill in the event structure */
         // Eventhough scan was not done, means a user set channel was chosen
         sapEventInit(sapEvent);
@@ -296,7 +399,11 @@ sapGotoChannelSel
 
     /* If scan failed, get default channel and advance state machine as success with default channel */
     /* Have to wait for the call back to be called to get the channel cannot advance state machine here as said above */
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before exiting sapGotoChannelSel channel=%d", __func__, sapContext->channel);
+=======
+    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, before exiting sapGotoChannelSel channel=%d", __FUNCTION__, sapContext->channel);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     return VOS_STATUS_SUCCESS;
 }// sapGotoChannelSel
@@ -304,6 +411,7 @@ sapGotoChannelSel
 /*==========================================================================
   FUNCTION    sapGotoStarting
 
+<<<<<<< HEAD
   DESCRIPTION
     Function for initiating start bss request for SME
 
@@ -311,6 +419,15 @@ sapGotoChannelSel
     NA.
 
   PARAMETERS
+=======
+  DESCRIPTION 
+    Function for initiating start bss request for SME
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     IN
     sapContext  : Sap Context value
@@ -322,17 +439,27 @@ sapGotoChannelSel
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
+<<<<<<< HEAD
 
   SIDE EFFECTS
 ============================================================================*/
 VOS_STATUS
 sapGotoStarting
 (
+=======
+  
+  SIDE EFFECTS 
+============================================================================*/
+VOS_STATUS
+sapGotoStarting
+( 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     ptSapContext sapContext,
     ptWLAN_SAPEvent sapEvent,
     eCsrRoamBssType bssType
 )
 {
+<<<<<<< HEAD
     /* tHalHandle */
     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
     eHalStatus halStatus;
@@ -344,30 +471,62 @@ sapGotoStarting
     vos_mem_copy(sapContext->key_material, key_material, sizeof(key_material));  /* Need a key size define */
 
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __func__);
+=======
+    /* tHalHandle */    
+    tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
+    eHalStatus halStatus;
+    
+    /*- - - - - - - - TODO:once configs from hdd available - - - - - - - - -*/
+    char key_material[32]={ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,}; 
+    sapContext->key_type = 0x05;
+    sapContext->key_length = 32;
+    vos_mem_copy(sapContext->key_material, key_material, sizeof(key_material));  /* Need a key size define */
+    
+    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if (NULL == hHal)
     {
         /* we have a serious problem */
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                    "In %s, invalid hHal", __func__);
+=======
+                   "In %s, invalid hHal", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAULT;
     }
 
     //TODO: What shall we do if failure????
+<<<<<<< HEAD
     halStatus = pmcRequestFullPower( hHal,
                             WLANSAP_pmcFullPwrReqCB,
+=======
+    halStatus = pmcRequestFullPower( hHal, 
+                            WLANSAP_pmcFullPwrReqCB, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                             sapContext,
                             eSME_REASON_OTHER);
 
     /* Open SME Session for Softap */
     halStatus = sme_OpenSession(hHal,
+<<<<<<< HEAD
                         &WLANSAP_RoamCallback,
                         sapContext,
                         sapContext->self_mac_addr,
+=======
+                        &WLANSAP_RoamCallback, 
+                        sapContext,
+                        sapContext->self_mac_addr,  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                         &sapContext->sessionId);
 
     if(eHAL_STATUS_SUCCESS != halStatus )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamConnect status = %d", __func__, halStatus);
+=======
+        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamConnect status = %d", __FUNCTION__, halStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -377,6 +536,7 @@ sapGotoStarting
 /*==========================================================================
   FUNCTION    sapGotoDisconnecting
 
+<<<<<<< HEAD
   DESCRIPTION
     Processing of SAP FSM Disconnecting state
 
@@ -384,17 +544,35 @@ sapGotoStarting
     NA.
 
   PARAMETERS
+=======
+  DESCRIPTION 
+    Processing of SAP FSM Disconnecting state
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     IN
     sapContext  : Sap Context value
     status      : Return the SAP status here
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
+<<<<<<< HEAD
 
   SIDE EFFECTS
+=======
+  
+  SIDE EFFECTS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ============================================================================*/
 VOS_STATUS
 sapGotoDisconnecting
@@ -410,7 +588,11 @@ sapGotoDisconnecting
     {
         /* we have a serious problem */
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                    "In %s, invalid hHal", __func__);
+=======
+                   "In %s, invalid hHal", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAULT;
     }
 
@@ -418,7 +600,11 @@ sapGotoDisconnecting
     halStatus = sme_RoamStopBss(hHal, sapContext->sessionId);
     if(eHAL_STATUS_SUCCESS != halStatus )
     {
+<<<<<<< HEAD
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamStopBss status = %d", __func__, halStatus);
+=======
+        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "Error: In %s calling sme_RoamStopBss status = %d", __FUNCTION__, halStatus);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -428,13 +614,18 @@ sapGotoDisconnecting
 static eHalStatus sapRoamSessionCloseCallback(void *pContext)
 {
     ptSapContext sapContext = (ptSapContext)pContext;
+<<<<<<< HEAD
     return sapSignalHDDevent(sapContext, NULL,
+=======
+    return sapSignalHDDevent(sapContext, NULL, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     eSAP_STOP_BSS_EVENT, (v_PVOID_t) eSAP_STATUS_SUCCESS);
 }
 
 /*==========================================================================
   FUNCTION    sapGotoDisconnected
 
+<<<<<<< HEAD
   DESCRIPTION
     Function for setting the SAP FSM to Disconnection state
 
@@ -442,6 +633,15 @@ static eHalStatus sapRoamSessionCloseCallback(void *pContext)
     NA.
 
   PARAMETERS
+=======
+  DESCRIPTION 
+    Function for setting the SAP FSM to Disconnection state
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     IN
     sapContext  : Sap Context value
@@ -452,8 +652,13 @@ static eHalStatus sapRoamSessionCloseCallback(void *pContext)
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
+<<<<<<< HEAD
 
   SIDE EFFECTS
+=======
+  
+  SIDE EFFECTS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ============================================================================*/
 VOS_STATUS
 sapGotoDisconnected
@@ -471,13 +676,18 @@ sapGotoDisconnected
     sapEvent.u2 = 0;
     /* Handle event */
     vosStatus = sapFsm(sapContext, &sapEvent);
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return vosStatus;
 }
 
 /*==========================================================================
   FUNCTION    sapSignalHDDevent
 
+<<<<<<< HEAD
   DESCRIPTION
     Function for HDD to send the event notification using callback
 
@@ -485,23 +695,46 @@ sapGotoDisconnected
     NA.
 
   PARAMETERS
+=======
+  DESCRIPTION 
+    Function for HDD to send the event notification using callback
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     IN
     sapContext  : Sap Context value
     pCsrRoamInfo : Pointer to CSR roam information
     sapHddevent      : SAP HDD event
+<<<<<<< HEAD
     context          : to pass the element for future support
 
+=======
+    context          : to pass the element for future support 
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
+<<<<<<< HEAD
 
   SIDE EFFECTS
 ============================================================================*/
 VOS_STATUS
 sapSignalHDDevent
 (
+=======
+  
+  SIDE EFFECTS 
+============================================================================*/
+VOS_STATUS
+sapSignalHDDevent 
+( 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     ptSapContext sapContext, /* sapContext value */
     tCsrRoamInfo *pCsrRoamInfo,
     eSapHddEvent sapHddevent,
@@ -513,11 +746,15 @@ sapSignalHDDevent
     /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
     /* Format the Start BSS Complete event to return... */
+<<<<<<< HEAD
     if (NULL == sapContext->pfnSapEventCallback)
     {
         VOS_ASSERT(0);
         return VOS_STATUS_E_FAILURE;
     }
+=======
+    VOS_ASSERT(sapContext->pfnSapEventCallback);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     switch (sapHddevent)
     {
@@ -540,24 +777,40 @@ sapSignalHDDevent
                sapApAppEvent.sapevt.sapAssocIndication.negotiatedUCEncryptionType = pCsrRoamInfo->u.pConnectedProfile->EncryptionType;
                sapApAppEvent.sapevt.sapAssocIndication.negotiatedMCEncryptionType = pCsrRoamInfo->u.pConnectedProfile->mcEncryptionType;
                sapApAppEvent.sapevt.sapAssocIndication.fAuthRequired = pCsrRoamInfo->fAuthRequired;
+<<<<<<< HEAD
             }
             break;
        case eSAP_START_BSS_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
                 __func__, "eSAP_START_BSS_EVENT");
+=======
+            }  
+            break;
+       case eSAP_START_BSS_EVENT:
+            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+                __FUNCTION__, "eSAP_START_BSS_EVENT");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapHddEventCode = eSAP_START_BSS_EVENT;
             sapApAppEvent.sapevt.sapStartBssCompleteEvent.status = (eSapStatus )context;
             if(pCsrRoamInfo != NULL ){
                 sapApAppEvent.sapevt.sapStartBssCompleteEvent.staId = pCsrRoamInfo->staId;
             }
             else
+<<<<<<< HEAD
                 sapApAppEvent.sapevt.sapStartBssCompleteEvent.staId = 0;
+=======
+                sapApAppEvent.sapevt.sapStartBssCompleteEvent.staId = 0;              
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapevt.sapStartBssCompleteEvent.operatingChannel = (v_U8_t)sapContext->channel;
             break;
 
         case eSAP_STOP_BSS_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                        __func__, "eSAP_STOP_BSS_EVENT");
+=======
+                       __FUNCTION__, "eSAP_STOP_BSS_EVENT");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapHddEventCode = eSAP_STOP_BSS_EVENT;
             sapApAppEvent.sapevt.sapStopBssCompleteEvent.status = (eSapStatus )context;
             break;
@@ -565,7 +818,11 @@ sapSignalHDDevent
         case eSAP_STA_ASSOC_EVENT:
         {
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                 __func__, "eSAP_STA_ASSOC_EVENT");
+=======
+                __FUNCTION__, "eSAP_STA_ASSOC_EVENT");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             if (pCsrRoamInfo->fReassocReq)
                 sapApAppEvent.sapHddEventCode = eSAP_STA_REASSOC_EVENT;
             else
@@ -573,6 +830,7 @@ sapSignalHDDevent
 
             //TODO: Need to fill the SET KEY information and pass to HDD
             vos_mem_copy( &sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staMac,
+<<<<<<< HEAD
                          pCsrRoamInfo->peerMac,sizeof(tSirMacAddr));
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staId = pCsrRoamInfo->staId ;
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.statusCode = pCsrRoamInfo->statusCode;
@@ -586,23 +844,50 @@ sapSignalHDDevent
                 sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen
                                                         += pCsrRoamInfo->addIELen;
                 vos_mem_copy(&sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies[len], pCsrRoamInfo->paddIE,
+=======
+                         pCsrRoamInfo->peerMac,sizeof(tSirMacAddr));  
+            sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.staId = pCsrRoamInfo->staId ; 
+            sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.statusCode = pCsrRoamInfo->statusCode;
+            sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen = pCsrRoamInfo->rsnIELen;
+            vos_mem_copy(sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies, pCsrRoamInfo->prsnIE, 
+                        pCsrRoamInfo->rsnIELen);
+           
+            if(pCsrRoamInfo->addIELen) 
+            {
+                v_U8_t  len = sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen;
+                sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.iesLen 
+                                                        += pCsrRoamInfo->addIELen;
+                vos_mem_copy(&sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.ies[len], pCsrRoamInfo->paddIE, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                             pCsrRoamInfo->addIELen);
             }
 
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.wmmEnabled = pCsrRoamInfo->wmmEnabledSta;
             sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.status = (eSapStatus )context;
             //TODO: Need to fill sapAuthType
+<<<<<<< HEAD
             //sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.SapAuthType = pCsrRoamInfo->pProfile->negotiatedAuthType;
+=======
+            //sapApAppEvent.sapevt.sapStationAssocReassocCompleteEvent.SapAuthType = pCsrRoamInfo->pProfile->negotiatedAuthType; 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
         }
 
         case eSAP_STA_DISASSOC_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                        __func__, "eSAP_STA_DISASSOC_EVENT");
             sapApAppEvent.sapHddEventCode = eSAP_STA_DISASSOC_EVENT;
 
             vos_mem_copy( &sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.staMac,
                           pCsrRoamInfo->peerMac, sizeof(tSirMacAddr));
+=======
+                       __FUNCTION__, "eSAP_STA_DISASSOC_EVENT");
+            sapApAppEvent.sapHddEventCode = eSAP_STA_DISASSOC_EVENT;
+        
+            vos_mem_copy( &sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.staMac,
+                          pCsrRoamInfo->peerMac, sizeof(tSirMacAddr));  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.staId = pCsrRoamInfo->staId;
             if (pCsrRoamInfo->reasonCode == eCSR_ROAM_RESULT_FORCED)
                 sapApAppEvent.sapevt.sapStationDisassocCompleteEvent.reason = eSAP_USR_INITATED_DISASSOC;
@@ -615,7 +900,11 @@ sapSignalHDDevent
 
         case eSAP_STA_SET_KEY_EVENT:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                        __func__, "eSAP_STA_SET_KEY_EVENT");
+=======
+                       __FUNCTION__, "eSAP_STA_SET_KEY_EVENT");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapHddEventCode = eSAP_STA_SET_KEY_EVENT;
             sapApAppEvent.sapevt.sapStationSetKeyCompleteEvent.status = (eSapStatus )context;
             vos_mem_copy(&sapApAppEvent.sapevt.sapStationSetKeyCompleteEvent.peerMacAddr,
@@ -624,7 +913,11 @@ sapSignalHDDevent
 
         case eSAP_STA_DEL_KEY_EVENT :
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                        __func__, "eSAP_STA_DEL_KEY_EVENT");
+=======
+                       __FUNCTION__, "eSAP_STA_DEL_KEY_EVENT");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapHddEventCode = eSAP_STA_DEL_KEY_EVENT;
             sapApAppEvent.sapevt.sapStationDeleteKeyCompleteEvent.status = (eSapStatus )context;
             //TODO: Should we need to send the key information
@@ -633,7 +926,11 @@ sapSignalHDDevent
 
         case eSAP_STA_MIC_FAILURE_EVENT :
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                         __func__, "eSAP_STA_MIC_FAILURE_EVENT");
+=======
+                        __FUNCTION__, "eSAP_STA_MIC_FAILURE_EVENT");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapHddEventCode = eSAP_STA_MIC_FAILURE_EVENT;
             vos_mem_copy( &sapApAppEvent.sapevt.sapStationMICFailureEvent.srcMacAddr,
                           pCsrRoamInfo->u.pMICFailureInfo->srcMacAddr,
@@ -650,6 +947,7 @@ sapSignalHDDevent
             vos_mem_copy( sapApAppEvent.sapevt.sapStationMICFailureEvent.TSC,
                           pCsrRoamInfo->u.pMICFailureInfo->TSC,
                           SIR_CIPHER_SEQ_CTR_SIZE);
+<<<<<<< HEAD
             break;
 
         case eSAP_ASSOC_STA_CALLBACK_EVENT:
@@ -669,6 +967,28 @@ sapSignalHDDevent
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                                  "In %s, SAP event callback event = %s",
                                 __func__, "eSAP_INDICATE_MGMT_FRAME");
+=======
+            break;            
+
+        case eSAP_ASSOC_STA_CALLBACK_EVENT:
+            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, SAP event callback event = %s",
+                       __FUNCTION__, "eSAP_ASSOC_STA_CALLBACK_EVENT");
+            break;
+            
+        case eSAP_WPS_PBC_PROBE_REQ_EVENT:
+            sapApAppEvent.sapHddEventCode = eSAP_WPS_PBC_PROBE_REQ_EVENT;
+                        
+            vos_mem_copy( &sapApAppEvent.sapevt.sapPBCProbeReqEvent.WPSPBCProbeReq,
+                          pCsrRoamInfo->u.pWPSPBCProbeReq,
+                          sizeof(tSirWPSPBCProbeReq));  
+            break;
+
+#ifdef WLAN_FEATURE_P2P
+       case eSAP_INDICATE_MGMT_FRAME:
+            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
+                                 "In %s, SAP event callback event = %s",
+                                __FUNCTION__, "eSAP_INDICATE_MGMT_FRAME");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             sapApAppEvent.sapHddEventCode = eSAP_INDICATE_MGMT_FRAME;
             sapApAppEvent.sapevt.sapManagementFrameInfo.nFrameLength
                                            = pCsrRoamInfo->nFrameLength;
@@ -683,12 +1003,17 @@ sapSignalHDDevent
        case eSAP_REMAIN_CHAN_READY:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                                  "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                                 __func__, "eSAP_REMAIN_CHAN_READY");
+=======
+                                __FUNCTION__, "eSAP_REMAIN_CHAN_READY");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
            sapApAppEvent.sapHddEventCode = eSAP_REMAIN_CHAN_READY;
             break;
        case eSAP_SEND_ACTION_CNF:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                                  "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                                 __func__, "eSAP_SEND_ACTION_CNF");
             sapApAppEvent.sapHddEventCode = eSAP_SEND_ACTION_CNF;
             sapApAppEvent.sapevt.sapActionCnf.actionSendSuccess = (eSapStatus)context;
@@ -710,28 +1035,51 @@ sapSignalHDDevent
             sapApAppEvent.sapevt.sapActionCnf.actionSendSuccess = (eSapStatus)context;
             break;
 
+=======
+                                __FUNCTION__, "eSAP_SEND_ACTION_CNF");
+            sapApAppEvent.sapHddEventCode = eSAP_SEND_ACTION_CNF;
+            sapApAppEvent.sapevt.sapActionCnf.actionSendSuccess = (eSapStatus)context; 
+            break;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
         case eSAP_UNKNOWN_STA_JOIN:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                        "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                        __func__, "eSAP_UNKNOWN_STA_JOIN");
             sapApAppEvent.sapHddEventCode = eSAP_UNKNOWN_STA_JOIN;
             vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapUnknownSTAJoin.macaddr.bytes,
+=======
+                       __FUNCTION__, "eSAP_UNKNOWN_STA_JOIN");
+            sapApAppEvent.sapHddEventCode = eSAP_UNKNOWN_STA_JOIN;
+            vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapUnknownSTAJoin.macaddr.bytes, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                          (v_PVOID_t)context, sizeof(v_MACADDR_t));
             break;
 
         case eSAP_MAX_ASSOC_EXCEEDED:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
                     "In %s, SAP event callback event = %s",
+<<<<<<< HEAD
                     __func__, "eSAP_MAX_ASSOC_EXCEEDED");
             sapApAppEvent.sapHddEventCode = eSAP_MAX_ASSOC_EXCEEDED;
             vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapMaxAssocExceeded.macaddr.bytes,
+=======
+                    __FUNCTION__, "eSAP_MAX_ASSOC_EXCEEDED");
+            sapApAppEvent.sapHddEventCode = eSAP_MAX_ASSOC_EXCEEDED;
+            vos_mem_copy((v_PVOID_t)sapApAppEvent.sapevt.sapMaxAssocExceeded.macaddr.bytes, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     (v_PVOID_t)pCsrRoamInfo->peerMac, sizeof(v_MACADDR_t));
             break;
 
         default:
             VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, SAP Unknown callback event = %d",
+<<<<<<< HEAD
                        __func__,sapHddevent);
+=======
+                       __FUNCTION__,sapHddevent);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
     }
     vosStatus = (*sapContext->pfnSapEventCallback)
@@ -739,7 +1087,11 @@ sapSignalHDDevent
                  &sapApAppEvent,
                  sapContext->pUsrContext//userdataforcallback - hdd opaque handle
                  );
+<<<<<<< HEAD
 
+=======
+                 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return vosStatus;
 
 } /* sapSignalApAppStartBssEvent */
@@ -747,6 +1099,7 @@ sapSignalHDDevent
 /*==========================================================================
   FUNCTION    sapFsm
 
+<<<<<<< HEAD
   DESCRIPTION
     SAP State machine entry function
 
@@ -754,27 +1107,53 @@ sapSignalHDDevent
     NA.
 
   PARAMETERS
+=======
+  DESCRIPTION 
+    SAP State machine entry function
+
+  DEPENDENCIES 
+    NA. 
+
+  PARAMETERS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     IN
     sapContext  : Sap Context value
     sapEvent    : State machine event
     status      : Return the SAP status here
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   RETURN VALUE
     The VOS_STATUS code associated with performing the operation
 
     VOS_STATUS_SUCCESS: Success
+<<<<<<< HEAD
 
   SIDE EFFECTS
+=======
+  
+  SIDE EFFECTS 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 ============================================================================*/
 VOS_STATUS
 sapFsm
 (
+<<<<<<< HEAD
     ptSapContext sapContext,    /* sapContext value */
     ptWLAN_SAPEvent sapEvent   /* State machine event */
 )
 {
    /* Retrieve the phy link state machine structure
+=======
+    ptSapContext sapContext,    /* sapContext value */    
+    ptWLAN_SAPEvent sapEvent   /* State machine event */
+)
+{
+   /* Retrieve the phy link state machine structure 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      * from the sapContext value
      */
     eSapFsmStates_t stateVar = sapContext->sapsMachine; /*state var that keeps track of state machine*/
@@ -789,6 +1168,7 @@ sapFsm
             {
                 /* Transition from eSAP_DISCONNECTED to eSAP_CH_SELECT (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, new from state %s => %s",
+<<<<<<< HEAD
                             __func__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
 
                 /* There can be one SAP Session for softap */
@@ -796,6 +1176,15 @@ sapFsm
                 {
                    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
                         "%s:SME Session is already opened\n",__func__);
+=======
+                            __FUNCTION__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
+
+                /* There can be one SAP Session for softap */
+                if (sapContext->isSapSessionOpen == eSAP_TRUE) 
+                {
+                   VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_FATAL,
+                        "%s:SME Session is already opened\n",__FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                    return VOS_STATUS_E_EXISTS;
                 }
 
@@ -806,6 +1195,7 @@ sapFsm
 
                 /* Perform sme_ScanRequest */
                 vosStatus = sapGotoChannelSel(sapContext, sapEvent);
+<<<<<<< HEAD
 
                 /* Transition from eSAP_DISCONNECTED to eSAP_CH_SELECT (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
@@ -815,15 +1205,34 @@ sapFsm
             {
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, event msg %d",
                              __func__, "eSAP_DISCONNECTED", msg);
+=======
+                
+                /* Transition from eSAP_DISCONNECTED to eSAP_CH_SELECT (both without substates) */
+                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+                           __FUNCTION__, "eSAP_DISCONNECTED", "eSAP_CH_SELECT");
+            } 
+            else 
+            {
+                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, event msg %d",
+                             __FUNCTION__, "eSAP_DISCONNECTED", msg);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             }
             break;
 
         case eSAP_CH_SELECT:
+<<<<<<< HEAD
             if (msg == eSAP_MAC_SCAN_COMPLETE)
             {
                  /* Transition from eSAP_CH_SELECT to eSAP_STARTING (both without substates) */
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
                             __func__, "eSAP_CH_SELECT", "eSAP_STARTING");
+=======
+            if (msg == eSAP_MAC_SCAN_COMPLETE) 
+            {
+                 /* Transition from eSAP_CH_SELECT to eSAP_STARTING (both without substates) */
+                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+                            __FUNCTION__, "eSAP_CH_SELECT", "eSAP_STARTING");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                  // Channel selected. Now can sapGotoStarting
                  sapContext->sapsMachine = eSAP_STARTING;
                  // Specify the channel
@@ -833,21 +1242,37 @@ sapFsm
                  vosStatus = sapGotoStarting( sapContext, sapEvent, eCSR_BSS_TYPE_INFRA_AP);
                  /* Transition from eSAP_CH_SELECT to eSAP_STARTING (both without substates) */
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+<<<<<<< HEAD
                              __func__, "eSAP_CH_SELECT", "eSAP_STARTING");
+=======
+                             __FUNCTION__, "eSAP_CH_SELECT", "eSAP_STARTING");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             }
             else
             {
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, invalid event msg %d",
+<<<<<<< HEAD
                             __func__, "eSAP_CH_SELECT", msg);
+=======
+                            __FUNCTION__, "eSAP_CH_SELECT", msg);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             }
             break;
 
         case eSAP_STARTING:
+<<<<<<< HEAD
             if (msg == eSAP_MAC_START_BSS_SUCCESS )
             {
                 /* Transition from eSAP_STARTING to eSAP_STARTED (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state channel = %d %s => %s",
                             __func__,sapContext->channel, "eSAP_STARTING", "eSAP_STARTED");
+=======
+            if (msg == eSAP_MAC_START_BSS_SUCCESS ) 
+            {
+                /* Transition from eSAP_STARTING to eSAP_STARTED (both without substates) */
+                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state channel = %d %s => %s",
+                            __FUNCTION__,sapContext->channel, "eSAP_STARTING", "eSAP_STARTED");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
                  sapContext->sapsMachine = eSAP_STARTED;
                  /*Action code for transition */
@@ -855,6 +1280,7 @@ sapFsm
 
                  /* Transition from eSAP_STARTING to eSAP_STARTED (both without substates) */
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+<<<<<<< HEAD
                             __func__, "eSAP_STARTING", "eSAP_STARTED");
              }
              else if (msg == eSAP_MAC_START_FAILS)
@@ -863,6 +1289,16 @@ sapFsm
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
                             __func__, "eSAP_STARTING", "eSAP_DISCONNECTED");
 
+=======
+                            __FUNCTION__, "eSAP_STARTING", "eSAP_STARTED");
+             }
+             else if (msg == eSAP_MAC_START_FAILS) 
+             {
+                 /*Transition from STARTING to DISCONNECTED (both without substates)*/                         
+                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+                            __FUNCTION__, "eSAP_STARTING", "eSAP_DISCONNECTED");
+                
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                  /*Action code for transition */
                  vosStatus = sapSignalHDDevent( sapContext, NULL, eSAP_START_BSS_EVENT,(v_PVOID_t) eSAP_STATUS_FAILURE);
                  vosStatus =  sapGotoDisconnected(sapContext);
@@ -872,9 +1308,15 @@ sapFsm
              }
              else if (msg == eSAP_HDD_STOP_INFRA_BSS)
              {
+<<<<<<< HEAD
                  /*Transition from eSAP_STARTING to eSAP_DISCONNECTING (both without substates)*/
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
                              __func__, "eSAP_STARTING", "eSAP_DISCONNECTING");
+=======
+                 /*Transition from eSAP_STARTING to eSAP_DISCONNECTING (both without substates)*/        
+                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+                             __FUNCTION__, "eSAP_STARTING", "eSAP_DISCONNECTING");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
                  /*Advance outer statevar */
                  sapContext->sapsMachine = eSAP_DISCONNECTED;
@@ -882,16 +1324,26 @@ sapFsm
                  vosStatus = sapGotoDisconnected(sapContext);
                  /* Close the SME session*/
 
+<<<<<<< HEAD
                  if (eSAP_TRUE == sapContext->isSapSessionOpen)
+=======
+                 if (eSAP_TRUE == sapContext->isSapSessionOpen) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                  {
                     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
                     if (NULL == hHal)
                     {
                        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                                   "In %s, NULL hHal in state %s, msg %d",
+<<<<<<< HEAD
                                   __func__, "eSAP_STARTING", msg);
                     }
                     else if (eHAL_STATUS_SUCCESS ==
+=======
+                                  __FUNCTION__, "eSAP_STARTING", msg);
+                    }
+                    else if (eHAL_STATUS_SUCCESS == 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                          sme_CloseSession(hHal,
                                          sapContext->sessionId, NULL, NULL))
                      {
@@ -899,11 +1351,19 @@ sapFsm
                      }
                  }
              }
+<<<<<<< HEAD
              else
              {
                  VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                              "In %s, in state %s, invalid event msg %d",
                              __func__, "eSAP_STARTING", msg);
+=======
+             else 
+             {
+                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
+                             "In %s, in state %s, invalid event msg %d",
+                             __FUNCTION__, "eSAP_STARTING", msg);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                  /* Intentionally left blank */
              }
              break;
@@ -913,14 +1373,22 @@ sapFsm
             {
                 /* Transition from eSAP_STARTED to eSAP_DISCONNECTING (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+<<<<<<< HEAD
                            __func__, "eSAP_STARTED", "eSAP_DISCONNECTING");
+=======
+                           __FUNCTION__, "eSAP_STARTED", "eSAP_DISCONNECTING");
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 sapContext->sapsMachine = eSAP_DISCONNECTING;
                 vosStatus = sapGotoDisconnecting(sapContext);
             }
             else
             {
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, "In %s, in state %s, invalid event msg %d",
+<<<<<<< HEAD
                            __func__, "eSAP_STARTED", msg);
+=======
+                           __FUNCTION__, "eSAP_STARTED", msg);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             }
             break;
 
@@ -929,11 +1397,19 @@ sapFsm
             {
                 /* Transition from eSAP_DISCONNECTING to eSAP_DISCONNECTED (both without substates) */
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, from state %s => %s",
+<<<<<<< HEAD
                           __func__, "eSAP_DISCONNECTING", "eSAP_DISCONNECTED");
 
                 sapContext->sapsMachine = eSAP_DISCONNECTED;
                 /* Close the SME session*/
                 if (eSAP_TRUE == sapContext->isSapSessionOpen)
+=======
+                          __FUNCTION__, "eSAP_DISCONNECTING", "eSAP_DISCONNECTED");
+
+                sapContext->sapsMachine = eSAP_DISCONNECTED;
+                /* Close the SME session*/
+                if (eSAP_TRUE == sapContext->isSapSessionOpen) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 {
                     tHalHandle hHal = VOS_GET_HAL_CB(sapContext->pvosGCtx);
 
@@ -941,7 +1417,11 @@ sapFsm
                     {
                         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                                    "In %s, NULL hHal in state %s, msg %d",
+<<<<<<< HEAD
                                    __func__, "eSAP_DISCONNECTING", msg);
+=======
+                                   __FUNCTION__, "eSAP_DISCONNECTING", msg);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                     }
                     else
                     {
@@ -952,17 +1432,29 @@ sapFsm
                                      sapRoamSessionCloseCallback, sapContext)))
                         {
                             vosStatus = sapSignalHDDevent(sapContext, NULL,
+<<<<<<< HEAD
                                               eSAP_STOP_BSS_EVENT,
+=======
+                                              eSAP_STOP_BSS_EVENT, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                                               (v_PVOID_t) eSAP_STATUS_SUCCESS);
                         }
                     }
                 }
             }
+<<<<<<< HEAD
             else
             {
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
                            "In %s, in state %s, invalid event msg %d",
                           __func__, "eSAP_DISCONNECTING", msg);
+=======
+            else 
+            {
+                VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, 
+                           "In %s, in state %s, invalid event msg %d",
+                          __FUNCTION__, "eSAP_DISCONNECTING", msg);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             }
             break;
       }
@@ -978,7 +1470,11 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
     profile->SSIDs.numOfSSIDs = 1;
     profile->csrPersona = pconfig_params->persona;
 
+<<<<<<< HEAD
     vos_mem_zero(profile->SSIDs.SSIDList[0].SSID.ssId,
+=======
+    vos_mem_zero(profile->SSIDs.SSIDList[0].SSID.ssId, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                  sizeof(profile->SSIDs.SSIDList[0].SSID.ssId));
 
     //Flag to not broadcast the SSID information
@@ -1031,26 +1527,45 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
     }
     else
     {
+<<<<<<< HEAD
         profile->csr80211AuthType = eSIR_AUTO_SWITCH;
     }
 
     //Initialize we are not going to use it
+=======
+        profile->csr80211AuthType = eSIR_AUTO_SWITCH; 
+    }
+
+    //Initialize we are not going to use it 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     profile->pWPAReqIE = NULL;
     profile->nWPAReqIELength = 0;
 
     //set the RSN/WPA IE
     profile->pRSNReqIE = NULL;
+<<<<<<< HEAD
     profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength;
+=======
+    profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength; 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if (pconfig_params->RSNWPAReqIELength)
     {
         profile->pRSNReqIE = vos_mem_malloc(pconfig_params->RSNWPAReqIELength);
         if( NULL == profile->pRSNReqIE )
         {
+<<<<<<< HEAD
            VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, " %s Fail to alloc memory", __func__);
            return eSAP_STATUS_FAILURE;
         }
         vos_mem_copy(profile->pRSNReqIE, pconfig_params->pRSNWPAReqIE, pconfig_params->RSNWPAReqIELength);
         profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength;
+=======
+           VOS_TRACE(VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR, " %s Fail to alloc memory", __FUNCTION__);
+           return eSAP_STATUS_FAILURE;
+        }
+        vos_mem_copy(profile->pRSNReqIE, pconfig_params->pRSNWPAReqIE, pconfig_params->RSNWPAReqIELength);
+        profile->nRSNReqIELength = pconfig_params->RSNWPAReqIELength; 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }
 
     // Turn off CB mode
@@ -1076,8 +1591,15 @@ sapconvertToCsrProfile(tsap_Config_t *pconfig_params, eCsrRoamBssType bssType, t
 
     //country code
     if (pconfig_params->countryCode[0])
+<<<<<<< HEAD
         vos_mem_copy(profile->countryCode, pconfig_params->countryCode, WNI_CFG_COUNTRY_CODE_LEN);
     profile->ieee80211d = pconfig_params->ieee80211d;
+=======
+        vos_mem_copy(profile->countryCode, pconfig_params->countryCode, WNI_CFG_COUNTRY_CODE_LEN); 
+#ifdef WLAN_SOFTAP_FEATURE
+    profile->ieee80211d = pconfig_params->ieee80211d;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     //wps config info
     profile->wps_state = pconfig_params->wps_state;
 
@@ -1135,7 +1657,11 @@ sapSearchMacList(v_MACADDR_t *macList, v_U8_t num_mac, v_U8_t *peerMac, v_U8_t *
                     "search SUCC");
             // "index equals NULL" means the caller does not need the
             // index value of the peerMac being searched
+<<<<<<< HEAD
             if (index != NULL)
+=======
+            if (index != NULL) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             {
                 *index = (v_U8_t) nMiddle;
                 VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
@@ -1181,7 +1707,11 @@ sapAddMacToACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t *peerMac)
 }
 
 void
+<<<<<<< HEAD
 sapRemoveMacFromACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t index)
+=======
+sapRemoveMacFromACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t index)    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 {
     int i;
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"remove acl entered");
@@ -1204,12 +1734,20 @@ sapRemoveMacFromACL(v_MACADDR_t *macList, v_U8_t *size, v_U8_t index)
 void sapPrintACL(v_MACADDR_t *macList, v_U8_t size)
 {
     int i;
+<<<<<<< HEAD
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"print acl entered");
+=======
+    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,"print acl entered");    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     if (size==0) return;
     for (i=0; i<size; i++)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH,
+<<<<<<< HEAD
                 "** ACL entry %i - %02x:%02x:%02x:%02x:%02x:%02x", i,
+=======
+                "** ACL entry %i - %02x:%02x:%02x:%02x:%02x:%02x", i, 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 (macList+i)->bytes[0], (macList+i)->bytes[1], (macList+i)->bytes[2],
                 (macList+i)->bytes[3], (macList+i)->bytes[4], (macList+i)->bytes[5]);
     }
@@ -1228,7 +1766,11 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
     if (sapSearchMacList(sapContext->denyMacList, sapContext->nDenyMac, peerMac, NULL))
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x in deny list",
+<<<<<<< HEAD
                 __func__, *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
+=======
+                __FUNCTION__, *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -1240,7 +1782,11 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
     if (eSAP_DENY_UNLESS_ACCEPTED == sapContext->eSapMacAddrAclMode)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_DENY_UNLESS_ACCEPTED",
+<<<<<<< HEAD
                 __func__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
+=======
+                __FUNCTION__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAILURE;
     }
 
@@ -1249,9 +1795,15 @@ sapIsPeerMacAllowed(ptSapContext sapContext, v_U8_t *peerMac)
      */
     if (eSAP_SUPPORT_ACCEPT_AND_DENY == sapContext->eSapMacAddrAclMode)
     {
+<<<<<<< HEAD
         sapSignalHDDevent(sapContext, NULL, eSAP_UNKNOWN_STA_JOIN, (v_PVOID_t)peerMac);
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_SUPPORT_ACCEPT_AND_DENY",
                 __func__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
+=======
+        sapSignalHDDevent(sapContext, NULL, eSAP_UNKNOWN_STA_JOIN, (v_PVOID_t)peerMac);    
+        VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO_HIGH, "In %s, Peer %02x:%02x:%02x:%02x:%02x:%02x denied, Mac filter mode is eSAP_SUPPORT_ACCEPT_AND_DENY",
+                __FUNCTION__,  *peerMac, *(peerMac + 1), *(peerMac + 2), *(peerMac + 3), *(peerMac + 4), *(peerMac + 5));
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         return VOS_STATUS_E_FAILURE;
     }
     return VOS_STATUS_SUCCESS;
@@ -1280,38 +1832,70 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
         *channelList = NULL;
         return VOS_STATUS_E_FAULT;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     ccmCfgGetInt(hHal, WNI_CFG_SAP_CHANNEL_SELECT_START_CHANNEL, &startChannelNum);
     ccmCfgGetInt(hHal, WNI_CFG_SAP_CHANNEL_SELECT_END_CHANNEL, &endChannelNum);
     ccmCfgGetInt(hHal, WNI_CFG_SAP_CHANNEL_SELECT_OPERATING_BAND, &operatingBand);
     ccmCfgGetInt(hHal, WNI_CFG_ENABLE_LTE_COEX, &enableLTECoex);
+<<<<<<< HEAD
 
     VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO,
              "%s:sapGetChannelList: startChannel %d,EndChannel %d,Operatingband:%d",
              __func__,startChannelNum,endChannelNum,operatingBand);
 
+=======
+    
+    VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_INFO,
+             "%s:sapGetChannelList: startChannel %d,EndChannel %d,Operatingband:%d",
+             __FUNCTION__,startChannelNum,endChannelNum,operatingBand);
+    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     switch(operatingBand)
     {
         case RF_SUBBAND_2_4_GHZ:
            bandStartChannel = RF_CHAN_1;
            bandEndChannel = RF_CHAN_14;
            break;
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         case RF_SUBBAND_5_LOW_GHZ:
            bandStartChannel = RF_CHAN_36;
            bandEndChannel = RF_CHAN_64;
            break;
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         case RF_SUBBAND_5_MID_GHZ:
            bandStartChannel = RF_CHAN_100;
            bandEndChannel = RF_CHAN_140;
            break;
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         case RF_SUBBAND_5_HIGH_GHZ:
            bandStartChannel = RF_CHAN_149;
            bandEndChannel = RF_CHAN_165;
            break;
+<<<<<<< HEAD
 
+=======
+           
+        case RF_SUBBAND_4_9_GHZ:
+           bandStartChannel = RF_CHAN_240;
+           bandEndChannel = RF_CHAN_216;
+           break;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         default:
            VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
              "sapGetChannelList:OperatingBand not valid ");
@@ -1321,18 +1905,30 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
            break;
     }
     /*Check if LTE coex is enabled and 2.4GHz is selected*/
+<<<<<<< HEAD
     if (enableLTECoex && (bandStartChannel == RF_CHAN_1)
+=======
+    if (enableLTECoex && (bandStartChannel == RF_CHAN_1) 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        && (bandEndChannel == RF_CHAN_14))
     {
         /*Set 2.4GHz upper limit to channel 9 for LTE COEX*/
         bandEndChannel = RF_CHAN_9;
+<<<<<<< HEAD
     }
+=======
+    }      
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     /* Allocate the max number of channel supported */
     list = (v_U8_t *)vos_mem_malloc(NUM_5GHZ_CHANNELS);
     if (NULL == list)
     {
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                    "%s: Unable to allocate channel list", __func__);
+=======
+                   "%s: Unable to allocate channel list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         *numberOfChannels = 0;
         *channelList = NULL;
         return VOS_STATUS_E_RESOURCES;
@@ -1347,13 +1943,21 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
         {
             if( regChannels[loopCount].enabled )
             {
+<<<<<<< HEAD
                 list[channelCount] = rfChannels[loopCount].channelNum;
+=======
+                list[channelCount] = rfChannels[loopCount].channelNum; 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 channelCount++;
             }
         }
     }
     if (0 == channelCount)
+<<<<<<< HEAD
     {
+=======
+    { 
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         VOS_TRACE( VOS_MODULE_ID_SAP, VOS_TRACE_LEVEL_ERROR,
         "sapGetChannelList:No active channels present in the given range for the current region");
         /*LTE COEX: channel range outside the restricted 2.4GHz band limits*/
@@ -1363,11 +1967,19 @@ static VOS_STATUS sapGetChannelList(ptSapContext sapContext,
             "sapGetChannelList:SAP cannot be started as LTE COEX restricted 2.4GHz limits");
         }
     }
+<<<<<<< HEAD
 
     /* return the channel list and number of channels to scan*/
     *numberOfChannels = channelCount;
     if(channelCount != 0)
     {
+=======
+   
+    /* return the channel list and number of channels to scan*/
+    *numberOfChannels = channelCount;
+    if(channelCount != 0)
+    {         
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        *channelList = list;
     }
     else

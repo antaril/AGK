@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -60,7 +63,10 @@
 #include "wlan_qct_pal_type.h"
 #include "wlan_qct_pal_status.h"
 #include "wlan_qct_pal_packet.h"
+<<<<<<< HEAD
 #include "wlan_qct_pal_trace.h"
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include "wlan_qct_wdi_ds.h"
 #include "wlan_qct_dxe.h"
 
@@ -119,11 +125,16 @@ WPT_STATIC WPT_INLINE void DTI_TRACE ( DTI_TRACE_LEVEL level, ...) { };
 /* !!! MAX NUM STA is not identified yet, 16 is correct value,
    but need to get from correct common def
    This should be identified ASAP */
+<<<<<<< HEAD
 #ifdef WLAN_SOFTAP_VSTA_FEATURE
 #define WDI_DS_MAX_STA_ID 41
 #else
 #define WDI_DS_MAX_STA_ID 16
 #endif
+=======
+#define WDI_DS_MAX_STA_ID 16
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /* !!! MAX NUM SUPPORTED BSS is not identified yet, 2 is correct value,
     but need to get from correct common def
    This should be identified ASAP */

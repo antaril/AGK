@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -39,7 +42,10 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #if !defined( __VOS_TRACE_H )
 #define __VOS_TRACE_H
 
@@ -51,6 +57,13 @@
                
    Trace, logging, and debugging definitions and APIs
   
+<<<<<<< HEAD
+=======
+   Copyright 2008 (c) Qualcomm, Incorporated.  All Rights Reserved.
+   
+   Qualcomm Confidential and Proprietary.
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   ========================================================================*/
 
 /* $Header$ */
@@ -60,8 +73,11 @@
   ------------------------------------------------------------------------*/
 #include  <vos_types.h>  // For VOS_MODULE_ID...
 #include  <stdarg.h>       // For va_list...
+<<<<<<< HEAD
 #include  <vos_status.h>
 #include  <i_vos_types.h>
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /*-------------------------------------------------------------------------- 
   Type declarations 
@@ -83,7 +99,10 @@ typedef enum
    VOS_TRACE_LEVEL_INFO_HIGH,
    VOS_TRACE_LEVEL_INFO_MED,
    VOS_TRACE_LEVEL_INFO_LOW,
+<<<<<<< HEAD
    VOS_TRACE_LEVEL_DEBUG,
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    // ALL means all trace levels will be active.  This value is in place for the 
    // vos_trace_setlevel() to allow the user to turn ON all traces.
@@ -104,6 +123,7 @@ typedef enum
 // below definition is obsolete and is no longer being used in BMP and WM
 // TODO: remove this once this is not used on Android
 #define VOS_ENABLE_TRACING 
+<<<<<<< HEAD
 #define WCONN_TRACE_KMSG_LOG_BUFF
 #define MAX_VOS_TRACE_RECORDS 4000
 #define INVALID_VOS_TRACE_ADDR 0xffffffff
@@ -150,6 +170,11 @@ typedef struct svosTraceData
 }tvosTraceData;
 
 
+=======
+
+#include  <i_vos_trace.h>   
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*------------------------------------------------------------------------- 
   Function declarations and documenation
   ------------------------------------------------------------------------*/
@@ -195,6 +220,7 @@ void vos_trace_setLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level );
   --------------------------------------------------------------------------*/
 v_BOOL_t vos_trace_getLevel( VOS_MODULE_ID module, VOS_TRACE_LEVEL level );
 
+<<<<<<< HEAD
 #ifdef WCONN_TRACE_KMSG_LOG_BUFF
 /*--------------------------------------------------------------------------
  \brief vos_wconn_trace_init(); - Initializing the spinlock,
@@ -220,4 +246,6 @@ VOS_STATUS vos_trace_spin_lock_init(void);
 void vosTraceInit(void);
 void vosTraceEnable(v_U32_t, v_U8_t enable);
 void vosTraceDumpAll(void*, v_U8_t, v_U8_t, v_U32_t, v_U32_t);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif

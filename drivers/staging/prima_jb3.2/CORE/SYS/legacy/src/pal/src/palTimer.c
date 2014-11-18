@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -40,17 +43,38 @@
  */
 
 /** 
+<<<<<<< HEAD
     Copyright (C) 2006 Airgo Networks, Incorporated
 
     This file contains function implementations for the Platform
     Abstration Layer.
 
+=======
+  
+    \file palTimer.c
+  
+    \brief Implemenation of the Platform Abstracion Layer timer functions
+  
+    $Id$ 
+  
+  
+    Copyright (C) 2006 Airgo Networks, Incorporated
+  
+    This file contains function implementations for the Platform Abstration Layer.    
+  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  */
 
 #include <halTypes.h>
 #include <palTimer.h>
 #include <vos_timer.h>
+<<<<<<< HEAD
 #include <vos_memory.h>
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#include <vos_memory.h>
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sPalTimer
 {   

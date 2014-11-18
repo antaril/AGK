@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -62,6 +65,13 @@
 
 //#include "aniSsmUtils.h"
 
+<<<<<<< HEAD
+=======
+#define CHECK_RETVAL(retVal) \
+              assert(retVal == ANI_OK); \
+              if (retVal != ANI_OK) return ANI_E_FAILED;
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 //TODO: Put these in an array after EAPOL_TYPE is made an enum
 #define ANI_EAPOL_TYPE_PACKET_STR    "EAP"
@@ -84,7 +94,11 @@
 
 #define EAPOL_BODY_LEN_SIZE 2
 
+<<<<<<< HEAD
 #define ANI_SSM_LEGACY_RC4_KEY_SIGN_OFFSET (EAPOL_BODY_POS + 28)
+=======
+#define ANI_SSM_LEGACY_RC4_KEY_SIGN_OFFSET EAPOL_BODY_POS + 28
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**
  * Bitmasks for the RSN Key Information field
@@ -103,7 +117,11 @@
 #define ANI_SSM_RSN_KEY_DESC_VERS_OFFSET  0
 #define ANI_SSM_RSN_KEY_INDEX_OFFSET      4
 
+<<<<<<< HEAD
 #define ANI_SSM_RSN_KEY_MIC_OFFSET (EAPOL_BODY_POS + 77)
+=======
+#define ANI_SSM_RSN_KEY_MIC_OFFSET EAPOL_BODY_POS + 77
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /**
  * Other hard coded values for convenience:

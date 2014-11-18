@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -169,7 +172,11 @@ WLANBAP_GetCurrentChannel
   if (( NULL == pBtampCtx ) || (NULL == channel) || (NULL == activeFlag))
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "Invalid BAP pointer in %s", __func__);
+=======
+                 "Invalid BAP pointer in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return VOS_STATUS_E_FAULT;
   }
 
@@ -178,7 +185,11 @@ WLANBAP_GetCurrentChannel
   if(NULL == halHandle)
   {
      VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                   "halHandle is NULL in %s", __func__);
+=======
+                  "halHandle is NULL in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
      return VOS_STATUS_E_FAULT;
   }
 
@@ -186,7 +197,11 @@ WLANBAP_GetCurrentChannel
           != eHAL_STATUS_SUCCESS ) 
   {
     VOS_TRACE( VOS_MODULE_ID_BAP, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "Get CFG failed in %s", __func__);
+=======
+                 "Get CFG failed in %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     return VOS_STATUS_E_FAULT;
   }
 

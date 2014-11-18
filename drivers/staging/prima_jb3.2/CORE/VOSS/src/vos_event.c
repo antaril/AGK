@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -131,7 +134,11 @@ VOS_STATUS vos_event_init ( vos_event_t* event )
    if ( NULL == event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "NULL event passed into %s", __func__);
+=======
+                "NULL event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -140,7 +147,11 @@ VOS_STATUS vos_event_init ( vos_event_t* event )
    if ( LINUX_EVENT_COOKIE == event->cookie )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "Initialized event passed into %s", __func__);
+=======
+                "Initialized event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_BUSY;
    }
@@ -186,7 +197,11 @@ VOS_STATUS vos_event_set ( vos_event_t* event )
    if ( NULL == event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "NULL event passed into %s", __func__);
+=======
+                "NULL event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -195,7 +210,11 @@ VOS_STATUS vos_event_set ( vos_event_t* event )
    if ( LINUX_EVENT_COOKIE != event->cookie )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "Uninitialized event passed into %s", __func__);
+=======
+                "Uninitialized event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -241,7 +260,11 @@ VOS_STATUS vos_event_reset ( vos_event_t* event )
    if ( NULL == event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "NULL event passed into %s", __func__);
+=======
+                "NULL event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -250,7 +273,11 @@ VOS_STATUS vos_event_reset ( vos_event_t* event )
    if ( LINUX_EVENT_COOKIE != event->cookie )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "Uninitialized event passed into %s", __func__);
+=======
+                "Uninitialized event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -360,7 +387,11 @@ VOS_STATUS vos_event_destroy ( vos_event_t* event )
    if ( NULL == event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "NULL event passed into %s", __func__);
+=======
+                "NULL event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -369,7 +400,11 @@ VOS_STATUS vos_event_destroy ( vos_event_t* event )
    if ( LINUX_EVENT_COOKIE != event->cookie )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "Uninitialized event passed into %s", __func__);
+=======
+                "Uninitialized event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -415,7 +450,11 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
    if (in_interrupt())
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "%s cannot be called from interrupt context!!!", __func__);
+=======
+                "%s cannot be called from interrupt context!!!", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -424,7 +463,11 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
    if ( NULL == event )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "NULL event passed into %s", __func__);
+=======
+                "NULL event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_FAULT;
    }
@@ -433,7 +476,11 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
    if ( LINUX_EVENT_COOKIE != event->cookie )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_FATAL,
+<<<<<<< HEAD
                 "Uninitialized event passed into %s", __func__);
+=======
+                "Uninitialized event passed into %s", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       VOS_ASSERT(0);
       return VOS_STATUS_E_INVAL;
    }
@@ -455,8 +502,13 @@ VOS_STATUS vos_wait_single_event ( vos_event_t* event, v_U32_t timeout)
       ret = wait_for_completion_interruptible(&event->complete);
       if ( 0 != ret )
       {
+<<<<<<< HEAD
          // negative means interrupted
          return VOS_STATUS_E_TIMEOUT;
+=======
+       	// negative means interrupted
+        return VOS_STATUS_E_TIMEOUT;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       }
    }
 

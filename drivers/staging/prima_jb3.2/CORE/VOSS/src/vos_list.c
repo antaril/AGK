@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -79,14 +82,22 @@ VOS_STATUS vos_list_init( vos_list_t *pList )
    if ( pList == NULL)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie == VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: already initialized list", __func__);
+=======
+                "%s: already initialized list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_BUSY;
    }
 
@@ -107,14 +118,22 @@ VOS_STATUS vos_list_destroy( vos_list_t *pList )
    if (pList == NULL)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -122,14 +141,22 @@ VOS_STATUS vos_list_destroy( vos_list_t *pList )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->count !=0 )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list length not equal to zero", __func__);
+=======
+                "%s: list length not equal to zero", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_BUSY;
    }
@@ -149,14 +176,22 @@ VOS_STATUS vos_list_insert_front( vos_list_t *pList, vos_list_node_t *pNode )
    if ( ( pList == NULL) || ( pNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -164,7 +199,11 @@ VOS_STATUS vos_list_insert_front( vos_list_t *pList, vos_list_node_t *pNode )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
@@ -183,14 +222,22 @@ VOS_STATUS vos_list_insert_back( vos_list_t *pList, vos_list_node_t *pNode )
    if ( ( pList == NULL) || ( pNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -198,7 +245,11 @@ VOS_STATUS vos_list_insert_back( vos_list_t *pList, vos_list_node_t *pNode )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
@@ -217,14 +268,22 @@ VOS_STATUS vos_list_insert_back_size( vos_list_t *pList, vos_list_node_t *pNode,
    if ( ( pList == NULL) || ( pNode == NULL) || (pSize == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -232,7 +291,11 @@ VOS_STATUS vos_list_insert_back_size( vos_list_t *pList, vos_list_node_t *pNode,
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
@@ -256,14 +319,22 @@ VOS_STATUS vos_list_remove_front( vos_list_t *pList, vos_list_node_t **ppNode )
    if ( ( pList == NULL ) || ( ppNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -271,14 +342,22 @@ VOS_STATUS vos_list_remove_front( vos_list_t *pList, vos_list_node_t **ppNode )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty( &pList->anchor ) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO_HIGH,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -306,14 +385,22 @@ VOS_STATUS vos_list_remove_back( vos_list_t *pList, vos_list_node_t **ppNode )
    if ( ( pList == NULL ) || ( ppNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -321,14 +408,22 @@ VOS_STATUS vos_list_remove_back( vos_list_t *pList, vos_list_node_t **ppNode )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty( &pList->anchor ) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -351,14 +446,22 @@ VOS_STATUS vos_list_size( vos_list_t *pList, v_SIZE_t *pSize )
    if ( ( pList ==NULL) || ( pSize == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: list not initialized", __func__);
+=======
+                 "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        return VOS_STATUS_E_INVAL;
    }
 
@@ -366,7 +469,11 @@ VOS_STATUS vos_list_size( vos_list_t *pList, v_SIZE_t *pSize )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
@@ -413,14 +520,22 @@ VOS_STATUS vos_list_peek_front( vos_list_t *pList, vos_list_node_t **ppNode )
    if ( ( pList == NULL) || ( ppNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                  "%s: list not initialized", __func__);
+=======
+                 "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        return VOS_STATUS_E_INVAL;
    }
 
@@ -428,14 +543,22 @@ VOS_STATUS vos_list_peek_front( vos_list_t *pList, vos_list_node_t **ppNode )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty(&pList->anchor) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -483,14 +606,22 @@ VOS_STATUS vos_list_peek_back( vos_list_t *pList, vos_list_node_t **ppNode )
    if ( ( pList == NULL) || ( ppNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -498,14 +629,22 @@ VOS_STATUS vos_list_peek_back( vos_list_t *pList, vos_list_node_t **ppNode )
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty(&pList->anchor) )
    {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                  "%s: list empty", __func__);
+=======
+                 "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        mutex_unlock(&pList->lock);
        return VOS_STATUS_E_EMPTY;
    }
@@ -556,14 +695,22 @@ VOS_STATUS vos_list_peek_next( vos_list_t *pList, vos_list_node_t *pNode,
    if ( ( pList == NULL) || ( pNode == NULL) || (ppNode == NULL))
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -571,14 +718,22 @@ VOS_STATUS vos_list_peek_next( vos_list_t *pList, vos_list_node_t *pNode,
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty(&pList->anchor) )
    {
        VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                  "%s: list empty", __func__);
+=======
+                 "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
        mutex_unlock(&pList->lock);
        return VOS_STATUS_E_EMPTY;
    }
@@ -599,7 +754,11 @@ VOS_STATUS vos_list_peek_next( vos_list_t *pList, vos_list_node_t *pNode,
    if (listptr == &pList->anchor)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_INFO,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -650,14 +809,22 @@ VOS_STATUS vos_list_peek_prev( vos_list_t *pList, vos_list_node_t *pNode,
    if ( ( pList == NULL) || ( pNode == NULL) || (ppNode == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -665,14 +832,22 @@ VOS_STATUS vos_list_peek_prev( vos_list_t *pList, vos_list_node_t *pNode,
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty(&pList->anchor) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -694,7 +869,11 @@ VOS_STATUS vos_list_peek_prev( vos_list_t *pList, vos_list_node_t *pNode,
    if (listptr == &pList->anchor)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_WARN,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -741,13 +920,21 @@ VOS_STATUS vos_list_insert_before( vos_list_t *pList, vos_list_node_t *pNodeToIn
    if ( ( pList == NULL) || ( pNode == NULL) || (pNodeToInsert == NULL))
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: list not initialized", __func__);
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -755,13 +942,21 @@ VOS_STATUS vos_list_insert_before( vos_list_t *pList, vos_list_node_t *pNodeToIn
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty(&pList->anchor) )
    {
+<<<<<<< HEAD
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: list empty", __func__);
+=======
+      VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR, "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -821,14 +1016,22 @@ VOS_STATUS vos_list_insert_after( vos_list_t *pList, vos_list_node_t *pNodeToIns
    if ( ( pList == NULL) || ( pNode == NULL) || (pNodeToInsert == NULL))
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -836,7 +1039,11 @@ VOS_STATUS vos_list_insert_after( vos_list_t *pList, vos_list_node_t *pNodeToIns
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
@@ -844,7 +1051,11 @@ VOS_STATUS vos_list_insert_after( vos_list_t *pList, vos_list_node_t *pNodeToIns
    if ( list_empty(&pList->anchor) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }
@@ -902,14 +1113,22 @@ VOS_STATUS vos_list_remove_node( vos_list_t *pList, vos_list_node_t *pNodeToRemo
    if ( ( pList == NULL ) || ( pNodeToRemove == NULL) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: NULL pointer passed in", __func__);
+=======
+                "%s: NULL pointer passed in", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( pList->cookie != VOS_LIST_COOKIE )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list not initialized", __func__);
+=======
+                "%s: list not initialized", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_INVAL;
    }
 
@@ -917,14 +1136,22 @@ VOS_STATUS vos_list_remove_node( vos_list_t *pList, vos_list_node_t *pNodeToRemo
    if (rc)
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: unable to lock list", __func__);
+=======
+                "%s: unable to lock list", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       return VOS_STATUS_E_FAULT;
    }
 
    if ( list_empty(&pList->anchor) )
    {
       VOS_TRACE(VOS_MODULE_ID_VOSS, VOS_TRACE_LEVEL_ERROR,
+<<<<<<< HEAD
                 "%s: list empty", __func__);
+=======
+                "%s: list empty", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
       mutex_unlock(&pList->lock);
       return VOS_STATUS_E_EMPTY;
    }

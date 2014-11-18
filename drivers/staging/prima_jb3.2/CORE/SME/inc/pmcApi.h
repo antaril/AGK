@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -359,8 +362,12 @@ extern eHalStatus pmcRegisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*che
 extern eHalStatus pmcDeregisterPowerSaveCheck (tHalHandle hHal, tANI_BOOLEAN (*checkRoutine) (void *checkContext));
 
 extern void pmcMessageProcessor (tHalHandle hHal, tSirSmeRsp *pMsg);
+<<<<<<< HEAD
 extern void pmcResetImpsFailStatus (tHalHandle hHal);
 extern v_BOOL_t IsPmcImpsReqFailed (tHalHandle hHal);
+=======
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern eHalStatus pmcRequestBmps (
 
@@ -411,6 +418,7 @@ void pmcDumpInit(tHalHandle hHal);
 
 
 extern eHalStatus pmcWowlAddBcastPattern (
+<<<<<<< HEAD
    tHalHandle hHal, 
    tpSirWowlAddBcastPtrn pattern, 
    tANI_U8  sessionId);
@@ -420,6 +428,19 @@ extern eHalStatus pmcWowlDelBcastPattern (
    tHalHandle hHal, 
    tpSirWowlDelBcastPtrn pattern,
    tANI_U8 sessionId);
+=======
+
+   tHalHandle hHal, 
+
+   tpSirWowlAddBcastPtrn pattern);
+
+
+extern eHalStatus pmcWowlDelBcastPattern (
+
+   tHalHandle hHal, 
+
+   tpSirWowlDelBcastPtrn pattern);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 extern eHalStatus pmcEnterWowl ( 
@@ -434,13 +455,21 @@ extern eHalStatus pmcEnterWowl (
 
     void *wakeReasonIndCBContext,
 #endif // WLAN_WAKEUP_EVENTS
+<<<<<<< HEAD
     tpSirSmeWowlEnterParams wowlEnterParams, tANI_U8 sessionId);
+=======
+    tpSirSmeWowlEnterParams wowlEnterParams);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern eHalStatus pmcExitWowl (tHalHandle hHal);
 
 
 extern eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pRequest,
+<<<<<<< HEAD
                                           tANI_U8 sessionId);
+=======
+                                          tANI_U8 *bssId);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn pmcSetKeepAlive
@@ -451,7 +480,11 @@ extern eHalStatus pmcSetHostOffload (tHalHandle hHal, tpSirHostOffloadReq pReque
             eHAL_STATUS_FAILURE  Cannot set the keepalive.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 extern eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 sessionId);
+=======
+extern eHalStatus pmcSetKeepAlive (tHalHandle hHal, tpSirKeepAliveReq pRequest, tANI_U8 *bssId);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 extern tANI_BOOLEAN pmcValidateConnectState( tHalHandle hHal );
 
@@ -470,8 +503,12 @@ extern eHalStatus pmcSetRssiFilter(tHalHandle hHal, v_U8_t rssiThreshold);
 // Packet Coalescing Filter Match Count Callback declaration
 typedef void(*FilterMatchCountCallback)(void *callbackContext,
                                         tpSirRcvFltPktMatchRsp pRcvFltPktMatchRsp);
+<<<<<<< HEAD
 extern eHalStatus pmcGetFilterMatchCount(tHalHandle hHal, FilterMatchCountCallback callbackRoutine, 
                                                 void *callbackContext, tANI_U8 sessionId);
+=======
+extern eHalStatus pmcGetFilterMatchCount(tHalHandle hHal, FilterMatchCountCallback callbackRoutine, void *callbackContext);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif // WLAN_FEATURE_PACKET_FILTERING
 
 #ifdef WLAN_FEATURE_GTK_OFFLOAD
@@ -487,7 +524,11 @@ typedef void(*GTKOffloadGetInfoCallback)(void *callbackContext, tpSirGtkOffloadG
             eHAL_STATUS_FAILURE  Cannot set the offload.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload, tANI_U8 sessionId);
+=======
+extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkOffload);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /* ---------------------------------------------------------------------------
     \fn pmcGetGTKOffload
@@ -498,9 +539,13 @@ extern eHalStatus pmcSetGTKOffload (tHalHandle hHal, tpSirGtkOffloadParams pGtkO
             eHAL_STATUS_FAILURE  Cannot set the offload.
             eHAL_STATUS_SUCCESS  Request accepted. 
   ---------------------------------------------------------------------------*/
+<<<<<<< HEAD
 extern eHalStatus pmcGetGTKOffload(tHalHandle hHal,
                                    GTKOffloadGetInfoCallback callbackRoutine,
                                    void *callbackContext, tANI_U8 sessionId);
+=======
+extern eHalStatus pmcGetGTKOffload (tHalHandle hHal, GTKOffloadGetInfoCallback callbackRoutine, void *callbackContext);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif // WLAN_FEATURE_GTK_OFFLOAD
 
 #endif

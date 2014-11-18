@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -95,11 +98,23 @@
 #define TX_SUSPEND_EVENT_MASK            0x002
 #define MC_POST_EVENT_MASK               0x001
 #define MC_SUSPEND_EVENT_MASK            0x002
+<<<<<<< HEAD
 #define RX_POST_EVENT_MASK               0x001
 #define RX_SUSPEND_EVENT_MASK            0x002
 #define TX_SHUTDOWN_EVENT_MASK           0x010
 #define MC_SHUTDOWN_EVENT_MASK           0x010
 #define RX_SHUTDOWN_EVENT_MASK           0x010
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#define RX_POST_EVENT_MASK               0x001
+#define RX_SUSPEND_EVENT_MASK            0x002
+#endif
+#define TX_SHUTDOWN_EVENT_MASK           0x010
+#define MC_SHUTDOWN_EVENT_MASK           0x010
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+#define RX_SHUTDOWN_EVENT_MASK           0x010
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define WD_POST_EVENT_MASK               0x001
 #define WD_SHUTDOWN_EVENT_MASK           0x002
 #define WD_CHIP_RESET_EVENT_MASK         0x004
@@ -145,8 +160,18 @@ typedef struct _VosSchedContext
 {
   /* Place holder to the VOSS Context */ 
    v_PVOID_t           pVContext; 
+<<<<<<< HEAD
   /* WDA Message queue on the Main thread*/
    VosMqType           wdaMcMq;
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+  /* HAL Message queue on the Main thread*/
+   VosMqType           halMcMq;
+#else
+  /* WDA Message queue on the Main thread*/
+   VosMqType           wdaMcMq;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
 
@@ -162,6 +187,13 @@ typedef struct _VosSchedContext
    /* SYS Message queue on the Main thread */
    VosMqType           sysMcMq;
 
+<<<<<<< HEAD
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC
+   /* SSC Message queue on the Tx */
+   VosMqType           sscTxMq;
+#else
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
   /* WDI Message queue on the Main thread*/
    VosMqType           wdiMcMq;
 
@@ -170,10 +202,15 @@ typedef struct _VosSchedContext
 
    /* WDI Message queue on the Rx Thread*/
    VosMqType           wdiRxMq;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* TL Message queue on the Tx thread */
    VosMqType           tlTxMq;
 
+<<<<<<< HEAD
    /* TL Message queue on the Rx thread */
    VosMqType           tlRxMq;
 
@@ -181,6 +218,14 @@ typedef struct _VosSchedContext
    VosMqType           sysTxMq;
 
    VosMqType           sysRxMq;
+=======
+   /* SYS Message queue on the Tx thread */
+   VosMqType           sysTxMq;
+
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+   VosMqType           sysRxMq;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* Handle of Event for MC thread to signal startup */
    struct completion   McStartEvent;
@@ -188,8 +233,15 @@ typedef struct _VosSchedContext
    /* Handle of Event for Tx thread to signal startup */
    struct completion   TxStartEvent;
 
+<<<<<<< HEAD
    /* Handle of Event for Rx thread to signal startup */
    struct completion   RxStartEvent;
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+   /* Handle of Event for Rx thread to signal startup */
+   struct completion   RxStartEvent;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    struct task_struct* McThread;
 
@@ -197,8 +249,15 @@ typedef struct _VosSchedContext
    
    struct task_struct*   TxThread;
 
+<<<<<<< HEAD
    /* RX Thread handle */
    struct task_struct*   RxThread;
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+   /* RX Thread handle */
+   struct task_struct*   RxThread;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 
    /* completion object for MC thread shutdown */
@@ -207,8 +266,15 @@ typedef struct _VosSchedContext
    /* completion object for Tx thread shutdown */
    struct completion   TxShutdown; 
 
+<<<<<<< HEAD
    /* completion object for Rx thread shutdown */
    struct completion   RxShutdown;
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+   /* completion object for Rx thread shutdown */
+   struct completion   RxShutdown;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* Wait queue for MC thread */
    wait_queue_head_t mcWaitQueue;
@@ -220,10 +286,18 @@ typedef struct _VosSchedContext
 
    unsigned long     txEventFlag;
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    /* Wait queue for Rx thread */
    wait_queue_head_t rxWaitQueue;
 
    unsigned long     rxEventFlag;
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    
    /* Completion object to resume Mc thread */
    struct completion ResumeMcEvent;
@@ -231,8 +305,15 @@ typedef struct _VosSchedContext
    /* Completion object to resume Tx thread */
    struct completion ResumeTxEvent;
 
+<<<<<<< HEAD
    /* Completion object to resume Rx thread */
    struct completion ResumeRxEvent;
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+   /* Completion object to resume Rx thread */
+   struct completion ResumeRxEvent;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* lock to make sure that McThread and TxThread Suspend/resume mechanism is in sync*/
    spinlock_t McThreadLock;
@@ -315,8 +396,15 @@ typedef struct _VosContextType
    /* HDD Module Context  */
    v_VOID_t           *pHDDContext;
 
+<<<<<<< HEAD
    /* HDD SoftAP Module Context  */
    v_VOID_t           *pHDDSoftAPContext;
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+   /* HDD SoftAP Module Context  */
+   v_VOID_t           *pHDDSoftAPContext;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
    /* TL Module Context  */
    v_VOID_t           *pTLContext;
@@ -324,11 +412,31 @@ typedef struct _VosContextType
    /* MAC Module Context  */
    v_VOID_t           *pMACContext;
 
+<<<<<<< HEAD
    /* BAP Context */
    v_VOID_t           *pBAPContext;
 
    /* SAP Context */
    v_VOID_t           *pSAPContext;
+=======
+#ifndef FEATURE_WLAN_INTEGRATED_SOC   /* BAL  Context  */
+
+   v_VOID_t           *pBALContext;
+   
+   /* SAL Context */
+   v_VOID_t           *pSALContext;
+
+   /* SSC Context */
+   v_VOID_t           *pSSCContext;
+#endif
+   /* BAP Context */
+   v_VOID_t           *pBAPContext;
+
+#ifdef WLAN_SOFTAP_FEATURE   
+   /* SAP Context */
+   v_VOID_t           *pSAPContext;
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    
    /* VOS Packet Context */
    vos_pkt_context_t   vosPacket; 
@@ -337,16 +445,27 @@ typedef struct _VosContextType
 
    volatile v_U8_t     isLogpInProgress;
 
+<<<<<<< HEAD
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
    vos_event_t         wdaCompleteEvent;
 
    /* WDA Context */
    v_VOID_t            *pWDAContext;
+<<<<<<< HEAD
 
    volatile v_U8_t    isLoadUnloadInProgress;
 
    /* SSR re-init in progress */
    volatile v_U8_t     isReInitInProgress;
 
+=======
+#endif
+
+   volatile v_U8_t    isLoadUnloadInProgress;
+
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } VosContextType, *pVosContextType;
 
 
@@ -356,7 +475,13 @@ typedef struct _VosContextType
 ---------------------------------------------------------------------------*/
  
 int vos_sched_is_tx_thread(int threadID);
+<<<<<<< HEAD
 int vos_sched_is_rx_thread(int threadID);
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+int vos_sched_is_rx_thread(int threadID);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 /*---------------------------------------------------------------------------
   
   \brief vos_sched_open() - initialize the vOSS Scheduler  
@@ -503,15 +628,24 @@ VOS_STATUS vos_sched_init_mqs   (pVosSchedContext pSchedContext);
 void vos_sched_deinit_mqs (pVosSchedContext pSchedContext);
 void vos_sched_flush_mc_mqs  (pVosSchedContext pSchedContext);
 void vos_sched_flush_tx_mqs  (pVosSchedContext pSchedContext);
+<<<<<<< HEAD
 void vos_sched_flush_rx_mqs  (pVosSchedContext pSchedContext);
+=======
+#ifdef FEATURE_WLAN_INTEGRATED_SOC
+void vos_sched_flush_rx_mqs  (pVosSchedContext pSchedContext);
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 VOS_STATUS vos_watchdog_chip_reset ( vos_chip_reset_reason_type reason );
 void clearWlanResetReason(void);
 
 void vos_timer_module_init( void );
 VOS_STATUS vos_watchdog_wlan_shutdown(void);
 VOS_STATUS vos_watchdog_wlan_re_init(void);
+<<<<<<< HEAD
 int isWDresetInProgress(void);
 void vos_ssr_protect(const char *caller_func);
 void vos_ssr_unprotect(const char *caller_func);
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #endif // #if !defined __VOSS_SCHED_H

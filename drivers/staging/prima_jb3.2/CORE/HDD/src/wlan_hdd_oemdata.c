@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -88,12 +91,20 @@ static eHalStatus hdd_OemDataReqCallback(tHalHandle hHal,
     if(oemDataReqStatus == eOEM_DATA_REQ_FAILURE)
     {
         snprintf(buffer, IW_CUSTOM_MAX, "QCOM: OEM-DATA-REQ-FAILED");
+<<<<<<< HEAD
         hddLog(LOGW, "%s: oem data req %d failed\n", __func__, oemDataReqID);
+=======
+        hddLog(LOGW, "%s: oem data req %d failed\n", __FUNCTION__, oemDataReqID);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }
     else if(oemDataReqStatus == eOEM_DATA_REQ_INVALID_MODE)
     {
         snprintf(buffer, IW_CUSTOM_MAX, "QCOM: OEM-DATA-REQ-INVALID-MODE");
+<<<<<<< HEAD
         hddLog(LOGW, "%s: oem data req %d failed because the driver is in invalid mode (IBSS|BTAMP|AP)\n", __func__, oemDataReqID);
+=======
+        hddLog(LOGW, "%s: oem data req %d failed because the driver is in invalid mode (IBSS|BTAMP|AP)\n", __FUNCTION__, oemDataReqID);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     }
     else
     {
@@ -137,6 +148,7 @@ int iw_get_oem_data_rsp(
 
     hdd_adapter_t *pAdapter = (netdev_priv(dev));
 
+<<<<<<< HEAD
     if ((WLAN_HDD_GET_CTX(pAdapter))->isLogpInProgress)
     {
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
@@ -144,13 +156,19 @@ int iw_get_oem_data_rsp(
        return -EBUSY;
     }
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     do
     {
         //get the oem data response from sme
         status = sme_getOemDataRsp(WLAN_HDD_GET_HAL_CTX(pAdapter), &pSmeOemDataRsp);
         if(status != eHAL_STATUS_SUCCESS)
         {
+<<<<<<< HEAD
             hddLog(LOGE, "%s: failed in sme_getOemDataRsp\n", __func__);
+=======
+            hddLog(LOGE, "%s: failed in sme_getOemDataRsp\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             break;
         }
         else
@@ -162,7 +180,11 @@ int iw_get_oem_data_rsp(
             }
             else
             {
+<<<<<<< HEAD
                 hddLog(LOGE, "%s: pSmeOemDataRsp = NULL\n", __func__);
+=======
+                hddLog(LOGE, "%s: pSmeOemDataRsp = NULL\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
                 status = eHAL_STATUS_FAILURE;
                 break;
             }
@@ -203,12 +225,15 @@ int iw_set_oem_data_req(
     hdd_adapter_t *pAdapter = (netdev_priv(dev));
     hdd_wext_state_t *pwextBuf = WLAN_HDD_GET_WEXT_STATE_PTR(pAdapter);
 
+<<<<<<< HEAD
     if ((WLAN_HDD_GET_CTX(pAdapter))->isLogpInProgress)
     {
        VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_FATAL,
                                   "%s:LOGP in Progress. Ignore!!!",__func__);
        return -EBUSY;
     }
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
     do
     {
@@ -219,13 +244,18 @@ int iw_set_oem_data_req(
 
         if(pOemDataReq == NULL)
         {
+<<<<<<< HEAD
             hddLog(LOGE, "in %s oemDataReq == NULL\n", __func__);
+=======
+            hddLog(LOGE, "in %s oemDataReq == NULL\n", __FUNCTION__);
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
             status = eHAL_STATUS_FAILURE;
             break;
         }
 
         vos_mem_zero(&oemDataReqConfig, sizeof(tOemDataReqConfig));
 
+<<<<<<< HEAD
         if (copy_from_user((&oemDataReqConfig)->oemDataReq,
                            pOemDataReq->oemDataReq, OEM_DATA_REQ_SIZE))
         {
@@ -234,6 +264,10 @@ int iw_set_oem_data_req(
             return -EFAULT;
         }
 
+=======
+        vos_mem_copy((&oemDataReqConfig)->oemDataReq, pOemDataReq->oemDataReq, OEM_DATA_REQ_SIZE);
+    
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
         status = sme_OemDataReq(WLAN_HDD_GET_HAL_CTX(pAdapter), 
                                                 pAdapter->sessionId,
                                                 &oemDataReqConfig, 

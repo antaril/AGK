@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -138,7 +141,13 @@ typedef enum eAniKeyDirection
     eSIR_TX_ONLY,
     eSIR_RX_ONLY,
     eSIR_TX_RX,
+<<<<<<< HEAD
     eSIR_TX_DEFAULT,
+=======
+#ifdef WLAN_SOFTAP_FEATURE
+    eSIR_TX_DEFAULT,
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     eSIR_DONOT_USE_KEY_DIRECTION = SIR_MAX_ENUM_SIZE
 } tAniKeyDirection;
 
@@ -179,12 +188,21 @@ typedef struct sSirAddie
 
 #ifdef FEATURE_WLAN_CCX
 
+<<<<<<< HEAD
 // The CCKM IE needs to be in the
 // Join and Reassoc Req.
 typedef struct sSirCCKMie
 {
     tANI_U16       length;
     tANI_U8        cckmIEdata[SIR_MAC_MAX_IE_LENGTH+2];
+=======
+// The CCKM IE needs to be in the 
+// Join and Reassoc Req. 
+typedef struct sSirCCKMie
+{
+    tANI_U16       length;
+    tANI_U8        cckmIEdata[SIR_MAC_MAX_IE_LENGTH+2];  
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 } tSirCCKMie, *tpSirCCKMie;
 
 #endif

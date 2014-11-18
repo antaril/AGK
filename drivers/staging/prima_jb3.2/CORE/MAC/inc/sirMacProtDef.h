@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -39,8 +42,13 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
 
 /*
+=======
+/*
+ * Airgo Networks, Inc proprietary. All rights reserved.
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * This file sirMacProtDef.h contains the MAC/PHY protocol
  * definitions used across various projects.
  * Author:        Chandra Modumudi
@@ -55,7 +63,11 @@
 
 #include "palTypes.h"
 #include "sirTypes.h"
+<<<<<<< HEAD
 #include "wniCfgSta.h"
+=======
+#include "wniCfgAp.h"
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #include "aniCompiler.h"
 
 
@@ -175,17 +187,26 @@
 #define SIR_MAC_ACTION_QOS_MGMT        1
 #define SIR_MAC_ACTION_DLP             2
 #define SIR_MAC_ACTION_BLKACK          3
+<<<<<<< HEAD
 #define SIR_MAC_ACTION_PUBLIC_USAGE    4
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #if defined WLAN_FEATURE_VOWIFI
 #define SIR_MAC_ACTION_RRM             5
 #endif
 #define SIR_MAC_ACTION_HT              7
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
 #define SIR_MAC_ACTION_TDLS           12
 #endif
 #define SIR_MAC_ACTION_WME            17
 #ifdef WLAN_FEATURE_11AC
 #define SIR_MAC_ACTION_VHT            21
+=======
+#define SIR_MAC_ACTION_WME            17
+#if defined WLAN_FEATURE_P2P
+#define SIR_MAC_ACTION_PUBLIC_USAGE 4
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 
 // QoS management action codes
@@ -239,11 +260,14 @@
 
 #endif
 
+<<<<<<< HEAD
 //VHT Action Field 
 #ifdef WLAN_FEATURE_11AC
 #define SIR_MAC_VHT_OPMODE_NOTIFICATION        2
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 // HT Action Field Codes
 #define SIR_MAC_SM_POWER_SAVE       1
 
@@ -256,15 +280,24 @@
 #define SIR_MAC_BLKACK_ADD_REQ      0
 #define SIR_MAC_BLKACK_ADD_RSP      1
 #define SIR_MAC_BLKACK_DEL          2
+<<<<<<< HEAD
 #define SIR_MAC_ACTION_VENDOR_SPECIFIC 9
 #define SIR_MAC_ACTION_VENDOR_SPECIFIC_CATEGORY     0x7F
 #define SIR_MAC_ACTION_P2P_SUBTYPE_PRESENCE_RSP     2
+=======
+#if defined WLAN_FEATURE_P2P
+#define SIR_MAC_ACTION_VENDOR_SPECIFIC 9
+#define SIR_MAC_ACTION_VENDOR_SPECIFIC_CATEGORY     0x7F
+#define SIR_MAC_ACTION_P2P_SUBTYPE_PRESENCE_RSP     2
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #ifdef WLAN_FEATURE_11W
 //11w SA query request/response action frame category code
 #define SIR_MAC_ACTION_SA_QUERY               8 
 #endif
 
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
 #define SIR_MAC_TDLS_SETUP_REQ           0
 #define SIR_MAC_TDLS_SETUP_RSP           1
@@ -278,6 +311,8 @@
 #define SIR_MAC_TDLS_DIS_RSP             14
 #endif
 
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define SIR_MAC_MAX_RANDOM_LENGTH   2306
 
 //-----------------------------------------------------------------------------
@@ -411,7 +446,10 @@
 #define SIR_MAC_VHT_CAPABILITIES_EID   191
 #define SIR_MAC_VHT_OPERATION_EID      192
 #define SIR_MAC_VHT_EXT_BSS_LOAD_EID   193
+<<<<<<< HEAD
 #define SIR_MAC_VHT_OPMODE_EID         199
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif
 #define SIR_MAC_MAX_SUPPORTED_MCS_SET    16
 
@@ -448,15 +486,23 @@
 #define SIR_MAC_WSM_OUI             SIR_MAC_WME_OUI
 #define SIR_MAC_WSC_OUI             "\x00\x50\xf2\x04"
 #define SIR_MAC_WSC_OUI_SIZE        4
+<<<<<<< HEAD
+=======
+#ifdef WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #define SIR_MAC_P2P_OUI             "\x50\x6f\x9a\x09"
 #define SIR_MAC_P2P_OUI_SIZE        4
 #define SIR_P2P_NOA_ATTR            12
 #define SIR_MAX_NOA_ATTR_LEN        31
 #define SIR_MAX_NOA_DESCR           2
 #define SIR_P2P_IE_HEADER_LEN       6
+<<<<<<< HEAD
 
 #define SIR_MAC_CISCO_OUI "\x00\x40\x96"
 #define SIR_MAC_CISCO_OUI_SIZE 3
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // min size of wme oui header: oui(3) + type + subtype + version
 #define SIR_MAC_OUI_WME_HDR_MIN       6
@@ -501,10 +547,15 @@
 #define SIR_MAC_OUI_WSM_SCHEDULE_MAX        20
 
 #ifdef WLAN_NS_OFFLOAD
+<<<<<<< HEAD
 #define SIR_MAC_NS_OFFLOAD_SIZE             1  //support only one IPv6 offload
 #define SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA   2 //Number of target IP in NA frames. It must be at least 2
 #define SIR_MAC_IPV6_ADDR_LEN               16
 #define SIR_IPV6_ADDR_VALID                 1
+=======
+#define SIR_MAC_NS_OFFLOAD_SIZE        1  //support only one IPv6 offload
+#define SIR_MAC_NUM_TARGET_IPV6_NS_OFFLOAD_NA   2 //Number of target IP in NA frames. It must be at least 2
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif //WLAN_NS_OFFLOAD
 #define SIR_MAC_ARP_OFFLOAD_SIZE        1
 
@@ -631,6 +682,7 @@
 
 // bitname must be one of the above, eg ESS, CF_POLLABLE, etc.
 #define SIR_MAC_CLEAR_CAPABILITY(u16value, bitname) \
+<<<<<<< HEAD
   ((u16value) &= (~(SIR_MAC_SET_##bitname(0))))
 
 #define IS_WES_MODE_ENABLED(x) \
@@ -639,6 +691,9 @@
 #define BA_RECIPIENT       1
 #define BA_INITIATOR       2
 #define BA_BOTH_DIRECTIONS 3
+=======
+    (u16value) &= (~(SIR_MAC_SET_##bitname(0)))
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 /// Status Code (present in Management response frames) enum
 
@@ -758,11 +813,15 @@ typedef enum eSirMacReasonCodes
     eSIR_MAC_INVALID_RSN_CAPABILITIES_REASON         = 22, //Invalid RSN information element capabilities
     eSIR_MAC_1X_AUTH_FAILURE_REASON                  = 23, //IEEE 802.1X authentication failed
     eSIR_MAC_CIPHER_SUITE_REJECTED_REASON            = 24, //Cipher suite rejected because of the security policy
+<<<<<<< HEAD
 #ifdef FEATURE_WLAN_TDLS
     eSIR_MAC_TDLS_TEARDOWN_PEER_UNREACHABLE          = 25, //TDLS direct link teardown due to TDLS peer STA unreachable via the TDLS direct link
     eSIR_MAC_TDLS_TEARDOWN_UNSPEC_REASON             = 26, //TDLS direct link teardown for unspecified reason
 #endif
     // reserved                                        27 - 31
+=======
+    // reserved                                        25 - 31
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
     eSIR_MAC_QOS_UNSPECIFIED_REASON                  = 32, //Disassociated for unspecified, QoS-related reason
     eSIR_MAC_QAP_NO_BANDWIDTH_REASON                 = 33, //Disassociated because QoS AP lacks sufficient bandwidth for this QoS STA
     eSIR_MAC_XS_UNACKED_FRAMES_REASON                = 34, //Disassociated because excessive number of frames need to be acknowledged, but are not
@@ -1305,7 +1364,16 @@ typedef __ani_attr_pre_packed struct sSirMacTspecIE
     tANI_U16            surplusBw;
     tANI_U16            mediumTime;
 }
+<<<<<<< HEAD
 __ani_attr_packed tSirMacTspecIE;
+=======
+#ifndef LX5280
+__ani_attr_packed
+#else
+__ani_attr_aligned_4  __ani_attr_packed
+#endif
+tSirMacTspecIE;
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // max size of the classifier params in the tclas IE
 #define SIR_MAC_CLSPARAM_LEN 253
@@ -1598,6 +1666,7 @@ typedef  struct sSirMacRpiReportIE
     tSirMacRpiReport     rpiReport;
 } tSirMacRpiReportIE, *tpSirMacRpiReportIE;
 
+<<<<<<< HEAD
 #define SIR_MAC_MAX_SUPP_RATES            32
 
 #define SIR_MAC_MAX_EXTN_CAP               8
@@ -1721,6 +1790,8 @@ typedef struct sSirHtCap {
     tANI_U32 txBFCapInfo;
     tANI_U8  antennaSelectionInfo;
 }tSirHTCap;
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 // HT Cap and HT IE Size defines
 #define HT_CAPABILITY_IE_SIZE                       28
@@ -2339,6 +2410,7 @@ typedef __ani_attr_pre_packed struct sSirMacActionFrameHdr
     tANI_U8    actionID;
 } __ani_attr_packed tSirMacActionFrameHdr, *tpSirMacActionFrameHdr;
 
+<<<<<<< HEAD
 #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
 typedef __ani_attr_pre_packed struct sSirMacVendorSpecificFrameHdr
 {
@@ -2347,6 +2419,9 @@ typedef __ani_attr_pre_packed struct sSirMacVendorSpecificFrameHdr
 } __ani_attr_packed tSirMacVendorSpecificFrameHdr, *tpSirMacVendorSpecificFrameHdr;
 #endif
 
+=======
+#if defined WLAN_FEATURE_P2P
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 typedef __ani_attr_pre_packed struct sSirMacVendorSpecificPublicActionFrameHdr
 {
     tANI_U8    category;
@@ -2365,6 +2440,10 @@ typedef __ani_attr_pre_packed struct sSirMacP2PActionFrameHdr
 } __ani_attr_packed tSirMacP2PActionFrameHdr, *tpSirMacP2PActionFrameHdr;
 
 
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef  struct sSirMacMeasActionFrameHdr
 {
@@ -2764,5 +2843,8 @@ typedef __ani_attr_pre_packed struct sSirPhy11aHdr
 #endif
 } __ani_attr_packed tSirPhy11aHdr, *tpSirPhy11aHdr;
 
+<<<<<<< HEAD
 #define SIR_MAC_MIN_IE_LEN 2 // Minimum IE length for IE validation
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 #endif /* __MAC_PROT_DEFS_H */

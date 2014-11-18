@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -19,6 +20,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 /*
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Previously licensed under the ISC license by Qualcomm Atheros, Inc.
@@ -53,7 +56,10 @@
  */
 #define QCSAP_MAX_OPT_IE        256
 #define QCSAP_MAX_WSC_IE        256
+<<<<<<< HEAD
 #define QCSAP_MAX_GET_STA_INFO  512
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 typedef struct sSSID
 {
@@ -246,18 +252,27 @@ typedef struct
 #define WE_LOG_DUMP_CMD 1
 #define QCSAP_IOCTL_SET_CHANNEL_RANGE (SIOCIWFIRSTPRIV+17)
 
+<<<<<<< HEAD
 #define WE_P2P_NOA_CMD  2
 //IOCTL to configure MCC params
 #define WE_MCC_CONFIG_CREDENTIAL 3
 #define WE_MCC_CONFIG_PARAMS  4
+=======
+#ifdef WLAN_FEATURE_P2P
+#define WE_P2P_NOA_CMD  2
+#endif
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define QCSAP_IOCTL_MODIFY_ACL          (SIOCIWFIRSTPRIV+18)
 #define QCSAP_IOCTL_GET_CHANNEL_LIST    (SIOCIWFIRSTPRIV+19)
 #define QCSAP_IOCTL_SET_TX_POWER        (SIOCIWFIRSTPRIV+20) 
+<<<<<<< HEAD
 #define QCSAP_IOCTL_GET_STA_INFO        (SIOCIWFIRSTPRIV+21)
 #define QCSAP_IOCTL_SET_MAX_TX_POWER    (SIOCIWFIRSTPRIV+22)
 #define QCSAP_IOCTL_DATAPATH_SNAP_SHOT  (SIOCIWFIRSTPRIV+23)
 #define QCSAP_IOCTL_SET_TRAFFIC_MONITOR (SIOCIWFIRSTPRIV+24)
+=======
+>>>>>>> 8f21ba79e30f047f727d3b9dd531267c1db2a838
 
 #define MAX_VAR_ARGS         7
 #define QCSAP_IOCTL_PRIV_GET_SOFTAP_LINK_SPEED (SIOCIWFIRSTPRIV + 31)
